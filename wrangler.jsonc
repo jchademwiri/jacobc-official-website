@@ -13,16 +13,13 @@
 	"observability": {
 		"enabled": true
 	},
-	// Environment configurations
 	"env": {
-		// Staging environment (deployed from 'dev' branch)
 		"staging": {
 			"name": "jacobc-official-website-staging",
 			"vars": {
 				"ENVIRONMENT": "staging"
 			}
 		},
-		// Production environment (deployed from 'master' branch)
 		"production": {
 			"name": "jacobc-official-website",
 			"vars": {
