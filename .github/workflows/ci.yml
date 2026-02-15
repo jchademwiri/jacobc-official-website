@@ -1,22 +1,29 @@
-name: CI Validation
+name: CI
+
 on:
-  push:
-    branches-ignore: [master, main, dev]
   pull_request:
+    branches:
+      - master
+      - dev
+  workflow_dispatch:
 
 jobs:
-  validate:
+  build:
     runs-on: ubuntu-latest
+    name: Build & Check
     steps:
       - uses: actions/checkout@v4
-      
-      - uses: oven-sh/setup-bun@v2
-      
-      - name: Install dependencies
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install Dependencies
         run: bun install
-      
-      - name: Build Check
+
+      - name: Build Project
         run: bun run build
-      
-      - name: Lint Check
+
+      - name: Lint
         run: bun run lint
