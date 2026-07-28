@@ -15,4 +15,20 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+const portfolio = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/portfolio' }),
+  schema: z.object({
+    title: z.string(),
+    category: z.enum(['website', 'project', 'tender']),
+    client: z.string(),
+    role: z.string(),
+    year: z.string(),
+    excerpt: z.string(),
+    outcome: z.string().optional(),
+    link: z.string().optional(),
+    cover: z.string(),
+    tags: z.array(z.object({ label: z.string(), accent: z.boolean().default(false) })),
+  }),
+});
+
+export const collections = { blog, portfolio };
