@@ -105,27 +105,29 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', { month: 'short', day: '2
 
   <div
     id="services"
-    class="px-5 py-16 sm:px-8 md:px-14"
+    class="relative left-1/2 w-screen -translate-x-1/2"
     style="background: radial-gradient(900px 420px at 85% -40%, var(--color-section-glow), transparent 64%), var(--color-section);"
   >
-    <div class="flex items-baseline justify-between">
-      <span class="kicker mb-0">Services</span>
-      <a href="/services" class="btn btn-ghost">View all services</a>
-    </div>
-    <div class="mt-6 grid gap-8 md:grid-cols-3">
-      {
-        services.map((service) => (
-          <a href={service.href} class="block border-t border-divider pt-5">
-            <div class="mb-2.5 flex items-baseline gap-3">
-              <span class="text-sm font-medium text-accent">{service.number}</span>
-              <h3 class="text-xl">{service.title}</h3>
-            </div>
-            <p class="text-[15px] leading-[1.6]" style="color: color-mix(in srgb, var(--color-text) 78%, transparent)">
-              {service.description}
-            </p>
-          </a>
-        ))
-      }
+    <div class="mx-auto max-w-content px-5 py-16 sm:px-8 md:px-14">
+      <div class="flex items-baseline justify-between">
+        <span class="kicker mb-0">Services</span>
+        <a href="/services" class="btn btn-ghost">View all services</a>
+      </div>
+      <div class="mt-6 grid gap-8 md:grid-cols-3">
+        {
+          services.map((service) => (
+            <a href={service.href} class="block border-t border-divider pt-5">
+              <div class="mb-2.5 flex items-baseline gap-3">
+                <span class="text-sm font-medium text-accent">{service.number}</span>
+                <h3 class="text-xl">{service.title}</h3>
+              </div>
+              <p class="text-[15px] leading-[1.6]" style="color: color-mix(in srgb, var(--color-text) 78%, transparent)">
+                {service.description}
+              </p>
+            </a>
+          ))
+        }
+      </div>
     </div>
   </div>
 

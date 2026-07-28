@@ -94,16 +94,18 @@ const skills = [
 
   <div
     id="skills"
-    class="px-5 py-14 sm:px-8 md:px-14"
+    class="relative left-1/2 w-screen -translate-x-1/2"
     style="background: radial-gradient(900px 420px at 85% -40%, var(--color-section-glow), transparent 64%), var(--color-section);"
   >
-    <span class="kicker mb-4">Skills</span>
-    <div class="flex flex-wrap gap-2">
-      {
-        skills.map((skill) => (
-          <span class={skill.accent ? 'tag tag-accent' : 'tag tag-neutral'}>{skill.label}</span>
-        ))
-      }
+    <div class="mx-auto max-w-content px-5 py-14 sm:px-8 md:px-14">
+      <span class="kicker mb-4">Skills</span>
+      <div class="flex flex-wrap gap-2">
+        {
+          skills.map((skill) => (
+            <span class={skill.accent ? 'tag tag-accent' : 'tag tag-neutral'}>{skill.label}</span>
+          ))
+        }
+      </div>
     </div>
   </div>
 
