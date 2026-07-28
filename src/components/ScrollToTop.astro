@@ -5,6 +5,8 @@
   type="button"
   id="scroll-to-top"
   aria-label="Scroll to top"
+  aria-hidden="true"
+  tabindex="-1"
   class="fixed bottom-24 right-5 z-30 flex h-12 w-12 items-center justify-center rounded-full bg-surface opacity-0 shadow-lg transition-opacity duration-200 pointer-events-none"
   style="box-shadow: var(--shadow-sm), 0 4px 12px rgba(0, 0, 0, 0.3);"
 >
@@ -22,6 +24,8 @@
       const show = window.scrollY > window.innerHeight;
       button.classList.toggle('opacity-0', !show);
       button.classList.toggle('pointer-events-none', !show);
+      button.setAttribute('aria-hidden', String(!show));
+      button.tabIndex = show ? 0 : -1;
     };
 
     window.addEventListener('scroll', toggleVisibility, { passive: true });
