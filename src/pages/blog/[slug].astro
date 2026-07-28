@@ -27,7 +27,6 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', { month: 'short', day: '2
       src={`https://picsum.photos/seed/${post.data.cover}/1200/675`}
       alt=""
       class="aspect-[16/9] w-full rounded-[10px] object-cover"
-      loading="lazy"
     />
   </figure>
 
@@ -58,7 +57,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', { month: 'short', day: '2
     color: color-mix(in srgb, var(--color-text) 85%, transparent);
   }
 
-  .prose-post :global(h3) {
+  .prose-post :global(h2) {
     margin: 32px 0 10px;
     font-size: 19px;
   }

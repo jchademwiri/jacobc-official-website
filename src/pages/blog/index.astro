@@ -24,7 +24,12 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', { month: 'short', day: '2
     <div class="seg mt-6 inline-flex" id="blog-filter">
       {
         filters.map((filter, index) => (
-          <button type="button" class:list={['seg-opt', index === 0 && 'is-active']} data-filter={filter.key}>
+          <button
+            type="button"
+            aria-pressed={index === 0 ? 'true' : 'false'}
+            class:list={['seg-opt', index === 0 && 'is-active']}
+            data-filter={filter.key}
+          >
             {filter.label}
           </button>
         ))
@@ -69,8 +74,12 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', { month: 'short', day: '2
     const button = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-filter]');
     if (!button) return;
 
-    container.querySelectorAll('.seg-opt').forEach((opt) => opt.classList.remove('is-active'));
+    container.querySelectorAll<HTMLButtonElement>('.seg-opt').forEach((opt) => {
+      opt.classList.remove('is-active');
+      opt.setAttribute('aria-pressed', 'false');
+    });
     button.classList.add('is-active');
+    button.setAttribute('aria-pressed', 'true');
 
     const filter = button.dataset.filter;
     cards.forEach((card) => {

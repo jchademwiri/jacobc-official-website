@@ -15,10 +15,10 @@ tags:
 
 After years managing tender submissions, a handful of habits consistently separate the bids that win from the ones that don't — most of it comes down to compliance discipline, not creativity.
 
-### 1. Read the compliance schedule twice
+## 1. Read the compliance schedule twice
 
 Most disqualifications happen before evaluation — a missing signature, an expired certificate. Build a checklist against the schedule before you write a word.
 
-### 2. Keep your ISO documentation current
+## 2. Keep your ISO documentation current
 
 An up-to-date Integrated Management System means certificates and policies are ready to attach the day the tender drops, not scrambled together the night before.

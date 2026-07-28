@@ -1,4 +1,6 @@
 ---
+import { CONTACT_MAILTO } from '../lib/site';
+
 interface Props {
   glow?: 'bottom-left' | 'none';
   primaryHref?: string;
@@ -11,7 +13,7 @@ interface Props {
 
 const {
   glow = 'bottom-left',
-  primaryHref = 'mailto:hello@jacobc.co.za',
+  primaryHref = CONTACT_MAILTO,
   primaryLabel = 'Schedule Consultation',
   secondaryHref = '/services',
   secondaryLabel = 'View All Services',

@@ -15,10 +15,10 @@ tags:
 
 Certification looks straightforward on paper — a quality manual, a few procedures, an audit. In practice it's a few months of getting the organisation to actually work the way the documentation says it does.
 
-### 1. Gap analysis before you write anything
+## 1. Gap analysis before you write anything
 
 Start by mapping what already happens against the clauses of the standard. Most of the work is formalising existing practice, not inventing new process.
 
-### 2. The audit rewards evidence, not intention
+## 2. The audit rewards evidence, not intention
 
 Auditors look for records: signed-off reviews, corrective action logs, training registers. A policy nobody can point to evidence for is a finding waiting to happen.
