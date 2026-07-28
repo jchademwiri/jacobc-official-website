@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactBand from '../components/ContactBand.astro';
+
+const rows = [
+  {
+    id: 'tender-management',
+    number: '01',
+    title: 'Tender Management',
+    description:
+      'Full tendering lifecycle — from identifying opportunities and ensuring compliance to crafting compelling, competitive submissions that win contracts. Includes RFP/bid document review, compliance scheduling and outcome tracking.',
+    tags: [
+      { label: 'RFP Review', accent: true },
+      { label: 'Bid Management', accent: true },
+      { label: 'Compliance Scheduling', accent: false },
+    ],
+  },
+  {
+    id: 'project-management',
+    number: '02',
+    title: 'Project Management',
+    description:
+      'End-to-end delivery coordination — aligning timelines, teams and budgets for smooth execution and successful outcomes, run Agile and tracked in Microsoft 365.',
+    tags: [
+      { label: 'Stakeholder Management', accent: true },
+      { label: 'Agile', accent: true },
+      { label: 'Microsoft 365', accent: false },
+    ],
+  },
+  {
+    id: 'web-development',
+    number: '03',
+    title: 'Website Development',
+    description:
+      'Fast, accessible websites that reflect your brand, engage users and support long-term growth — built in React, Next.js and Tailwind CSS, with SEO and performance as first-class concerns.',
+    tags: [
+      { label: 'Next.js', accent: false },
+      { label: 'Astro.js', accent: false },
+      { label: 'Tailwind CSS', accent: false },
+      { label: 'SEO', accent: false },
+    ],
+  },
+];
+---
+
+<Layout
+  title="Services"
+  description="Tender management, project delivery and websites that hold up."
+  active="services"
+>
+  <div class="px-5 pb-14 pt-16 sm:px-8 md:px-14 md:pb-14 md:pt-20">
+    <span class="kicker">Services</span>
+    <h1 class="max-w-[20ch] text-[32px] sm:text-[42px] md:text-[48px]">
+      Tender management, project delivery and websites that hold up.
+    </h1>
+    <p class="mt-5 max-w-[620px] text-base leading-[1.65]" style="color: color-mix(in srgb, var(--color-text) 82%, transparent)">
+      Three disciplines, one point of accountability — from winning the contract to running the project to shipping the site that represents it.
+    </p>
+  </div>
+
+  {
+    rows.map((row, index) => (
+      <div
+        id={row.id}
+        class:list={[
+          'grid gap-8 border-t border-divider px-5 py-10 sm:px-8 md:grid-cols-[minmax(0,320px)_minmax(0,1fr)] md:gap-10 md:px-14',
+          index === rows.length - 1 && 'border-b',
+        ]}
+      >
+        <div>
+          <p class="mb-2 text-[13px] font-medium text-accent">{row.number}</p>
+          <h2 class="text-[26px]">{row.title}</h2>
+        </div>
+        <div>
+          <p class="mb-5 max-w-[60ch] text-[15.5px] leading-[1.7]" style="color: color-mix(in srgb, var(--color-text) 80%, transparent)">
+            {row.description}
+          </p>
+          <div class="flex flex-wrap gap-2">
+            {row.tags.map((tag) => (
+              <span class={tag.accent ? 'tag tag-accent' : 'tag tag-neutral'}>{tag.label}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    ))
+  }
+
+  <ContactBand secondaryHref="/" secondaryLabel="Back to Home" />
+</Layout>

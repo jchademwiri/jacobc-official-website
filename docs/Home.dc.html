@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/nocturne-abea6a8d-8e1d-4fdd-b89b-d32319332943/styles.css">
+  <script src="_ds/nocturne-abea6a8d-8e1d-4fdd-b89b-d32319332943/_ds_bundle.js"></script>
+  <script src="./image-slot.js"></script>
+  <style>
+    body{margin:0;background:var(--color-bg)}
+    a{color:var(--color-accent)} a:hover{color:color-mix(in srgb, var(--color-accent) 80%, white)}
+    .kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-accent);font-weight:500;margin:0 0 14px;position:relative;padding-left:56px}
+    .kicker::before{content:"";position:absolute;left:0;top:6px;width:40px;height:1px;background:var(--color-accent)}
+    .rule-fade{height:1px;border:0;margin:0;background:linear-gradient(to right,transparent,var(--color-divider) 48px,var(--color-divider) calc(100% - 48px),transparent)}
+    @media (max-width:900px){
+      .r-grid-2, .r-grid-3 { grid-template-columns: 1fr !important; }
+      .r-about { grid-template-columns: 1fr !important; }
+      .r-pad { padding-left:32px !important; padding-right:32px !important; }
+      .r-hero-title { font-size:42px !important; }
+      .r-nav-links { display:none !important; }
+    }
+    @media (max-width:600px){
+      .r-pad { padding-left:20px !important; padding-right:20px !important; }
+      .r-hero-title { font-size:32px !important; }
+      .r-nav { flex-wrap:wrap; row-gap:10px; }
+      .r-cta-row { flex-direction:column; align-items:stretch !important; }
+      .r-cta-row a { text-align:center; }
+    }
+    .r-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;cursor:pointer;background:none;border:none;padding:0}
+    .r-hamburger span{display:block;width:22px;height:2px;background:var(--color-text)}
+    .r-mobile-menu{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;padding:16px 24px 20px;gap:16px;background:color-mix(in srgb, var(--color-bg) 92%, transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--color-divider)}
+    #r-menu-toggle{display:none}
+    #r-menu-toggle:checked ~ .r-mobile-menu{display:flex}
+    @media (max-width:900px){ .r-hamburger{display:flex} }
+  </style>
+</helmet>
+
+<div style="background:var(--color-bg);color:var(--color-text);max-width:1440px;margin:0 auto">
+  <nav class="nav r-nav" style="position:sticky;top:0;z-index:20;background:color-mix(in srgb, var(--color-bg) 72%, transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--color-divider)">
+    <span class="nav-brand">Jacob C.</span>
+    <div class="r-nav-links" style="display:flex;gap:28px;font-size:14px;align-items:center">
+      <a href="./Home.dc.html" style="color:inherit;text-decoration:none">Home</a>
+      <a href="#services" style="color:inherit;text-decoration:none">Services</a>
+      <a href="./Blog.dc.html" style="color:inherit;text-decoration:none">Blog</a>
+      <a href="./About.dc.html" style="color:inherit;text-decoration:none">About</a>
+      <a href="#contact" style="color:inherit;text-decoration:none">Contact</a>
+    </div>
+    <a href="#contact" class="btn btn-primary r-nav-links" style="white-space:nowrap;flex-shrink:0">Get Consultation</a>
+    <input type="checkbox" id="r-menu-toggle">
+    <label for="r-menu-toggle" class="r-hamburger" aria-label="Menu"><span></span><span></span><span></span></label>
+    <div class="r-mobile-menu">
+      <a href="./Home.dc.html" style="color:inherit;text-decoration:none;font-size:15px">Home</a>
+      <a href="#services" style="color:inherit;text-decoration:none;font-size:15px">Services</a>
+      <a href="./Blog.dc.html" style="color:inherit;text-decoration:none;font-size:15px">Blog</a>
+      <a href="./About.dc.html" style="color:inherit;text-decoration:none;font-size:15px">About</a>
+      <a href="#contact" style="color:inherit;text-decoration:none;font-size:15px">Contact</a>
+      <a href="#contact" class="btn btn-primary" style="align-self:flex-start">Get Consultation</a>
+    </div>
+  </nav>
+
+  <div class="r-pad" style="padding:88px 56px 56px">
+    <span class="kicker">Jacob C.</span>
+    <h1 style="font-family:var(--font-heading);font-weight:500;font-size:56px;line-height:1.1;letter-spacing:-.015em;margin:0;max-width:16ch" class="r-hero-title">Bridging project management with digital excellence.</h1>
+    <p style="font-size:17px;line-height:1.65;max-width:640px;margin:24px 0 0;color:color-mix(in srgb, var(--color-text) 82%, transparent)">Specialised in tender acquisition, project management and sustainable web solutions — from winning contracts to delivering exceptional digital experiences.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin:24px 0"><span class="tag tag-accent">Tender Management</span><span class="tag tag-accent">Project Management</span><span class="tag tag-neutral">Accounts Receivable</span><span class="tag tag-neutral">Web Development</span></div>
+    <div class="r-cta-row" style="display:flex;gap:12px;margin-top:8px">
+      <a href="#contact" class="btn btn-primary" style="text-decoration:none">Schedule Consultation</a>
+      <a href="#services" class="btn btn-secondary" style="text-decoration:none">View Our Services</a>
+    </div>
+    <p style="font-size:13px;color:color-mix(in srgb, var(--color-text) 55%, transparent);margin:28px 0 0">● Currently available for new projects · 24–48hr consultation response · Free initial assessment</p>
+  </div>
+
+  <div id="positions" class="r-pad" style="padding:24px 56px 64px">
+    <span class="kicker">Current positions</span>
+    <h2 style="font-size:26px;margin:0 0 24px;max-width:28ch">Where I'm making an impact</h2>
+    <div class="r-grid-2" style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+      <div class="card elev-sm">
+        <p class="card-kicker">Full-time · Jan 2022 – Present</p>
+        <h4 class="card-title" style="margin:8px 0 4px">Tendering &amp; Accounts Receivable Manager, Projects Coordinator</h4>
+        <p class="card-meta" style="margin:0 0 10px">Sithembe Transportation &amp; Projects · Centurion, Gauteng</p>
+        <p class="card-body">Tender management, project coordination and administration, invoicing and website upkeep — financial accuracy and compliance across all projects.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px"><span class="tag tag-outline">Sage Accounting</span><span class="tag tag-outline">Stakeholder Mgmt</span><span class="tag tag-outline">Microsoft 365</span></div>
+      </div>
+      <div class="card elev-sm">
+        <p class="card-kicker">Full-time · Jan 2021 – Jan 2022</p>
+        <h4 class="card-title" style="margin:8px 0 4px">Tender &amp; Office Administrator</h4>
+        <p class="card-meta" style="margin:0 0 10px">Babiya Geomatics and Trading</p>
+        <p class="card-body">Tender submissions and general office administration.</p>
+      </div>
+      <div class="card elev-sm">
+        <p class="card-kicker">Freelance · Jan 2020 – Present</p>
+        <h4 class="card-title" style="margin:8px 0 4px">Website Developer</h4>
+        <p class="card-meta" style="margin:0 0 10px">Playhouse Media Group · Gauteng, South Africa</p>
+        <p class="card-body">Custom web solutions in React and Next.js, focused on SEO, UX and a sustainable digital presence.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px"><span class="tag tag-outline">Next.js</span><span class="tag tag-outline">Astro.js</span><span class="tag tag-outline">TypeScript</span><span class="tag tag-outline">Tailwind CSS</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="services" class="r-pad" style="background:radial-gradient(900px 420px at 85% -40%, var(--color-section-glow), transparent 64%), var(--color-section);padding:64px 56px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between">
+      <span class="kicker" style="margin:0">Services</span>
+      <a href="./Services.dc.html" class="btn btn-ghost" style="text-decoration:none">View all services</a>
+    </div>
+    <div class="r-grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:24px">
+      <a href="./Services.dc.html#tender-management" style="display:block;text-decoration:none;color:inherit;padding-top:20px;border-top:1px solid var(--color-divider)">
+        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:10px">
+          <span style="font-family:var(--font-heading);font-weight:500;font-size:14px;color:var(--color-accent)">01</span>
+          <h3 style="font-size:20px;margin:0">Tender Management</h3>
+        </div>
+        <p style="font-size:15px;line-height:1.6;margin:0;color:color-mix(in srgb, var(--color-text) 78%, transparent)">Full tendering lifecycle — from opportunity ID to compliant, winning submissions.</p>
+      </a>
+      <a href="./Services.dc.html#project-management" style="display:block;text-decoration:none;color:inherit;padding-top:20px;border-top:1px solid var(--color-divider)">
+        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:10px">
+          <span style="font-family:var(--font-heading);font-weight:500;font-size:14px;color:var(--color-accent)">02</span>
+          <h3 style="font-size:20px;margin:0">Project Management</h3>
+        </div>
+        <p style="font-size:15px;line-height:1.6;margin:0;color:color-mix(in srgb, var(--color-text) 78%, transparent)">End-to-end delivery — timelines, teams and budgets aligned for successful outcomes.</p>
+      </a>
+      <a href="./Services.dc.html#web-development" style="display:block;text-decoration:none;color:inherit;padding-top:20px;border-top:1px solid var(--color-divider)">
+        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:10px">
+          <span style="font-family:var(--font-heading);font-weight:500;font-size:14px;color:var(--color-accent)">03</span>
+          <h3 style="font-size:20px;margin:0">Website Development</h3>
+        </div>
+        <p style="font-size:15px;line-height:1.6;margin:0;color:color-mix(in srgb, var(--color-text) 78%, transparent)">Fast, accessible sites that reflect your brand and support long-term growth.</p>
+      </a>
+    </div>
+  </div>
+
+  <div id="about" class="r-about r-pad" style="display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:center;padding:64px 56px">
+    <figure class="lighten" style="margin:0"><image-slot id="home-portrait" shape="rounded" radius="12" style="width:100%;aspect-ratio:4/5" placeholder="Portrait photo"></image-slot></figure>
+    <div>
+      <span class="kicker">About</span>
+      <h2 style="font-size:28px;line-height:1.35;margin:0 0 16px;max-width:26ch">I don't just submit tenders — I understand the compliance systems that make them competitive.</h2>
+      <p style="font-size:15.5px;line-height:1.65;color:color-mix(in srgb, var(--color-text) 78%, transparent);max-width:48ch;margin:0 0 20px">Based in Centurion, Gauteng, I've spent years across tendering, ISO/SHEQ and web delivery — building the systems that back a bid, and the sites that carry the brand behind it.</p>
+      <a href="./About.dc.html" class="btn btn-secondary" style="text-decoration:none">More about me</a>
+    </div>
+  </div>
+
+  <div id="blog-preview" class="r-pad" style="padding:24px 56px 64px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between">
+      <span class="kicker" style="margin:0">From the blog</span>
+      <a href="./Blog.dc.html" class="btn btn-ghost" style="text-decoration:none">View all posts</a>
+    </div>
+    <div class="r-grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:20px;align-items:start">
+      <a href="./BlogPost.dc.html" class="card elev-sm" style="text-decoration:none;color:inherit;padding:0;overflow:hidden">
+        <image-slot id="home-blog-1" shape="rect" style="width:100%;aspect-ratio:16/10" placeholder="Post cover"></image-slot>
+        <div style="padding:14px 16px 16px"><p class="card-kicker">Tendering</p><h4 class="card-title" style="margin:6px 0">5 Ways to Improve Your Tender Success Rate</h4><p class="card-meta">Jun 12, 2026 · 6 min read</p></div>
+      </a>
+      <a href="./Blog.dc.html" class="card elev-sm" style="text-decoration:none;color:inherit;padding:0;overflow:hidden">
+        <image-slot id="home-blog-2" shape="rect" style="width:100%;aspect-ratio:16/10" placeholder="Post cover"></image-slot>
+        <div style="padding:14px 16px 16px"><p class="card-kicker">ISO / SHEQ</p><h4 class="card-title" style="margin:6px 0">What an ISO 9001 Rollout Actually Takes</h4><p class="card-meta">May 28, 2026 · 8 min read</p></div>
+      </a>
+      <a href="./Blog.dc.html" class="card elev-sm" style="text-decoration:none;color:inherit;padding:0;overflow:hidden">
+        <image-slot id="home-blog-3" shape="rect" style="width:100%;aspect-ratio:16/10" placeholder="Post cover"></image-slot>
+        <div style="padding:14px 16px 16px"><p class="card-kicker">Web development</p><h4 class="card-title" style="margin:6px 0">Next.js vs. WordPress for SME Sites</h4><p class="card-meta">May 04, 2026 · 5 min read</p></div>
+      </a>
+    </div>
+  </div>
+
+  <div id="contact" class="r-pad" style="background:radial-gradient(900px 420px at 15% 120%, var(--color-section-glow), transparent 64%), var(--color-section);padding:56px">
+    <h3 style="font-size:24px;margin:0">Ready to discuss your project needs?</h3>
+    <p style="font-size:15px;color:color-mix(in srgb, var(--color-text) 78%, transparent);max-width:52ch;margin:12px 0 24px">Schedule a consultation to explore how tender management, project coordination and web development can help your business.</p>
+    <div class="r-cta-row" style="display:flex;gap:12px"><a href="mailto:hello@jacobc.co.za" class="btn btn-primary" style="text-decoration:none">Schedule Consultation</a><a href="#services" class="btn btn-secondary" style="text-decoration:none">View All Services</a></div>
+    <p style="font-size:12px;color:color-mix(in srgb, var(--color-text) 55%, transparent);margin:28px 0 0">📞 24–48hr response · 💼 Free consultation · 🎯 Tailored solutions</p>
+  </div>
+
+  <footer class="r-pad" style="padding:32px 56px;border-top:1px solid var(--color-divider);display:flex;justify-content:space-between;font-size:13px;color:color-mix(in srgb, var(--color-text) 55%, transparent);flex-wrap:wrap;gap:12px">
+    <span>© 2026 Jacob Chademwiri</span>
+    <div style="display:flex;gap:20px">
+      <a href="https://github.com/jchademwiri" style="color:inherit">GitHub</a>
+      <a href="https://linkedin.com/in/jchademwiri" style="color:inherit">LinkedIn</a>
+      <a href="mailto:hello@jacobc.co.za" style="color:inherit">hello@jacobc.co.za</a>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+</body>
+</html>

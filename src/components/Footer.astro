@@ -1,0 +1,28 @@
+---
+import { CONTACT_EMAIL, CONTACT_MAILTO } from '../lib/site';
+
+interface Props {
+  variant?: 'default' | 'post';
+}
+
+const { variant = 'default' } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+{
+  variant === 'post' ? (
+    <footer class="flex flex-wrap items-center justify-between gap-3 border-t border-divider px-5 py-8 text-sm sm:px-8 md:px-14" style="color: color-mix(in srgb, var(--color-text) 55%, transparent)">
+      <a href="/blog" class="text-accent">← All posts</a>
+      <a href={CONTACT_MAILTO} class="btn btn-ghost">{CONTACT_EMAIL}</a>
+    </footer>
+  ) : (
+    <footer class="flex flex-wrap items-center justify-between gap-3 border-t border-divider px-5 py-8 text-sm sm:px-8 md:px-14" style="color: color-mix(in srgb, var(--color-text) 55%, transparent)">
+      <span>© {year} Jacob Chademwiri</span>
+      <div class="flex gap-5">
+        <a href="https://github.com/jchademwiri">GitHub</a>
+        <a href="https://linkedin.com/in/jchademwiri">LinkedIn</a>
+        <a href={CONTACT_MAILTO}>{CONTACT_EMAIL}</a>
+      </div>
+    </footer>
+  )
+}

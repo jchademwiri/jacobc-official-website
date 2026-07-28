@@ -1,18 +1,48 @@
 ---
-import '@/styles/starwind.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  active?: 'home' | 'services' | 'blog' | 'about' | 'contact';
+  maxWidth?: 'default' | 'narrow';
+  footerVariant?: 'default' | 'post';
+}
+
+const {
+  title,
+  description,
+  active,
+  maxWidth = 'default',
+  footerVariant = 'default',
+} = Astro.props;
+
+const maxWidthClass = {
+  default: 'max-w-content',
+  narrow: 'max-w-[900px]',
+}[maxWidth];
 ---
 
 <!doctype html>
-<html lang='en'>
+<html lang="en">
   <head>
-    <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width' />
-    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-    <link rel='icon' href='/favicon.ico' />
-    <meta name='generator' content={Astro.generator} />
-    <title>Astro Basics</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} · Jacob Chademwiri</title>
   </head>
-  <body>
-    <slot />
+  <body class="bg-bg text-text">
+    <div class:list={['relative mx-auto', maxWidthClass]}>
+      <Nav active={active} />
+      <slot />
+      <Footer variant={footerVariant} />
+    </div>
+    <WhatsAppButton />
   </body>
 </html>

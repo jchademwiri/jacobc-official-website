@@ -1,13 +1,13 @@
-import tailwindcss from "@tailwindcss/vite";
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-import cloudflare from '@astrojs/cloudflare';
+import vercel from '@astrojs/vercel';
+import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-	adapter: cloudflare(),
-	vite: {
-		plugins: [tailwindcss()],
-	},
+  adapter: vercel(),
+  vite: {
+    plugins: [tailwindcss()]
+  }
 });
