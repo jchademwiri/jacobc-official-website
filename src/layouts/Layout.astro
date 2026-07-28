@@ -7,7 +7,7 @@ interface Props {
   title: string;
   description: string;
   active?: 'home' | 'services' | 'blog' | 'about';
-  maxWidth?: 'wide' | 'default' | 'narrow';
+  maxWidth?: 'default' | 'narrow';
   footerVariant?: 'default' | 'post';
 }
 
@@ -20,7 +20,6 @@ const {
 } = Astro.props;
 
 const maxWidthClass = {
-  wide: 'max-w-content-wide',
   default: 'max-w-content',
   narrow: 'max-w-[900px]',
 }[maxWidth];
