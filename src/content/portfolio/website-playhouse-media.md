@@ -1,11 +1,11 @@
 ---
 title: "Playhouse Media Group"
 category: "website"
-client: "Own brand — parent company"
+client: "Own brand, parent company"
 role: "Founder & Developer"
 year: "2020–Present"
 excerpt: "Parent holding company site for Playhouse Media Group, positioned as the umbrella brand over Tender Edge Solutions, Apex Web Solutions and TenderTrack360."
-outcome: "Live — recently rebuilt on Astro"
+outcome: "Live, recently rebuilt on Astro"
 link: "https://www.playhousemedia.co.za/"
 cover: "portfolio-playhouse"
 tags:

@@ -21,4 +21,4 @@ If a non-technical owner needs to change copy and swap images weekly, a familiar
 
 ## 2. Next.js wins on speed and long-term cost
 
-Static generation and no plugin sprawl means faster pages and fewer security patches — the tradeoff is a developer in the loop for structural changes.
+Static generation and no plugin sprawl means faster pages and fewer security patches, but the tradeoff is a developer in the loop for structural changes.

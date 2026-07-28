@@ -1,7 +1,7 @@
 ---
 title: "Playhouse Media Portal"
 category: "app"
-client: "Own product — Playhouse Media Group"
+client: "Playhouse Media Group (own product)"
 role: "Founder & Developer"
 year: "2025–2026"
 excerpt: "Client billing and self-service portal for Playhouse Media Group's own clients, with passwordless login (magic link or 6-digit code). Includes a separate admin dashboard for account and billing management."

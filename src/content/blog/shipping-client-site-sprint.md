@@ -13,7 +13,7 @@ tags:
   - label: "Project Management"
 ---
 
-Two weeks is enough to ship a small business site end to end, provided scope is locked before the first commit. The projects that slip are almost never slowed down by the build — they're slowed down by decisions still being made mid-sprint.
+Two weeks is enough to ship a small business site end to end, provided scope is locked before the first commit. The projects that slip are almost never slowed down by the build. They're slowed down by decisions still being made mid-sprint.
 
 ## 1. Freeze content before you freeze design
 

@@ -5,7 +5,7 @@ client: "City of Tshwane"
 role: "Tender Manager (Sithembe Transportation & Projects)"
 year: "2025"
 excerpt: "Tender for the hire of 8 mobile drinking water tankers (10,000–15,000 litre capacity) supplying potable water to informal settlements across the City of Tshwane, as and when required."
-outcome: "Tender awarded — 3-year contract, 8 trucks (HHS 10 – 2023/24)"
+outcome: "Tender awarded: 3-year contract, 8 trucks (HHS 10 – 2023/24)"
 cover: "portfolio-tender-water"
 tags:
   - label: "Tender Management"

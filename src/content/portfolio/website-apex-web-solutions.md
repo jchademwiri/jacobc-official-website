@@ -5,7 +5,7 @@ client: "Playhouse Media Group (own brand)"
 role: "Founder & Developer"
 year: "2025–2026"
 excerpt: "Web development and hosting brand offering custom sites, e-commerce, and subscription-based website packages (R299–R999/mo) for South African SMEs."
-outcome: "Live — recently rebuilt on Astro"
+outcome: "Live, recently rebuilt on Astro"
 link: "https://www.apexwebsolutions.co.za/"
 cover: "portfolio-apex"
 tags:

@@ -4,7 +4,7 @@ category: "project"
 client: "Placeholder Company"
 role: "Projects Coordinator"
 year: "2024"
-excerpt: "Placeholder summary — replace with scope, timeline and your role on this project."
+excerpt: "Placeholder summary: replace with scope, timeline and your role on this project."
 outcome: "Placeholder outcome"
 cover: "portfolio-project-2"
 tags:

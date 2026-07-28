@@ -5,7 +5,7 @@ client: "City of Tshwane"
 role: "Tender Manager (Sithembe Transportation & Projects)"
 year: "2025"
 excerpt: "Joint venture tender for horticultural maintenance of sport facilities across seven regions of the City of Tshwane, as and when required, spanning three service sections."
-outcome: "Tender awarded — 3-year contract (ROC 07 – 2022/23)"
+outcome: "Tender awarded: 3-year contract (ROC 07 – 2022/23)"
 cover: "portfolio-tender-horticulture"
 tags:
   - label: "Tender Management"

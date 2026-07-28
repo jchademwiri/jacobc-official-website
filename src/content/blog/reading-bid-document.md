@@ -12,7 +12,7 @@ tags:
   - label: "RFP Review"
 ---
 
-A bid document rewards a slow, literal first read. The clauses that disqualify submissions are rarely hidden — they're just easy to skim past on a first pass.
+A bid document rewards a slow, literal first read. The clauses that disqualify submissions are rarely hidden. They're just easy to skim past on a first pass.
 
 ## 1. Separate mandatory from scored criteria
 

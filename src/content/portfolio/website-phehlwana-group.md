@@ -5,7 +5,7 @@ client: "Phehlwana Group"
 role: "Website Developer"
 year: "2026"
 excerpt: "Construction, civil/mechanical engineering, cleaning and waste management, plant hire, and security services company based in Pretoria."
-outcome: "In development — coming soon page live"
+outcome: "In development, coming soon page live"
 link: "https://www.phehlwanagroup.co.za/"
 cover: "portfolio-phehlwana"
 tags:
