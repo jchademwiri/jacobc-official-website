@@ -1,0 +1,44 @@
+---
+interface Props {
+  glow?: 'bottom-left' | 'none';
+  primaryHref?: string;
+  primaryLabel?: string;
+  secondaryHref?: string;
+  secondaryLabel?: string;
+  trustLine?: string;
+  id?: string;
+}
+
+const {
+  glow = 'bottom-left',
+  primaryHref = 'mailto:hello@jacobc.co.za',
+  primaryLabel = 'Schedule Consultation',
+  secondaryHref = '/services',
+  secondaryLabel = 'View All Services',
+  trustLine,
+  id = 'contact',
+} = Astro.props;
+
+const glowStyle =
+  glow === 'bottom-left'
+    ? 'background: radial-gradient(900px 420px at 15% 120%, var(--color-section-glow), transparent 64%), var(--color-section);'
+    : '';
+---
+
+<div id={id} class="px-5 py-14 sm:px-8 md:px-14" style={glowStyle}>
+  <h3 class="text-2xl">Ready to discuss your project needs?</h3>
+  <p class="mt-3 mb-6 max-w-[52ch] text-[15px]" style="color: color-mix(in srgb, var(--color-text) 78%, transparent)">
+    Schedule a consultation to explore how tender management, project coordination and web development can help your business.
+  </p>
+  <div class="flex flex-col gap-3 sm:flex-row [&_a]:text-center sm:[&_a]:text-left">
+    <a href={primaryHref} class="btn btn-primary">{primaryLabel}</a>
+    <a href={secondaryHref} class="btn btn-secondary">{secondaryLabel}</a>
+  </div>
+  {
+    trustLine && (
+      <p class="mt-7 text-xs" style="color: color-mix(in srgb, var(--color-text) 55%, transparent)">
+        {trustLine}
+      </p>
+    )
+  }
+</div>

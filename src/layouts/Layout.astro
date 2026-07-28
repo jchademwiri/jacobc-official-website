@@ -1,23 +1,47 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  active?: 'home' | 'services' | 'blog' | 'about';
+  maxWidth?: 'wide' | 'default' | 'narrow';
+  footerVariant?: 'default' | 'post';
+}
+
+const {
+  title,
+  description,
+  active,
+  maxWidth = 'default',
+  footerVariant = 'default',
+} = Astro.props;
+
+const maxWidthClass = {
+  wide: 'max-w-[1440px]',
+  default: 'max-w-[1200px]',
+  narrow: 'max-w-[900px]',
+}[maxWidth];
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} · Jacob Chademwiri</title>
+  </head>
+  <body class="bg-bg text-text">
+    <div class:list={['relative mx-auto', maxWidthClass]}>
+      <Nav active={active} />
+      <slot />
+      <Footer variant={footerVariant} />
+    </div>
+  </body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

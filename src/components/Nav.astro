@@ -1,0 +1,104 @@
+---
+interface Props {
+  active?: 'home' | 'services' | 'blog' | 'about';
+}
+
+const { active } = Astro.props;
+
+const links = [
+  { href: '/', label: 'Home', key: 'home' },
+  { href: '/services', label: 'Services', key: 'services' },
+  { href: '/blog', label: 'Blog', key: 'blog' },
+  { href: '/about', label: 'About', key: 'about' },
+  { href: '/#contact', label: 'Contact', key: 'contact' },
+];
+---
+
+<nav
+  class="sticky top-0 z-20 flex flex-wrap items-center justify-between gap-x-6 gap-y-2.5 border-b border-divider px-5 py-4 backdrop-blur-[14px] sm:px-8 md:px-14"
+  style="background: color-mix(in srgb, var(--color-bg) 72%, transparent)"
+>
+  <a href="/" class="text-base font-medium">Jacob C.</a>
+
+  <div class="hidden items-center gap-7 text-sm md:flex">
+    {
+      links.map((link) => (
+        <a
+          href={link.href}
+          class={active === link.key ? 'text-accent' : ''}
+        >
+          {link.label}
+        </a>
+      ))
+    }
+  </div>
+
+  <a href="/#contact" class="btn btn-primary hidden shrink-0 whitespace-nowrap md:inline-flex">
+    Get Consultation
+  </a>
+
+  <button
+    type="button"
+    id="nav-menu-toggle"
+    aria-label="Menu"
+    aria-expanded="false"
+    aria-controls="nav-mobile-menu"
+    class="flex h-9 w-9 flex-col items-center justify-center gap-[5px] md:hidden"
+  >
+    <span class="block h-[2px] w-[22px] bg-text"></span>
+    <span class="block h-[2px] w-[22px] bg-text"></span>
+    <span class="block h-[2px] w-[22px] bg-text"></span>
+  </button>
+
+  <div
+    id="nav-mobile-menu"
+    hidden
+    class="absolute left-0 right-0 top-full flex flex-col gap-4 border-b border-divider px-6 pb-5 pt-4 backdrop-blur-[14px] md:hidden"
+    style="background: color-mix(in srgb, var(--color-bg) 92%, transparent)"
+  >
+    {
+      links.map((link) => (
+        <a href={link.href} class={active === link.key ? 'text-accent text-[15px]' : 'text-[15px]'}>
+          {link.label}
+        </a>
+      ))
+    }
+    <a href="/#contact" class="btn btn-primary self-start">Get Consultation</a>
+  </div>
+</nav>
+
+<script>
+  const toggle = document.getElementById('nav-menu-toggle');
+  const menu = document.getElementById('nav-mobile-menu');
+
+  if (toggle && menu) {
+    const closeMenu = () => {
+      menu.hidden = true;
+      toggle.setAttribute('aria-expanded', 'false');
+    };
+
+    const openMenu = () => {
+      menu.hidden = false;
+      toggle.setAttribute('aria-expanded', 'true');
+    };
+
+    toggle.addEventListener('click', () => {
+      if (menu.hidden) openMenu();
+      else closeMenu();
+    });
+
+    menu.addEventListener('click', (event) => {
+      if ((event.target as HTMLElement).tagName === 'A') closeMenu();
+    });
+
+    document.addEventListener('click', (event) => {
+      if (menu.hidden) return;
+      const target = event.target as Node;
+      if (!menu.contains(target) && !toggle.contains(target)) closeMenu();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !menu.hidden) closeMenu();
+    });
+  }
+</script>

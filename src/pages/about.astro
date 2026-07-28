@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactBand from '../components/ContactBand.astro';
+
+const experience = [
+  {
+    date: 'Jan 2022 – Present',
+    title: 'Tendering & Accounts Receivable Manager, Projects Coordinator',
+    meta: 'Sithembe Transportation & Projects · Full-time · Centurion, Gauteng',
+    body: 'Tender management, project coordination and administration, invoicing and website upkeep — financial accuracy and compliance across all projects.',
+  },
+  {
+    date: 'Jan 2021 – Jan 2022',
+    title: 'Tender & Office Administrator',
+    meta: 'Babiya Geomatics and Trading · Full-time',
+    body: 'Tender submissions and general office administration.',
+  },
+  {
+    date: 'Jan 2020 – Present',
+    title: 'Website Developer',
+    meta: 'Playhouse Media Group · Freelance · Gauteng, South Africa',
+    body: 'Custom web solutions using React, Next.js and Astro.js, focused on SEO optimisation, user experience and a sustainable digital presence.',
+  },
+];
+
+const skills = [
+  { label: 'Tender Management', accent: true },
+  { label: 'Project Management', accent: true },
+  { label: 'Accounts Receivable Management', accent: true },
+  { label: 'Stakeholder Management', accent: false },
+  { label: 'Sage Accounting', accent: false },
+  { label: 'Invoicing', accent: false },
+  { label: 'Microsoft 365', accent: false },
+  { label: 'React.js', accent: false },
+  { label: 'Next.js', accent: false },
+  { label: 'Astro.js', accent: false },
+  { label: 'TypeScript', accent: false },
+  { label: 'Tailwind CSS', accent: false },
+  { label: 'SEO', accent: false },
+  { label: 'Figma', accent: false },
+];
+---
+
+<Layout
+  title="About"
+  description="I don't just submit tenders — I understand the compliance systems that make them competitive."
+  active="about"
+>
+  <div class="grid gap-8 px-5 py-16 sm:px-8 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:items-center md:px-14 md:py-16">
+    <figure class="m-0">
+      <img
+        src="https://picsum.photos/seed/jacob-portrait/640/800"
+        alt="Portrait of Jacob Chademwiri"
+        class="aspect-[4/5] w-full rounded-xl object-cover"
+        loading="lazy"
+      />
+    </figure>
+    <div>
+      <span class="kicker">About</span>
+      <h1 class="mb-4 max-w-[18ch] text-[32px] leading-[1.2] sm:text-[42px]">
+        I don't just submit tenders — I understand the compliance systems that make them competitive.
+      </h1>
+      <p class="mb-6 max-w-[52ch] text-[15.5px] leading-[1.65]" style="color: color-mix(in srgb, var(--color-text) 78%, transparent)">
+        Based in Centurion, Gauteng, I've spent years across tendering, ISO/SHEQ and web delivery — building the systems that back a bid, and the sites that carry the brand behind it. I'm currently Tendering & Accounts Receivable Manager at Sithembe Transportation & Projects, and I build websites freelance through Playhouse Media Group.
+      </p>
+      <div class="flex flex-wrap gap-2">
+        <span class="tag tag-accent">Tender Management</span>
+        <span class="tag tag-accent">Project Management</span>
+        <span class="tag tag-neutral">Accounts Receivable</span>
+        <span class="tag tag-neutral">Web Development</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="experience" class="px-5 pb-16 pt-6 sm:px-8 md:px-14">
+    <span class="kicker">Experience</span>
+    <div class="mt-4 flex flex-col">
+      {
+        experience.map((role) => (
+          <div class="border-b border-divider py-5">
+            <p class="mb-1.5 text-[13px]" style="color: color-mix(in srgb, var(--color-text) 60%, transparent)">
+              {role.date}
+            </p>
+            <h4 class="mb-1 text-base">{role.title}</h4>
+            <p class="mb-2.5 text-[13px]" style="color: color-mix(in srgb, var(--color-text) 60%, transparent)">
+              {role.meta}
+            </p>
+            <p class="card-body max-w-[60ch]">{role.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <div
+    id="skills"
+    class="px-5 py-14 sm:px-8 md:px-14"
+    style="background: radial-gradient(900px 420px at 85% -40%, var(--color-section-glow), transparent 64%), var(--color-section);"
+  >
+    <span class="kicker mb-4">Skills</span>
+    <div class="flex flex-wrap gap-2">
+      {
+        skills.map((skill) => (
+          <span class={skill.accent ? 'tag tag-accent' : 'tag tag-neutral'}>{skill.label}</span>
+        ))
+      }
+    </div>
+  </div>
+
+  <ContactBand glow="none" primaryHref="mailto:hello@jacobc.co.za" secondaryHref="/services" secondaryLabel="View Our Services" />
+</Layout>
