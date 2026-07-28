@@ -2,17 +2,22 @@
 import { CONTACT_EMAIL, CONTACT_MAILTO } from '../lib/site';
 
 interface Props {
-  variant?: 'default' | 'post';
+  variant?: 'default' | 'post' | 'portfolio';
 }
 
 const { variant = 'default' } = Astro.props;
 const year = new Date().getFullYear();
+
+const backLink = {
+  post: { href: '/blog', label: '← All posts' },
+  portfolio: { href: '/portfolio', label: '← All work' },
+}[variant as 'post' | 'portfolio'];
 ---
 
 {
-  variant === 'post' ? (
+  backLink ? (
     <footer class="flex flex-wrap items-center justify-between gap-3 border-t border-divider px-5 py-8 text-sm sm:px-8 md:px-14" style="color: color-mix(in srgb, var(--color-text) 55%, transparent)">
-      <a href="/blog" class="text-accent">← All posts</a>
+      <a href={backLink.href} class="text-accent">{backLink.label}</a>
       <a href={CONTACT_MAILTO} class="btn btn-ghost">{CONTACT_EMAIL}</a>
     </footer>
   ) : (
