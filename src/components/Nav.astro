@@ -1,6 +1,6 @@
 ---
 interface Props {
-  active?: 'home' | 'services' | 'blog' | 'about';
+  active?: 'home' | 'services' | 'blog' | 'about' | 'contact';
 }
 
 const { active } = Astro.props;
@@ -10,7 +10,7 @@ const links = [
   { href: '/services', label: 'Services', key: 'services' },
   { href: '/blog', label: 'Blog', key: 'blog' },
   { href: '/about', label: 'About', key: 'about' },
-  { href: '/#contact', label: 'Contact', key: 'contact' },
+  { href: '/contact', label: 'Contact', key: 'contact' },
 ];
 ---
 
@@ -33,7 +33,7 @@ const links = [
     }
   </div>
 
-  <a href="/#contact" class="btn btn-primary hidden shrink-0 whitespace-nowrap md:inline-flex">
+  <a href="/contact" class="btn btn-primary hidden shrink-0 whitespace-nowrap md:inline-flex">
     Get Consultation
   </a>
 
@@ -63,7 +63,7 @@ const links = [
         </a>
       ))
     }
-    <a href="/#contact" class="btn btn-primary self-start">Get Consultation</a>
+    <a href="/contact" class="btn btn-primary self-start">Get Consultation</a>
   </div>
 </nav>
 
