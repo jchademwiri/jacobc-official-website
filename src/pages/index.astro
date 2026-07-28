@@ -168,6 +168,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', { month: 'short', day: '2
             <div class="px-4 py-3.5">
               <p class="card-kicker">{post.data.category}</p>
               <h4 class="card-title my-1.5">{post.data.title}</h4>
+              <p class="card-body mb-2">{post.data.excerpt}</p>
               <p class="card-meta">{dateFormatter.format(post.data.date)} · {post.data.readTime}</p>
             </div>
           </a>
