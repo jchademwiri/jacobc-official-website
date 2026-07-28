@@ -1,46 +1,50 @@
-# Astro Starter Kit: Basics
+# Jacob Chademwiri — Official Website
 
-```sh
-bun create astro@latest -- --template basics
-```
+Personal/professional site for Jacob Chademwiri: consulting-forward (tender management, project management, ISO/SHEQ) plus a web-development portfolio and blog.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Built with [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.com), deployed on [Vercel](https://vercel.com).
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+## Project Structure
 
 ```text
 /
-├── public/
-│   └── favicon.svg
+├── docs/                    # Design reference files (see docs/README.md)
+├── public/                  # Static assets (favicons, etc.)
 ├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
+│   ├── components/          # Nav, Footer, ContactBand
+│   ├── content/blog/        # Blog posts (Markdown, via Astro content collections)
+│   ├── content.config.ts    # Blog collection schema
+│   ├── layouts/
+│   │   └── Layout.astro     # Shared page shell (nav + footer + design tokens)
+│   ├── pages/
+│   │   ├── index.astro      # Home
+│   │   ├── services.astro   # Services
+│   │   ├── about.astro      # About
+│   │   └── blog/
+│   │       ├── index.astro  # Blog listing (with category filter)
+│   │       └── [slug].astro # Blog post template
+│   └── styles/
+│       └── global.css       # Design tokens + Tailwind theme + shared component classes
 └── package.json
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
+## Commands
 
 All commands are run from the root of the project, from a terminal:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
+| Command          | Action                                           |
+| :--------------- | :------------------------------------------------ |
+| `bun install`     | Installs dependencies                            |
+| `bun dev`         | Starts local dev server at `localhost:4321`      |
+| `bun build`       | Build the production site to `./dist/`           |
+| `bun preview`     | Preview the build locally, before deploying      |
+| `bun lint`        | Type-check with `astro check`                    |
+| `bun astro ...`   | Run other Astro CLI commands                     |
 
-## 👀 Want to learn more?
+## Adding a blog post
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Add a new Markdown file to `src/content/blog/`, following the frontmatter shape in an existing post (`title`, `category`, `track`, `date`, `readTime`, `excerpt`, `cover`, `tags`). It's picked up automatically by the blog listing and detail pages.
+
+## Deployment
+
+Deployed on Vercel via `@astrojs/vercel`. Pushing to the repo's connected branch triggers a build through Vercel's own Git integration — no separate CI deploy step is needed.
