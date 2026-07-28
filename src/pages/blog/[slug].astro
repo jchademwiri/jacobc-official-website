@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ScrollToTop from '../../components/ScrollToTop.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -41,6 +42,8 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', { month: 'short', day: '2
       }
     </div>
   </div>
+
+  <ScrollToTop />
 </Layout>
 
 <style>
