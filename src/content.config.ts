@@ -19,7 +19,7 @@ const portfolio = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/portfolio' }),
   schema: z.object({
     title: z.string(),
-    category: z.enum(['website', 'project', 'tender']),
+    category: z.enum(['website', 'app', 'project', 'tender']),
     client: z.string(),
     role: z.string(),
     year: z.string(),

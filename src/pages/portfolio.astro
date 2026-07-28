@@ -6,15 +6,17 @@ const items = (await getCollection('portfolio')).sort((a, b) => b.data.year.loca
 
 const categoryLabels: Record<string, string> = {
   website: 'Website',
+  app: 'Web App',
   project: 'Project',
   tender: 'Tender',
 };
 
 const filters = [
   { key: 'all', label: 'All' },
-  { key: 'website', label: 'Websites' },
-  { key: 'project', label: 'Projects' },
-  { key: 'tender', label: 'Tenders' },
+  { key: 'website', label: 'Website Development' },
+  { key: 'app', label: 'Web Apps' },
+  { key: 'project', label: 'Project Management' },
+  { key: 'tender', label: 'Tender Preparations' },
 ];
 ---
 
