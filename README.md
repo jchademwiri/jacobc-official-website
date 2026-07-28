@@ -11,15 +11,23 @@ Built with [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.c
 ├── docs/                    # Design reference files (see docs/README.md)
 ├── public/                  # Static assets (favicons, etc.)
 ├── src
-│   ├── components/          # Nav, Footer, ContactBand
-│   ├── content/blog/        # Blog posts (Markdown, via Astro content collections)
-│   ├── content.config.ts    # Blog collection schema
+│   ├── components/          # Nav, Footer, ContactBand, WhatsAppButton, ScrollToTop
+│   ├── content/
+│   │   ├── blog/             # Blog posts (Markdown, via Astro content collections)
+│   │   └── portfolio/        # Portfolio entries (Markdown, via Astro content collections)
+│   ├── content.config.ts    # Blog + portfolio collection schemas
 │   ├── layouts/
 │   │   └── Layout.astro     # Shared page shell (nav + footer + design tokens)
+│   ├── lib/
+│   │   └── site.ts          # Shared contact constants
 │   ├── pages/
 │   │   ├── index.astro      # Home
 │   │   ├── services.astro   # Services
 │   │   ├── about.astro      # About
+│   │   ├── contact.astro    # Contact
+│   │   ├── portfolio.astro  # Portfolio listing (with category filter)
+│   │   ├── portfolio/
+│   │   │   └── [slug].astro # Portfolio detail template
 │   │   └── blog/
 │   │       ├── index.astro  # Blog listing (with category filter)
 │   │       └── [slug].astro # Blog post template

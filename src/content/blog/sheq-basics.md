@@ -14,7 +14,7 @@ tags:
 
 If safety, health, environment and quality land on your desk without a safety background, the vocabulary is the first hurdle. The concepts underneath are usually simpler than the acronyms suggest.
 
-## 1. SHEQ is four standards wearing one hat
+## 1. SHEQ is four disciplines wearing one hat
 
 Quality (ISO 9001), environment (ISO 14001) and occupational health and safety (ISO 45001) are usually managed together, but each has its own clauses and its own audit.
 
