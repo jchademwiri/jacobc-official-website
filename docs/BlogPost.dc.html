@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/nocturne-abea6a8d-8e1d-4fdd-b89b-d32319332943/styles.css">
+  <script src="_ds/nocturne-abea6a8d-8e1d-4fdd-b89b-d32319332943/_ds_bundle.js"></script>
+  <script src="./image-slot.js"></script>
+  <style>
+    body{margin:0;background:var(--color-bg)}
+    a{color:var(--color-accent)} a:hover{color:color-mix(in srgb, var(--color-accent) 80%, white)}
+    .kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-accent);font-weight:500;margin:0 0 14px;position:relative;padding-left:56px}
+    .kicker::before{content:"";position:absolute;left:0;top:6px;width:40px;height:1px;background:var(--color-accent)}
+    .rule-fade{height:1px;border:0;margin:0;background:linear-gradient(to right,transparent,var(--color-divider) 48px,var(--color-divider) calc(100% - 48px),transparent)}
+    @media (max-width:900px){
+      .r-grid-2, .r-grid-3 { grid-template-columns: 1fr !important; }
+      .r-about { grid-template-columns: 1fr !important; }
+      .r-pad { padding-left:32px !important; padding-right:32px !important; }
+      .r-hero-title { font-size:42px !important; }
+      .r-nav-links { display:none !important; }
+    }
+    @media (max-width:600px){
+      .r-pad { padding-left:20px !important; padding-right:20px !important; }
+      .r-hero-title { font-size:32px !important; }
+      .r-nav { flex-wrap:wrap; row-gap:10px; }
+      .r-cta-row { flex-direction:column; align-items:stretch !important; }
+      .r-cta-row a { text-align:center; }
+    }
+    .r-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;cursor:pointer;background:none;border:none;padding:0}
+    .r-hamburger span{display:block;width:22px;height:2px;background:var(--color-text)}
+    .r-mobile-menu{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;padding:16px 24px 20px;gap:16px;background:color-mix(in srgb, var(--color-bg) 92%, transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--color-divider)}
+    #r-menu-toggle{display:none}
+    #r-menu-toggle:checked ~ .r-mobile-menu{display:flex}
+    @media (max-width:900px){ .r-hamburger{display:flex} }
+  </style>
+</helmet>
+
+<div style="background:var(--color-bg);color:var(--color-text);max-width:900px;margin:0 auto">
+  <nav class="nav r-nav" style="position:sticky;top:0;z-index:20;background:color-mix(in srgb, var(--color-bg) 72%, transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--color-divider)">
+    <span class="nav-brand">Jacob C.</span>
+    <div class="r-nav-links" style="display:flex;gap:28px;font-size:14px;align-items:center">
+      <a href="./Home.dc.html" style="color:inherit;text-decoration:none">Home</a>
+      <a href="./Home.dc.html#services" style="color:inherit;text-decoration:none">Services</a>
+      <a href="./Blog.dc.html" style="color:var(--color-accent);text-decoration:none">Blog</a>
+      <a href="./About.dc.html" style="color:inherit;text-decoration:none">About</a>
+      <a href="./Home.dc.html#contact" style="color:inherit;text-decoration:none">Contact</a>
+    </div>
+    <a href="./Blog.dc.html" class="r-nav-links" style="color:var(--color-accent);text-decoration:none;font-size:14px;white-space:nowrap;flex-shrink:0">← All posts</a>
+    <input type="checkbox" id="r-menu-toggle">
+    <label for="r-menu-toggle" class="r-hamburger" aria-label="Menu"><span></span><span></span><span></span></label>
+    <div class="r-mobile-menu">
+      <a href="./Home.dc.html" style="color:inherit;text-decoration:none;font-size:15px">Home</a>
+      <a href="./Home.dc.html#services" style="color:inherit;text-decoration:none;font-size:15px">Services</a>
+      <a href="./Blog.dc.html" style="color:var(--color-accent);text-decoration:none;font-size:15px">Blog</a>
+      <a href="./About.dc.html" style="color:inherit;text-decoration:none;font-size:15px">About</a>
+      <a href="./Home.dc.html#contact" style="color:inherit;text-decoration:none;font-size:15px">Contact</a>
+      <a href="./Blog.dc.html" style="color:var(--color-accent);text-decoration:none;font-size:15px">← All posts</a>
+    </div>
+  </nav>
+
+  <div class="r-pad" style="padding:48px 56px 0">
+    <span class="kicker">Tendering · Jun 12, 2026 · 6 min read</span>
+    <h1 style="font-family:var(--font-heading);font-weight:500;font-size:36px;line-height:1.25;margin:0;max-width:22ch">5 Ways to Improve Your Tender Success Rate</h1>
+  </div>
+
+  <figure class="lighten r-pad" style="margin:32px 56px"><image-slot id="post-hero" shape="rounded" radius="10" style="width:calc(100% - 0px);aspect-ratio:16/9" placeholder="Article cover image"></image-slot></figure>
+
+  <div class="r-pad" style="padding:0 56px 56px;max-width:640px">
+    <p style="font-size:16px;line-height:1.75;color:color-mix(in srgb, var(--color-text) 85%, transparent);margin:0 0 20px">After years managing tender submissions, a handful of habits consistently separate the bids that win from the ones that don't — most of it comes down to compliance discipline, not creativity.</p>
+    <h3 style="font-size:19px;margin:32px 0 10px">1. Read the compliance schedule twice</h3>
+    <p style="font-size:15.5px;line-height:1.7;color:color-mix(in srgb, var(--color-text) 80%, transparent);margin:0 0 20px">Most disqualifications happen before evaluation — a missing signature, an expired certificate. Build a checklist against the schedule before you write a word.</p>
+    <h3 style="font-size:19px;margin:32px 0 10px">2. Keep your ISO documentation current</h3>
+    <p style="font-size:15.5px;line-height:1.7;color:color-mix(in srgb, var(--color-text) 80%, transparent);margin:0 0 20px">An up-to-date Integrated Management System means certificates and policies are ready to attach the day the tender drops, not scrambled together the night before.</p>
+    <hr class="rule-fade" style="margin:32px 0">
+    <div style="display:flex;flex-wrap:wrap;gap:8px"><span class="tag tag-accent">Tender Management</span><span class="tag tag-neutral">Compliance</span><span class="tag tag-neutral">ISO 9001</span></div>
+  </div>
+
+  <footer class="r-pad" style="padding:32px 56px;border-top:1px solid var(--color-divider);display:flex;justify-content:space-between;align-items:center;font-size:13px;color:color-mix(in srgb, var(--color-text) 55%, transparent);flex-wrap:wrap;gap:12px">
+    <a href="./Blog.dc.html" style="color:var(--color-accent);text-decoration:none">← All posts</a>
+    <a href="mailto:hello@jacobc.co.za" class="btn btn-ghost">hello@jacobc.co.za</a>
+  </footer>
+</div>
+
+</x-dc>
+</body>
+</html>

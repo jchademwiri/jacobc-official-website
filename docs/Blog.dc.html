@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/nocturne-abea6a8d-8e1d-4fdd-b89b-d32319332943/styles.css">
+  <script src="_ds/nocturne-abea6a8d-8e1d-4fdd-b89b-d32319332943/_ds_bundle.js"></script>
+  <script src="./image-slot.js"></script>
+  <style>
+    body{margin:0;background:var(--color-bg)}
+    a{color:var(--color-accent)} a:hover{color:color-mix(in srgb, var(--color-accent) 80%, white)}
+    .kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-accent);font-weight:500;margin:0 0 14px;position:relative;padding-left:56px}
+    .kicker::before{content:"";position:absolute;left:0;top:6px;width:40px;height:1px;background:var(--color-accent)}
+    @media (max-width:900px){
+      .r-grid-2, .r-grid-3 { grid-template-columns: 1fr !important; }
+      .r-about { grid-template-columns: 1fr !important; }
+      .r-pad { padding-left:32px !important; padding-right:32px !important; }
+      .r-hero-title { font-size:42px !important; }
+      .r-nav-links { display:none !important; }
+    }
+    @media (max-width:600px){
+      .r-pad { padding-left:20px !important; padding-right:20px !important; }
+      .r-hero-title { font-size:32px !important; }
+      .r-nav { flex-wrap:wrap; row-gap:10px; }
+      .r-cta-row { flex-direction:column; align-items:stretch !important; }
+      .r-cta-row a { text-align:center; }
+    }
+    .r-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;cursor:pointer;background:none;border:none;padding:0}
+    .r-hamburger span{display:block;width:22px;height:2px;background:var(--color-text)}
+    .r-mobile-menu{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;padding:16px 24px 20px;gap:16px;background:color-mix(in srgb, var(--color-bg) 92%, transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--color-divider)}
+    #r-menu-toggle{display:none}
+    #r-menu-toggle:checked ~ .r-mobile-menu{display:flex}
+    @media (max-width:900px){ .r-hamburger{display:flex} }
+
+  </style>
+</helmet>
+
+<div style="background:var(--color-bg);color:var(--color-text);max-width:1200px;margin:0 auto">
+  <nav class="nav r-nav" style="position:sticky;top:0;z-index:20;background:color-mix(in srgb, var(--color-bg) 72%, transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--color-divider)">
+    <span class="nav-brand">Jacob C.</span>
+    <div class="r-nav-links" style="display:flex;gap:28px;font-size:14px">
+      <a href="./Home.dc.html" style="color:inherit;text-decoration:none">Home</a>
+      <a href="./Home.dc.html#services" style="color:inherit;text-decoration:none">Services</a>
+      <a href="./Blog.dc.html" style="color:var(--color-accent);text-decoration:none">Blog</a>
+      <a href="./About.dc.html" style="color:inherit;text-decoration:none">About</a>
+      <a href="./Home.dc.html#contact" style="color:inherit;text-decoration:none">Contact</a>
+    </div>
+    <a href="./Home.dc.html#contact" class="btn btn-primary r-nav-links" style="white-space:nowrap;flex-shrink:0">Get Consultation</a>
+    <input type="checkbox" id="r-menu-toggle">
+    <label for="r-menu-toggle" class="r-hamburger" aria-label="Menu"><span></span><span></span><span></span></label>
+    <div class="r-mobile-menu">
+      <a href="./Home.dc.html" style="color:inherit;text-decoration:none;font-size:15px">Home</a>
+      <a href="./Home.dc.html#services" style="color:inherit;text-decoration:none;font-size:15px">Services</a>
+      <a href="./Blog.dc.html" style="color:var(--color-accent);text-decoration:none;font-size:15px">Blog</a>
+      <a href="./Home.dc.html#about" style="color:inherit;text-decoration:none;font-size:15px">About</a>
+      <a href="./Home.dc.html#contact" style="color:inherit;text-decoration:none;font-size:15px">Contact</a>
+      <a href="./Home.dc.html#contact" class="btn btn-primary" style="align-self:flex-start">Get Consultation</a>
+    </div>
+  </nav>
+
+  <div class="r-pad" style="padding:56px 56px 24px">
+    <span class="kicker">Blog</span>
+    <h1 style="font-family:var(--font-heading);font-weight:500;font-size:38px;margin:0 0 12px">Notes on tenders, compliance &amp; the web.</h1>
+    <p style="font-size:15px;color:color-mix(in srgb, var(--color-text) 78%, transparent);max-width:56ch;margin:0">Field notes from running bids, building ISO management systems and shipping websites.</p>
+    <div class="seg" style="margin-top:24px;display:inline-flex">
+      <label class="seg-opt" style="{{ segAllStyle }}"><input type="radio" name="cat" onClick="{{ setFilter.all }}"><span>All</span></label>
+      <label class="seg-opt" style="{{ segTenderStyle }}"><input type="radio" name="cat" onClick="{{ setFilter.tendering }}"><span>Tendering</span></label>
+      <label class="seg-opt" style="{{ segIsoStyle }}"><input type="radio" name="cat" onClick="{{ setFilter.iso }}"><span>ISO / SHEQ</span></label>
+      <label class="seg-opt" style="{{ segDevStyle }}"><input type="radio" name="cat" onClick="{{ setFilter.dev }}"><span>Web Dev</span></label>
+    </div>
+  </div>
+
+  <div class="r-grid-3 r-pad" style="padding:16px 56px 64px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+    <sc-for list="{{ filteredPosts }}" as="p" hint-placeholder-count="3">
+      <a href="./BlogPost.dc.html" class="card elev-sm" style="text-decoration:none;color:inherit;padding:0;overflow:hidden;display:flex;flex-direction:column">
+        <image-slot id="{{ p.imgId }}" shape="rect" style="width:100%;aspect-ratio:16/10" placeholder="Post cover"></image-slot>
+        <div style="padding:14px 16px 16px;display:flex;flex-direction:column;flex:1">
+          <p class="card-kicker">{{ p.kicker }}</p>
+          <h4 class="card-title" style="margin:6px 0;min-height:41px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ p.title }}</h4>
+          <p class="card-body" style="min-height:40px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ p.body }}</p>
+          <p class="card-meta" style="margin-top:auto;padding-top:8px">{{ p.meta }}</p>
+        </div>
+      </a>
+    </sc-for>
+  </div>
+
+  <footer class="r-pad" style="padding:32px 56px;border-top:1px solid var(--color-divider);display:flex;justify-content:space-between;font-size:13px;color:color-mix(in srgb, var(--color-text) 55%, transparent);flex-wrap:wrap;gap:12px">
+    <span>© 2026 Jacob Chademwiri</span>
+    <div style="display:flex;gap:20px">
+      <a href="https://github.com/jchademwiri" style="color:inherit">GitHub</a>
+      <a href="https://linkedin.com/in/jchademwiri" style="color:inherit">LinkedIn</a>
+      <a href="mailto:hello@jacobc.co.za" style="color:inherit">hello@jacobc.co.za</a>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { filter: 'all' };
+
+  posts = [
+    { id: 1, imgId: 'blog-post-1', kicker: 'Tendering', title: '5 Ways to Improve Your Tender Success Rate', body: 'A field-tested checklist for compliant, competitive submissions.', meta: 'Jun 12, 2026 · 6 min read', track: 'tendering' },
+    { id: 2, imgId: 'blog-post-2', kicker: 'ISO / SHEQ', title: 'What an ISO 9001 Rollout Actually Takes', body: 'Timeline, documentation and the certification audit itself.', meta: 'May 28, 2026 · 8 min read', track: 'iso' },
+    { id: 3, imgId: 'blog-post-3', kicker: 'Web development', title: 'Next.js vs. WordPress for SME Sites', body: 'Picking the right stack for a small business budget.', meta: 'May 04, 2026 · 5 min read', track: 'dev' },
+    { id: 4, imgId: 'blog-post-4', kicker: 'Tendering', title: 'Reading a Bid Document Without Missing a Clause', body: 'A slow read of an RFP, annotated.', meta: 'Apr 20, 2026 · 7 min read', track: 'tendering' },
+    { id: 5, imgId: 'blog-post-5', kicker: 'ISO / SHEQ', title: 'SHEQ Basics for Non-Safety Managers', body: 'The vocabulary you need before your first audit.', meta: 'Apr 02, 2026 · 4 min read', track: 'iso' },
+    { id: 6, imgId: 'blog-post-6', kicker: 'Web development', title: 'Shipping a Client Site in a Two-Week Sprint', body: 'Scope, build and launch, without scope creep.', meta: 'Mar 15, 2026 · 6 min read', track: 'dev' },
+  ];
+
+  segStyle(active) {
+    return active ? 'color:var(--color-accent);box-shadow:inset 0 0 0 1px var(--color-accent)' : '';
+  }
+
+  renderVals() {
+    const filter = this.state.filter;
+    const filteredPosts = filter === 'all' ? this.posts : this.posts.filter(p => p.track === filter);
+    return {
+      filteredPosts,
+      segAllStyle: this.segStyle(filter === 'all'),
+      segTenderStyle: this.segStyle(filter === 'tendering'),
+      segIsoStyle: this.segStyle(filter === 'iso'),
+      segDevStyle: this.segStyle(filter === 'dev'),
+      setFilter: {
+        all: () => this.setState({ filter: 'all' }),
+        tendering: () => this.setState({ filter: 'tendering' }),
+        iso: () => this.setState({ filter: 'iso' }),
+        dev: () => this.setState({ filter: 'dev' }),
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>
