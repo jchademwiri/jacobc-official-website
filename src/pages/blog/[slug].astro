@@ -18,7 +18,7 @@ const { Content } = await render(post);
 const dateFormatter = new Intl.DateTimeFormat('en-US', { month: 'short', day: '2-digit', year: 'numeric' });
 ---
 
-<Layout title={post.data.title} description={post.data.excerpt} maxWidth="narrow" footerVariant="post">
+<Layout title={post.data.title} description={post.data.excerpt} maxWidth="narrow" footerVariant="post" active="blog">
   <div class="px-5 pt-12 sm:px-8 md:px-14">
     <span class="kicker">{post.data.category} · {dateFormatter.format(post.data.date)} · {getReadTime(post.body ?? '')}</span>
     <h1 class="max-w-[22ch] text-[28px] leading-[1.25] sm:text-[36px]">{post.data.title}</h1>
