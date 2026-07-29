@@ -3,7 +3,6 @@ title: "SHEQ Basics for Non-Safety Managers"
 category: "ISO / SHEQ"
 track: "iso"
 date: 2026-04-02
-readTime: "4 min read"
 excerpt: "The vocabulary you need before your first audit."
 cover: "sheq-basics"
 tags:

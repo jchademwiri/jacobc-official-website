@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import ScrollToTop from '../../components/ScrollToTop.astro';
 import { getCollection, render } from 'astro:content';
+import { getReadTime } from '../../lib/reading-time';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -19,7 +20,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', { month: 'short', day: '2
 
 <Layout title={post.data.title} description={post.data.excerpt} maxWidth="narrow" footerVariant="post">
   <div class="px-5 pt-12 sm:px-8 md:px-14">
-    <span class="kicker">{post.data.category} · {dateFormatter.format(post.data.date)} · {post.data.readTime}</span>
+    <span class="kicker">{post.data.category} · {dateFormatter.format(post.data.date)} · {getReadTime(post.body ?? '')}</span>
     <h1 class="max-w-[22ch] text-[28px] leading-[1.25] sm:text-[36px]">{post.data.title}</h1>
   </div>
 
@@ -63,5 +64,15 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', { month: 'short', day: '2
   .prose-post :global(h2) {
     margin: 32px 0 10px;
     font-size: 19px;
+  }
+
+  .prose-post :global(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .prose-post :global(a:hover) {
+    text-decoration-thickness: 2px;
   }
 </style>

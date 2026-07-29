@@ -3,7 +3,6 @@ title: "Next.js vs. WordPress for SME Sites"
 category: "Web development"
 track: "dev"
 date: 2026-05-04
-readTime: "5 min read"
 excerpt: "Picking the right stack for a small business budget."
 cover: "nextjs-vs-wordpress"
 tags:

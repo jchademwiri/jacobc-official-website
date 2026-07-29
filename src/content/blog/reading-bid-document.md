@@ -3,7 +3,6 @@ title: "Reading a Bid Document Without Missing a Clause"
 category: "Tendering"
 track: "tendering"
 date: 2026-04-20
-readTime: "7 min read"
 excerpt: "A slow read of an RFP, annotated."
 cover: "reading-bid-document"
 tags:

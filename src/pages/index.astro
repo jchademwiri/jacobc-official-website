@@ -1,7 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ContactBand from '../components/ContactBand.astro';
+import HeroIllustration from '../components/HeroIllustration.astro';
 import { getCollection } from 'astro:content';
+import { getReadTime } from '../lib/reading-time';
 
 const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
@@ -56,27 +58,30 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', { month: 'short', day: '2
 ---
 
 <Layout title="Home" description="Bridging project management with digital excellence." active="home">
-  <div class="px-5 pb-14 pt-22 sm:px-8 md:px-14 md:pb-14 md:pt-22">
-    <span class="kicker">Jacob C.</span>
-    <h1 class="max-w-[16ch] text-[32px] sm:text-[42px] md:text-[56px]">
-      Bridging project management with digital excellence.
-    </h1>
-    <p class="mt-6 max-w-[640px] text-[17px] leading-[1.65]" style="color: color-mix(in srgb, var(--color-text) 82%, transparent)">
-      Specialised in tender acquisition, project management and sustainable web solutions: from winning contracts to delivering the digital work that follows.
-    </p>
-    <div class="my-6 flex flex-wrap gap-2">
-      <span class="tag tag-accent">Tender Management</span>
-      <span class="tag tag-accent">Project Management</span>
-      <span class="tag tag-neutral">Accounts Receivable</span>
-      <span class="tag tag-neutral">Web Development</span>
+  <div class="grid gap-10 px-5 pb-14 pt-22 sm:px-8 md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] md:items-center md:px-14 md:pb-14 md:pt-22">
+    <div>
+      <span class="kicker">Jacob C.</span>
+      <h1 class="max-w-[16ch] text-[32px] sm:text-[42px] md:text-[56px]">
+        Bridging project management with digital excellence.
+      </h1>
+      <p class="mt-6 max-w-[640px] text-[17px] leading-[1.65]" style="color: color-mix(in srgb, var(--color-text) 82%, transparent)">
+        Specialised in tender acquisition, project management and sustainable web solutions: from winning contracts to delivering the digital work that follows.
+      </p>
+      <div class="my-6 flex flex-wrap gap-2">
+        <span class="tag tag-accent">Tender Management</span>
+        <span class="tag tag-accent">Project Management</span>
+        <span class="tag tag-neutral">Accounts Receivable</span>
+        <span class="tag tag-neutral">Web Development</span>
+      </div>
+      <div class="mt-2 flex flex-col gap-3 sm:flex-row [&_a]:text-center sm:[&_a]:text-left">
+        <a href="#contact" class="btn btn-primary">Schedule Consultation</a>
+        <a href="#services" class="btn btn-secondary">View Our Services</a>
+      </div>
+      <p class="mt-7 text-[13px]" style="color: color-mix(in srgb, var(--color-text) 55%, transparent)">
+        ● Currently available for new projects · 24–48hr consultation response · Free initial assessment
+      </p>
     </div>
-    <div class="mt-2 flex flex-col gap-3 sm:flex-row [&_a]:text-center sm:[&_a]:text-left">
-      <a href="#contact" class="btn btn-primary">Schedule Consultation</a>
-      <a href="#services" class="btn btn-secondary">View Our Services</a>
-    </div>
-    <p class="mt-7 text-[13px]" style="color: color-mix(in srgb, var(--color-text) 55%, transparent)">
-      ● Currently available for new projects · 24–48hr consultation response · Free initial assessment
-    </p>
+    <HeroIllustration />
   </div>
 
   <div id="positions" class="px-5 pb-16 pt-6 sm:px-8 md:px-14">
@@ -171,7 +176,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', { month: 'short', day: '2
               <p class="card-kicker">{post.data.category}</p>
               <h4 class="card-title my-1.5">{post.data.title}</h4>
               <p class="card-body mb-2">{post.data.excerpt}</p>
-              <p class="card-meta">{dateFormatter.format(post.data.date)} · {post.data.readTime}</p>
+              <p class="card-meta">{dateFormatter.format(post.data.date)} · {getReadTime(post.body ?? '')}</p>
             </div>
           </a>
         ))
