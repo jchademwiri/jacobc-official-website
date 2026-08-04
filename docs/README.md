@@ -4,7 +4,7 @@
 Personal/professional site for Jacob Chademwiri, dual-purpose: consulting-forward (tender management, project management, ISO/SHEQ) plus a web-development portfolio/blog. Five pages: Home, Services, Blog, Blog Post (article detail), About.
 
 ## About the Design Files
-The bundled `.dc.html` files are **design references built in a prototyping tool** — not production code to paste in. Recreate them in the target codebase: **Astro** (`jchademwiri/jacobc-official-website`, deployed to Cloudflare via `@astrojs/cloudflare`). Rebuild each page as an `.astro` page (or a shared `Layout.astro` + page components), using Tailwind or plain CSS with the same custom-property tokens below — do not depend on the prototype's runtime (`support.js`, `x-dc`, `sc-for`, `image-slot`).
+The bundled `.dc.html` files are **design references built in a prototyping tool**, not production code to paste in. Recreate them in the target codebase: **Astro** (`jchademwiri/jacobc-official-website`, deployed to Vercel via `@astrojs/vercel`). Rebuild each page as an `.astro` page (or a shared `Layout.astro` + page components), using Tailwind or plain CSS with the same custom-property tokens below; do not depend on the prototype's runtime (`support.js`, `x-dc`, `sc-for`, `image-slot`).
 
 Note: `Portfolio.dc.html` in the project root is an **earlier options-exploration canvas** (multiple side-by-side layout directions), not a finished page — ignore it for the build; the five files below are the locked designs.
 
