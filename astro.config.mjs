@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 
 import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
@@ -28,6 +28,15 @@ export default defineConfig({
   site,
   adapter: vercel(),
   integrations: [sitemap()],
+  env: {
+    schema: {
+      // `access: 'secret'` reads from process.env at runtime rather than being
+      // inlined into the bundle at build time — which is what we want for a
+      // key living in a serverless function.
+      RESEND_API_KEY: envField.string({ context: 'server', access: 'secret', optional: true }),
+      CONTACT_FROM_EMAIL: envField.string({ context: 'server', access: 'secret', optional: true }),
+    },
+  },
   vite: {
     plugins: [tailwindcss()]
   }

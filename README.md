@@ -57,6 +57,10 @@ Add a new Markdown file to `src/content/blog/`, following the frontmatter shape 
 
 `/contact` is server-rendered and posts to itself. Delivery goes through [Resend](https://resend.com) and needs `RESEND_API_KEY` set in the Vercel project (see `.env.example`). Without it the form renders its failure state and points visitors at the mailto address, so the page still works — it just doesn't deliver.
 
+The verified sending domain is **`info.jacobc.co.za`** — a subdomain, so transactional sending reputation stays separate from the root domain used for ordinary correspondence. Only the `From` address has to be on it (`noreply@info.jacobc.co.za` by default, overridable with `CONTACT_FROM_EMAIL`); mail is delivered to `hello@jacobc.co.za` and `reply-to` is set to whoever filled in the form.
+
+Both variables are declared in `astro.config.mjs` under `env.schema` with `access: 'secret'`, so they're read from `process.env` at runtime rather than inlined into the build.
+
 ## Deployment
 
 Deployed on Vercel via `@astrojs/vercel`. Pushing to the repo's connected branch triggers a build through Vercel's own Git integration — no separate CI deploy step is needed.
