@@ -59,7 +59,15 @@ Add a new Markdown file to `src/content/blog/`, following the frontmatter shape 
 
 The verified sending domain is **`info.jacobc.co.za`** — a subdomain, so transactional sending reputation stays separate from the root domain used for ordinary correspondence. Only the `From` address has to be on it (`noreply@info.jacobc.co.za` by default, overridable with `CONTACT_FROM_EMAIL`); mail is delivered to `hello@jacobc.co.za` and `reply-to` is set to whoever filled in the form.
 
-Both variables are declared in `astro.config.mjs` under `env.schema` with `access: 'secret'`, so they're read from `process.env` at runtime rather than inlined into the build.
+All three variables (`RESEND_API_KEY`, `CONTACT_FROM_EMAIL`, `SENDER_NAME`) are declared in `astro.config.mjs` under `env.schema` with `access: 'secret'`, so they're read from `process.env` at runtime rather than inlined into the build.
+
+The From display name is built as `{sender's name} via {SENDER_NAME}`, so a submission from Thabo Mokoena arrives as "Thabo Mokoena via Jacob C" — the inbox shows who wrote in, and reply still goes to them.
+
+### Email templates
+
+The notification is a [React Email](https://react.email) template at `src/emails/ContactNotification.tsx`. It renders server-side only — no React is shipped to the browser, and the project deliberately does not install the React renderer integration; `tsconfig.json` just points JSX at React so esbuild can transform the template.
+
+Both the HTML and plain-text bodies are rendered from that one component, so the text alternative can't drift from the HTML. The brand palette is duplicated as literal hex in `src/emails/theme.ts` because email clients can't read CSS custom properties — keep it in step with the `@theme` block in `src/styles/global.css`.
 
 ## Deployment
 

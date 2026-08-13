@@ -35,6 +35,7 @@ export default defineConfig({
       // key living in a serverless function.
       RESEND_API_KEY: envField.string({ context: 'server', access: 'secret', optional: true }),
       CONTACT_FROM_EMAIL: envField.string({ context: 'server', access: 'secret', optional: true }),
+      SENDER_NAME: envField.string({ context: 'server', access: 'secret', optional: true }),
     },
   },
   vite: {
