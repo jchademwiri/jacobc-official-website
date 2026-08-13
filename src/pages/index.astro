@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ContactBand from '../components/ContactBand.astro';
+import SectionBand from '../components/SectionBand.astro';
 import HeroIllustration from '../components/HeroIllustration.astro';
 import { getCollection } from 'astro:content';
 import { getReadTime } from '../lib/reading-time';
@@ -11,21 +12,24 @@ const posts = (await getCollection('blog'))
 
 const positions = [
   {
-    kicker: 'Full-time · Jan 2022 – Present',
+    period: 'Jan 2022 – Present',
+    employment: 'Full-time',
     title: 'Tendering & Accounts Receivable Manager, Projects Coordinator',
     meta: 'Sithembe Transportation & Projects · Centurion, Gauteng',
     body: 'Tender management, project coordination and administration, invoicing and website upkeep: financial accuracy and compliance across all projects.',
     tags: ['Sage Accounting', 'Stakeholder Mgmt', 'Microsoft 365'],
   },
   {
-    kicker: 'Full-time · Jan 2021 – Jan 2022',
+    period: 'Jan 2021 – Jan 2022',
+    employment: 'Full-time',
     title: 'Tender & Office Administrator',
     meta: 'Babiya Geomatics and Trading',
     body: 'Tender submissions and general office administration.',
     tags: [],
   },
   {
-    kicker: 'Founder · Jan 2020 – Present',
+    period: 'Jan 2020 – Present',
+    employment: 'Founder',
     title: 'Founder & Website Developer',
     meta: 'Playhouse Media Group · Gauteng, South Africa',
     body: 'Founded and grew Playhouse Media Group into a group of brands (Apex Web Solutions, Tender Edge Solutions and TenderTrack360), building custom web solutions in React, Next.js and Astro.',
@@ -35,68 +39,73 @@ const positions = [
 
 const services = [
   {
-    number: '01',
     title: 'Tender Management',
     description: 'Full tendering lifecycle: from opportunity ID to compliant, winning submissions.',
     href: '/services#tender-management',
   },
   {
-    number: '02',
     title: 'Project Management',
     description: 'End-to-end delivery: timelines, teams and budgets aligned for successful outcomes.',
     href: '/services#project-management',
   },
   {
-    number: '03',
     title: 'Website Development',
     description: 'Fast, accessible sites that reflect your brand and support long-term growth.',
     href: '/services#web-development',
   },
 ];
 
-const dateFormatter = new Intl.DateTimeFormat('en-US', { month: 'short', day: '2-digit', year: 'numeric' });
+const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2-digit', year: 'numeric' });
 ---
 
-<Layout title="Home" description="Bridging project management with digital excellence." active="home">
-  <div class="grid gap-10 px-5 pb-14 pt-22 sm:px-8 md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] md:items-center md:px-14 md:pb-14 md:pt-22">
+<Layout
+  fullTitle="Jacob Chademwiri — Tender Management, Project Delivery & Web Development | Centurion"
+  description="Tender management, project coordination and web development from Centurion, Gauteng. Winning contracts and delivering the digital work that follows."
+  active="home"
+  schema="person"
+>
+  <div class="grid gap-10 px-5 pb-14 pt-20 sm:px-8 md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] md:items-center md:px-14">
     <div>
-      <span class="kicker">Jacob C.</span>
-      <h1 class="max-w-[16ch] text-[32px] sm:text-[42px] md:text-[56px]">
-        Bridging project management with digital excellence.
-      </h1>
-      <p class="mt-6 max-w-[640px] text-[17px] leading-[1.65]" style="color: color-mix(in srgb, var(--color-text) 82%, transparent)">
-        Specialised in tender acquisition, project management and sustainable web solutions: from winning contracts to delivering the digital work that follows.
+      <p class="kicker">Jacob C.</p>
+      <h1 class="display mt-4 max-w-[16ch]">Bridging project management with digital excellence.</h1>
+      <p class="mt-6 max-w-[640px] text-body-lg text-text-2">
+        Specialised in tender acquisition, project management and sustainable web solutions: from
+        winning contracts to delivering the digital work that follows.
       </p>
-      <div class="my-6 flex flex-wrap gap-2">
+      <div class="my-7 flex flex-wrap gap-2">
         <span class="tag tag-accent">Tender Management</span>
         <span class="tag tag-accent">Project Management</span>
         <span class="tag tag-neutral">Accounts Receivable</span>
         <span class="tag tag-neutral">Web Development</span>
       </div>
-      <div class="mt-2 flex flex-col gap-3 sm:flex-row [&_a]:text-center sm:[&_a]:text-left">
-        <a href="#contact" class="btn btn-primary">Schedule Consultation</a>
-        <a href="#services" class="btn btn-secondary">View Our Services</a>
+      <div class="flex flex-col gap-3 sm:flex-row">
+        <a href="/contact" class="btn btn-primary">Start a project</a>
+        <a href="/services" class="btn btn-secondary">See what I do</a>
       </div>
-      <p class="mt-7 text-[13px]" style="color: color-mix(in srgb, var(--color-text) 55%, transparent)">
-        ● Currently available for new projects · 24–48hr consultation response · Free initial assessment
+      <p class="mt-7 flex items-baseline gap-2.5 text-meta text-text-3">
+        <span class="dot" aria-hidden="true"></span>
+        Available for new projects. Free first assessment, and I reply within
+        <span class="data">24–48</span> hours.
       </p>
     </div>
     <HeroIllustration />
   </div>
 
   <div id="positions" class="px-5 pb-16 pt-6 sm:px-8 md:px-14">
-    <span class="kicker">Experience</span>
-    <h2 class="mb-6 max-w-[28ch] text-[26px]">Where I've made an impact</h2>
+    <p class="kicker">Experience</p>
+    <h2 class="h2 mt-4 mb-7 max-w-[28ch]">Where I'm making an impact</h2>
     <div class="grid gap-5 md:grid-cols-2">
       {
         positions.map((position) => (
           <div class="card">
-            <p class="card-kicker">{position.kicker}</p>
-            <h4 class="card-title mt-2 mb-1">{position.title}</h4>
+            <p class="card-kicker">
+              {position.employment} · <span class="data">{position.period}</span>
+            </p>
+            <h3 class="card-title mt-2.5 mb-1">{position.title}</h3>
             <p class="card-meta mb-2.5">{position.meta}</p>
             <p class="card-body">{position.body}</p>
             {position.tags.length > 0 && (
-              <div class="mt-3 flex flex-wrap gap-1.5">
+              <div class="mt-3.5 flex flex-wrap gap-1.5">
                 {position.tags.map((tag) => (
                   <span class="tag tag-outline">{tag}</span>
                 ))}
@@ -108,75 +117,74 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', { month: 'short', day: '2
     </div>
   </div>
 
-  <div
-    id="services"
-    class="relative left-1/2 w-screen -translate-x-1/2"
-    style="background: radial-gradient(900px 420px at 85% -40%, var(--color-section-glow), transparent 64%), var(--color-section);"
-  >
-    <div class="mx-auto max-w-content px-5 py-16 sm:px-8 md:px-14">
-      <div class="flex items-baseline justify-between">
-        <span class="kicker mb-0">Services</span>
-        <a href="/services" class="btn btn-ghost">View all services</a>
-      </div>
-      <div class="mt-6 grid gap-8 md:grid-cols-3">
-        {
-          services.map((service) => (
-            <a href={service.href} class="block border-t border-divider pt-5">
-              <div class="mb-2.5 flex items-baseline gap-3">
-                <span class="text-sm font-medium text-accent">{service.number}</span>
-                <h3 class="text-xl">{service.title}</h3>
-              </div>
-              <p class="text-[15px] leading-[1.6]" style="color: color-mix(in srgb, var(--color-text) 78%, transparent)">
-                {service.description}
-              </p>
-            </a>
-          ))
-        }
-      </div>
+  <SectionBand id="services" glow="top-right">
+    <div class="flex flex-wrap items-baseline justify-between gap-4">
+      <h2 class="kicker">Services</h2>
+      <a href="/services" class="btn btn-ghost">All services →</a>
     </div>
-  </div>
+    <div class="mt-7 grid gap-8 md:grid-cols-3">
+      {
+        services.map((service) => (
+          <a href={service.href} class="group block border-t border-divider pt-5">
+            <h3 class="h3 mb-2.5 group-hover:text-accent">{service.title}</h3>
+            <p class="text-body text-text-2">{service.description}</p>
+          </a>
+        ))
+      }
+    </div>
+  </SectionBand>
 
-  <div id="about" class="grid gap-8 px-5 py-16 sm:px-8 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:items-center md:px-14 md:py-16">
+  <div
+    id="about"
+    class="grid gap-8 px-5 py-16 sm:px-8 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:items-center md:gap-12 md:px-14"
+  >
     <figure class="m-0">
       <img
         src="https://picsum.photos/seed/jacob-portrait/640/800"
-        alt="Placeholder portrait, to be replaced with a photo of Jacob Chademwiri"
+        alt=""
+        width="640"
+        height="800"
         class="aspect-[4/5] w-full rounded-xl object-cover"
         loading="lazy"
       />
     </figure>
     <div>
-      <span class="kicker">About</span>
-      <h2 class="mb-4 max-w-[26ch] text-[28px] leading-[1.35]">
-        Submitting tenders isn't the hard part. Understanding the compliance systems behind them is.
+      <p class="kicker">About</p>
+      <h2 class="h2 mt-4 mb-5 max-w-[26ch]">
+        I work both sides of the contract: winning it, then delivering it.
       </h2>
-      <p class="mb-5 max-w-[48ch] text-[15.5px] leading-[1.65]" style="color: color-mix(in srgb, var(--color-text) 78%, transparent)">
-        Based in Centurion, Gauteng, I've spent years across tendering, ISO/SHEQ and web delivery, building the systems that back a bid and the sites that carry the brand behind it.
+      <p class="mb-6 max-w-[48ch] text-body text-text-2">
+        Based in Centurion, Gauteng, I've spent years across tendering, ISO/SHEQ and web delivery,
+        building the systems that back a bid and the sites that carry the brand behind it.
       </p>
       <a href="/about" class="btn btn-secondary">More about me</a>
     </div>
   </div>
 
   <div id="blog-preview" class="px-5 pb-16 pt-6 sm:px-8 md:px-14">
-    <div class="flex items-baseline justify-between">
-      <span class="kicker mb-0">From the blog</span>
-      <a href="/blog" class="btn btn-ghost">View all posts</a>
+    <div class="flex flex-wrap items-baseline justify-between gap-4">
+      <h2 class="kicker">From the blog</h2>
+      <a href="/blog" class="btn btn-ghost">All posts →</a>
     </div>
-    <div class="mt-5 grid items-start gap-5 md:grid-cols-3">
+    <div class="mt-6 grid items-start gap-5 md:grid-cols-3">
       {
         posts.map((post) => (
-          <a href={`/blog/${post.id}`} class="card block overflow-hidden p-0">
+          <a href={`/blog/${post.id}`} class="card group block overflow-hidden p-0">
             <img
               src={`https://picsum.photos/seed/${post.data.cover}/640/400`}
               alt=""
+              width="640"
+              height="400"
               class="aspect-[16/10] w-full object-cover"
               loading="lazy"
             />
-            <div class="px-4 py-3.5">
+            <div class="px-4 py-4">
               <p class="card-kicker">{post.data.category}</p>
-              <h4 class="card-title my-1.5">{post.data.title}</h4>
-              <p class="card-body mb-2">{post.data.excerpt}</p>
-              <p class="card-meta">{dateFormatter.format(post.data.date)} · {getReadTime(post.body ?? '')}</p>
+              <h3 class="card-title my-2 group-hover:text-accent">{post.data.title}</h3>
+              <p class="card-body mb-2.5">{post.data.excerpt}</p>
+              <p class="card-meta">
+                {dateFormatter.format(post.data.date)} · {getReadTime(post.body ?? '')}
+              </p>
             </div>
           </a>
         ))
@@ -185,6 +193,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', { month: 'short', day: '2
   </div>
 
   <ContactBand
-    trustLine="24–48hr response · Free consultation · Tailored solutions"
+    headingLevel={2}
+    trustLine="24–48hr reply · Free first assessment · Tailored solutions"
   />
 </Layout>

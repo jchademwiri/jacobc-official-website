@@ -1,0 +1,93 @@
+---
+import { CONTACT_EMAIL, SOCIAL_PROFILES, SITE_NAME, PERSON_JOB_TITLE, LOCALITY, REGION, COUNTRY } from '../lib/site';
+
+export interface Crumb {
+  name: string;
+  href: string;
+}
+
+interface Props {
+  site: URL;
+  canonical: URL;
+  kind: 'person' | 'article' | 'service' | 'default';
+  breadcrumb?: Crumb[];
+  headline?: string;
+  description?: string;
+  image?: URL;
+  publishedTime?: Date;
+  tags?: string[];
+}
+
+const { site, canonical, kind, breadcrumb, headline, description, image, publishedTime, tags } =
+  Astro.props;
+
+const personId = `${new URL('/', site).href}#person`;
+
+const person = {
+  '@type': 'Person',
+  '@id': personId,
+  name: SITE_NAME,
+  url: new URL('/', site).href,
+  email: `mailto:${CONTACT_EMAIL}`,
+  jobTitle: PERSON_JOB_TITLE,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: LOCALITY,
+    addressRegion: REGION,
+    addressCountry: COUNTRY,
+  },
+  sameAs: SOCIAL_PROFILES,
+};
+
+const graph: Record<string, unknown>[] = [person];
+
+if (kind === 'article' && headline) {
+  graph.push({
+    '@type': 'BlogPosting',
+    '@id': `${canonical.href}#article`,
+    headline,
+    description,
+    url: canonical.href,
+    ...(image && { image: image.href }),
+    ...(publishedTime && { datePublished: publishedTime.toISOString() }),
+    ...(tags?.length && { keywords: tags.join(', ') }),
+    author: { '@id': personId },
+    publisher: { '@id': personId },
+    mainEntityOfPage: canonical.href,
+  });
+}
+
+if (kind === 'service') {
+  graph.push({
+    '@type': 'ProfessionalService',
+    '@id': `${canonical.href}#service`,
+    name: SITE_NAME,
+    url: canonical.href,
+    description,
+    provider: { '@id': personId },
+    areaServed: { '@type': 'AdministrativeArea', name: `${REGION}, South Africa` },
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: LOCALITY,
+      addressRegion: REGION,
+      addressCountry: COUNTRY,
+    },
+  });
+}
+
+if (breadcrumb?.length) {
+  graph.push({
+    '@type': 'BreadcrumbList',
+    itemListElement: [{ name: 'Home', href: '/' }, ...breadcrumb].map((crumb, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: crumb.name,
+      item: new URL(crumb.href, site).href,
+    })),
+  });
+}
+
+const jsonLd = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
+---
+
+<script type="application/ld+json" is:inline set:html={jsonLd} />

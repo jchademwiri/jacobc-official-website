@@ -1,0 +1,85 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { getReadTime } from '../../../lib/reading-time';
+
+const TRACKS = {
+  tendering: {
+    label: 'Tendering',
+    heading: 'Notes on tendering.',
+    blurb: 'Running bids, reading RFPs and keeping submissions compliant.',
+  },
+  iso: {
+    label: 'ISO / SHEQ',
+    heading: 'Notes on ISO and SHEQ.',
+    blurb: 'Building the management systems that stand behind a compliant bid.',
+  },
+  dev: {
+    label: 'Web Dev',
+    heading: 'Notes on building for the web.',
+    blurb: 'Shipping fast, accessible sites and the tooling around them.',
+  },
+} as const;
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  const tracks = [...new Set(posts.map((post) => post.data.track))];
+
+  return tracks.map((track) => ({
+    params: { track },
+    props: {
+      posts: posts
+        .filter((post) => post.data.track === track)
+        .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()),
+    },
+  }));
+}
+
+const { track } = Astro.params;
+const { posts } = Astro.props;
+const meta = TRACKS[track as keyof typeof TRACKS];
+
+const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2-digit', year: 'numeric' });
+---
+
+<Layout
+  title={`${meta.label} — Blog`}
+  description={meta.blurb}
+  active="blog"
+  breadcrumb={[
+    { name: 'Blog', href: '/blog' },
+    { name: meta.label, href: `/blog/track/${track}` },
+  ]}
+>
+  <div class="px-5 pb-6 pt-16 sm:px-8 md:px-14">
+    <p class="kicker">{meta.label}</p>
+    <h1 class="h1 mt-4 mb-4">{meta.heading}</h1>
+    <p class="max-w-[56ch] text-body-lg text-text-2">{meta.blurb}</p>
+    <a href="/blog" class="btn btn-ghost mt-6 -ml-1 inline-flex">← All posts</a>
+  </div>
+
+  <div class="grid gap-5 px-5 pb-16 pt-5 sm:px-8 md:grid-cols-2 lg:grid-cols-3 md:px-14">
+    {
+      posts.map((post) => (
+        <a href={`/blog/${post.id}`} class="card group flex flex-col overflow-hidden p-0">
+          <img
+            src={`https://picsum.photos/seed/${post.data.cover}/640/400`}
+            alt=""
+            width="640"
+            height="400"
+            class="aspect-[16/10] w-full object-cover"
+            loading="lazy"
+          />
+          <div class="flex flex-1 flex-col px-4 py-4">
+            <p class="card-kicker">{post.data.category}</p>
+            <h2 class="card-title my-2 group-hover:text-accent">{post.data.title}</h2>
+            <p class="card-body">{post.data.excerpt}</p>
+            <p class="card-meta mt-auto pt-3">
+              {dateFormatter.format(post.data.date)} · {getReadTime(post.body ?? '')}
+            </p>
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</Layout>

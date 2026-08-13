@@ -1,0 +1,26 @@
+---
+interface Props {
+  /** Where the radial highlight sits, or `none` for a flat band. */
+  glow?: 'top-right' | 'bottom-left' | 'none';
+  id?: string;
+  class?: string;
+}
+
+const { glow = 'top-right', id, class: className } = Astro.props;
+
+const glowPosition = {
+  'top-right': '85% -40%',
+  'bottom-left': '15% 120%',
+  none: null,
+}[glow];
+
+const style = glowPosition
+  ? `background: radial-gradient(900px 420px at ${glowPosition}, var(--color-section-glow), transparent 64%), var(--color-section);`
+  : undefined;
+---
+
+<div id={id} class="section-band" style={style}>
+  <div class:list={['mx-auto max-w-content px-5 py-16 sm:px-8 md:px-14', className]}>
+    <slot />
+  </div>
+</div>

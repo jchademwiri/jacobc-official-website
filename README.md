@@ -51,7 +51,11 @@ All commands are run from the root of the project, from a terminal:
 
 ## Adding a blog post
 
-Add a new Markdown file to `src/content/blog/`, following the frontmatter shape in an existing post (`title`, `category`, `track`, `date`, `readTime`, `excerpt`, `cover`, `tags`). It's picked up automatically by the blog listing and detail pages.
+Add a new Markdown file to `src/content/blog/`, following the frontmatter shape in an existing post (`title`, `category`, `track`, `date`, `excerpt`, `cover`, `tags`) — the schema in `src/content.config.ts` is strict and rejects unknown keys. Read time is computed at render by `src/lib/reading-time.ts`, so there is no `readTime` field. Posts are picked up automatically by the blog listing, the `track` landing pages and the RSS feed.
+
+## Contact form
+
+`/contact` is server-rendered and posts to itself. Delivery goes through [Resend](https://resend.com) and needs `RESEND_API_KEY` set in the Vercel project (see `.env.example`). Without it the form renders its failure state and points visitors at the mailto address, so the page still works — it just doesn't deliver.
 
 ## Deployment
 
