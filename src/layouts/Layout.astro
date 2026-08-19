@@ -2,6 +2,7 @@
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
+import ScrollToTop from '../components/ScrollToTop.astro';
 import Schema, { type Crumb } from '../components/Schema.astro';
 import Analytics from '@vercel/analytics/astro';
 import { SITE_NAME } from '../lib/site';
@@ -19,6 +20,7 @@ interface Props {
   ogType?: 'website' | 'article';
   publishedTime?: Date;
   tags?: string[];
+  keywords?: string[];
   breadcrumb?: Crumb[];
   schema?: 'person' | 'article' | 'service' | 'default';
   noindex?: boolean;
@@ -34,6 +36,7 @@ const {
   ogType = 'website',
   publishedTime,
   tags,
+  keywords,
   breadcrumb,
   schema,
   noindex = false,
@@ -61,6 +64,7 @@ const schemaKind = schema ?? (ogType === 'article' ? 'article' : 'default');
     <meta name="theme-color" content="#161826" />
     <meta name="author" content={SITE_NAME} />
     <meta name="description" content={description} />
+    {keywords?.length && <meta name="keywords" content={keywords.join(', ')} />}
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonicalUrl} />
     {noindex && <meta name="robots" content="noindex, follow" />}
@@ -111,6 +115,7 @@ const schemaKind = schema ?? (ogType === 'article' ? 'article' : 'default');
       <Footer variant={footerVariant} />
     </div>
     <WhatsAppButton />
+    <ScrollToTop />
     <Analytics />
   </body>
 </html>

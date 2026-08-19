@@ -472,6 +472,14 @@
     color: var(--color-text-2);
   }
 
+  /* Services page description text */
+  .service-description {
+    max-width: 60ch;
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: var(--color-text-2);
+  }
+
   /* Markdown body copy for blog posts and portfolio write-ups. */
   .prose-post p {
     margin: 0 0 20px;

@@ -41,6 +41,41 @@ const person = {
 
 const graph: Record<string, unknown>[] = [person];
 
+// WebSite schema for homepage (enables sitelinks search box in Google)
+if (kind === 'default') {
+  graph.push({
+    '@type': 'WebSite',
+    '@id': `${new URL('/', site).href}#website`,
+    name: SITE_NAME,
+    url: new URL('/', site).href,
+    publisher: { '@id': personId },
+  });
+}
+
+// LocalBusiness schema for local SEO
+if (kind === 'service' || kind === 'default') {
+  graph.push({
+    '@type': 'LocalBusiness',
+    '@id': `${new URL('/', site).href}#localbusiness`,
+    name: SITE_NAME,
+    url: new URL('/', site).href,
+    description: 'Tender management, project coordination and web development services in Centurion, Gauteng.',
+    image: image?.href,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: LOCALITY,
+      addressRegion: REGION,
+      addressCountry: COUNTRY,
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: -25.8601,
+      longitude: 28.1914,
+    },
+    sameAs: SOCIAL_PROFILES,
+  });
+}
+
 if (kind === 'article' && headline) {
   graph.push({
     '@type': 'BlogPosting',

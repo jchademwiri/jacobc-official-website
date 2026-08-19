@@ -1,0 +1,57 @@
+---
+/**
+ * Decorative SVG illustration for the 404 page.
+ * Purely visual — hidden from screen readers.
+ */
+---
+
+<figure class="m-0 flex justify-center" aria-hidden="true">
+  <svg
+    viewBox="0 0 400 300"
+    width="400"
+    height="300"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    class="w-full max-w-[400px]"
+  >
+    <!-- Background circle -->
+    <circle cx="200" cy="150" r="120" fill="var(--color-surface)" opacity="0.5" />
+
+    <!-- Broken link chain -->
+    <g stroke="var(--color-accent)" stroke-width="3" stroke-linecap="round" opacity="0.8">
+      <!-- Left chain link -->
+      <path d="M120 130 a30 30 0 0 1 0 40" />
+      <path d="M120 130 L100 130" />
+      <path d="M120 170 L100 170" />
+
+      <!-- Right chain link (broken) -->
+      <path d="M280 130 a30 30 0 0 0 0 40" />
+      <path d="M280 130 L300 130" />
+      <path d="M280 170 L300 170" />
+
+      <!-- Break marks -->
+      <path d="M165 140 L175 150" stroke-dasharray="4 4" />
+      <path d="M175 140 L165 150" stroke-dasharray="4 4" />
+    </g>
+
+    <!-- 404 text -->
+    <text
+      x="200"
+      y="160"
+      text-anchor="middle"
+      font-family="var(--font-mono)"
+      font-size="48"
+      font-weight="600"
+      fill="var(--color-text)"
+      opacity="0.15"
+    >
+      404
+    </text>
+
+    <!-- Decorative dots -->
+    <circle cx="140" cy="100" r="3" fill="var(--color-accent)" opacity="0.4" />
+    <circle cx="260" cy="100" r="3" fill="var(--color-accent)" opacity="0.4" />
+    <circle cx="140" cy="200" r="3" fill="var(--color-accent)" opacity="0.4" />
+    <circle cx="260" cy="200" r="3" fill="var(--color-accent)" opacity="0.4" />
+  </svg>
+</figure>

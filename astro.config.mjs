@@ -27,7 +27,11 @@ const site = productionUrl ? `https://${productionUrl}` : 'http://localhost:4321
 export default defineConfig({
   site,
   adapter: vercel(),
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      filter: (page) => !page.includes('/404'),
+    }),
+  ],
   env: {
     schema: {
       // `access: 'secret'` reads from process.env at runtime rather than being
