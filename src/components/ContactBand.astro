@@ -1,12 +1,8 @@
 ---
-import SectionBand from './SectionBand.astro';
+import { CONTACT_MAILTO } from '../lib/site';
 
 interface Props {
-  glow?: 'bottom-left' | 'top-right' | 'none';
-  /** Set by the host page so the band sits correctly in that page's outline. */
-  headingLevel?: 2 | 3;
-  heading?: string;
-  body?: string;
+  glow?: 'bottom-left' | 'none';
   primaryHref?: string;
   primaryLabel?: string;
   secondaryHref?: string;
@@ -17,26 +13,36 @@ interface Props {
 
 const {
   glow = 'bottom-left',
-  headingLevel = 2,
-  heading = 'Ready to talk about your project?',
-  body = 'Tell me what you are working on — tender, project or website — and I will come back to you within 24–48 hours.',
-  primaryHref = '/contact',
-  primaryLabel = 'Start a project',
+  primaryHref = CONTACT_MAILTO,
+  primaryLabel = 'Schedule Consultation',
   secondaryHref = '/services',
-  secondaryLabel = 'See what I do',
+  secondaryLabel = 'View All Services',
   trustLine,
   id = 'contact',
 } = Astro.props;
 
-const Heading = `h${headingLevel}` as 'h2' | 'h3';
+const glowStyle =
+  glow === 'bottom-left'
+    ? 'background: radial-gradient(900px 420px at 15% 120%, var(--color-section-glow), transparent 64%), var(--color-section);'
+    : '';
 ---
 
-<SectionBand id={id} glow={glow}>
-  <Heading class="h2 max-w-[20ch]">{heading}</Heading>
-  <p class="mt-3 mb-7 max-w-[52ch] text-body text-text-2">{body}</p>
-  <div class="flex flex-col gap-3 sm:flex-row">
-    <a href={primaryHref} class="btn btn-primary">{primaryLabel}</a>
-    <a href={secondaryHref} class="btn btn-secondary">{secondaryLabel}</a>
+<div id={id} class="relative left-1/2 w-screen -translate-x-1/2" style={glowStyle}>
+  <div class="mx-auto max-w-content px-5 py-14 sm:px-8 md:px-14">
+    <h3 class="text-2xl">Ready to discuss your project needs?</h3>
+    <p class="mt-3 mb-6 max-w-[52ch] text-[15px]" style="color: color-mix(in srgb, var(--color-text) 78%, transparent)">
+      Schedule a consultation to explore how tender management, project coordination and web development can help your business.
+    </p>
+    <div class="flex flex-col gap-3 sm:flex-row [&_a]:text-center sm:[&_a]:text-left">
+      <a href={primaryHref} class="btn btn-primary">{primaryLabel}</a>
+      <a href={secondaryHref} class="btn btn-secondary">{secondaryLabel}</a>
+    </div>
+    {
+      trustLine && (
+        <p class="mt-7 text-xs" style="color: color-mix(in srgb, var(--color-text) 55%, transparent)">
+          {trustLine}
+        </p>
+      )
+    }
   </div>
-  {trustLine && <p class="data mt-7 text-label text-text-3">{trustLine}</p>}
-</SectionBand>
+</div>

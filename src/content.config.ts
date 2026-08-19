@@ -8,6 +8,7 @@ const blog = defineCollection({
     category: z.string(),
     track: z.enum(['tendering', 'iso', 'dev']),
     date: z.coerce.date(),
+    readTime: z.string(),
     excerpt: z.string(),
     cover: z.string(),
     tags: z.array(z.object({ label: z.string(), accent: z.boolean().default(false) })),

@@ -31,10 +31,8 @@
     window.addEventListener('scroll', toggleVisibility, { passive: true });
     toggleVisibility();
 
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-
     button.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: prefersReducedMotion.matches ? 'auto' : 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 </script>
