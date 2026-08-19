@@ -1,0 +1,189 @@
+---
+import {
+  PROJECT_TYPES,
+  HONEYPOT_FIELD,
+  TIMESTAMP_FIELD,
+  type Field,
+} from '../lib/contact';
+
+interface Props {
+  errors?: Partial<Record<Field, string>>;
+  values?: Partial<Record<Field, string>>;
+  failed?: boolean;
+}
+
+const { errors = {}, values = {}, failed = false } = Astro.props;
+
+const describedBy = (field: Field, hint?: string) =>
+  [errors[field] && `${field}-error`, hint].filter(Boolean).join(' ') || undefined;
+---
+
+<form id="contact-form" method="POST" action="/contact#form" novalidate class="flex flex-col gap-5">
+  <div id="form-status" role="status" aria-live="polite" class="contents">
+    {
+      failed && (
+        <p class="form-alert">
+          The message could not be sent. Email <a href="mailto:hello@jacobc.co.za" class="text-accent">hello@jacobc.co.za</a> directly and it will reach me.
+        </p>
+      )
+    }
+  </div>
+
+  <div class="field">
+    <label class="field-label" for="name">Name</label>
+    <input
+      class="field-input"
+      id="name"
+      name="name"
+      type="text"
+      autocomplete="name"
+      required
+      value={values.name ?? ''}
+      aria-invalid={errors.name ? 'true' : undefined}
+      aria-describedby={describedBy('name')}
+    />
+    {errors.name && <p class="field-error" id="name-error">{errors.name}</p>}
+  </div>
+
+  <div class="field">
+    <label class="field-label" for="email">Email</label>
+    <input
+      class="field-input"
+      id="email"
+      name="email"
+      type="email"
+      autocomplete="email"
+      required
+      value={values.email ?? ''}
+      aria-invalid={errors.email ? 'true' : undefined}
+      aria-describedby={describedBy('email')}
+    />
+    {errors.email && <p class="field-error" id="email-error">{errors.email}</p>}
+  </div>
+
+  <div class="field">
+    <label class="field-label" for="projectType">What is this about?</label>
+    <select
+      class="field-input"
+      id="projectType"
+      name="projectType"
+      required
+      aria-invalid={errors.projectType ? 'true' : undefined}
+      aria-describedby={describedBy('projectType')}
+    >
+      <option value="">Choose one</option>
+      {
+        PROJECT_TYPES.map((type) => (
+          <option value={type.value} selected={values.projectType === type.value}>
+            {type.label}
+          </option>
+        ))
+      }
+    </select>
+    {errors.projectType && <p class="field-error" id="projectType-error">{errors.projectType}</p>}
+  </div>
+
+  <div class="field">
+    <label class="field-label" for="message">Message</label>
+    <textarea
+      class="field-input min-h-[160px] resize-y"
+      id="message"
+      name="message"
+      rows="6"
+      required
+      aria-invalid={errors.message ? 'true' : undefined}
+      aria-describedby={describedBy('message', 'message-hint')}>{values.message ?? ''}</textarea>
+    {errors.message && <p class="field-error" id="message-error">{errors.message}</p>}
+    <p class="field-hint" id="message-hint">
+      Deadlines, scope, or the tender reference — whatever you have is enough to start.
+    </p>
+  </div>
+
+  <div class="hp" aria-hidden="true">
+    <label for={HONEYPOT_FIELD}>Company</label>
+    <input id={HONEYPOT_FIELD} name={HONEYPOT_FIELD} type="text" tabindex="-1" autocomplete="off" />
+  </div>
+  <input type="hidden" name={TIMESTAMP_FIELD} value="" />
+
+  <button type="submit" class="btn btn-primary self-start" data-submit>Send message</button>
+</form>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  if (form) {
+    const status = document.getElementById('form-status')!;
+    const button = form.querySelector<HTMLButtonElement>('[data-submit]')!;
+    const started = form.querySelector<HTMLInputElement>('input[name="started"]')!;
+    started.value = String(Date.now());
+
+    const clearErrors = () => {
+      form.querySelectorAll('.field-error').forEach((node) => node.remove());
+      form.querySelectorAll('[aria-invalid]').forEach((node) => {
+        node.removeAttribute('aria-invalid');
+        const described = node.getAttribute('aria-describedby');
+        const kept = (described ?? '')
+          .split(' ')
+          .filter((id) => id && !id.endsWith('-error'))
+          .join(' ');
+        if (kept) node.setAttribute('aria-describedby', kept);
+        else node.removeAttribute('aria-describedby');
+      });
+    };
+
+    const showError = (field: string, message: string) => {
+      const input = form.elements.namedItem(field) as HTMLElement | null;
+      if (!input) return;
+      const p = document.createElement('p');
+      p.className = 'field-error';
+      p.id = `${field}-error`;
+      p.textContent = message;
+      input.after(p);
+      input.setAttribute('aria-invalid', 'true');
+      const described = input.getAttribute('aria-describedby');
+      input.setAttribute('aria-describedby', described ? `${p.id} ${described}` : p.id);
+    };
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      clearErrors();
+      button.disabled = true;
+      button.textContent = 'Sending…';
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: new FormData(form),
+        });
+        const result = await response.json();
+
+        if (result.ok) {
+          const done = document.createElement('div');
+          done.className = 'form-success';
+          done.innerHTML =
+            '<p class="form-success-title">Message sent</p><p class="form-success-body">Thanks — I read everything myself and reply within 24–48 hours.</p>';
+          form.replaceWith(done);
+          done.setAttribute('tabindex', '-1');
+          (done as HTMLElement).focus();
+          return;
+        }
+
+        if (result.errors) {
+          Object.entries(result.errors).forEach(([field, message]) =>
+            showError(field, message as string)
+          );
+          form.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus();
+        } else {
+          status.innerHTML =
+            '<p class="form-alert">The message could not be sent. Email <a href="mailto:hello@jacobc.co.za" class="text-accent">hello@jacobc.co.za</a> directly and it will reach me.</p>';
+        }
+      } catch {
+        status.innerHTML =
+          '<p class="form-alert">The message could not be sent. Email <a href="mailto:hello@jacobc.co.za" class="text-accent">hello@jacobc.co.za</a> directly and it will reach me.</p>';
+      } finally {
+        button.disabled = false;
+        button.textContent = 'Send message';
+      }
+    });
+  }
+</script>

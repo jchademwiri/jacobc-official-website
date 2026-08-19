@@ -1,0 +1,88 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const CATEGORIES = {
+  website: {
+    label: 'Website Development',
+    heading: 'Websites built.',
+    blurb: 'Brand sites and marketing sites built to be fast, accessible and easy to keep current.',
+  },
+  app: {
+    label: 'Web Apps',
+    heading: 'Web apps built.',
+    blurb: 'Products and internal tools, from tender tracking to client portals.',
+  },
+  project: {
+    label: 'Project Management',
+    heading: 'Projects delivered.',
+    blurb: 'Coordination of timelines, teams and budgets through to completion.',
+  },
+  tender: {
+    label: 'Tender Preparations',
+    heading: 'Tenders delivered.',
+    blurb: 'Compliant, competitive submissions prepared end to end.',
+  },
+} as const;
+
+export async function getStaticPaths() {
+  const items = await getCollection('portfolio');
+  const categories = [...new Set(items.map((item) => item.data.category))];
+
+  return categories.map((category) => ({
+    params: { category },
+    props: {
+      items: items
+        .filter((item) => item.data.category === category)
+        .sort((a, b) => b.data.year.localeCompare(a.data.year)),
+    },
+  }));
+}
+
+const { category } = Astro.params;
+const { items } = Astro.props;
+const meta = CATEGORIES[category as keyof typeof CATEGORIES];
+---
+
+<Layout
+  title={`${meta.label} — Portfolio`}
+  description={meta.blurb}
+  active="portfolio"
+  breadcrumb={[
+    { name: 'Portfolio', href: '/portfolio' },
+    { name: meta.label, href: `/portfolio/category/${category}` },
+  ]}
+>
+  <div class="px-5 pb-6 pt-16 sm:px-8 md:px-14">
+    <p class="kicker">{meta.label}</p>
+    <h1 class="h1 mt-4 mb-4">{meta.heading}</h1>
+    <p class="max-w-[56ch] text-body-lg text-text-2">{meta.blurb}</p>
+    <a href="/portfolio" class="btn btn-ghost mt-6 -ml-1 inline-flex">← All work</a>
+  </div>
+
+  <div class="grid gap-5 px-5 pb-16 pt-5 sm:px-8 md:grid-cols-2 lg:grid-cols-3 md:px-14">
+    {
+      items.map((item) => (
+        <a href={`/portfolio/${item.id}`} class="card group flex flex-col overflow-hidden p-0">
+          <img
+            src={`https://picsum.photos/seed/${item.data.cover}/640/400`}
+            alt=""
+            width="640"
+            height="400"
+            class="aspect-[16/10] w-full object-cover"
+            loading="lazy"
+          />
+          <div class="flex flex-1 flex-col px-4 py-4">
+            <p class="card-kicker">{meta.label}</p>
+            <h2 class="card-title my-2 group-hover:text-accent">{item.data.title}</h2>
+            <p class="card-meta mb-2.5">
+              {item.data.client} · <span class="data">{item.data.year}</span>
+            </p>
+            <p class="card-body">{item.data.excerpt}</p>
+            {item.data.outcome && <p class="data mt-3 text-meta text-accent">{item.data.outcome}</p>}
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</Layout>

@@ -1,0 +1,18 @@
+# jacobc-official-website — Cursor Rules
+
+## Stack
+Astro | TBD | Vercel
+
+## Commands
+- /start <task> — Branch, audit, plan
+- /done — Pre-flight, PR, CI
+- /release — Release PR
+- /tag vX.Y.Z — Tag production
+- /rollback — Revert
+- /incident — Diagnose
+- /changelog — Release notes
+
+## Rules
+- Never push to main directly
+- Conventional commits
+- See AGENTS.md for full reference

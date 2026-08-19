@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bgGradApex" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="50%" stop-color="#161e31"/>
+      <stop offset="100%" stop-color="#0b0f19"/>
+    </linearGradient>
+    <linearGradient id="apexAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+    <linearGradient id="cardGradDark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1f293d" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#111827" stop-opacity="0.95"/>
+    </linearGradient>
+    <filter id="shadowApex" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="20" stdDeviation="30" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#bgGradApex)"/>
+  <circle cx="200" cy="180" r="300" fill="#6366f1" opacity="0.18" filter="blur(50px)"/>
+  <circle cx="1000" cy="480" r="320" fill="#a855f7" opacity="0.14" filter="blur(60px)"/>
+
+  <!-- Browser Frame -->
+  <g filter="url(#shadowApex)">
+    <rect x="70" y="40" width="1060" height="595" rx="16" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+
+    <!-- Browser Bar -->
+    <rect x="70" y="40" width="1060" height="46" rx="16" fill="#1e293b"/>
+    <rect x="70" y="70" width="1060" height="16" fill="#1e293b"/>
+    <line x1="70" y1="86" x2="1130" y2="86" stroke="#334155" stroke-width="1"/>
+
+    <!-- Window Dots -->
+    <circle cx="98" cy="63" r="6" fill="#ef4444"/>
+    <circle cx="118" cy="63" r="6" fill="#f59e0b"/>
+    <circle cx="138" cy="63" r="6" fill="#10b981"/>
+
+    <!-- URL Bar -->
+    <rect x="360" y="51" width="480" height="24" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="600" y="67" fill="#94a3b8" font-family="monospace" font-size="11" text-anchor="middle">https://www.apexwebsolutions.co.za</text>
+
+    <!-- Website Content Inside Browser -->
+    <!-- Nav -->
+    <g transform="translate(110, 110)">
+      <text x="0" y="24" fill="#ffffff" font-family="sans-serif" font-size="19" font-weight="800" letter-spacing="-0.5">APEX<tspan fill="#818cf8">WEB</tspan></text>
+      <text x="450" y="22" fill="#94a3b8" font-family="sans-serif" font-size="13">Services</text>
+      <text x="540" y="22" fill="#94a3b8" font-family="sans-serif" font-size="13">Packages</text>
+      <text x="640" y="22" fill="#94a3b8" font-family="sans-serif" font-size="13">Portfolio</text>
+      <text x="735" y="22" fill="#94a3b8" font-family="sans-serif" font-size="13">About</text>
+
+      <rect x="850" y="2" width="130" height="32" rx="6" fill="url(#apexAccent)"/>
+      <text x="915" y="22" fill="#ffffff" font-family="sans-serif" font-size="12" font-weight="600" text-anchor="middle">Get Started →</text>
+    </g>
+
+    <!-- Hero Area -->
+    <g transform="translate(110, 180)">
+      <rect x="0" y="0" width="170" height="24" rx="12" fill="#312e81" stroke="#4f46e5" stroke-width="1"/>
+      <text x="85" y="16" fill="#c7d2fe" font-family="monospace" font-size="10" font-weight="600" text-anchor="middle">⚡ ASTRO + NEXT.JS STACK</text>
+
+      <text x="0" y="60" fill="#ffffff" font-family="sans-serif" font-size="34" font-weight="800" letter-spacing="-1">
+        High-Performance Websites Built for
+      </text>
+      <text x="0" y="98" fill="url(#apexAccent)" font-family="sans-serif" font-size="34" font-weight="800" letter-spacing="-1">
+        South African Business Growth.
+      </text>
+      <text x="0" y="130" fill="#94a3b8" font-family="sans-serif" font-size="14">
+        Custom web design, managed SME hosting, and zero-maintenance monthly plans from Centurion.
+      </text>
+    </g>
+
+    <!-- 3 Pricing Packages Cards -->
+    <g transform="translate(110, 345)">
+      <!-- Package 1 -->
+      <rect x="0" y="0" width="300" height="240" rx="12" fill="url(#cardGradDark)" stroke="#334155" stroke-width="1"/>
+      <text x="24" y="36" fill="#94a3b8" font-family="sans-serif" font-size="13" font-weight="600">STARTER SME</text>
+      <text x="24" y="74" fill="#ffffff" font-family="sans-serif" font-size="28" font-weight="800">R299<tspan fill="#64748b" font-size="14" font-weight="400">/mo</tspan></text>
+      <line x1="24" y1="92" x2="276" y2="92" stroke="#334155" stroke-width="1"/>
+      <text x="24" y="120" fill="#cbd5e1" font-family="sans-serif" font-size="12">✓ 1–3 Page Fast Site</text>
+      <text x="24" y="145" fill="#cbd5e1" font-family="sans-serif" font-size="12">✓ Domain &amp; SSL Included</text>
+      <text x="24" y="170" fill="#cbd5e1" font-family="sans-serif" font-size="12">✓ Contact Form &amp; WhatsApp</text>
+      <text x="24" y="195" fill="#cbd5e1" font-family="sans-serif" font-size="12">✓ 99.9% Uptime Guarantee</text>
+
+      <!-- Package 2 (Highlighted) -->
+      <rect x="340" y="-10" width="300" height="255" rx="12" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
+      <rect x="520" y="-2" width="105" height="20" rx="10" fill="#6366f1"/>
+      <text x="572" y="12" fill="#ffffff" font-family="sans-serif" font-size="9" font-weight="700" text-anchor="middle">MOST POPULAR</text>
+
+      <text x="364" y="36" fill="#a5b4fc" font-family="sans-serif" font-size="13" font-weight="600">GROWTH BUSINESS</text>
+      <text x="364" y="74" fill="#ffffff" font-family="sans-serif" font-size="28" font-weight="800">R599<tspan fill="#94a3b8" font-size="14" font-weight="400">/mo</tspan></text>
+      <line x1="364" y1="92" x2="616" y2="92" stroke="#4338ca" stroke-width="1"/>
+      <text x="364" y="120" fill="#ffffff" font-family="sans-serif" font-size="12">✓ 5–8 Custom Pages + Blog</text>
+      <text x="364" y="145" fill="#ffffff" font-family="sans-serif" font-size="12">✓ Advanced Local SEO Setup</text>
+      <text x="364" y="170" fill="#ffffff" font-family="sans-serif" font-size="12">✓ Monthly Content Updates</text>
+      <text x="364" y="195" fill="#ffffff" font-family="sans-serif" font-size="12">✓ Google Analytics &amp; Reports</text>
+
+      <!-- Package 3 -->
+      <rect x="680" y="0" width="300" height="240" rx="12" fill="url(#cardGradDark)" stroke="#334155" stroke-width="1"/>
+      <text x="704" y="36" fill="#94a3b8" font-family="sans-serif" font-size="13" font-weight="600">E-COMMERCE &amp; PRO</text>
+      <text x="704" y="74" fill="#ffffff" font-family="sans-serif" font-size="28" font-weight="800">R999<tspan fill="#64748b" font-size="14" font-weight="400">/mo</tspan></text>
+      <line x1="704" y1="92" x2="956" y2="92" stroke="#334155" stroke-width="1"/>
+      <text x="704" y="120" fill="#cbd5e1" font-family="sans-serif" font-size="12">✓ Full Online Store / Catalog</text>
+      <text x="704" y="145" fill="#cbd5e1" font-family="sans-serif" font-size="12">✓ PayFast &amp; Ozow Integration</text>
+      <text x="704" y="170" fill="#cbd5e1" font-family="sans-serif" font-size="12">✓ Priority SLA Support</text>
+      <text x="704" y="195" fill="#cbd5e1" font-family="sans-serif" font-size="12">✓ Custom API Integrations</text>
+    </g>
+  </g>
+</svg>

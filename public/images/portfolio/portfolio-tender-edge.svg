@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bgGradEdge" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1917"/>
+      <stop offset="50%" stop-color="#0f2924"/>
+      <stop offset="100%" stop-color="#071412"/>
+    </linearGradient>
+    <linearGradient id="emeraldAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="50%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#6ee7b7"/>
+    </linearGradient>
+    <linearGradient id="cardGradEdge" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#13332c" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0d211d" stop-opacity="0.95"/>
+    </linearGradient>
+    <filter id="shadowEdge" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="20" stdDeviation="30" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#bgGradEdge)"/>
+  <circle cx="220" cy="160" r="280" fill="#10b981" opacity="0.14" filter="blur(60px)"/>
+  <circle cx="1020" cy="500" r="300" fill="#059669" opacity="0.12" filter="blur(50px)"/>
+
+  <!-- Browser Frame -->
+  <g filter="url(#shadowEdge)">
+    <rect x="70" y="40" width="1060" height="595" rx="16" fill="#0d1f1c" stroke="#1c483f" stroke-width="1.5"/>
+
+    <!-- Top Bar -->
+    <rect x="70" y="40" width="1060" height="46" rx="16" fill="#152f2a"/>
+    <rect x="70" y="70" width="1060" height="16" fill="#152f2a"/>
+    <line x1="70" y1="86" x2="1130" y2="86" stroke="#1c483f" stroke-width="1"/>
+
+    <!-- Window Dots -->
+    <circle cx="98" cy="63" r="6" fill="#ef4444"/>
+    <circle cx="118" cy="63" r="6" fill="#f59e0b"/>
+    <circle cx="138" cy="63" r="6" fill="#10b981"/>
+
+    <!-- URL Bar -->
+    <rect x="360" y="51" width="480" height="24" rx="6" fill="#0a1715" stroke="#1c483f" stroke-width="1"/>
+    <text x="600" y="67" fill="#6ee7b7" font-family="monospace" font-size="11" text-anchor="middle">https://www.tenderedgesolutions.co.za</text>
+
+    <!-- Nav -->
+    <g transform="translate(110, 110)">
+      <text x="0" y="24" fill="#ffffff" font-family="sans-serif" font-size="20" font-weight="900" letter-spacing="0.5">TENDER EDGE <tspan fill="#34d399">SOLUTIONS</tspan></text>
+      <text x="440" y="22" fill="#a7f3d0" font-family="sans-serif" font-size="13">CSD &amp; CIDB</text>
+      <text x="550" y="22" fill="#a7f3d0" font-family="sans-serif" font-size="13">B-BBEE / COIDA</text>
+      <text x="680" y="22" fill="#a7f3d0" font-family="sans-serif" font-size="13">Bid Compilation</text>
+      <text x="800" y="22" fill="#a7f3d0" font-family="sans-serif" font-size="13">Pricing</text>
+
+      <rect x="870" y="2" width="110" height="32" rx="6" fill="url(#emeraldAccent)"/>
+      <text x="925" y="22" fill="#064e3b" font-family="sans-serif" font-size="12" font-weight="700" text-anchor="middle">Free Audit</text>
+    </g>
+
+    <!-- Hero Content -->
+    <g transform="translate(110, 175)">
+      <rect x="0" y="0" width="280" height="24" rx="12" fill="#064e3b" stroke="#059669" stroke-width="1"/>
+      <text x="140" y="16" fill="#d1fae5" font-family="monospace" font-size="10" font-weight="600" text-anchor="middle">✓ ZERO-DISQUALIFICATION GUARANTEE</text>
+
+      <text x="0" y="60" fill="#ffffff" font-family="sans-serif" font-size="32" font-weight="800" letter-spacing="-0.5">
+        Turnkey Tender Compliance &amp; Winning
+      </text>
+      <text x="0" y="96" fill="url(#emeraldAccent)" font-family="sans-serif" font-size="32" font-weight="800" letter-spacing="-0.5">
+        Bid Compilation for Gauteng SMEs.
+      </text>
+      <text x="0" y="128" fill="#9ca3af" font-family="sans-serif" font-size="14">
+        Eliminate administrative disqualifications before submission. Complete CSD, CIDB, SBD forms &amp; technical proposals.
+      </text>
+    </g>
+
+    <!-- 3 Compliance Modules -->
+    <g transform="translate(110, 345)">
+      <!-- Module 1 -->
+      <rect x="0" y="0" width="300" height="240" rx="12" fill="url(#cardGradEdge)" stroke="#1c483f" stroke-width="1"/>
+      <text x="24" y="36" fill="#34d399" font-family="monospace" font-size="11" font-weight="600">STAGE 01 / REGISTRATION</text>
+      <text x="24" y="68" fill="#ffffff" font-family="sans-serif" font-size="18" font-weight="700">CSD, CIDB &amp; COIDA Setup</text>
+      <line x1="24" y1="88" x2="276" y2="88" stroke="#1c483f" stroke-width="1"/>
+      <text x="24" y="116" fill="#d1fae5" font-family="sans-serif" font-size="12">National Treasury Central Supplier Database (CSD) verification, CIDB contractor grading, and SARS PIN compliance.</text>
+      <text x="24" y="170" fill="#6ee7b7" font-family="monospace" font-size="11">✓ SARS Tax Compliant Status</text>
+      <text x="24" y="195" fill="#6ee7b7" font-family="monospace" font-size="11">✓ COIDA Letter of Good Standing</text>
+
+      <!-- Module 2 -->
+      <rect x="340" y="0" width="300" height="240" rx="12" fill="url(#cardGradEdge)" stroke="#1c483f" stroke-width="1"/>
+      <text x="364" y="36" fill="#34d399" font-family="monospace" font-size="11" font-weight="600">STAGE 02 / STATUTORY</text>
+      <text x="364" y="68" fill="#ffffff" font-family="sans-serif" font-size="18" font-weight="700">SBD &amp; MBD Form Packs</text>
+      <line x1="364" y1="88" x2="616" y2="88" stroke="#1c483f" stroke-width="1"/>
+      <text x="364" y="116" fill="#d1fae5" font-family="sans-serif" font-size="12">Flawless preparation of SBD 1, 4, 6.1 and Municipal MBD schedules, sworn B-BBEE affidavits, and JV agreements.</text>
+      <text x="364" y="170" fill="#6ee7b7" font-family="monospace" font-size="11">✓ 100% Mandatory Clause Check</text>
+      <text x="364" y="195" fill="#6ee7b7" font-family="monospace" font-size="11">✓ Commissioner of Oaths Signed</text>
+
+      <!-- Module 3 -->
+      <rect x="680" y="0" width="300" height="240" rx="12" fill="url(#cardGradEdge)" stroke="#1c483f" stroke-width="1"/>
+      <text x="704" y="36" fill="#34d399" font-family="monospace" font-size="11" font-weight="600">STAGE 03 / SUBMISSION</text>
+      <text x="704" y="68" fill="#ffffff" font-family="sans-serif" font-size="18" font-weight="700">Full Tender Compilation</text>
+      <line x1="704" y1="88" x2="956" y2="88" stroke="#1c483f" stroke-width="1"/>
+      <text x="704" y="116" fill="#d1fae5" font-family="sans-serif" font-size="12">End-to-end technical proposal indexing, pricing schedule structuring, methodology documentation, and submission binding.</text>
+      <text x="704" y="170" fill="#6ee7b7" font-family="monospace" font-size="11">✓ Hardcopy &amp; e-Tender Ready</text>
+      <text x="704" y="195" fill="#6ee7b7" font-family="monospace" font-size="11">✓ Scored Functionality Maxima</text>
+    </g>
+  </g>
+</svg>

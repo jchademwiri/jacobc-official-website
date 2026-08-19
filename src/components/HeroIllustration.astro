@@ -1,0 +1,126 @@
+---
+---
+
+<div class="hero-illo-wrap relative hidden md:block" aria-hidden="true">
+  <div class="hero-illo-glow absolute inset-0"></div>
+  <svg viewBox="0 0 440 400" fill="none" class="relative w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+    <!-- connectors (drawn first, sit behind the panels) -->
+    <path d="M220 136 L220 152 L110 152 L110 168" class="hero-illo-line" />
+    <path d="M220 136 L220 152 L330 152 L330 168" class="hero-illo-line" />
+    <path d="M110 364 Q110 396 220 396 Q330 396 330 364" class="hero-illo-line" />
+    <circle cx="220" cy="136" r="4" class="hero-illo-node" />
+    <circle cx="110" cy="168" r="4" class="hero-illo-node" />
+    <circle cx="330" cy="168" r="4" class="hero-illo-node" />
+    <circle cx="220" cy="396" r="4" class="hero-illo-node" />
+
+    <!-- project management: gantt / waterfall -->
+    <rect x="20" y="16" width="400" height="120" rx="10" class="hero-illo-panel" />
+    <circle cx="40" cy="36" r="3" class="hero-illo-node" />
+    <rect x="52" y="30" width="70" height="12" rx="3" class="hero-illo-line-fill" />
+    <rect x="44" y="52" width="110" height="10" rx="5" class="hero-illo-stroke" />
+    <rect x="64" y="70" width="150" height="10" rx="5" class="hero-illo-stroke" />
+    <rect x="54" y="88" width="96" height="10" rx="5" class="hero-illo-accent-fill" />
+    <rect x="94" y="106" width="180" height="10" rx="5" class="hero-illo-stroke" />
+
+    <!-- tender preparation: document -->
+    <rect x="20" y="168" width="180" height="196" rx="10" class="hero-illo-panel" />
+    <path
+      d="M52 194 H150 L166 210 V336 H52 Z"
+      class="hero-illo-doc"
+    />
+    <path d="M150 194 V210 H166 Z" class="hero-illo-stroke" />
+    <line x1="66" y1="228" x2="150" y2="228" class="hero-illo-stroke" />
+    <line x1="66" y1="246" x2="150" y2="246" class="hero-illo-stroke" />
+    <line x1="66" y1="264" x2="130" y2="264" class="hero-illo-stroke" />
+    <line x1="66" y1="282" x2="140" y2="282" class="hero-illo-stroke" />
+    <circle cx="150" cy="328" r="17" class="hero-illo-badge" />
+    <path d="M142 328 L148 335 L160 320" class="hero-illo-check" />
+
+    <!-- web development: browser + code -->
+    <rect x="240" y="168" width="180" height="196" rx="10" class="hero-illo-panel" />
+    <rect x="256" y="188" width="148" height="128" rx="6" class="hero-illo-doc" />
+    <line x1="256" y1="206" x2="404" y2="206" class="hero-illo-stroke" />
+    <circle cx="266" cy="197" r="2.5" class="hero-illo-stroke-fill" />
+    <circle cx="275" cy="197" r="2.5" class="hero-illo-stroke-fill" />
+    <circle cx="284" cy="197" r="2.5" class="hero-illo-stroke-fill" />
+    <path d="M282 232 L270 244 L282 256" class="hero-illo-accent-stroke" />
+    <path d="M362 232 L374 244 L362 256" class="hero-illo-accent-stroke" />
+    <line x1="316" y1="260" x2="328" y2="228" class="hero-illo-stroke" />
+    <line x1="272" y1="276" x2="330" y2="276" class="hero-illo-stroke" />
+    <line x1="272" y1="292" x2="310" y2="292" class="hero-illo-stroke" />
+  </svg>
+</div>
+
+<style>
+  .hero-illo-wrap {
+    max-width: 420px;
+    margin-inline: auto;
+  }
+
+  .hero-illo-glow {
+    background: radial-gradient(280px 220px at 60% 30%, var(--color-section-glow), transparent 70%);
+    opacity: 0.35;
+  }
+
+  .hero-illo-panel {
+    fill: var(--color-surface);
+    stroke: var(--color-divider);
+    stroke-width: 1;
+  }
+
+  .hero-illo-doc {
+    fill: color-mix(in srgb, var(--color-bg) 60%, transparent);
+    stroke: var(--color-divider);
+    stroke-width: 1;
+  }
+
+  .hero-illo-stroke,
+  .hero-illo-line {
+    stroke: color-mix(in srgb, var(--color-text) 32%, transparent);
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+
+  .hero-illo-line {
+    stroke-dasharray: 3 5;
+  }
+
+  .hero-illo-stroke-fill {
+    fill: color-mix(in srgb, var(--color-text) 32%, transparent);
+  }
+
+  .hero-illo-line-fill {
+    fill: color-mix(in srgb, var(--color-text) 18%, transparent);
+  }
+
+  .hero-illo-accent-fill {
+    fill: color-mix(in srgb, var(--color-accent) 55%, transparent);
+  }
+
+  .hero-illo-accent-stroke {
+    fill: none;
+    stroke: var(--color-accent);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.85;
+  }
+
+  .hero-illo-node {
+    fill: var(--color-accent);
+  }
+
+  .hero-illo-badge {
+    fill: color-mix(in srgb, var(--color-accent) 16%, transparent);
+    stroke: var(--color-accent);
+    stroke-width: 1.5;
+  }
+
+  .hero-illo-check {
+    fill: none;
+    stroke: var(--color-accent);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+</style>
