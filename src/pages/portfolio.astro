@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import { getPortfolioImageUrl } from '../lib/images';
 
 const items = (await getCollection('portfolio')).sort((a, b) => b.data.year.localeCompare(a.data.year));
 
@@ -59,8 +60,8 @@ const filters = [
           data-category={item.data.category}
         >
           <img
-            src={`https://picsum.photos/seed/${item.data.cover}/640/400`}
-            alt=""
+            src={getPortfolioImageUrl(item.data.cover)}
+            alt={item.data.title}
             width="640"
             height="400"
             class="aspect-[16/10] w-full object-cover"

@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import ScrollToTop from '../../components/ScrollToTop.astro';
 import { getCollection, render } from 'astro:content';
 import { getReadTime } from '../../lib/reading-time';
+import { getBlogImageUrl } from '../../lib/images';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -45,8 +46,8 @@ const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2
 
   <figure class="my-8 px-5 sm:px-8 md:px-14">
     <img
-      src={`https://picsum.photos/seed/${post.data.cover}/1200/675`}
-      alt=""
+      src={getBlogImageUrl(post.data.cover)}
+      alt={post.data.title}
       width="1200"
       height="675"
       fetchpriority="high"

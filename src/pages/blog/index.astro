@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import { getReadTime } from '../../lib/reading-time';
+import { getBlogImageUrl } from '../../lib/images';
 
 const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
@@ -51,8 +52,8 @@ const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2
           data-track={post.data.track}
         >
           <img
-            src={`https://picsum.photos/seed/${post.data.cover}/640/400`}
-            alt=""
+            src={getBlogImageUrl(post.data.cover)}
+            alt={post.data.title}
             width="640"
             height="400"
             class="aspect-[16/10] w-full object-cover"
