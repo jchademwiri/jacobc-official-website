@@ -1,7 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import { getPortfolioImageUrl } from '../../../lib/images';
 
 const CATEGORIES = {
   website: {
@@ -66,8 +65,8 @@ const meta = CATEGORIES[category as keyof typeof CATEGORIES];
       items.map((item) => (
         <a href={`/portfolio/${item.id}`} class="card group flex flex-col overflow-hidden p-0">
           <img
-            src={getPortfolioImageUrl(item.data.cover)}
-            alt={item.data.title}
+            src={`https://picsum.photos/seed/${item.data.cover}/640/400`}
+            alt=""
             width="640"
             height="400"
             class="aspect-[16/10] w-full object-cover"

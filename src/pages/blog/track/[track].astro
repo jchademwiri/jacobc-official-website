@@ -2,7 +2,6 @@
 import Layout from '../../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import { getReadTime } from '../../../lib/reading-time';
-import { getBlogImageUrl } from '../../../lib/images';
 
 const TRACKS = {
   tendering: {
@@ -64,8 +63,8 @@ const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2
       posts.map((post) => (
         <a href={`/blog/${post.id}`} class="card group flex flex-col overflow-hidden p-0">
           <img
-            src={getBlogImageUrl(post.data.cover)}
-            alt={post.data.title}
+            src={`https://picsum.photos/seed/${post.data.cover}/640/400`}
+            alt=""
             width="640"
             height="400"
             class="aspect-[16/10] w-full object-cover"
