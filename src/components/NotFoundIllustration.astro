@@ -1,0 +1,47 @@
+---
+---
+
+<div class="nf-illo-wrap" aria-hidden="true">
+  <svg viewBox="0 0 320 160" fill="none" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="70" cy="80" r="34" class="nf-illo-panel" />
+    <circle cx="250" cy="80" r="34" class="nf-illo-panel" />
+    <path d="M104 80 L136 80" class="nf-illo-line" />
+    <path d="M184 80 L216 80" class="nf-illo-line" />
+    <path d="M151 66 L139 94" class="nf-illo-break" />
+    <path d="M181 66 L169 94" class="nf-illo-break" />
+    <circle cx="70" cy="80" r="4" class="nf-illo-node" />
+    <circle cx="250" cy="80" r="4" class="nf-illo-node" />
+  </svg>
+</div>
+
+<style>
+  .nf-illo-wrap {
+    max-width: 220px;
+    margin-inline: auto;
+    margin-bottom: 8px;
+  }
+
+  .nf-illo-panel {
+    fill: var(--color-surface);
+    stroke: var(--color-divider);
+    stroke-width: 1;
+  }
+
+  .nf-illo-line {
+    stroke: color-mix(in srgb, var(--color-text) 32%, transparent);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-dasharray: 3 5;
+  }
+
+  .nf-illo-break {
+    stroke: var(--color-accent);
+    stroke-width: 2;
+    stroke-linecap: round;
+    opacity: 0.85;
+  }
+
+  .nf-illo-node {
+    fill: var(--color-accent);
+  }
+</style>
