@@ -22,31 +22,47 @@ const categoryLabels: Record<string, string> = {
 };
 ---
 
-<Layout title={item.data.title} description={item.data.excerpt} maxWidth="narrow" footerVariant="portfolio" active="portfolio">
-  <div class="px-5 pt-12 sm:px-8 md:px-14">
-    <span class="kicker">{categoryLabels[item.data.category]} · {item.data.client} · {item.data.year}</span>
-    <h1 class="max-w-[22ch] text-[28px] leading-[1.25] sm:text-[36px]">{item.data.title}</h1>
+<Layout
+  title={item.data.title}
+  description={item.data.excerpt}
+  maxWidth="narrow"
+  footerVariant="portfolio"
+  active="portfolio"
+  breadcrumb={[
+    { name: 'Portfolio', href: '/portfolio' },
+    { name: item.data.title, href: `/portfolio/${item.id}` },
+  ]}
+>
+  <div class="px-5 pt-14 sm:px-8 md:px-14">
+    <p class="kicker">
+      {categoryLabels[item.data.category]} · {item.data.client} ·
+      <span class="data">{item.data.year}</span>
+    </p>
+    <h1 class="h1 mt-4 max-w-[22ch]">{item.data.title}</h1>
   </div>
 
   <figure class="my-8 px-5 sm:px-8 md:px-14">
     <img
       src={`https://picsum.photos/seed/${item.data.cover}/1200/675`}
       alt=""
+      width="1200"
+      height="675"
+      fetchpriority="high"
       class="aspect-[16/9] w-full rounded-[10px] object-cover"
     />
   </figure>
 
-  <div class="px-5 pb-14 sm:px-8 md:px-14 prose-post">
-    <div class="mb-6 flex flex-wrap gap-x-8 gap-y-3">
+  <div class="prose-post px-5 pb-14 sm:px-8 md:px-14">
+    <div class="mb-7 flex flex-wrap gap-x-10 gap-y-3">
       <div>
-        <p class="card-meta mb-1">Role</p>
-        <p class="text-[15px]">{item.data.role}</p>
+        <p class="card-kicker mb-1.5">Role</p>
+        <p class="text-body">{item.data.role}</p>
       </div>
       {
         item.data.outcome && (
           <div>
-            <p class="card-meta mb-1">Outcome</p>
-            <p class="text-[15px] text-accent">{item.data.outcome}</p>
+            <p class="card-kicker mb-1.5">Outcome</p>
+            <p class="data text-body text-accent">{item.data.outcome}</p>
           </div>
         )
       }
@@ -64,8 +80,13 @@ const categoryLabels: Record<string, string> = {
       }
       {
         item.data.link && item.data.link !== '#' && (
-          <a href={item.data.link} target="_blank" rel="noopener noreferrer" class="ml-auto text-sm text-accent">
-            View site →
+          <a
+            href={item.data.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-ghost ml-auto"
+          >
+            Visit the site →
           </a>
         )
       }
@@ -74,23 +95,3 @@ const categoryLabels: Record<string, string> = {
 
   <ScrollToTop />
 </Layout>
-
-<style>
-  .prose-post :global(p) {
-    margin: 0 0 20px;
-    font-size: 15.5px;
-    line-height: 1.7;
-    color: color-mix(in srgb, var(--color-text) 80%, transparent);
-  }
-
-  .prose-post :global(p:first-of-type) {
-    font-size: 16px;
-    line-height: 1.75;
-    color: color-mix(in srgb, var(--color-text) 85%, transparent);
-  }
-
-  .prose-post :global(h2) {
-    margin: 32px 0 10px;
-    font-size: 19px;
-  }
-</style>

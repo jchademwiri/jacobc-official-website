@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bgGradBeccas" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1c1618"/>
+      <stop offset="50%" stop-color="#2c1f24"/>
+      <stop offset="100%" stop-color="#181315"/>
+    </linearGradient>
+    <linearGradient id="spaAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f472b6"/>
+      <stop offset="50%" stop-color="#fb7185"/>
+      <stop offset="100%" stop-color="#fda4af"/>
+    </linearGradient>
+    <linearGradient id="cardSpa" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38252e" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#24181f" stop-opacity="0.95"/>
+    </linearGradient>
+    <filter id="shadowBeccas" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="20" stdDeviation="30" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#bgGradBeccas)"/>
+  <circle cx="200" cy="180" r="280" fill="#fb7185" opacity="0.12" filter="blur(60px)"/>
+  <circle cx="1020" cy="480" r="300" fill="#f472b6" opacity="0.15" filter="blur(50px)"/>
+
+  <!-- Browser Frame -->
+  <g filter="url(#shadowBeccas)">
+    <rect x="70" y="40" width="1060" height="595" rx="16" fill="#1f141a" stroke="#4a2e3b" stroke-width="1.5"/>
+
+    <!-- Top Bar -->
+    <rect x="70" y="40" width="1060" height="46" rx="16" fill="#2d1b24"/>
+    <rect x="70" y="70" width="1060" height="16" fill="#2d1b24"/>
+    <line x1="70" y1="86" x2="1130" y2="86" stroke="#4a2e3b" stroke-width="1"/>
+
+    <!-- Window Dots -->
+    <circle cx="98" cy="63" r="6" fill="#ef4444"/>
+    <circle cx="118" cy="63" r="6" fill="#f59e0b"/>
+    <circle cx="138" cy="63" r="6" fill="#10b981"/>
+
+    <!-- URL Bar -->
+    <rect x="360" y="51" width="480" height="24" rx="6" fill="#1a0f15" stroke="#4a2e3b" stroke-width="1"/>
+    <text x="600" y="67" fill="#fda4af" font-family="monospace" font-size="11" text-anchor="middle">https://www.beccasmobilespa.co.za</text>
+
+    <!-- Nav -->
+    <g transform="translate(110, 110)">
+      <text x="0" y="24" fill="#ffffff" font-family="serif" font-size="22" font-weight="700" letter-spacing="1">BECCA'S <tspan fill="#fb7185" font-style="italic">Mobile Spa</tspan></text>
+      <text x="450" y="22" fill="#e2d4d9" font-family="sans-serif" font-size="13">Treatments</text>
+      <text x="560" y="22" fill="#e2d4d9" font-family="sans-serif" font-size="13">Packages</text>
+      <text x="660" y="22" fill="#e2d4d9" font-family="sans-serif" font-size="13">Gauteng Areas</text>
+      <text x="790" y="22" fill="#e2d4d9" font-family="sans-serif" font-size="13">Reviews</text>
+
+      <rect x="880" y="2" width="110" height="32" rx="16" fill="url(#spaAccent)"/>
+      <text x="935" y="22" fill="#ffffff" font-family="sans-serif" font-size="12" font-weight="600" text-anchor="middle">Book Spa</text>
+    </g>
+
+    <!-- Hero Content -->
+    <g transform="translate(110, 175)">
+      <rect x="0" y="0" width="220" height="24" rx="12" fill="#4c1d2c" stroke="#831843" stroke-width="1"/>
+      <text x="110" y="16" fill="#fbcfe8" font-family="sans-serif" font-size="11" font-weight="600" text-anchor="middle">✨ LUXURY IN-HOME WELLNESS</text>
+
+      <text x="0" y="60" fill="#ffffff" font-family="serif" font-size="34" font-weight="700" letter-spacing="-0.5">
+        Restorative Spa Treatments Delivered
+      </text>
+      <text x="0" y="98" fill="url(#spaAccent)" font-family="serif" font-size="34" font-weight="700" font-style="italic">
+        Directly to Your Doorstep.
+      </text>
+      <text x="0" y="130" fill="#d1b8c2" font-family="sans-serif" font-size="14">
+        Professional certified therapists bringing five-star massage, reflexology and wellness to Pretoria &amp; Centurion.
+      </text>
+    </g>
+
+    <!-- Treatment Menu Cards -->
+    <g transform="translate(110, 345)">
+      <!-- Card 1 -->
+      <rect x="0" y="0" width="300" height="240" rx="12" fill="url(#cardSpa)" stroke="#593244" stroke-width="1"/>
+      <text x="24" y="36" fill="#fb7185" font-family="sans-serif" font-size="12" font-weight="600" letter-spacing="1">SIGNATURE MASSAGE</text>
+      <text x="24" y="68" fill="#ffffff" font-family="serif" font-size="20" font-weight="700">Swedish Relaxation</text>
+      <text x="24" y="96" fill="#f472b6" font-family="monospace" font-size="18" font-weight="700">60 min · R550</text>
+      <line x1="24" y1="112" x2="276" y2="112" stroke="#4a2e3b" stroke-width="1"/>
+      <text x="24" y="140" fill="#d1b8c2" font-family="sans-serif" font-size="12">Long, soothing gliding strokes with organic essential oils to ease tension and promote deep restorative sleep.</text>
+      <rect x="24" y="185" width="110" height="28" rx="14" fill="#4c1d2c" stroke="#831843" stroke-width="1"/>
+      <text x="79" y="203" fill="#fbcfe8" font-family="sans-serif" font-size="11" font-weight="600" text-anchor="middle">Book Session</text>
+
+      <!-- Card 2 -->
+      <rect x="340" y="0" width="300" height="240" rx="12" fill="url(#cardSpa)" stroke="#593244" stroke-width="1"/>
+      <text x="364" y="36" fill="#fb7185" font-family="sans-serif" font-size="12" font-weight="600" letter-spacing="1">THERAPEUTIC RECOVERY</text>
+      <text x="364" y="68" fill="#ffffff" font-family="serif" font-size="20" font-weight="700">Deep Tissue Massage</text>
+      <text x="364" y="96" fill="#f472b6" font-family="monospace" font-size="18" font-weight="700">75 min · R680</text>
+      <line x1="364" y1="112" x2="616" y2="112" stroke="#4a2e3b" stroke-width="1"/>
+      <text x="364" y="140" fill="#d1b8c2" font-family="sans-serif" font-size="12">Targeted deep pressure techniques relieving chronic muscular pain, postural tightness and sports fatigue.</text>
+      <rect x="364" y="185" width="110" height="28" rx="14" fill="#4c1d2c" stroke="#831843" stroke-width="1"/>
+      <text x="419" y="203" fill="#fbcfe8" font-family="sans-serif" font-size="11" font-weight="600" text-anchor="middle">Book Session</text>
+
+      <!-- Card 3 -->
+      <rect x="680" y="0" width="300" height="240" rx="12" fill="url(#cardSpa)" stroke="#593244" stroke-width="1"/>
+      <text x="704" y="36" fill="#fb7185" font-family="sans-serif" font-size="12" font-weight="600" letter-spacing="1">COMPLETE INDULGENCE</text>
+      <text x="704" y="68" fill="#ffffff" font-family="serif" font-size="20" font-weight="700">Full Body Experience</text>
+      <text x="704" y="96" fill="#f472b6" font-family="monospace" font-size="18" font-weight="700">120 min · R1,150</text>
+      <line x1="704" y1="112" x2="956" y2="112" stroke="#4a2e3b" stroke-width="1"/>
+      <text x="704" y="140" fill="#d1b8c2" font-family="sans-serif" font-size="12">Full body scrub, aromatherapy massage, hot stone therapy and soothing foot reflexology ritual.</text>
+      <rect x="704" y="185" width="110" height="28" rx="14" fill="url(#spaAccent)"/>
+      <text x="759" y="203" fill="#ffffff" font-family="sans-serif" font-size="11" font-weight="600" text-anchor="middle">Book Package</text>
+    </g>
+  </g>
+</svg>

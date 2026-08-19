@@ -1,0 +1,17 @@
+{
+  "name": "Jacob Chademwiri",
+  "short_name": "Jacob C.",
+  "description": "Tender management, project coordination and web development from Centurion, Gauteng.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#161826",
+  "theme_color": "#161826",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bgGradPhehlwana" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#181512"/>
+      <stop offset="50%" stop-color="#292019"/>
+      <stop offset="100%" stop-color="#14110e"/>
+    </linearGradient>
+    <linearGradient id="goldAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="50%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#fde68a"/>
+    </linearGradient>
+    <linearGradient id="cardGradDarkGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#33241b" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#1f1610" stop-opacity="0.95"/>
+    </linearGradient>
+    <filter id="shadowPhehlwana" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="20" stdDeviation="30" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#bgGradPhehlwana)"/>
+  <circle cx="220" cy="160" r="280" fill="#f59e0b" opacity="0.13" filter="blur(60px)"/>
+  <circle cx="1020" cy="500" r="300" fill="#d97706" opacity="0.10" filter="blur(50px)"/>
+
+  <!-- Browser Frame -->
+  <g filter="url(#shadowPhehlwana)">
+    <rect x="70" y="40" width="1060" height="595" rx="16" fill="#18120e" stroke="#452e1e" stroke-width="1.5"/>
+
+    <!-- Top Bar -->
+    <rect x="70" y="40" width="1060" height="46" rx="16" fill="#291b12"/>
+    <rect x="70" y="70" width="1060" height="16" fill="#291b12"/>
+    <line x1="70" y1="86" x2="1130" y2="86" stroke="#452e1e" stroke-width="1"/>
+
+    <!-- Window Dots -->
+    <circle cx="98" cy="63" r="6" fill="#ef4444"/>
+    <circle cx="118" cy="63" r="6" fill="#f59e0b"/>
+    <circle cx="138" cy="63" r="6" fill="#10b981"/>
+
+    <!-- URL Bar -->
+    <rect x="360" y="51" width="480" height="24" rx="6" fill="#120c08" stroke="#452e1e" stroke-width="1"/>
+    <text x="600" y="67" fill="#fde68a" font-family="monospace" font-size="11" text-anchor="middle">https://www.phehlwanagroup.co.za</text>
+
+    <!-- Nav -->
+    <g transform="translate(110, 110)">
+      <text x="0" y="24" fill="#ffffff" font-family="sans-serif" font-size="20" font-weight="900" letter-spacing="1">PHEHLWANA <tspan fill="#f59e0b">GROUP</tspan></text>
+      <text x="440" y="22" fill="#d6c5b9" font-family="sans-serif" font-size="13">Civil &amp; Building</text>
+      <text x="560" y="22" fill="#d6c5b9" font-family="sans-serif" font-size="13">Plant Hire</text>
+      <text x="660" y="22" fill="#d6c5b9" font-family="sans-serif" font-size="13">Engineering</text>
+      <text x="770" y="22" fill="#d6c5b9" font-family="sans-serif" font-size="13">Projects</text>
+
+      <rect x="850" y="2" width="130" height="32" rx="6" fill="url(#goldAccent)"/>
+      <text x="915" y="22" fill="#18120e" font-family="sans-serif" font-size="12" font-weight="700" text-anchor="middle">Request Quote</text>
+    </g>
+
+    <!-- Hero Content -->
+    <g transform="translate(110, 175)">
+      <rect x="0" y="0" width="270" height="24" rx="12" fill="#451a03" stroke="#b45309" stroke-width="1"/>
+      <text x="135" y="16" fill="#fef3c7" font-family="monospace" font-size="10" font-weight="600" text-anchor="middle">🏗️ CIVIL &amp; INFRASTRUCTURE EXCELLENCE</text>
+
+      <text x="0" y="60" fill="#ffffff" font-family="sans-serif" font-size="32" font-weight="800" letter-spacing="-0.5">
+        Multi-Disciplinary Construction &amp; Plant
+      </text>
+      <text x="0" y="96" fill="url(#goldAccent)" font-family="sans-serif" font-size="32" font-weight="800" letter-spacing="-0.5">
+        Hire Solutions in Pretoria &amp; Gauteng.
+      </text>
+      <text x="0" y="128" fill="#d6c5b9" font-family="sans-serif" font-size="14">
+        Specializing in civil engineering, commercial earthmoving plant hire, waste management, and industrial security.
+      </text>
+    </g>
+
+    <!-- 3 Core Services -->
+    <g transform="translate(110, 345)">
+      <!-- Card 1 -->
+      <rect x="0" y="0" width="300" height="240" rx="12" fill="url(#cardGradDarkGold)" stroke="#452e1e" stroke-width="1"/>
+      <text x="24" y="36" fill="#f59e0b" font-family="monospace" font-size="11" font-weight="600">01 / INFRASTRUCTURE</text>
+      <text x="24" y="68" fill="#ffffff" font-family="sans-serif" font-size="18" font-weight="700">Civil &amp; Mechanical Engineering</text>
+      <line x1="24" y1="88" x2="276" y2="88" stroke="#452e1e" stroke-width="1"/>
+      <text x="24" y="116" fill="#d6c5b9" font-family="sans-serif" font-size="12">Turnkey roads, stormwater drainage, structural steel fabrication, and public infrastructure construction delivery.</text>
+      <text x="24" y="170" fill="#fbbf24" font-family="monospace" font-size="11">✓ CIDB Grade Registered</text>
+      <text x="24" y="195" fill="#fbbf24" font-family="monospace" font-size="11">✓ ISO 9001 / SHEQ Compliant</text>
+
+      <!-- Card 2 -->
+      <rect x="340" y="0" width="300" height="240" rx="12" fill="url(#cardGradDarkGold)" stroke="#452e1e" stroke-width="1"/>
+      <text x="364" y="36" fill="#f59e0b" font-family="monospace" font-size="11" font-weight="600">02 / FLEET &amp; LOGISTICS</text>
+      <text x="364" y="68" fill="#ffffff" font-family="sans-serif" font-size="18" font-weight="700">Yellow Plant &amp; Equipment Hire</text>
+      <line x1="364" y1="88" x2="616" y2="88" stroke="#452e1e" stroke-width="1"/>
+      <text x="364" y="116" fill="#d6c5b9" font-family="sans-serif" font-size="12">Dry and wet rate hire of heavy excavators, TLBs, graders, front-end loaders, and tipper trucks across Gauteng.</text>
+      <text x="364" y="170" fill="#fbbf24" font-family="monospace" font-size="11">✓ Fully certified machine operators</text>
+      <text x="364" y="195" fill="#fbbf24" font-family="monospace" font-size="11">✓ 24/7 on-site technical support</text>
+
+      <!-- Card 3 -->
+      <rect x="680" y="0" width="300" height="240" rx="12" fill="url(#cardGradDarkGold)" stroke="#452e1e" stroke-width="1"/>
+      <text x="704" y="36" fill="#f59e0b" font-family="monospace" font-size="11" font-weight="600">03 / FACILITY SERVICES</text>
+      <text x="704" y="68" fill="#ffffff" font-family="sans-serif" font-size="18" font-weight="700">Cleaning &amp; Waste Management</text>
+      <line x1="704" y1="88" x2="956" y2="88" stroke="#452e1e" stroke-width="1"/>
+      <text x="704" y="116" fill="#d6c5b9" font-family="sans-serif" font-size="12">Specialized municipal waste collection, industrial chemical sanitation, site decontamination, and commercial hygiene services.</text>
+      <text x="704" y="170" fill="#fbbf24" font-family="monospace" font-size="11">✓ Green waste disposal methods</text>
+      <text x="704" y="195" fill="#fbbf24" font-family="monospace" font-size="11">✓ Certified health &amp; safety standards</text>
+    </g>
+  </g>
+</svg>

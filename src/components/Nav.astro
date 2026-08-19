@@ -11,7 +11,6 @@ const links = [
   { href: '/portfolio', label: 'Portfolio', key: 'portfolio' },
   { href: '/blog', label: 'Blog', key: 'blog' },
   { href: '/about', label: 'About', key: 'about' },
-  { href: '/contact', label: 'Contact', key: 'contact' },
 ];
 ---
 
@@ -26,7 +25,8 @@ const links = [
       links.map((link) => (
         <a
           href={link.href}
-          class={active === link.key ? 'text-accent' : ''}
+          class={active === link.key ? 'text-accent' : 'text-text-2 hover:text-text'}
+          aria-current={active === link.key ? 'page' : undefined}
         >
           {link.label}
         </a>
@@ -34,8 +34,12 @@ const links = [
     }
   </div>
 
-  <a href="/contact" class="btn btn-primary hidden shrink-0 whitespace-nowrap md:inline-flex">
-    Get Consultation
+  <a
+    href="/contact"
+    class:list={['btn btn-primary hidden shrink-0 whitespace-nowrap md:inline-flex', active === 'contact' && 'is-current']}
+    aria-current={active === 'contact' ? 'page' : undefined}
+  >
+    Start a project
   </a>
 
   <button
@@ -44,7 +48,7 @@ const links = [
     aria-label="Menu"
     aria-expanded="false"
     aria-controls="nav-mobile-menu"
-    class="flex h-9 w-9 flex-col items-center justify-center gap-[5px] md:hidden"
+    class="-mr-2.5 flex h-11 w-11 flex-col items-center justify-center gap-[5px] md:hidden"
   >
     <span class="block h-[2px] w-[22px] bg-text"></span>
     <span class="block h-[2px] w-[22px] bg-text"></span>
@@ -59,12 +63,16 @@ const links = [
   >
     {
       links.map((link) => (
-        <a href={link.href} class={active === link.key ? 'text-accent text-[15px]' : 'text-[15px]'}>
+        <a
+          href={link.href}
+          class:list={['py-1 text-body-lg', active === link.key && 'text-accent']}
+          aria-current={active === link.key ? 'page' : undefined}
+        >
           {link.label}
         </a>
       ))
     }
-    <a href="/contact" class="btn btn-primary self-start">Get Consultation</a>
+    <a href="/contact" class="btn btn-primary self-start">Start a project</a>
   </div>
 </nav>
 

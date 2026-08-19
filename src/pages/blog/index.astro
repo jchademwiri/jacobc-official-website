@@ -2,61 +2,68 @@
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import { getReadTime } from '../../lib/reading-time';
+import { getBlogImageUrl } from '../../lib/images';
 
 const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const filters = [
-  { key: 'all', label: 'All' },
-  { key: 'tendering', label: 'Tendering' },
-  { key: 'iso', label: 'ISO / SHEQ' },
-  { key: 'dev', label: 'Web Dev' },
+  { key: 'all', label: 'All', href: '/blog' },
+  { key: 'tendering', label: 'Tendering', href: '/blog/track/tendering' },
+  { key: 'iso', label: 'ISO / SHEQ', href: '/blog/track/iso' },
+  { key: 'dev', label: 'Web Dev', href: '/blog/track/dev' },
 ];
 
-const dateFormatter = new Intl.DateTimeFormat('en-US', { month: 'short', day: '2-digit', year: 'numeric' });
+const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2-digit', year: 'numeric' });
 ---
 
-<Layout title="Blog" description="Notes on tenders, compliance & the web." active="blog">
-  <div class="px-5 pb-6 pt-14 sm:px-8 md:px-14">
-    <span class="kicker">Blog</span>
-    <h1 class="mb-3 text-[38px]">Notes on tenders, compliance &amp; the web.</h1>
-    <p class="max-w-[56ch] text-[15px]" style="color: color-mix(in srgb, var(--color-text) 78%, transparent)">
+<Layout
+  title="Blog"
+  description="Field notes from running bids, building ISO management systems and shipping websites."
+  active="blog"
+>
+  <div class="px-5 pb-6 pt-16 sm:px-8 md:px-14">
+    <p class="kicker">Blog</p>
+    <h1 class="h1 mt-4 mb-4">Notes on tenders, compliance &amp; the web.</h1>
+    <p class="max-w-[56ch] text-body-lg text-text-2">
       Field notes from running bids, building ISO management systems and shipping websites.
     </p>
-    <div class="seg mt-6 inline-flex" id="blog-filter">
+    <div class="seg mt-7" id="blog-filter">
       {
         filters.map((filter, index) => (
-          <button
-            type="button"
-            aria-pressed={index === 0 ? 'true' : 'false'}
+          <a
+            href={filter.href}
+            aria-current={index === 0 ? 'true' : undefined}
             class:list={['seg-opt', index === 0 && 'is-active']}
             data-filter={filter.key}
           >
             {filter.label}
-          </button>
+          </a>
         ))
       }
     </div>
   </div>
 
-  <div class="grid gap-5 px-5 pb-16 pt-4 sm:px-8 md:grid-cols-3 md:px-14" id="blog-grid">
+  <div class="grid gap-5 px-5 pb-16 pt-5 sm:px-8 md:grid-cols-2 lg:grid-cols-3 md:px-14" id="blog-grid">
     {
       posts.map((post) => (
         <a
           href={`/blog/${post.id}`}
-          class="card flex flex-col overflow-hidden p-0"
+          class="card group flex flex-col overflow-hidden p-0"
           data-track={post.data.track}
         >
           <img
-            src={`https://picsum.photos/seed/${post.data.cover}/640/400`}
-            alt=""
+            src={getBlogImageUrl(post.data.cover)}
+            alt={post.data.title}
+            width="640"
+            height="400"
             class="aspect-[16/10] w-full object-cover"
             loading="lazy"
           />
-          <div class="flex flex-1 flex-col px-4 py-3.5">
+          <div class="flex flex-1 flex-col px-4 py-4">
             <p class="card-kicker">{post.data.category}</p>
-            <h4 class="card-title my-1.5 line-clamp-2 min-h-[41px]">{post.data.title}</h4>
-            <p class="card-body line-clamp-2 min-h-10">{post.data.excerpt}</p>
-            <p class="card-meta mt-auto pt-2">
+            <h2 class="card-title my-2 group-hover:text-accent">{post.data.title}</h2>
+            <p class="card-body">{post.data.excerpt}</p>
+            <p class="card-meta mt-auto pt-3">
               {dateFormatter.format(post.data.date)} · {getReadTime(post.body ?? '')}
             </p>
           </div>
@@ -64,28 +71,9 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', { month: 'short', day: '2
       ))
     }
   </div>
-
 </Layout>
 
 <script>
-  const container = document.getElementById('blog-filter');
-  const cards = document.querySelectorAll<HTMLElement>('#blog-grid [data-track]');
-
-  container?.addEventListener('click', (event) => {
-    const button = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-filter]');
-    if (!button) return;
-
-    container.querySelectorAll<HTMLButtonElement>('.seg-opt').forEach((opt) => {
-      opt.classList.remove('is-active');
-      opt.setAttribute('aria-pressed', 'false');
-    });
-    button.classList.add('is-active');
-    button.setAttribute('aria-pressed', 'true');
-
-    const filter = button.dataset.filter;
-    cards.forEach((card) => {
-      const show = filter === 'all' || card.dataset.track === filter;
-      card.style.display = show ? '' : 'none';
-    });
-  });
+  import { initFilter } from '../../scripts/filter';
+  initFilter({ containerId: 'blog-filter', gridId: 'blog-grid', attribute: 'track' });
 </script>

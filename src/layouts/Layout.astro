@@ -2,23 +2,41 @@
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
+import Schema, { type Crumb } from '../components/Schema.astro';
 import Analytics from '@vercel/analytics/astro';
+import { SITE_NAME } from '../lib/site';
 import '../styles/global.css';
 
 interface Props {
-  title: string;
+  /** Suffixed with the brand name. Omit when passing `fullTitle`. */
+  title?: string;
+  /** Used verbatim, for pages where the brand-suffixed pattern wastes the slot. */
+  fullTitle?: string;
   description: string;
   active?: 'home' | 'services' | 'portfolio' | 'blog' | 'about' | 'contact';
   maxWidth?: 'default' | 'narrow';
   footerVariant?: 'default' | 'post' | 'portfolio';
+  ogType?: 'website' | 'article';
+  publishedTime?: Date;
+  tags?: string[];
+  breadcrumb?: Crumb[];
+  schema?: 'person' | 'article' | 'service' | 'default';
+  noindex?: boolean;
 }
 
 const {
   title,
+  fullTitle,
   description,
   active,
   maxWidth = 'default',
   footerVariant = 'default',
+  ogType = 'website',
+  publishedTime,
+  tags,
+  breadcrumb,
+  schema,
+  noindex = false,
 } = Astro.props;
 
 const maxWidthClass = {
@@ -26,38 +44,70 @@ const maxWidthClass = {
   narrow: 'max-w-[900px]',
 }[maxWidth];
 
-const pageTitle = `${title} · Jacob Chademwiri`;
+const pageTitle = fullTitle ?? (title ? `${title} · ${SITE_NAME}` : SITE_NAME);
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 const ogImageUrl = new URL('/og-image.png', Astro.site);
+const schemaKind = schema ?? (ogType === 'article' ? 'article' : 'default');
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en-ZA">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#161826" />
+    <meta name="author" content={SITE_NAME} />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonicalUrl} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <link rel="alternate" type="application/rss+xml" title={`${SITE_NAME} — Blog`} href="/rss.xml" />
     <title>{pageTitle}</title>
 
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Jacob Chademwiri" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:locale" content="en_ZA" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${SITE_NAME} — ${description}`} />
+    {
+      ogType === 'article' && publishedTime && (
+        <meta property="article:published_time" content={publishedTime.toISOString()} />
+      )
+    }
+    {ogType === 'article' && <meta property="article:author" content={SITE_NAME} />}
+    {ogType === 'article' && tags?.map((tag) => <meta property="article:tag" content={tag} />)}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
+
+    <Schema
+      site={Astro.site!}
+      canonical={canonicalUrl}
+      kind={schemaKind}
+      breadcrumb={breadcrumb}
+      headline={title}
+      description={description}
+      image={ogImageUrl}
+      publishedTime={publishedTime}
+      tags={tags}
+    />
   </head>
   <body class="bg-bg text-text">
+    <a href="#main" class="skip-link">Skip to content</a>
     <div class:list={['relative mx-auto', maxWidthClass]}>
       <Nav active={active} />
-      <slot />
+      <main id="main">
+        <slot />
+      </main>
       <Footer variant={footerVariant} />
     </div>
     <WhatsAppButton />

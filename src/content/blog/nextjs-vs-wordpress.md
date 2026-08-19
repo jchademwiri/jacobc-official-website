@@ -3,6 +3,7 @@ title: "Next.js vs. WordPress for SME Sites"
 category: "Web development"
 track: "dev"
 date: 2026-05-04
+readTime: "5 min read"
 excerpt: "Picking the right stack for a small business budget."
 cover: "nextjs-vs-wordpress"
 tags:
@@ -20,4 +21,4 @@ If a non-technical owner needs to change copy and swap images weekly, a familiar
 
 ## 2. Next.js wins on speed and long-term cost
 
-Static generation and no plugin sprawl means faster pages and fewer security patches, but the tradeoff is a developer in the loop for structural changes.
+Static generation and no plugin sprawl means faster pages and fewer security patches — the tradeoff is a developer in the loop for structural changes.
