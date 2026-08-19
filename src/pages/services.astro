@@ -47,13 +47,15 @@ const rows = [
   title="Services"
   description="Tender management, project delivery and websites that hold up."
   active="services"
+  schema="service"
+  keywords={['tender management', 'project management', 'web development', 'RFP review', 'bid management', 'Next.js', 'Astro']}
 >
   <div class="px-5 pb-14 pt-16 sm:px-8 md:px-14 md:pb-14 md:pt-20">
     <span class="kicker">Services</span>
     <h1 class="max-w-[20ch] text-[32px] sm:text-[42px] md:text-[48px]">
       Tender management, project delivery and websites that hold up.
     </h1>
-    <p class="mt-5 max-w-[620px] text-base leading-[1.65]" style="color: color-mix(in srgb, var(--color-text) 82%, transparent)">
+    <p class="mt-5 max-w-[620px] text-base leading-[1.65] text-text-2">
       Three disciplines, one point of accountability — from winning the contract to running the project to shipping the site that represents it.
     </p>
   </div>
@@ -72,7 +74,7 @@ const rows = [
           <h2 class="text-[26px]">{row.title}</h2>
         </div>
         <div>
-          <p class="mb-5 max-w-[60ch] text-[15.5px] leading-[1.7]" style="color: color-mix(in srgb, var(--color-text) 80%, transparent)">
+          <p class="service-description mb-5">
             {row.description}
           </p>
           <div class="flex flex-wrap gap-2">
