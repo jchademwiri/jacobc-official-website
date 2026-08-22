@@ -1,6 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import ScrollToTop from '../../components/ScrollToTop.astro';
 import { getCollection, render } from 'astro:content';
 import { getReadTime } from '../../lib/reading-time';
 import { getBlogImageUrl } from '../../lib/images';
@@ -66,6 +65,4 @@ const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2
       }
     </div>
   </div>
-
-  <ScrollToTop />
 </Layout>

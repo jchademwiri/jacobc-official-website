@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import ScrollToTop from '../../components/ScrollToTop.astro';
 import { getCollection, render } from 'astro:content';
+import { getPortfolioImageUrl } from '../../lib/images';
 
 export async function getStaticPaths() {
   const items = await getCollection('portfolio');
@@ -43,8 +43,8 @@ const categoryLabels: Record<string, string> = {
 
   <figure class="my-8 px-5 sm:px-8 md:px-14">
     <img
-      src={`https://picsum.photos/seed/${item.data.cover}/1200/675`}
-      alt=""
+      src={getPortfolioImageUrl(item.data.cover)}
+      alt={item.data.title}
       width="1200"
       height="675"
       fetchpriority="high"
@@ -92,6 +92,4 @@ const categoryLabels: Record<string, string> = {
       }
     </div>
   </div>
-
-  <ScrollToTop />
 </Layout>
