@@ -1,0 +1,24 @@
+# Jacob Chademwiri
+
+> Tender & Project Manager, Web Developer based in Centurion, Gauteng, South Africa.
+> Specialised in tender management, ISO/SHEQ compliance systems, project delivery coordination, and high-performance web development (React, Next.js, Astro).
+
+## Core Capabilities
+- **Tender Management**: Full lifecycle management, RFP/bid document analysis, compliance scheduling, CSD/CIDB compliance, and competitive bid compilation for municipalities, SOEs, and commercial clients.
+- **Project Management**: Agile delivery coordination, timeline and budget governance, stakeholder management, and Microsoft 365 / Sage Accounting tracking.
+- **Web Development**: Modern, accessible, and fast websites and web applications built with Next.js, Astro, TypeScript, and Tailwind CSS.
+
+## Main Pages
+- [Home](https://jacobc.co.za/): Overview of services, experience, and recent blog posts.
+- [Services](https://jacobc.co.za/services): Detailed breakdown of Tender Management, Project Management, and Website Development services.
+- [Portfolio](https://jacobc.co.za/portfolio): Case studies of websites built, projects managed, and tenders delivered across South Africa.
+- [Blog](https://jacobc.co.za/blog): Field notes on tender success rates, bid document analysis, ISO 9001 rollouts, SHEQ management, and modern web development.
+- [About](https://jacobc.co.za/about): Professional background, experience, and technical skills.
+- [Contact](https://jacobc.co.za/contact): Consultation requests, enquiry form, and direct email contacts.
+
+## Contact & Profiles
+- **Email**: hello@jacobc.co.za
+- **Location**: Centurion, Gauteng, South Africa
+- **GitHub**: https://github.com/jchademwiri
+- **LinkedIn**: https://linkedin.com/in/jchademwiri
+- **WhatsApp**: https://wa.me/27740491433
