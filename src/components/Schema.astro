@@ -107,6 +107,36 @@ if (kind === 'service') {
       addressRegion: REGION,
       addressCountry: COUNTRY,
     },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Professional Services',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Tender Management',
+            description: 'Full tendering lifecycle: opportunity identification, compliance scheduling, and competitive bid compilation.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Project Management',
+            description: 'End-to-end delivery coordination, timeline and budget governance, and Agile execution.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Website Development',
+            description: 'Modern, accessible web development in React, Next.js, Astro, and Tailwind CSS.',
+          },
+        },
+      ],
+    },
   });
 }
 
