@@ -1,0 +1,106 @@
+---
+const pillars = [
+  {
+    id: 'tender-management',
+    step: '01',
+    phase: 'STAGE 01 · BID ACQUISITION',
+    title: 'Tender Management',
+    desc: 'RFP review, compliance matrix & winning bid compiling.',
+    badge: '100% Compliance Focus',
+    tags: ['RFP Review', 'Bid Compilation'],
+  },
+  {
+    id: 'project-management',
+    step: '02',
+    phase: 'STAGE 02 · EXECUTION & GOVERNANCE',
+    title: 'Project Management',
+    desc: 'Agile sprints, stakeholder delivery & budget governance.',
+    badge: 'On-Time Delivery',
+    tags: ['Agile Sprints', 'Stakeholder Mgmt'],
+  },
+  {
+    id: 'web-development',
+    step: '03',
+    phase: 'STAGE 03 · DIGITAL PLATFORMS',
+    title: 'Website Development',
+    desc: 'Fast, accessible Astro & Next.js web applications.',
+    badge: 'Performance & SEO',
+    tags: ['Next.js', 'Astro', 'Tailwind'],
+  },
+];
+---
+
+<div class="services-visual-wrap relative" aria-label="Services delivery matrix">
+  <div class="services-visual-glow absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative rounded-xl border border-divider bg-surface/90 p-5 backdrop-blur-[12px] shadow-sm sm:p-6">
+    <div class="mb-5 flex items-center justify-between border-b border-divider pb-3.5">
+      <div class="flex items-center gap-2">
+        <span class="dot" aria-hidden="true"></span>
+        <span class="font-mono text-[11px] uppercase tracking-widest text-accent font-medium">Delivery Matrix</span>
+      </div>
+      <span class="data text-label text-text-3">3 Connected Pillars</span>
+    </div>
+
+    <div class="relative flex flex-col gap-3">
+      {
+        pillars.map((pillar) => (
+          <a
+            href={`#${pillar.id}`}
+            class="group relative flex flex-col gap-2 rounded-lg border border-edge bg-bg/70 p-4 transition-all duration-200 hover:border-accent/60 hover:bg-bg/95 hover:shadow-[0_0_20px_rgba(145,132,217,0.12)]"
+          >
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-[10px] font-medium uppercase tracking-wider text-text-3 group-hover:text-accent">
+                {pillar.phase}
+              </span>
+              <span class="font-mono text-meta text-accent transition-transform duration-200 group-hover:translate-x-0.5">
+                →
+              </span>
+            </div>
+
+            <div class="flex items-baseline justify-between gap-3">
+              <h3 class="card-title text-[15px] font-medium text-text group-hover:text-accent">
+                {pillar.title}
+              </h3>
+              <span class="tag tag-accent text-[11px] py-0.5 px-2 font-mono">
+                {pillar.badge}
+              </span>
+            </div>
+
+            <p class="text-[13px] leading-relaxed text-text-2">
+              {pillar.desc}
+            </p>
+
+            <div class="mt-1 flex flex-wrap gap-1.5 pt-1">
+              {pillar.tags.map((tag) => (
+                <span class="tag tag-outline text-[11px] py-0.5 px-2 text-text-3 group-hover:text-text-2">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </a>
+        ))
+      }
+    </div>
+
+    <div class="mt-4 flex items-center justify-between border-t border-divider pt-3 text-meta text-text-3">
+      <span class="text-[12px]">Unified accountability across every phase</span>
+      <a href="/contact" class="text-accent text-[12px] hover:underline">
+        Start now →
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .services-visual-wrap {
+    max-width: 480px;
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .services-visual-glow {
+    background: radial-gradient(320px 260px at 60% 30%, var(--color-section-glow), transparent 75%);
+    opacity: 0.45;
+  }
+</style>
