@@ -12,6 +12,10 @@ const PORTFOLIO_IMAGE_MAP: Record<string, string> = {
   'portfolio-phehlwana': '/images/portfolio/portfolio-phehlwana.svg',
   'portfolio-playhouse': '/images/portfolio/portfolio-playhouse.svg',
   'portfolio-tender-edge': '/images/portfolio/portfolio-tender-edge.svg',
+  'portfolio-project-1': '/images/portfolio/portfolio-tender-equipment.jpg',
+  'portfolio-project-2': '/images/portfolio/portfolio-tender-vehicles.jpg',
+  'portfolio-tender-1': '/images/portfolio/portfolio-tender-toilets.jpg',
+  'portfolio-tender-2': '/images/portfolio/portfolio-tender-horticulture.jpg',
 };
 
 const BLOG_IMAGE_MAP: Record<string, string> = {
