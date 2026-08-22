@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ContactBand from '../components/ContactBand.astro';
+import ServicesHeroVisual from '../components/ServicesHeroVisual.astro';
 
 const rows = [
   {
@@ -50,14 +51,25 @@ const rows = [
   schema="service"
   keywords={['tender management', 'project management', 'web development', 'RFP review', 'bid management', 'Next.js', 'Astro']}
 >
-  <div class="px-5 pb-14 pt-16 sm:px-8 md:px-14 md:pb-14 md:pt-20">
-    <span class="kicker">Services</span>
-    <h1 class="max-w-[20ch] text-[32px] sm:text-[42px] md:text-[48px]">
-      Tender management, project delivery and websites that hold up.
-    </h1>
-    <p class="mt-5 max-w-[620px] text-base leading-[1.65] text-text-2">
-      Three disciplines, one point of accountability — from winning the contract to running the project to shipping the site that represents it.
-    </p>
+  <div class="grid gap-10 px-5 pb-14 pt-16 sm:px-8 md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] md:items-center md:px-14 md:pt-20">
+    <div>
+      <span class="kicker">Services</span>
+      <h1 class="display mt-4 max-w-[18ch]">
+        Tender management, project delivery and websites that hold up.
+      </h1>
+      <p class="mt-5 max-w-[560px] text-body-lg text-text-2">
+        Three disciplines, one point of accountability — from winning the contract to running the project to shipping the site that represents it.
+      </p>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <a href="/contact" class="btn btn-primary">Start a project</a>
+        <a href="#tender-management" class="btn btn-secondary">Explore disciplines</a>
+      </div>
+      <p class="mt-7 flex items-baseline gap-2.5 text-meta text-text-3">
+        <span class="dot" aria-hidden="true"></span>
+        Available for tenders, project delivery &amp; custom web builds.
+      </p>
+    </div>
+    <ServicesHeroVisual />
   </div>
 
   {
