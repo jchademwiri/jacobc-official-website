@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" width="520" height="120" fill="none">
+  <defs>
+    <linearGradient id="c1-grad-primary" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b4a7f5" />
+      <stop offset="60%" stop-color="#9184d9" />
+      <stop offset="100%" stop-color="#6b59c7" />
+    </linearGradient>
+    <linearGradient id="c1-grad-secondary" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6b59c7" />
+      <stop offset="100%" stop-color="#9184d9" />
+    </linearGradient>
+    <linearGradient id="c1-grad-accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e9e9ed" />
+      <stop offset="100%" stop-color="#bbbbc1" />
+    </linearGradient>
+    <filter id="c1-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <style>
+    .brand-name {
+      font-family: "Inter Variable", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 30px;
+      font-weight: 700;
+      fill: #e9e9ed;
+      letter-spacing: -0.5px;
+    }
+    .brand-name-accent {
+      fill: #9184d9;
+    }
+    .brand-tagline {
+      font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+      font-size: 10px;
+      font-weight: 500;
+      fill: #909199;
+      letter-spacing: 2.2px;
+    }
+  </style>
+
+  <!-- MARK: HexaShield Standards Monogram (JC) -->
+  <g transform="translate(14, 10)">
+    <!-- Base Hexagon Background Container -->
+    <rect width="100" height="100" rx="22" fill="#161826" stroke="#2b2d3d" stroke-width="1.5" />
+    <circle cx="50" cy="50" r="42" fill="#232532" fill-opacity="0.5" />
+
+    <!-- Isometric Shield / Hexagon Path -->
+    <path d="M50 16 L80 33 L80 67 L50 84 L20 67 L20 33 Z" stroke="#353b80" stroke-width="2" stroke-linejoin="round" fill="none" opacity="0.4" />
+
+    <!-- Stylized 'J' Stem & Hook -->
+    <path d="M38 31 L48 31 L48 64 C48 70 43.5 73.5 37 73.5 C31.5 73.5 27 70 27 65" 
+          stroke="url(#c1-grad-accent)" 
+          stroke-width="7" 
+          stroke-linecap="round" 
+          stroke-linejoin="round" 
+          fill="none" />
+
+    <!-- Stylized Interlocking 'C' Arc -->
+    <path d="M71 39 C66 33 58 31 51 31 C38 31 30 40 30 50 C30 60 38 69 51 69 C60 69 68 65 73 57" 
+          stroke="url(#c1-grad-primary)" 
+          stroke-width="7" 
+          stroke-linecap="round" 
+          stroke-linejoin="round" 
+          fill="none" 
+          filter="url(#c1-glow)" />
+
+    <!-- Convergence Core Node (Audit Quality Focal Point) -->
+    <circle cx="50" cy="50" r="4" fill="#9184d9" />
+    <circle cx="50" cy="50" r="7" stroke="#9184d9" stroke-width="1.5" stroke-opacity="0.4" fill="none" />
+  </g>
+
+  <!-- TYPOGRAPHY: Wordmark & Multi-Discipline Kicker -->
+  <g transform="translate(136, 44)">
+    <text class="brand-name" x="0" y="20">
+      Jacob <tspan class="brand-name-accent">C.</tspan>
+    </text>
+    
+    <!-- Accent Indicator Badge -->
+    <rect x="138" y="4" width="70" height="18" rx="9" fill="#232532" stroke="#353b80" stroke-width="1" />
+    <circle cx="148" cy="13" r="3" fill="#9184d9" />
+    <text x="156" y="16.5" font-family="'IBM Plex Mono', monospace" font-size="9" font-weight="600" fill="#9184d9">ISO·IMS</text>
+
+    <!-- Subtitle Line -->
+    <text class="brand-tagline" x="1" y="42">
+      TENDERS · ISO IMS · AR · WEB
+    </text>
+
+    <!-- Technical Divider Accent -->
+    <line x1="1" y1="52" x2="330" y2="52" stroke="#2b2d3d" stroke-width="1" />
+    <circle cx="330" cy="52" r="1.5" fill="#9184d9" />
+  </g>
+</svg>

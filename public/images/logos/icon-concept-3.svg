@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" fill="none">
+  <defs>
+    <linearGradient id="ic3-accent-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b4a7f5" />
+      <stop offset="100%" stop-color="#9184d9" />
+    </linearGradient>
+    <linearGradient id="ic3-card-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#232532" />
+      <stop offset="100%" stop-color="#161826" />
+    </linearGradient>
+  </defs>
+
+  <rect width="100" height="100" rx="18" fill="url(#ic3-card-grad)" stroke="#3f424d" stroke-width="1.5" />
+
+  <path d="M12 24 L12 12 L24 12" stroke="#9184d9" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.6" />
+  <path d="M88 76 L88 88 L76 88" stroke="#9184d9" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.6" />
+
+  <!-- Outer 'C' Architecture -->
+  <path d="M72 30 L44 30 C34 30 28 36 28 46 L28 54 C28 64 34 70 44 70 L72 70" 
+        stroke="#e9e9ed" 
+        stroke-width="8" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        fill="none" />
+
+  <!-- Inner 'J' Monogram -->
+  <path d="M54 26 L54 62 C54 71 47 74 41 74 C36 74 33 72 31 69" 
+        stroke="url(#ic3-accent-grad)" 
+        stroke-width="7" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        fill="none" />
+
+  <polygon points="76,22 84,30 76,38 68,30" fill="#9184d9" />
+  <circle cx="76" cy="30" r="2" fill="#161826" />
+</svg>

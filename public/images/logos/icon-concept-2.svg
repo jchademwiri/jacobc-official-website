@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" fill="none">
+  <defs>
+    <linearGradient id="ic2-loop-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="40%" stop-color="#9184d9" />
+      <stop offset="100%" stop-color="#7c68d6" />
+    </linearGradient>
+    <linearGradient id="ic2-j-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e9e9ed" />
+      <stop offset="100%" stop-color="#9184d9" />
+    </linearGradient>
+    <filter id="ic2-glow-soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <rect width="100" height="100" rx="28" fill="#161826" stroke="#2b2d3d" stroke-width="1.5" />
+  <ellipse cx="50" cy="50" rx="36" ry="34" stroke="#262a60" stroke-width="1.5" stroke-dasharray="3 3" />
+
+  <!-- 'J' Segment -->
+  <path d="M40 24 L40 60 C40 68 35 74 27 74 C22 74 19 71 18 67" 
+        stroke="url(#ic2-j-grad)" 
+        stroke-width="6.5" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" />
+
+  <!-- 'C' Orbit Ribbon -->
+  <path d="M72 32 C60 22 45 23 37 31 C28 41 28 59 38 69 C48 78 65 77 74 66 C79 60 81 52 80 44" 
+        stroke="url(#ic2-loop-grad)" 
+        stroke-width="6.5" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"
+        filter="url(#ic2-glow-soft)" />
+
+  <circle cx="72" cy="32" r="4.5" fill="#9184d9" stroke="#161826" stroke-width="2" />
+  <circle cx="74" cy="66" r="4.5" fill="#38bdf8" stroke="#161826" stroke-width="2" />
+  <circle cx="38" cy="69" r="4" fill="#f59e0b" stroke="#161826" stroke-width="2" />
+</svg>

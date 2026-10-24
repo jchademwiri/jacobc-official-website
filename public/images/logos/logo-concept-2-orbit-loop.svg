@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" width="520" height="120" fill="none">
+  <defs>
+    <linearGradient id="c2-loop-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="40%" stop-color="#9184d9" />
+      <stop offset="100%" stop-color="#7c68d6" />
+    </linearGradient>
+    <linearGradient id="c2-j-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e9e9ed" />
+      <stop offset="100%" stop-color="#9184d9" />
+    </linearGradient>
+    <filter id="c2-glow-soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <style>
+    .c2-name {
+      font-family: "Inter Variable", "Inter", -apple-system, sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      fill: #e9e9ed;
+      letter-spacing: -0.3px;
+    }
+    .c2-name-sub {
+      font-weight: 300;
+      fill: #bbbbc1;
+    }
+    .c2-kicker {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 9.5px;
+      font-weight: 600;
+      fill: #9184d9;
+      letter-spacing: 2px;
+    }
+    .c2-desc {
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      fill: #909199;
+    }
+  </style>
+
+  <!-- MARK: Continuous IMS Orbit Loop (J & C) -->
+  <g transform="translate(14, 10)">
+    <!-- Dark Backplate with Gradient Border -->
+    <rect width="100" height="100" rx="28" fill="#161826" stroke="#2b2d3d" stroke-width="1.5" />
+    
+    <!-- Outer Orbit Path -->
+    <ellipse cx="50" cy="50" rx="36" ry="34" stroke="#262a60" stroke-width="1.5" stroke-dasharray="3 3" />
+
+    <!-- 'J' Segment: Clean vertical stem with curved anchor -->
+    <path d="M40 24 L40 60 C40 68 35 74 27 74 C22 74 19 71 18 67" 
+          stroke="url(#c2-j-grad)" 
+          stroke-width="6.5" 
+          stroke-linecap="round" 
+          stroke-linejoin="round" />
+
+    <!-- 'C' Orbit Ribbon: Fluid loop enveloping the J -->
+    <path d="M72 32 C60 22 45 23 37 31 C28 41 28 59 38 69 C48 78 65 77 74 66 C79 60 81 52 80 44" 
+          stroke="url(#c2-loop-grad)" 
+          stroke-width="6.5" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"
+          filter="url(#c2-glow-soft)" />
+
+    <!-- 3 ISO Pillar Satellite Nodes (Quality, Environment, Safety) -->
+    <!-- ISO 9001 (Quality - Purple) -->
+    <circle cx="72" cy="32" r="4.5" fill="#9184d9" stroke="#161826" stroke-width="2" />
+    
+    <!-- ISO 14001 (Environment - Cyan) -->
+    <circle cx="74" cy="66" r="4.5" fill="#38bdf8" stroke="#161826" stroke-width="2" />
+
+    <!-- ISO 45001 (Safety - Coral/Gold) -->
+    <circle cx="38" cy="69" r="4" fill="#f59e0b" stroke="#161826" stroke-width="2" />
+  </g>
+
+  <!-- TYPOGRAPHY: Elegant Executive Lockup -->
+  <g transform="translate(134, 42)">
+    <text class="c2-name" x="0" y="20">
+      Jacob Chademwiri
+    </text>
+
+    <text class="c2-kicker" x="1" y="40">
+      ISO IMPLEMENTATION LEAD · SHEQ · AR
+    </text>
+
+    <!-- Pillar Badges Pill Strip -->
+    <g transform="translate(1, 48)">
+      <rect width="64" height="17" rx="3.5" fill="#232532" stroke="#3f424d" stroke-width="0.75" />
+      <text x="32" y="11.5" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8.5" font-weight="500" fill="#e9e9ed">ISO 9001</text>
+
+      <rect x="70" width="70" height="17" rx="3.5" fill="#232532" stroke="#3f424d" stroke-width="0.75" />
+      <text x="105" y="11.5" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8.5" font-weight="500" fill="#38bdf8">ISO 14001</text>
+
+      <rect x="146" width="70" height="17" rx="3.5" fill="#232532" stroke="#3f424d" stroke-width="0.75" />
+      <text x="181" y="11.5" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8.5" font-weight="500" fill="#f59e0b">ISO 45001</text>
+
+      <rect x="222" width="62" height="17" rx="3.5" fill="#232532" stroke="#353b80" stroke-width="0.75" />
+      <text x="253" y="11.5" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8.5" font-weight="600" fill="#9184d9">SAP·ERP</text>
+    </g>
+  </g>
+</svg>
