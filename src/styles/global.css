@@ -288,7 +288,7 @@
   }
 
   .tag-accent {
-    background: color-mix(in srgb, var(--color-accent) 16%, transparent);
+    background: color-mix(in srgb, var(--color-accent) 11%, transparent);
     color: var(--color-accent);
   }
 
