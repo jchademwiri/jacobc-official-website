@@ -9,31 +9,47 @@ const rows = [
     number: '01',
     title: 'Tender Management',
     description:
-      'Full tendering lifecycle — from identifying opportunities and ensuring compliance to crafting compelling, competitive submissions that win contracts. Includes RFP/bid document review, compliance scheduling and outcome tracking.',
+      'Full tendering lifecycle — from identifying opportunities and ensuring compliance to crafting compelling, competitive submissions that win contracts. Includes RFP/bid document review, compliance scheduling, CIDB alignments and outcome tracking.',
     tags: [
       { label: 'RFP Review', accent: true },
       { label: 'Bid Management', accent: true },
       { label: 'Compliance Scheduling', accent: false },
+      { label: 'CIDB & CSD', accent: false },
+    ],
+  },
+  {
+    id: 'iso-sheq-compliance',
+    number: '02',
+    title: 'ISO Implementation & SHEQ Compliance',
+    description:
+      'End-to-end Integrated Management System (IMS) implementation unifying ISO 9001 (Quality), ISO 14001 (Environmental), and ISO 45001 (Health & Safety). From gap analysis, policy and SHEQ manual formulation to Hazard Identification and Risk Assessment (HIRA), statutory legal registers (OHS Act, Driven Machinery Regulations DMR 19 for Lifting Machinery Entities), and internal audit readiness.',
+    tags: [
+      { label: 'ISO 9001 / 14001 / 45001', accent: true },
+      { label: 'IMS Implementation', accent: true },
+      { label: 'SHEQ Manuals & SOPs', accent: false },
+      { label: 'HIRA & Legal Registers', accent: false },
+      { label: 'Audit Readiness', accent: false },
     ],
   },
   {
     id: 'project-management',
-    number: '02',
-    title: 'Project Management',
+    number: '03',
+    title: 'AR & Project Governance',
     description:
-      'End-to-end delivery coordination — aligning timelines, teams and budgets for smooth execution and successful outcomes, run Agile and tracked in Microsoft 365.',
+      'End-to-end delivery coordination paired with robust financial governance — aligning timelines, budgets, and enterprise accounts receivable (billing integrity, debt collection, and financial reconciliation in SAP and Sage) for smooth execution and clean audits.',
     tags: [
-      { label: 'Stakeholder Management', accent: true },
-      { label: 'Agile', accent: true },
-      { label: 'Microsoft 365', accent: false },
+      { label: 'AR Management', accent: true },
+      { label: 'SAP & Sage', accent: true },
+      { label: 'Stakeholder Management', accent: false },
+      { label: 'Agile & M365', accent: false },
     ],
   },
   {
     id: 'web-development',
-    number: '03',
+    number: '04',
     title: 'Website Development',
     description:
-      'Fast, accessible websites that reflect your brand, engage users and support long-term growth — built in React, Next.js and Tailwind CSS, with SEO and performance as first-class concerns.',
+      'Fast, accessible websites that reflect your brand, engage users and support long-term growth — built in React, Next.js, Astro.js and Tailwind CSS, with SEO and performance as first-class concerns.',
     tags: [
       { label: 'Next.js', accent: false },
       { label: 'Astro.js', accent: false },
@@ -46,19 +62,19 @@ const rows = [
 
 <Layout
   title="Services"
-  description="Tender management, project delivery and websites that hold up."
+  description="Tender acquisition, ISO IMS implementation (ISO 9001, 14001, 45001), AR governance (SAP & Sage) and websites that hold up."
   active="services"
   schema="service"
-  keywords={['tender management', 'project management', 'web development', 'RFP review', 'bid management', 'Next.js', 'Astro']}
+  keywords={['tender management', 'ISO implementation', 'ISO 9001', 'ISO 14001', 'ISO 45001', 'SHEQ', 'AR manager', 'SAP', 'Sage accounting', 'project management', 'web development', 'Centurion']}
 >
   <div class="grid gap-10 px-5 pb-14 pt-16 sm:px-8 md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] md:items-center md:px-14 md:pt-20">
     <div>
       <span class="kicker">Services</span>
       <h1 class="display mt-4 max-w-[18ch]">
-        Tender management, project delivery and websites that hold up.
+        Tender acquisition, compliance systems &amp; digital execution.
       </h1>
       <p class="mt-5 max-w-[560px] text-body-lg text-text-2">
-        Three disciplines, one point of accountability — from winning the contract to running the project to shipping the site that represents it.
+        Four disciplines, one point of accountability — from winning the contract and certifying management systems to governing financial operations and shipping the site that represents it.
       </p>
       <div class="mt-7 flex flex-wrap gap-3">
         <a href="/contact" class="btn btn-primary">Start a project</a>
@@ -66,7 +82,7 @@ const rows = [
       </div>
       <p class="mt-7 flex items-baseline gap-2.5 text-meta text-text-3">
         <span class="dot" aria-hidden="true"></span>
-        Available for tenders, project delivery &amp; custom web builds.
+        Available for tenders, ISO IMS rollouts, AR governance &amp; custom web builds.
       </p>
     </div>
     <ServicesHeroVisual />

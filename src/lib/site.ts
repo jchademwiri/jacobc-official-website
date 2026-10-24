@@ -1,5 +1,5 @@
 export const SITE_NAME = 'Jacob Chademwiri';
-export const PERSON_JOB_TITLE = 'Tender & Project Manager, Web Developer';
+export const PERSON_JOB_TITLE = 'Tender & Project Manager | ISO Implementation Lead | SHEQ | AR Manager | Web Developer';
 
 export const CONTACT_EMAIL = 'hello@jacobc.co.za';
 export const CONTACT_MAILTO = `mailto:${CONTACT_EMAIL}`;
