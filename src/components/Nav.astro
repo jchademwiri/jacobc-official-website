@@ -15,10 +15,20 @@ const links = [
 ---
 
 <nav
-  class="sticky top-0 z-20 flex flex-wrap items-center justify-between gap-x-6 gap-y-2.5 border-b border-divider px-5 py-4 backdrop-blur-[14px] sm:px-8 md:px-14"
+  class="sticky top-0 z-20 flex flex-wrap items-center justify-between gap-x-6 gap-y-2.5 border-b border-divider px-5 py-3.5 backdrop-blur-[14px] sm:px-8 md:px-14"
   style="background: color-mix(in srgb, var(--color-bg) 72%, transparent)"
 >
-  <a href="/" class="text-base font-medium">Jacob C.</a>
+  <a href="/" class="group flex items-center gap-2.5 text-base font-medium">
+    <img
+      src="/images/logos/logo-mark.svg"
+      alt="Jacob C. Logo"
+      width="28"
+      height="28"
+      class="h-7 w-7 rounded-lg transition-transform duration-200 group-hover:scale-105"
+      loading="eager"
+    />
+    <span class="transition-colors duration-200 group-hover:text-accent">Jacob C.</span>
+  </a>
 
   <div class="hidden items-center gap-7 text-sm md:flex">
     {
@@ -92,22 +102,27 @@ const links = [
     };
 
     toggle.addEventListener('click', () => {
-      if (menu.hidden) openMenu();
-      else closeMenu();
+      const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+      if (isExpanded) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
     });
 
-    menu.addEventListener('click', (event) => {
-      if ((event.target as HTMLElement).tagName === 'A') closeMenu();
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!toggle.contains(e.target as Node) && !menu.contains(e.target as Node)) {
+        closeMenu();
+      }
     });
 
-    document.addEventListener('click', (event) => {
-      if (menu.hidden) return;
-      const target = event.target as Node;
-      if (!menu.contains(target) && !toggle.contains(target)) closeMenu();
-    });
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && !menu.hidden) closeMenu();
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !menu.hidden) {
+        closeMenu();
+        toggle.focus();
+      }
     });
   }
 </script>

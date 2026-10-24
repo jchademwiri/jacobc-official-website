@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" fill="none">
+  <defs>
+    <!-- Brand Cyan-to-Violet IMS Gradient -->
+    <linearGradient id="jc-c-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#9184d9" />
+      <stop offset="100%" stop-color="#7c68d6" />
+    </linearGradient>
+
+    <!-- Executive Platinum-to-Violet J Gradient -->
+    <linearGradient id="jc-j-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="40%" stop-color="#e9e9ed" />
+      <stop offset="100%" stop-color="#9184d9" />
+    </linearGradient>
+
+    <!-- Subtle Optical Luminous Glow -->
+    <filter id="jc-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Dark Obsidian Squircle Base -->
+  <rect width="100" height="100" rx="26" fill="#141522" stroke="#26293d" stroke-width="1.5" />
+
+  <!-- ISO Standards Compliance & Orbit Ring -->
+  <circle cx="50" cy="50" r="39" stroke="#252840" stroke-width="1.2" stroke-dasharray="3 3" />
+
+  <!-- Subtle Dynamic Orbit Arc -->
+  <path d="M22 34 C30 22 42 18 52 18 C72 18 86 28 88 46" 
+        stroke="url(#jc-c-grad)" 
+        stroke-width="1.5" 
+        stroke-linecap="round" 
+        opacity="0.3" />
+
+  <!-- Letter 'J': Confident vertical stem with anchored bottom hook -->
+  <path d="M35 24 L35 65 A 10.5 10.5 0 0 1 14 65" 
+        stroke="url(#jc-j-grad)" 
+        stroke-width="7" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" />
+
+  <!-- Letter 'C': Precision geometric crescent embracing the right quadrant -->
+  <path d="M85 34 C74 21 49 26 49 50 C49 74 74 79 85 66" 
+        stroke="url(#jc-c-grad)" 
+        stroke-width="7" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"
+        filter="url(#jc-glow)" />
+
+  <!-- Tripartite ISO Integrated Management System Nodes -->
+  <!-- ISO 9001 Quality Standard Node (Electric Violet) -->
+  <circle cx="85" cy="34" r="4.5" fill="#9184d9" stroke="#141522" stroke-width="2" />
+
+  <!-- ISO 14001 Environmental Standard Node (Sky Cyan) -->
+  <circle cx="85" cy="66" r="4.5" fill="#38bdf8" stroke="#141522" stroke-width="2" />
+
+  <!-- ISO 45001 Health & Safety Standard Node (Amber Gold) -->
+  <circle cx="14" cy="65" r="4" fill="#f59e0b" stroke="#141522" stroke-width="2" />
+</svg>

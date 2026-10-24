@@ -29,7 +29,10 @@ const backLink = {
       </>
     ) : (
       <>
-        <span>© <span class="data">{year}</span> {SITE_NAME}</span>
+        <span class="inline-flex items-center gap-2">
+          <img src="/images/logos/logo-mark.svg" alt="Jacob C. Logo" width="18" height="18" class="h-4.5 w-4.5 rounded" />
+          <span>© <span class="data">{year}</span> {SITE_NAME}</span>
+        </span>
         <div class="flex flex-wrap gap-5">
           <a href={GITHUB_URL} class="hover:text-text">GitHub</a>
           <a href={LINKEDIN_URL} class="hover:text-text">LinkedIn</a>
