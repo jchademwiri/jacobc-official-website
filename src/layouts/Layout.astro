@@ -75,7 +75,7 @@ const schemaKind = schema ?? (ogType === 'article' ? 'article' : 'default');
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonicalUrl} />
     {noindex && <meta name="robots" content="noindex, follow" />}
-    <link rel="alternate" type="application/rss+xml" title={`${SITE_NAME} — Blog`} href="/rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title={`${SITE_NAME} | Blog`} href="/rss.xml" />
     <title>{pageTitle}</title>
 
     <meta property="og:type" content={ogType} />
@@ -87,7 +87,7 @@ const schemaKind = schema ?? (ogType === 'article' ? 'article' : 'default');
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content={`${SITE_NAME} — ${description}`} />
+    <meta property="og:image:alt" content={`${SITE_NAME}: ${description}`} />
     {
       ogType === 'article' && publishedTime && (
         <meta property="article:published_time" content={publishedTime.toISOString()} />
@@ -118,10 +118,10 @@ const schemaKind = schema ?? (ogType === 'article' ? 'article' : 'default');
       tags={tags}
     />
   </head>
-  <body class="bg-bg text-text">
+  <body class="bg-bg text-text flex min-h-screen flex-col">
     <a href="#main" class="skip-link">Skip to content</a>
-    <div class:list={['relative mx-auto', maxWidthClass]}>
-      <Nav active={active} />
+    <Nav active={active} />
+    <div class:list={['relative mx-auto w-full flex-1', maxWidthClass]}>
       <main id="main">
         <slot />
       </main>

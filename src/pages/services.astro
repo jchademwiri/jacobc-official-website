@@ -2,61 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import ContactBand from '../components/ContactBand.astro';
 import ServicesHeroVisual from '../components/ServicesHeroVisual.astro';
+import { getCollection } from 'astro:content';
 
-const rows = [
-  {
-    id: 'tender-management',
-    number: '01',
-    title: 'Full Tender Preparation Lifecycle',
-    description:
-      'Freelance and consulting tender management: opportunity identification, rigorous RFP/bid document analysis, compliance scheduling, CIDB alignments, CSD validations, and crafting compelling, competitive submissions that win government and corporate bids.',
-    tags: [
-      { label: 'RFP & Bid Review', accent: true },
-      { label: 'Tender Lifecycle', accent: true },
-      { label: 'Compliance Scheduling', accent: false },
-      { label: 'CIDB & CSD', accent: false },
-    ],
-  },
-  {
-    id: 'web-development',
-    number: '02',
-    title: 'Custom Website Development',
-    description:
-      'Fast, accessible, and high-converting websites and web applications built in React, Next.js, Astro.js, and Tailwind CSS. Built with clean semantic code, first-class SEO, and ISO-standard quality discipline.',
-    tags: [
-      { label: 'Next.js & React', accent: true },
-      { label: 'Astro.js', accent: true },
-      { label: 'Tailwind CSS', accent: false },
-      { label: 'Technical SEO', accent: false },
-    ],
-  },
-  {
-    id: 'project-management',
-    number: '03',
-    title: 'Project & Accounts Receivable Governance',
-    description:
-      'Operational project delivery coordination combined with financial governance — managing enterprise accounts receivable (billing integrity, credit control, cash-flow reconciliation in SAP and Sage), timeline tracking, and clean audit trails.',
-    tags: [
-      { label: 'AR Management', accent: true },
-      { label: 'SAP & Sage', accent: true },
-      { label: 'Project Coordination', accent: false },
-      { label: 'Agile & M365', accent: false },
-    ],
-  },
-  {
-    id: 'iso-sheq-compliance',
-    number: '04',
-    title: 'ISO Standards & SHEQ Compliance in Practice',
-    description:
-      'Applying Integrated Management System (IMS) discipline across operational workflows — leveraging ISO 9001 (Quality), ISO 14001 (Environmental), and ISO 45001 (Health & Safety) standards for gap analysis, SOP formulation, HIRA registers, and audit readiness.',
-    tags: [
-      { label: 'ISO 9001 / 14001 / 45001', accent: true },
-      { label: 'IMS Best Practices', accent: true },
-      { label: 'SHEQ SOPs & HIRA', accent: false },
-      { label: 'Audit Readiness', accent: false },
-    ],
-  },
-];
+const serviceList = (await getCollection('services'))
+  .sort((a, b) => a.data.order - b.data.order);
 ---
 
 <Layout
@@ -88,24 +37,28 @@ const rows = [
   </div>
 
   {
-    rows.map((row, index) => (
+    serviceList.map((service, index) => (
       <div
-        id={row.id}
+        id={service.id}
         class:list={[
           'grid gap-8 border-t border-divider px-5 py-10 sm:px-8 md:grid-cols-[minmax(0,320px)_minmax(0,1fr)] md:gap-10 md:px-14',
-          index === rows.length - 1 && 'border-b',
+          index === serviceList.length - 1 && 'border-b',
         ]}
       >
         <div>
-          <p class="mb-2 text-[13px] font-medium text-accent">{row.number}</p>
-          <h2 class="text-[26px]">{row.title}</h2>
+          <p class="mb-2 text-[13px] font-medium text-accent">{service.data.number}</p>
+          <h2 class="text-[26px]">
+            <a href={`/services/${service.id}`} class="hover:text-accent transition-colors">
+              {service.data.title}
+            </a>
+          </h2>
         </div>
         <div>
           <p class="service-description mb-5">
-            {row.description}
+            {service.data.summary}
           </p>
           <div class="flex flex-wrap gap-2">
-            {row.tags.map((tag) => (
+            {service.data.tags.map((tag) => (
               <span class={tag.accent ? 'tag tag-accent' : 'tag tag-neutral'}>{tag.label}</span>
             ))}
           </div>

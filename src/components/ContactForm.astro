@@ -95,7 +95,7 @@ const describedBy = (field: Field, hint?: string) =>
       aria-describedby={describedBy('message', 'message-hint')}>{values.message ?? ''}</textarea>
     {errors.message && <p class="field-error" id="message-error">{errors.message}</p>}
     <p class="field-hint" id="message-hint">
-      Deadlines, scope, or the tender reference — whatever you have is enough to start.
+      Deadlines, scope, or tender reference numbers: whatever you have is enough to start.
     </p>
   </div>
 
@@ -161,7 +161,7 @@ const describedBy = (field: Field, hint?: string) =>
           const done = document.createElement('div');
           done.className = 'form-success';
           done.innerHTML =
-            '<p class="form-success-title">Message sent</p><p class="form-success-body">Thanks — I read everything myself and reply within 24–48 hours.</p>';
+            '<p class="form-success-title">Message sent</p><p class="form-success-body">Thanks! I read everything myself and reply within 24–48 hours.</p>';
           form.replaceWith(done);
           done.setAttribute('tabindex', '-1');
           (done as HTMLElement).focus();

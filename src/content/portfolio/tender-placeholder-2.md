@@ -4,7 +4,7 @@ category: "tender"
 client: "Placeholder Client"
 role: "Tender & Accounts Receivable Manager"
 year: "2025"
-excerpt: "Placeholder summary — replace with the tender type, scope and your role in the submission."
+excerpt: "Placeholder summary: replace with the tender type, scope and your role in the submission."
 draft: true
 outcome: "Placeholder outcome"
 cover: "portfolio-tender-2"

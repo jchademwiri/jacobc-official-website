@@ -12,7 +12,7 @@ tags:
   - label: "ISO 45001"
 ---
 
-If safety, health, environment and quality land on your desk without a safety background, the vocabulary is the first hurdle — the concepts underneath are usually simpler than the acronyms suggest.
+If safety, health, environment and quality land on your desk without a safety background, the vocabulary is the first hurdle. The concepts underneath are usually simpler than the acronyms suggest.
 
 ## 1. SHEQ is four standards wearing one hat
 
@@ -20,4 +20,4 @@ Quality (ISO 9001), environment (ISO 14001) and occupational health and safety (
 
 ## 2. Non-conformances aren't failures, they're inputs
 
-A non-conformance report is the system doing its job — it exists to trigger a corrective action, not to assign blame.
+A non-conformance report is the system doing its job: it exists to trigger a corrective action, not to assign blame.

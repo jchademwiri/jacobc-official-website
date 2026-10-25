@@ -6,8 +6,8 @@
 - **Auth:** None detected
 - **Email:** Resend
 - **Hosting:** Vercel
-- **Testing:** TBD
-- **Linting:** TBD
+- **Testing:** bun test
+- **Linting:** astro check
 
 ## Workflow Commands
 - `/start <task>` — Create branch, audit, plan

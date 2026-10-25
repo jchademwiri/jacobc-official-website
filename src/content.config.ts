@@ -33,4 +33,56 @@ const portfolio = defineCollection({
   }),
 });
 
-export const collections = { blog, portfolio };
+const experience = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/experience' }),
+  schema: z.object({
+    title: z.string(),
+    company: z.string(),
+    period: z.string(),
+    totalDuration: z.string().optional(),
+    employment: z.string().default('Full-time'),
+    location: z.string().default('Centurion, Gauteng'),
+    meta: z.string(),
+    summary: z.string(),
+    order: z.number().default(0),
+    tags: z.array(z.string()).default([]),
+    progression: z
+      .array(
+        z.object({
+          title: z.string(),
+          period: z.string(),
+          duration: z.string().optional(),
+          summary: z.string().optional(),
+          highlights: z.array(z.string()).default([]),
+          skills: z.array(z.string()).default([]),
+          current: z.boolean().default(false),
+        })
+      )
+      .default([]),
+  }),
+});
+
+const services = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/services' }),
+  schema: z.object({
+    title: z.string(),
+    number: z.string(),
+    shortTitle: z.string(),
+    summary: z.string(),
+    deliverables: z.array(z.string()).default([]),
+    process: z
+      .array(
+        z.object({
+          step: z.string(),
+          title: z.string(),
+          desc: z.string(),
+        })
+      )
+      .default([]),
+    tags: z.array(z.object({ label: z.string(), accent: z.boolean().default(false) })),
+    order: z.number().default(0),
+    relatedCategory: z.enum(['website', 'app', 'project', 'tender']).optional(),
+  }),
+});
+
+export const collections = { blog, portfolio, experience, services };

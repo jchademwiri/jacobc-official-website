@@ -1,7 +1,7 @@
 /**
  * Email clients can't read CSS custom properties, so the brand palette has to be
  * repeated as literal hex here. These mirror the `@theme` block in
- * src/styles/global.css — change them together.
+ * src/styles/global.css: change them together.
  */
 export const brand = {
   bg: '#161826',

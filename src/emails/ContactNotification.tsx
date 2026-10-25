@@ -54,7 +54,7 @@ export function ContactNotification({
     <Html lang="en">
       <Head />
       {/* Shows in the inbox list before the message is opened. */}
-      <Preview>{`${projectLabel} — ${name} <${email}>`}</Preview>
+      <Preview>{`${projectLabel}: ${name} <${email}>`}</Preview>
       <Body style={{ margin: 0, padding: '24px 12px', backgroundColor: brand.bg }}>
         <Container
           style={{
@@ -136,7 +136,7 @@ export function ContactNotification({
               color: brand.text3,
             }}
           >
-            Reply to this email to answer {name.split(' ')[0]} directly — it goes to{' '}
+            Reply to this email to answer {name.split(' ')[0]} directly (it goes to{' '}
             <span style={{ fontFamily: font.mono }}>{email}</span>, not to the website.
           </Text>
         </Container>

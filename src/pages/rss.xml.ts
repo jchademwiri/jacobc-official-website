@@ -11,7 +11,7 @@ export const GET: APIRoute = async (context) => {
   );
 
   return rss({
-    title: `${SITE_NAME} — Blog`,
+    title: `${SITE_NAME} | Blog`,
     description: 'Field notes from running bids, applying ISO quality standards and shipping websites.',
     site: context.site!,
     items: posts.map((post) => ({

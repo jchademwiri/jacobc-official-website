@@ -14,71 +14,115 @@ const links = [
 ];
 ---
 
-<nav
-  class="sticky top-0 z-20 flex flex-wrap items-center justify-between gap-x-6 gap-y-2.5 border-b border-divider px-5 py-4 backdrop-blur-[14px] sm:px-8 md:px-14"
-  style="background: color-mix(in srgb, var(--color-bg) 72%, transparent)"
-  aria-label="Primary navigation"
+<header
+  class="sticky top-0 z-20 w-full border-b border-divider backdrop-blur-[14px]"
+  style="background: color-mix(in srgb, var(--color-bg) 75%, transparent)"
 >
-  <a href="/" class="text-base font-medium transition-colors duration-200 hover:text-accent">
-    <span class="hidden sm:inline">Jacob C.</span>
-    <span class="sm:hidden font-semibold tracking-tight">JC</span>
-  </a>
-
-  <div class="hidden items-center gap-7 text-sm md:flex">
-    {
-      links.map((link) => (
-        <a
-          href={link.href}
-          class={active === link.key ? 'text-accent' : 'text-text-2 hover:text-text'}
-          aria-current={active === link.key ? 'page' : undefined}
-        >
-          {link.label}
-        </a>
-      ))
-    }
-  </div>
-
-  <a
-    href="/contact"
-    class:list={['btn btn-primary hidden shrink-0 whitespace-nowrap md:inline-flex', active === 'contact' && 'is-current']}
-    aria-current={active === 'contact' ? 'page' : undefined}
+  <nav
+    class="mx-auto flex items-center justify-between max-w-content px-5 py-3.5 sm:px-8 md:px-14 relative w-full"
+    aria-label="Primary navigation"
   >
-    Start a project
-  </a>
+    <!-- Brand / Logo -->
+    <a href="/" class="group flex items-center gap-2.5 text-base font-medium transition-colors">
+      <span class="flex h-7.5 w-7.5 items-center justify-center rounded-lg border border-edge bg-surface text-accent text-xs font-semibold font-mono shadow-xs transition-transform duration-200 group-hover:scale-105 group-hover:border-accent/50">
+        JC
+      </span>
+      <span class="font-medium tracking-tight text-text transition-colors duration-200 group-hover:text-accent">
+        <span class="hidden sm:inline">Jacob C.</span>
+        <span class="sm:hidden">Jacob C.</span>
+      </span>
+    </a>
 
-  <button
-    type="button"
-    id="nav-menu-toggle"
-    aria-label="Menu"
-    aria-expanded="false"
-    aria-controls="nav-mobile-menu"
-    class="-mr-2.5 flex h-11 w-11 flex-col items-center justify-center gap-[5px] md:hidden"
-  >
-    <span class="block h-[2px] w-[22px] bg-text"></span>
-    <span class="block h-[2px] w-[22px] bg-text"></span>
-    <span class="block h-[2px] w-[22px] bg-text"></span>
-  </button>
+    <!-- Center-docked floating pill nav -->
+    <div class="hidden items-center gap-1 rounded-full border border-divider/60 bg-surface/50 p-1 backdrop-blur-md shadow-xs md:flex md:absolute md:left-1/2 md:-translate-x-1/2">
+      {
+        links.map((link) => {
+          const isActive = active === link.key;
+          return (
+            <a
+              href={link.href}
+              class:list={[
+                'rounded-full px-3.5 py-1 text-[13.5px] font-medium transition-all duration-200',
+                isActive
+                  ? 'bg-accent/14 text-accent font-semibold shadow-xs'
+                  : 'text-text-2 hover:bg-white/5 hover:text-text',
+              ]}
+              aria-current={isActive ? 'page' : undefined}
+            >
+              {link.label}
+            </a>
+          );
+        })
+      }
+    </div>
 
+    <!-- Right: CTA Button & Mobile Toggle -->
+    <div class="flex items-center gap-3">
+      <a
+        href="/contact"
+        class:list={[
+          'btn btn-primary hidden shrink-0 items-center gap-1.5 whitespace-nowrap text-[13.5px] md:inline-flex',
+          active === 'contact' && 'is-current',
+        ]}
+        aria-current={active === 'contact' ? 'page' : undefined}
+      >
+        <span>Start a project</span>
+        <span class="text-xs transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+      </a>
+
+      <!-- Mobile Hamburger Toggle -->
+      <button
+        type="button"
+        id="nav-menu-toggle"
+        aria-label="Menu"
+        aria-expanded="false"
+        aria-controls="nav-mobile-menu"
+        class="-mr-1.5 flex h-10 w-10 flex-col items-center justify-center gap-[5px] rounded-lg border border-transparent hover:border-divider/60 hover:bg-surface/40 md:hidden"
+      >
+        <span class="block h-[2px] w-[20px] bg-text transition-all duration-200"></span>
+        <span class="block h-[2px] w-[20px] bg-text transition-all duration-200"></span>
+        <span class="block h-[2px] w-[20px] bg-text transition-all duration-200"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Dropdown Menu -->
   <div
     id="nav-mobile-menu"
     hidden
-    class="absolute left-0 right-0 top-full flex flex-col gap-4 border-b border-divider px-6 pb-5 pt-4 backdrop-blur-[14px] md:hidden"
-    style="background: color-mix(in srgb, var(--color-bg) 92%, transparent)"
+    class="border-b border-divider px-6 pb-6 pt-4 backdrop-blur-[16px] md:hidden shadow-lg w-full"
+    style="background: color-mix(in srgb, var(--color-bg) 95%, transparent)"
   >
-    {
-      links.map((link) => (
-        <a
-          href={link.href}
-          class:list={['py-1 text-body-lg', active === link.key && 'text-accent']}
-          aria-current={active === link.key ? 'page' : undefined}
-        >
-          {link.label}
+    <div class="mx-auto max-w-content flex flex-col gap-1.5">
+      {
+        links.map((link) => {
+          const isActive = active === link.key;
+          return (
+            <a
+              href={link.href}
+              class:list={[
+                'flex items-center justify-between rounded-lg px-3.5 py-2 text-base font-medium transition-colors',
+                isActive
+                  ? 'bg-accent/12 text-accent font-semibold'
+                  : 'text-text-2 hover:bg-white/5 hover:text-text',
+              ]}
+              aria-current={isActive ? 'page' : undefined}
+            >
+              <span>{link.label}</span>
+              {isActive && <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>}
+            </a>
+          );
+        })
+      }
+      <div class="mt-2 border-t border-divider pt-3.5">
+        <a href="/contact" class="btn btn-primary flex w-full items-center justify-center gap-1.5 py-2.5">
+          <span>Start a project</span>
+          <span>→</span>
         </a>
-      ))
-    }
-    <a href="/contact" class="btn btn-primary self-start">Start a project</a>
+      </div>
+    </div>
   </div>
-</nav>
+</header>
 
 <script>
   const toggle = document.getElementById('nav-menu-toggle');
