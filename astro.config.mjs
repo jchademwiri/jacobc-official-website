@@ -26,10 +26,11 @@ const site = productionUrl ? `https://${productionUrl}` : 'http://localhost:4321
 // https://astro.build/config
 export default defineConfig({
   site,
+  trailingSlash: 'never',
   adapter: vercel(),
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/404'),
+      filter: (page) => !page.includes('/404') && !page.includes('placeholder'),
     }),
   ],
   env: {

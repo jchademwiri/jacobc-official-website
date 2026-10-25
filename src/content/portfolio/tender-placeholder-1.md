@@ -5,6 +5,7 @@ client: "Placeholder Client (e.g. municipality / SOE / corporate)"
 role: "Tender Manager"
 year: "2026"
 excerpt: "Placeholder summary — replace with the tender type, scope and your role in the submission."
+draft: true
 outcome: "Placeholder outcome, e.g. contract awarded"
 cover: "portfolio-tender-1"
 tags:

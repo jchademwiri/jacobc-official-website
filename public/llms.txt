@@ -1,20 +1,20 @@
 # Jacob Chademwiri
 
-> Tender & Project Manager, Web Developer based in Centurion, Gauteng, South Africa.
-> Specialised in tender management, ISO/SHEQ compliance systems, project delivery coordination, and high-performance web development (React, Next.js, Astro).
+> Tender, Project & Accounts Receivable Manager, Web Developer based in Centurion, Gauteng, South Africa.
+> Specialised in tender acquisition, enterprise AR governance (SAP & Sage), operational project management, and high-performance web development (React, Next.js, Astro). Governed by ISO 9001, 14001, and 45001 quality and compliance standards.
 
-## Core Capabilities
-- **Tender Management**: Full lifecycle management, RFP/bid document analysis, compliance scheduling, CSD/CIDB compliance, and competitive bid compilation for municipalities, SOEs, and commercial clients.
-- **Project Management**: Agile delivery coordination, timeline and budget governance, stakeholder management, and Microsoft 365 / Sage Accounting tracking.
-- **Web Development**: Modern, accessible, and fast websites and web applications built with Next.js, Astro, TypeScript, and Tailwind CSS.
+## Core Capabilities & Positioning
+- **Full-Time Employment Focus**: Tender Management, Project Management, and Accounts Receivable (AR) Management with deep ERP billing and financial reconciliation expertise (SAP ERP and Sage Accounting).
+- **Freelance & Consulting Focus**: Full Tender Preparation Lifecycle (RFP/bid document analysis, compliance scheduling, CIDB/CSD validation, rate schedules, and winning bid compilation) and Custom Website Development (React, Next.js, Astro, TypeScript, Tailwind CSS).
+- **ISO Standards in Practice**: Cross-cutting application of ISO 9001 (Quality), ISO 14001 (Environmental), and ISO 45001 (Health & Safety) Integrated Management Systems (IMS) across operational delivery, SHEQ governance, and digital execution.
 
 ## Main Pages
-- [Home](https://jacobc.co.za/): Overview of services, experience, and recent blog posts.
-- [Services](https://jacobc.co.za/services): Detailed breakdown of Tender Management, Project Management, and Website Development services.
-- [Portfolio](https://jacobc.co.za/portfolio): Case studies of websites built, projects managed, and tenders delivered across South Africa.
-- [Blog](https://jacobc.co.za/blog): Field notes on tender success rates, bid document analysis, ISO 9001 rollouts, SHEQ management, and modern web development.
-- [About](https://jacobc.co.za/about): Professional background, experience, and technical skills.
-- [Contact](https://jacobc.co.za/contact): Consultation requests, enquiry form, and direct email contacts.
+- [Home](https://jacobc.co.za): Overview of capabilities, professional experience, services, and field notes.
+- [Services](https://jacobc.co.za/services): Full breakdown of Tender Preparation Lifecycle, Website Development, Project & AR Governance, and ISO compliance.
+- [Portfolio](https://jacobc.co.za/portfolio): Track record of delivered municipal contracts, winning tender preparations, and custom web applications.
+- [Blog](https://jacobc.co.za/blog): Field notes on reading bid documents, tender success rates, ISO implementation in practice, and web engineering.
+- [About](https://jacobc.co.za/about): Professional background at Sithembe Transportation & Projects and Playhouse Media Group.
+- [Contact](https://jacobc.co.za/contact): Consultation enquiries for employment opportunities, freelance tender preparation, and website development.
 
 ## Contact & Profiles
 - **Email**: hello@jacobc.co.za

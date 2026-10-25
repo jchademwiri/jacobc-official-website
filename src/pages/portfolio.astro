@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import { getPortfolioImageUrl } from '../lib/images';
 
-const items = (await getCollection('portfolio')).sort((a, b) => b.data.year.localeCompare(a.data.year));
+const items = (await getCollection('portfolio', ({ data }) => !data.draft)).sort((a, b) => b.data.year.localeCompare(a.data.year));
 
 const categoryLabels: Record<string, string> = {
   website: 'Website',
@@ -22,16 +22,16 @@ const filters = [
 ---
 
 <Layout
-  title="Portfolio"
-  description="Websites built, projects managed and tenders delivered across Gauteng and beyond."
+  title="Portfolio & Delivered Contracts"
+  description="Track record of winning municipal tender submissions, delivered contracts, and custom websites built with Next.js and Astro in Gauteng, South Africa."
   active="portfolio"
-  keywords={['portfolio', 'web development', 'project management', 'tender submissions', 'Gauteng']}
+  keywords={['portfolio', 'tender submissions', 'project management', 'web development', 'municipal contracts', 'Centurion', 'Gauteng']}
 >
   <div class="px-5 pb-6 pt-16 sm:px-8 md:px-14">
     <p class="kicker">Portfolio</p>
     <h1 class="h1 mt-4 mb-4">Evidence of the work.</h1>
     <p class="max-w-[56ch] text-body-lg text-text-2">
-      A record of websites built, projects managed and tenders delivered.
+      A record of winning tender submissions, delivered contracts and custom websites.
     </p>
     <div class="seg mt-7" id="portfolio-filter">
       {
