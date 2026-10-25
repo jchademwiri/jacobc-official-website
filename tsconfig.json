@@ -5,9 +5,10 @@
   "compilerOptions": {
     // The only .tsx in the project are React Email templates, rendered
     // server-side in src/lib/send-contact-email.ts. No React is shipped to the
-    // browser, so the React renderer integration isn't needed — this just tells
+    // browser, so the React renderer integration isn't needed; this just tells
     // esbuild how to transform the templates.
     "jsx": "react-jsx",
-    "jsxImportSource": "react"
+    "jsxImportSource": "react",
+    "types": ["bun-types"]
   }
 }

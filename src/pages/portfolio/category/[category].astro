@@ -27,7 +27,7 @@ const CATEGORIES = {
 } as const;
 
 export async function getStaticPaths() {
-  const items = await getCollection('portfolio');
+  const items = await getCollection('portfolio', ({ data }) => !data.draft);
   const categories = [...new Set(items.map((item) => item.data.category))];
 
   return categories.map((category) => ({
@@ -46,7 +46,7 @@ const meta = CATEGORIES[category as keyof typeof CATEGORIES];
 ---
 
 <Layout
-  title={`${meta.label} — Portfolio`}
+  title={`${meta.label} | Portfolio`}
   description={meta.blurb}
   active="portfolio"
   breadcrumb={[

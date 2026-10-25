@@ -62,7 +62,7 @@ export function validateContact(form: FormData): ValidationResult {
 
   if (!projectValues.includes(projectType)) errors.projectType = 'Choose what this is about.';
 
-  if (message.length < 10) errors.message = 'Tell me a little more — at least 10 characters.';
+  if (message.length < 10) errors.message = 'Please provide a little more detail (at least 10 characters).';
   else if (message.length > 4000) errors.message = 'Keep this under 4000 characters.';
 
   if (Object.keys(errors).length > 0) return { ok: false, errors };

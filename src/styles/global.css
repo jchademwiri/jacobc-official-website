@@ -69,7 +69,7 @@
   body {
     margin: 0;
     padding: 0;
-    /* `clip`, not `hidden` — it contains the full-bleed bands' scrollbar-width
+    /* `clip`, not `hidden`: it contains the full-bleed bands' scrollbar-width
        overhang without creating a scroll container, which would break the
        sticky nav. */
     overflow-x: clip;
@@ -288,8 +288,9 @@
   }
 
   .tag-accent {
-    background: color-mix(in srgb, var(--color-accent) 16%, transparent);
-    color: var(--color-accent);
+    background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+    color: color-mix(in srgb, var(--color-accent) 90%, white);
+    font-weight: 500;
   }
 
   .tag-neutral {
@@ -549,14 +550,18 @@
     color: var(--color-text-2);
   }
 
-  .prose-post a {
+  .prose-post a:not(.btn) {
     color: var(--color-accent);
     text-decoration: underline;
     text-underline-offset: 2px;
   }
 
-  .prose-post a:hover {
+  .prose-post a:not(.btn):hover {
     text-decoration-thickness: 2px;
+  }
+
+  .prose-post .btn {
+    text-decoration: none;
   }
 
   /* Honeypot: off-screen rather than display:none, which some bots detect. */

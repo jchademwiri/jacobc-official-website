@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 import { getReadTime } from '../../lib/reading-time';
 import { getBlogImageUrl } from '../../lib/images';
 
-const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const filters = [
   { key: 'all', label: 'All', href: '/blog' },
@@ -17,16 +17,16 @@ const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2
 ---
 
 <Layout
-  title="Blog"
-  description="Field notes from running bids, building ISO management systems and shipping websites."
+  title="Tender & Web Field Notes"
+  description="Practical field notes on reading bid documents, tender success rates, ISO standards in practice, and modern web development."
   active="blog"
-  keywords={['tender management', 'ISO compliance', 'web development', 'blog', 'Centurion']}
+  keywords={['tender management', 'ISO compliance', 'web development', 'blog', 'Centurion', 'Gauteng']}
 >
   <div class="px-5 pb-6 pt-16 sm:px-8 md:px-14">
     <p class="kicker">Blog</p>
     <h1 class="h1 mt-4 mb-4">Notes on tenders, compliance &amp; the web.</h1>
     <p class="max-w-[56ch] text-body-lg text-text-2">
-      Field notes from running bids, building ISO management systems and shipping websites.
+      Field notes from running bids, applying ISO quality frameworks and shipping websites.
     </p>
     <div class="seg mt-7" id="blog-filter">
       {

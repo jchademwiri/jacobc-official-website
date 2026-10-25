@@ -1,11 +1,11 @@
 export const SITE_NAME = 'Jacob Chademwiri';
-export const PERSON_JOB_TITLE = 'Tender & Project Manager, Web Developer';
+export const PERSON_JOB_TITLE = 'Tender & Project Manager | ISO Implementation Lead | SHEQ | AR Manager | Web Developer';
 
 export const CONTACT_EMAIL = 'hello@jacobc.co.za';
 export const CONTACT_MAILTO = `mailto:${CONTACT_EMAIL}`;
 
 /**
- * The subdomain verified in Resend. Only the `from` address has to live here —
+ * The subdomain verified in Resend. Only the `from` address has to live here;
  * `to` and `reply-to` can be any address. Keeping transactional mail on a
  * subdomain is deliberate: its sending reputation stays separate from the
  * root domain used for ordinary correspondence.

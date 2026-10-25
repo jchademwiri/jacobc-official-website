@@ -9,18 +9,20 @@ export interface Crumb {
 interface Props {
   site: URL;
   canonical: URL;
-  kind: 'person' | 'article' | 'service' | 'default';
+  kind: 'person' | 'article' | 'service' | 'contact' | 'project' | 'default';
   breadcrumb?: Crumb[];
   headline?: string;
   description?: string;
   image?: URL;
   publishedTime?: Date;
+  updatedTime?: Date;
   tags?: string[];
 }
 
-const { site, canonical, kind, breadcrumb, headline, description, image, publishedTime, tags } =
+const { site, canonical, kind, breadcrumb, headline, description, image, publishedTime, updatedTime, tags } =
   Astro.props;
 
+const isHomePage = canonical.pathname === '/' || canonical.pathname === '';
 const personId = `${new URL('/', site).href}#person`;
 
 const person = {
@@ -41,8 +43,8 @@ const person = {
 
 const graph: Record<string, unknown>[] = [person];
 
-// WebSite schema for homepage (enables sitelinks search box in Google)
-if (kind === 'default') {
+// WebSite schema ONLY on homepage
+if (isHomePage) {
   graph.push({
     '@type': 'WebSite',
     '@id': `${new URL('/', site).href}#website`,
@@ -52,14 +54,14 @@ if (kind === 'default') {
   });
 }
 
-// LocalBusiness schema for local SEO
-if (kind === 'service' || kind === 'default') {
+// LocalBusiness schema for local SEO on relevant pages
+if (isHomePage || kind === 'service' || kind === 'contact') {
   graph.push({
     '@type': 'LocalBusiness',
     '@id': `${new URL('/', site).href}#localbusiness`,
     name: SITE_NAME,
     url: new URL('/', site).href,
-    description: 'Tender management, project coordination and web development services in Centurion, Gauteng.',
+    description: 'Tender management, project coordination, accounts receivable governance and web development services in Centurion, Gauteng.',
     image: image?.href,
     address: {
       '@type': 'PostalAddress',
@@ -76,7 +78,19 @@ if (kind === 'service' || kind === 'default') {
   });
 }
 
+if (kind === 'contact') {
+  graph.push({
+    '@type': 'ContactPage',
+    '@id': `${canonical.href}#contactpage`,
+    name: `Contact ${SITE_NAME}`,
+    url: canonical.href,
+    description,
+    mainEntity: { '@id': personId },
+  });
+}
+
 if (kind === 'article' && headline) {
+  const modTime = updatedTime ?? publishedTime;
   graph.push({
     '@type': 'BlogPosting',
     '@id': `${canonical.href}#article`,
@@ -85,9 +99,25 @@ if (kind === 'article' && headline) {
     url: canonical.href,
     ...(image && { image: image.href }),
     ...(publishedTime && { datePublished: publishedTime.toISOString() }),
+    ...(modTime && { dateModified: modTime.toISOString() }),
     ...(tags?.length && { keywords: tags.join(', ') }),
     author: { '@id': personId },
     publisher: { '@id': personId },
+    mainEntityOfPage: canonical.href,
+  });
+}
+
+if (kind === 'project' && headline) {
+  graph.push({
+    '@type': 'CreativeWork',
+    '@id': `${canonical.href}#project`,
+    name: headline,
+    headline,
+    description,
+    url: canonical.href,
+    ...(image && { image: image.href }),
+    author: { '@id': personId },
+    creator: { '@id': personId },
     mainEntityOfPage: canonical.href,
   });
 }
@@ -109,22 +139,14 @@ if (kind === 'service') {
     },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Professional Services',
+      name: 'Professional & Freelance Services',
       itemListElement: [
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Tender Management',
-            description: 'Full tendering lifecycle: opportunity identification, compliance scheduling, and competitive bid compilation.',
-          },
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Project Management',
-            description: 'End-to-end delivery coordination, timeline and budget governance, and Agile execution.',
+            name: 'Full Tender Preparation Lifecycle',
+            description: 'Opportunity identification, RFP review, compliance scheduling, CIDB/CSD validation, and competitive bid compilation.',
           },
         },
         {
@@ -132,7 +154,15 @@ if (kind === 'service') {
           itemOffered: {
             '@type': 'Service',
             name: 'Website Development',
-            description: 'Modern, accessible web development in React, Next.js, Astro, and Tailwind CSS.',
+            description: 'Modern, high-performance web development in React, Next.js, Astro, and Tailwind CSS with ISO-standard quality controls.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Project & AR Governance',
+            description: 'Operational delivery coordination, timeline and budget governance, and enterprise billing/credit control in SAP and Sage.',
           },
         },
       ],

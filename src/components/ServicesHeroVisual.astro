@@ -10,18 +10,27 @@ const pillars = [
     tags: ['RFP Review', 'Bid Compilation'],
   },
   {
-    id: 'project-management',
+    id: 'iso-sheq-compliance',
     step: '02',
-    phase: 'STAGE 02 · EXECUTION & GOVERNANCE',
-    title: 'Project Management',
-    desc: 'Agile sprints, stakeholder delivery & budget governance.',
-    badge: 'On-Time Delivery',
-    tags: ['Agile Sprints', 'Stakeholder Mgmt'],
+    phase: 'STAGE 02 · STANDARDS & COMPLIANCE',
+    title: 'ISO & SHEQ Implementation',
+    desc: 'Integrated Management System (ISO 9001, 14001, 45001) rollout & audit readiness.',
+    badge: 'Audit-Ready Systems',
+    tags: ['ISO 9001/14001/45001', 'IMS Architecture'],
+  },
+  {
+    id: 'project-management',
+    step: '03',
+    phase: 'STAGE 03 · FINANCIAL GOVERNANCE & DELIVERY',
+    title: 'AR & Project Governance',
+    desc: 'Financial accuracy, SAP/Sage billing control & Agile project coordination.',
+    badge: 'On-Time & Audit-Ready',
+    tags: ['AR Management', 'SAP & Sage', 'Agile M365'],
   },
   {
     id: 'web-development',
-    step: '03',
-    phase: 'STAGE 03 · DIGITAL PLATFORMS',
+    step: '04',
+    phase: 'STAGE 04 · DIGITAL PLATFORMS',
     title: 'Website Development',
     desc: 'Fast, accessible Astro & Next.js web applications.',
     badge: 'Performance & SEO',
@@ -39,7 +48,7 @@ const pillars = [
         <span class="dot" aria-hidden="true"></span>
         <span class="font-mono text-[11px] uppercase tracking-widest text-accent font-medium">Delivery Matrix</span>
       </div>
-      <span class="data text-label text-text-3">3 Connected Pillars</span>
+      <span class="data text-label text-text-3">4 Connected Pillars</span>
     </div>
 
     <div class="relative flex flex-col gap-3">
@@ -59,9 +68,9 @@ const pillars = [
             </div>
 
             <div class="flex items-baseline justify-between gap-3">
-              <h3 class="card-title text-[15px] font-medium text-text group-hover:text-accent">
+              <div class="card-title text-[15px] font-medium text-text group-hover:text-accent">
                 {pillar.title}
-              </h3>
+              </div>
               <span class="tag tag-accent text-[11px] py-0.5 px-2 font-mono">
                 {pillar.badge}
               </span>

@@ -7,52 +7,33 @@ import { getCollection } from 'astro:content';
 import { getReadTime } from '../lib/reading-time';
 import { getBlogImageUrl, PROFILE_PORTRAIT_URL } from '../lib/images';
 
-const posts = (await getCollection('blog'))
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
 
-const positions = [
-  {
-    period: 'Jan 2022 – Present',
-    employment: 'Full-time',
-    title: 'Tendering & Accounts Receivable Manager, Projects Coordinator',
-    meta: 'Sithembe Transportation & Projects · Centurion, Gauteng',
-    body: 'Tender management, project coordination and administration, invoicing and website upkeep: financial accuracy and compliance across all projects.',
-    tags: ['Sage Accounting', 'Stakeholder Mgmt', 'Microsoft 365'],
-  },
-  {
-    period: 'Jan 2021 – Jan 2022',
-    employment: 'Full-time',
-    title: 'Tender & Office Administrator',
-    meta: 'Babiya Geomatics and Trading',
-    body: 'Tender submissions and general office administration.',
-    tags: ['Tender Submissions', 'Office Administration', 'Compliance'],
-  },
-  {
-    period: 'Jan 2020 – Present',
-    employment: 'Founder',
-    title: 'Founder & Website Developer',
-    meta: 'Playhouse Media Group · Gauteng, South Africa',
-    body: 'Founded and grew Playhouse Media Group, building custom web solutions in React, Next.js and Astro.',
-    tags: ['Next.js', 'Astro.js', 'TypeScript', 'Tailwind CSS'],
-  },
-];
+const positions = (await getCollection('experience'))
+  .sort((a, b) => a.data.order - b.data.order);
 
 const services = [
   {
-    title: 'Tender Management',
-    description: 'Full tendering lifecycle: from opportunity ID to compliant, winning submissions.',
-    href: '/services#tender-management',
-  },
-  {
-    title: 'Project Management',
-    description: 'End-to-end delivery: timelines, teams and budgets aligned for successful outcomes.',
-    href: '/services#project-management',
+    title: 'Tender Preparation Lifecycle',
+    description: 'Full freelance tender lifecycle: opportunity ID, RFP analysis, compliance scheduling and competitive bid compilation.',
+    href: '/services/tender-management',
   },
   {
     title: 'Website Development',
-    description: 'Fast, accessible sites that reflect your brand and support long-term growth.',
-    href: '/services#web-development',
+    description: 'Custom, high-performance websites and web applications built in Next.js, Astro and Tailwind CSS.',
+    href: '/services/web-development',
+  },
+  {
+    title: 'Project & AR Governance',
+    description: 'Enterprise accounts receivable control (SAP & Sage), financial accuracy and end-to-end delivery coordination.',
+    href: '/services/project-management',
+  },
+  {
+    title: 'ISO Standards & Compliance',
+    description: 'Applying ISO 9001, 14001 & 45001 quality frameworks to daily operational routines and bid readiness.',
+    href: '/services/iso-sheq-compliance',
   },
 ];
 
@@ -60,25 +41,26 @@ const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2
 ---
 
 <Layout
-  fullTitle="Jacob Chademwiri — Tender Management, Project Delivery & Web Development | Centurion"
-  description="Tender management, project coordination and web development from Centurion, Gauteng. Winning contracts and delivering the digital work that follows."
+  fullTitle="Jacob Chademwiri | Tender, Project & AR Manager | Centurion"
+  description="Tender, project and accounts receivable manager in Centurion. Available for employment roles and freelance tender preparation and web development."
   active="home"
   schema="person"
-  keywords={['tender management', 'project management', 'web development', 'Centurion', 'Gauteng', 'South Africa', 'contractor', 'ISO compliance']}
+  keywords={['tender manager', 'project manager', 'AR manager', 'tender preparation lifecycle', 'web developer', 'ISO 9001', 'ISO standards', 'SAP', 'Sage accounting', 'Centurion', 'Gauteng', 'South Africa']}
 >
   <div class="grid gap-10 px-5 pb-14 pt-20 sm:px-8 md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] md:items-center md:px-14">
     <div>
-      <p class="kicker">Jacob C.</p>
-      <h1 class="display mt-4 max-w-[16ch]">Bridging project management with digital excellence.</h1>
+      <p class="kicker">Jacob Chademwiri · Centurion, Gauteng</p>
+      <h1 class="display mt-4 max-w-[18ch]">Tender acquisition, project delivery &amp; web development, governed by ISO quality.</h1>
       <p class="mt-6 max-w-[640px] text-body-lg text-text-2">
-        Specialised in tender acquisition, project management and sustainable web solutions: from
-        winning contracts to delivering the digital work that follows.
+        Specialised in municipal tender management, enterprise AR governance (SAP &amp; Sage) and high-performance web development. Available for high-impact employment roles and freelance projects.
       </p>
       <div class="my-7 flex flex-wrap gap-2">
         <span class="tag tag-accent">Tender Management</span>
         <span class="tag tag-accent">Project Management</span>
-        <span class="tag tag-neutral">Accounts Receivable</span>
+        <span class="tag tag-accent">AR Management (SAP &amp; Sage)</span>
+        <span class="tag tag-accent">Tender Lifecycle Preparation</span>
         <span class="tag tag-neutral">Web Development</span>
+        <span class="tag tag-neutral">ISO Standards Compliant</span>
       </div>
       <div class="flex flex-col gap-3 sm:flex-row">
         <a href="/contact" class="btn btn-primary">Start a project</a>
@@ -86,7 +68,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2
       </div>
       <p class="mt-7 flex items-baseline gap-2.5 text-meta text-text-3">
         <span class="dot" aria-hidden="true"></span>
-        Available for new projects. Free first assessment, and I reply within
+        Available for full-time roles &amp; freelance projects. Reply within
         <span class="data">24–48</span> hours.
       </p>
     </div>
@@ -94,25 +76,45 @@ const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2
   </div>
 
   <div id="positions" class="px-5 pb-16 pt-6 sm:px-8 md:px-14">
-    <p class="kicker">Experience</p>
-    <h2 class="h2 mt-4 mb-7 max-w-[28ch]">Where I'm making an impact</h2>
+    <div class="flex flex-wrap items-baseline justify-between gap-4 mb-7">
+      <div>
+        <p class="kicker">Experience</p>
+        <h2 class="h2 mt-4 max-w-[28ch]">Where I'm making an impact</h2>
+      </div>
+      <a href="/about#experience" class="btn btn-ghost">Full timeline →</a>
+    </div>
     <div class="grid gap-5 md:grid-cols-2">
       {
         positions.map((position) => (
-          <div class="card">
-            <p class="card-kicker">
-              {position.employment} · <span class="data">{position.period}</span>
-            </p>
-            <h3 class="card-title mt-2.5 mb-1">{position.title}</h3>
-            <p class="card-meta mb-2.5">{position.meta}</p>
-            <p class="card-body">{position.body}</p>
-            {position.tags.length > 0 && (
-              <div class="mt-3.5 flex flex-wrap gap-1.5">
-                {position.tags.map((tag) => (
-                  <span class="tag tag-outline">{tag}</span>
-                ))}
-              </div>
-            )}
+          <div class="card flex flex-col justify-between">
+            <div>
+              <p class="card-kicker">
+                {position.data.employment} · <span class="data">{position.data.period}</span>
+              </p>
+              <h3 class="card-title mt-2.5 mb-1">
+                <a href={`/experience/${position.id}`} class="hover:text-accent transition-colors">
+                  {position.data.title}
+                </a>
+              </h3>
+              <p class="card-meta mb-2.5">{position.data.company} · {position.data.location}</p>
+              <p class="card-body">{position.data.summary}</p>
+              {position.data.tags.length > 0 && (
+                <div class="mt-3.5 flex flex-wrap gap-1.5">
+                  {position.data.tags.slice(0, 4).map((tag) => (
+                    <span class="tag tag-outline">{tag}</span>
+                  ))}
+                </div>
+              )}
+            </div>
+            <div class="mt-5 pt-3 border-t border-divider/40">
+              <a
+                href={`/experience/${position.id}`}
+                class="text-accent text-[13px] font-medium inline-flex items-center gap-1 hover:underline"
+              >
+                <span>View role details</span>
+                <span>→</span>
+              </a>
+            </div>
           </div>
         ))
       }
@@ -124,7 +126,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2
       <h2 class="kicker">Services</h2>
       <a href="/services" class="btn btn-ghost">All services →</a>
     </div>
-    <div class="mt-7 grid gap-8 md:grid-cols-3">
+    <div class="mt-7 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {
         services.map((service) => (
           <a href={service.href} class="group block border-t border-divider pt-5">
@@ -143,7 +145,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2
     <figure class="m-0">
       <img
         src={PROFILE_PORTRAIT_URL}
-        alt="Jacob Chademwiri — Tender & Project Manager, Web Developer"
+        alt="Jacob Chademwiri, Tender and Project Manager, ISO Implementation Lead, AR Manager, Web Developer"
         width="640"
         height="800"
         class="aspect-[4/5] w-full rounded-xl object-cover"
@@ -156,8 +158,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2
         I work both sides of the contract: winning it, then delivering it.
       </h2>
       <p class="mb-6 max-w-[48ch] text-body text-text-2">
-        Based in Centurion, Gauteng, I've spent years across tendering, ISO/SHEQ and web delivery,
-        building the systems that back a bid and the sites that carry the brand behind it.
+        Based in Centurion, Gauteng, I manage tender submissions, enterprise accounts receivable in SAP and Sage, and modern web development, applying ISO quality frameworks across operational and digital delivery.
       </p>
       <a href="/about" class="btn btn-secondary">More about me</a>
     </div>

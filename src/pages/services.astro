@@ -2,63 +2,27 @@
 import Layout from '../layouts/Layout.astro';
 import ContactBand from '../components/ContactBand.astro';
 import ServicesHeroVisual from '../components/ServicesHeroVisual.astro';
+import { getCollection } from 'astro:content';
 
-const rows = [
-  {
-    id: 'tender-management',
-    number: '01',
-    title: 'Tender Management',
-    description:
-      'Full tendering lifecycle — from identifying opportunities and ensuring compliance to crafting compelling, competitive submissions that win contracts. Includes RFP/bid document review, compliance scheduling and outcome tracking.',
-    tags: [
-      { label: 'RFP Review', accent: true },
-      { label: 'Bid Management', accent: true },
-      { label: 'Compliance Scheduling', accent: false },
-    ],
-  },
-  {
-    id: 'project-management',
-    number: '02',
-    title: 'Project Management',
-    description:
-      'End-to-end delivery coordination — aligning timelines, teams and budgets for smooth execution and successful outcomes, run Agile and tracked in Microsoft 365.',
-    tags: [
-      { label: 'Stakeholder Management', accent: true },
-      { label: 'Agile', accent: true },
-      { label: 'Microsoft 365', accent: false },
-    ],
-  },
-  {
-    id: 'web-development',
-    number: '03',
-    title: 'Website Development',
-    description:
-      'Fast, accessible websites that reflect your brand, engage users and support long-term growth — built in React, Next.js and Tailwind CSS, with SEO and performance as first-class concerns.',
-    tags: [
-      { label: 'Next.js', accent: false },
-      { label: 'Astro.js', accent: false },
-      { label: 'Tailwind CSS', accent: false },
-      { label: 'SEO', accent: false },
-    ],
-  },
-];
+const serviceList = (await getCollection('services'))
+  .sort((a, b) => a.data.order - b.data.order);
 ---
 
 <Layout
-  title="Services"
-  description="Tender management, project delivery and websites that hold up."
+  title="Tender Preparation & Web Development Services"
+  description="Full freelance tender lifecycle preparation, modern website development, and operational project & AR governance in Centurion, Gauteng. Guided by ISO standards."
   active="services"
   schema="service"
-  keywords={['tender management', 'project management', 'web development', 'RFP review', 'bid management', 'Next.js', 'Astro']}
+  keywords={['tender preparation', 'bid management', 'RFP review', 'website development', 'Next.js', 'Astro', 'AR management', 'SAP', 'Sage accounting', 'ISO 9001', 'SHEQ', 'Centurion', 'Gauteng']}
 >
   <div class="grid gap-10 px-5 pb-14 pt-16 sm:px-8 md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] md:items-center md:px-14 md:pt-20">
     <div>
-      <span class="kicker">Services</span>
+      <span class="kicker">Services &amp; Capabilities</span>
       <h1 class="display mt-4 max-w-[18ch]">
-        Tender management, project delivery and websites that hold up.
+        Tender lifecycle, web development &amp; operational governance.
       </h1>
       <p class="mt-5 max-w-[560px] text-body-lg text-text-2">
-        Three disciplines, one point of accountability — from winning the contract to running the project to shipping the site that represents it.
+        From winning competitive contracts and shipping robust digital platforms to managing enterprise accounts receivable and applying ISO quality standards every step of the way.
       </p>
       <div class="mt-7 flex flex-wrap gap-3">
         <a href="/contact" class="btn btn-primary">Start a project</a>
@@ -66,31 +30,35 @@ const rows = [
       </div>
       <p class="mt-7 flex items-baseline gap-2.5 text-meta text-text-3">
         <span class="dot" aria-hidden="true"></span>
-        Available for tenders, project delivery &amp; custom web builds.
+        Available for freelance tender submissions, web builds, and employment opportunities.
       </p>
     </div>
     <ServicesHeroVisual />
   </div>
 
   {
-    rows.map((row, index) => (
+    serviceList.map((service, index) => (
       <div
-        id={row.id}
+        id={service.id}
         class:list={[
           'grid gap-8 border-t border-divider px-5 py-10 sm:px-8 md:grid-cols-[minmax(0,320px)_minmax(0,1fr)] md:gap-10 md:px-14',
-          index === rows.length - 1 && 'border-b',
+          index === serviceList.length - 1 && 'border-b',
         ]}
       >
         <div>
-          <p class="mb-2 text-[13px] font-medium text-accent">{row.number}</p>
-          <h2 class="text-[26px]">{row.title}</h2>
+          <p class="mb-2 text-[13px] font-medium text-accent">{service.data.number}</p>
+          <h2 class="text-[26px]">
+            <a href={`/services/${service.id}`} class="hover:text-accent transition-colors">
+              {service.data.title}
+            </a>
+          </h2>
         </div>
         <div>
           <p class="service-description mb-5">
-            {row.description}
+            {service.data.summary}
           </p>
           <div class="flex flex-wrap gap-2">
-            {row.tags.map((tag) => (
+            {service.data.tags.map((tag) => (
               <span class={tag.accent ? 'tag tag-accent' : 'tag tag-neutral'}>{tag.label}</span>
             ))}
           </div>
