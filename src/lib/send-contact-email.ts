@@ -50,7 +50,7 @@ export async function sendContactEmail(submission: ContactSubmission): Promise<v
     from,
     to: CONTACT_EMAIL,
     replyTo: email,
-    subject: `${label} — ${name}`,
+    subject: `${label}: ${name}`,
     html,
     text,
   });

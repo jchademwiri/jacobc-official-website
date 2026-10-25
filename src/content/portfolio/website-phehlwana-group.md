@@ -5,7 +5,7 @@ client: "Phehlwana Group Investments"
 role: "Lead Website Developer"
 year: "2026"
 excerpt: "Multi-disciplinary corporate website for Phehlwana Group Investments, showcasing civil and mechanical engineering, heavy plant hire, waste management, and security services across South Africa."
-outcome: "Live — deployed on Astro.js & Tailwind CSS"
+outcome: "Live (Astro.js & Tailwind CSS)"
 link: "https://www.phehlwanagroup.co.za/"
 cover: "portfolio-phehlwana"
 tags:

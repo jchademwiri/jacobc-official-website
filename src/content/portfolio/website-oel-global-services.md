@@ -5,7 +5,7 @@ client: "OEL Global Services"
 role: "Lead Website Developer & Technical Architect"
 year: "2025–2026"
 excerpt: "International outsourcing and industrial logistics platform connecting pre-vetted remote talent and heavy procurement solutions across Africa, the UK, and North America."
-outcome: "Live — deployed on Astro.js & Tailwind CSS"
+outcome: "Live (Astro.js & Tailwind CSS)"
 link: "https://www.oelglobalservices.com/"
 cover: "portfolio-oel"
 tags:

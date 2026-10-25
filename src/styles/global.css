@@ -69,7 +69,7 @@
   body {
     margin: 0;
     padding: 0;
-    /* `clip`, not `hidden` — it contains the full-bleed bands' scrollbar-width
+    /* `clip`, not `hidden`: it contains the full-bleed bands' scrollbar-width
        overhang without creating a scroll container, which would break the
        sticky nav. */
     overflow-x: clip;
