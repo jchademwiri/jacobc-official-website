@@ -65,12 +65,15 @@ const relatedProjects = (
         </p>
         <h2 class="h2 mb-8 max-w-[24ch]">How the work gets delivered</h2>
 
-        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="grid gap-5 sm:grid-cols-2">
           {service.data.process.map((step) => (
-            <div class="rounded-xl border border-edge bg-surface/80 p-5 backdrop-blur-xs">
-              <span class="data text-accent text-sm font-semibold mb-2 block">{step.step}</span>
-              <h3 class="text-[15px] font-semibold text-text mb-2 tracking-tight">{step.title}</h3>
-              <p class="text-[13px] leading-relaxed text-text-2">{step.desc}</p>
+            <div class="rounded-xl border border-edge bg-surface/80 p-6 backdrop-blur-xs transition-all duration-200 hover:border-accent/40">
+              <div class="flex items-center justify-between mb-3 border-b border-divider/40 pb-2.5">
+                <span class="data text-accent text-sm font-semibold font-mono">{step.step}</span>
+                <span class="font-mono text-[11px] uppercase tracking-wider text-text-3">Phase {step.step}</span>
+              </div>
+              <h3 class="text-base font-semibold text-text mb-2 tracking-tight">{step.title}</h3>
+              <p class="text-[14px] leading-relaxed text-text-2">{step.desc}</p>
             </div>
           ))}
         </div>
