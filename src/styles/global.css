@@ -550,14 +550,18 @@
     color: var(--color-text-2);
   }
 
-  .prose-post a {
+  .prose-post a:not(.btn) {
     color: var(--color-accent);
     text-decoration: underline;
     text-underline-offset: 2px;
   }
 
-  .prose-post a:hover {
+  .prose-post a:not(.btn):hover {
     text-decoration-thickness: 2px;
+  }
+
+  .prose-post .btn {
+    text-decoration: none;
   }
 
   /* Honeypot: off-screen rather than display:none, which some bots detect. */
