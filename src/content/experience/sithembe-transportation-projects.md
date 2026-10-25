@@ -6,7 +6,7 @@ totalDuration: "Jan 2022 – Present · 4+ yrs"
 employment: "Full-time"
 location: "Centurion, Gauteng · On-site"
 meta: "Full-time · Centurion, Gauteng · On-site"
-summary: "Directing company-wide operational governance, ISO IMS implementation (9001/14001/45001), municipal tender acquisitions, and enterprise accounts receivable in SAP and Sage across a 4-year progression."
+summary: "Directing operational governance, IMS implementation across ISO 9001, 14001, and 45001, municipal tender acquisitions, and enterprise accounts receivable in SAP and Sage."
 order: 1
 tags:
   - "ISO 9001/14001/45001"
