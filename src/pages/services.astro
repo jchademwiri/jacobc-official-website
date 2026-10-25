@@ -57,19 +57,10 @@ const serviceList = (await getCollection('services'))
           <p class="service-description mb-5">
             {service.data.summary}
           </p>
-          <div class="flex flex-wrap items-center justify-between gap-4">
-            <div class="flex flex-wrap gap-2">
-              {service.data.tags.map((tag) => (
-                <span class={tag.accent ? 'tag tag-accent' : 'tag tag-neutral'}>{tag.label}</span>
-              ))}
-            </div>
-            <a
-              href={`/services/${service.id}`}
-              class="btn btn-secondary inline-flex items-center gap-1.5 text-xs whitespace-nowrap"
-            >
-              <span>Explore service details</span>
-              <span>→</span>
-            </a>
+          <div class="flex flex-wrap gap-2">
+            {service.data.tags.map((tag) => (
+              <span class={tag.accent ? 'tag tag-accent' : 'tag tag-neutral'}>{tag.label}</span>
+            ))}
           </div>
         </div>
       </div>
