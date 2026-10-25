@@ -8,20 +8,83 @@ const experience = [
   {
     date: 'Nov 2023 – Present (at STP since Jan 2022)',
     title: 'Tender & Project Manager | ISO Implementation Lead | AR Manager',
-    meta: 'Sithembe Transportation & Projects · Full-time · Centurion, Gauteng',
-    body: 'Leading full operational governance: Appointed Management Representative directing the Integrated Management System (IMS) implementation covering ISO 9001 (Quality), ISO 14001 (Environmental) and ISO 45001 (Health & Safety) for fleet, plant hire, and lifting machinery operations; managing high-value municipal tender acquisitions and enterprise accounts receivable (billing integrity, debt collection, and financial reconciliation via SAP and Sage).',
+    company: 'Sithembe Transportation & Projects',
+    meta: 'Full-time · Centurion, Gauteng',
+    body: 'Directing full operational governance and financial integrity for a leading transport, plant hire, and machinery enterprise. Appointed Management Representative overseeing the company-wide Integrated Management System (IMS), while steering high-value municipal tender acquisitions and corporate accounts receivable.',
+    highlights: [
+      'Appointed Management Representative leading the company-wide IMS implementation across ISO 9001:2015 (Quality), ISO 14001:2015 (Environmental), and ISO 45001:2018 (Health & Safety) for fleet, plant hire, and lifting machinery operations.',
+      'Formulating standard operating procedures (SOPs), Hazard Identification & Risk Assessments (HIRA), and SHEQ internal audit governance to ensure ongoing statutory compliance.',
+      'Managing municipal tender bidding from RFP review to submission and award, including City of Tshwane tenders for plant hire, chemical toilets, and water tankers.',
+      'Managing enterprise accounts receivable (AR), billing integrity, debt recovery, and financial reconciliation via SAP ERP and Sage Accounting.',
+    ],
+    tags: [
+      'ISO 9001/14001/45001',
+      'IMS Implementation',
+      'SAP ERP & Sage',
+      'AR Governance',
+      'Municipal Tenders',
+      'SHEQ Auditing',
+      'HIRA Registers',
+    ],
   },
   {
     date: 'Jan 2021 – Jan 2022',
     title: 'Tender & Office Administrator',
-    meta: 'Babiya Geomatics and Trading · Full-time',
-    body: 'Tender submissions and general office administration.',
+    company: 'Babiya Geomatics and Trading',
+    meta: 'Full-time · South Africa',
+    body: 'Coordinated end-to-end tender submissions, procurement compliance scheduling, and corporate administration for public and private sector bidding.',
+    highlights: [
+      'Assembled end-to-end tender compliance packs, returnable schedules, and mandatory statutory vendor documentation.',
+      'Maintained Central Supplier Database (CSD) profiles, tax clearance certificates, and CIDB grading alignments.',
+    ],
+    tags: ['Tender Submissions', 'Procurement Compliance', 'CSD & CIDB', 'Office Administration'],
   },
   {
     date: 'Jan 2020 – Present',
     title: 'Founder & Website Developer',
-    meta: 'Playhouse Media Group · Founder · Gauteng, South Africa',
-    body: 'Founded and grew Playhouse Media Group, building custom web solutions using React, Next.js and Astro.js.',
+    company: 'Playhouse Media Group',
+    meta: 'Founder & Lead Developer · Gauteng, South Africa',
+    body: 'Founded and grew Playhouse Media Group, designing and building custom websites, client portals, and web applications with an uncompromising focus on speed, accessibility, and ISO-inspired engineering rigor.',
+    highlights: [
+      'Delivered 10+ bespoke client web platforms and digital systems using React, Next.js, Astro.js, TypeScript, and Tailwind CSS.',
+      'Engineered clean, semantic architectures achieving 95–100 Google Lighthouse performance, technical SEO, and mobile responsiveness.',
+    ],
+    tags: ['Next.js & React', 'Astro.js', 'TypeScript', 'Tailwind CSS', 'Technical SEO'],
+  },
+];
+
+const careerPillars = [
+  {
+    label: 'IMS Governance',
+    badge: 'Appointed Rep',
+    badgeClass: 'tag-accent',
+    title: 'ISO 9001 · 14001 · 45001',
+    description:
+      'Appointed Management Representative directing company-wide quality, environmental, and occupational health & safety management systems across fleet and machinery operations.',
+  },
+  {
+    label: 'Financial Governance',
+    badge: 'Enterprise ERP',
+    badgeClass: 'tag-outline',
+    title: 'SAP ERP & Sage Accounting',
+    description:
+      'Directing accounts receivable, billing integrity, debt recovery, and financial reconciliations with structured audit trails.',
+  },
+  {
+    label: 'Bid Acquisition',
+    badge: 'Public SCM',
+    badgeClass: 'tag-outline',
+    title: 'Municipal & Corporate Tenders',
+    description:
+      'End-to-end tender lifecycle: RFP review, compliance scheduling, CIDB alignments, and competitive bid compilation.',
+  },
+  {
+    label: 'Digital Platforms',
+    badge: 'Web Architecture',
+    badgeClass: 'tag-outline',
+    title: 'Astro, Next.js & Tailwind',
+    description:
+      'Deploying accessible, semantic, and high-performance digital platforms with modern headless technology.',
   },
 ];
 
@@ -84,19 +147,127 @@ const skills = [
     </div>
   </div>
 
-  <div id="experience" class="px-5 pb-16 pt-6 sm:px-8 md:px-14">
-    <h2 class="kicker">Experience</h2>
-    <div class="mt-5 flex flex-col">
-      {
-        experience.map((role) => (
-          <div class="border-b border-divider py-5">
-            <p class="data mb-1.5 text-meta text-accent">{role.date}</p>
-            <h3 class="card-title mb-1">{role.title}</h3>
-            <p class="mb-2.5 text-meta text-text-3">{role.meta}</p>
-            <p class="card-body max-w-[60ch]">{role.body}</p>
+  <div id="experience" class="px-5 pb-20 pt-6 sm:px-8 md:px-14">
+    <div class="mb-8">
+      <h2 class="kicker">Experience &amp; Leadership</h2>
+      <p class="h2 mt-3 max-w-[28ch]">Where operational discipline meets measurable execution.</p>
+    </div>
+
+    <div class="grid gap-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12 xl:gap-16 items-start">
+      <!-- Left: Experience Timeline -->
+      <div class="flex flex-col space-y-6">
+        {
+          experience.map((role) => (
+            <div class="rounded-xl border border-divider/80 bg-surface/40 p-6 backdrop-blur-xs transition-all duration-200 hover:border-accent/40 sm:p-7">
+              <div class="flex flex-wrap items-baseline justify-between gap-2 border-b border-divider/60 pb-3">
+                <span class="data text-meta text-accent font-medium">{role.date}</span>
+                <span class="font-mono text-[12px] text-text-3">{role.company}</span>
+              </div>
+
+              <h3 class="mt-3.5 text-base sm:text-[17px] font-semibold text-text tracking-tight">
+                {role.title}
+              </h3>
+              <p class="mt-1 text-meta text-text-3">{role.meta}</p>
+
+              <p class="mt-3.5 text-[14px] leading-relaxed text-text-2">
+                {role.body}
+              </p>
+
+              {role.highlights && role.highlights.length > 0 && (
+                <div class="mt-4 pt-3 border-t border-divider/40">
+                  <p class="font-mono text-[11px] uppercase tracking-wider text-text-3 mb-2 font-medium">
+                    Key Scope &amp; Deliverables
+                  </p>
+                  <ul class="space-y-2 border-l-2 border-accent/40 pl-3.5 text-[13px] leading-relaxed text-text-2">
+                    {role.highlights.map((item) => (
+                      <li class="relative">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              <div class="mt-5 flex flex-wrap gap-1.5 pt-3 border-t border-divider/40">
+                {role.tags.map((tag) => (
+                  <span class="tag tag-outline text-[11px] py-0.5 px-2 text-text-3">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Right: Sticky Career Overview & Standards Snapshot Card -->
+      <aside class="lg:sticky lg:top-24">
+        <div class="relative rounded-2xl border border-divider bg-surface/85 p-6 backdrop-blur-[14px] shadow-sm sm:p-7">
+          <!-- Subtle ambient glow -->
+          <div class="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full bg-accent/10 blur-3xl" aria-hidden="true"></div>
+
+          <!-- Header -->
+          <div class="mb-5 border-b border-divider pb-4">
+            <div class="flex items-center gap-2">
+              <span class="dot" aria-hidden="true"></span>
+              <span class="font-mono text-[11px] uppercase tracking-widest text-accent font-medium">Career Overview</span>
+            </div>
+            <h3 class="mt-2 text-h3 font-semibold text-text">Operational Scope &amp; Standards</h3>
+            <p class="mt-1 text-[13px] leading-relaxed text-text-3">
+              Applying ISO quality frameworks to corporate governance, public tenders, and digital platforms.
+            </p>
           </div>
-        ))
-      }
+
+          <!-- Key Pillars -->
+          <div class="flex flex-col gap-3">
+            {
+              careerPillars.map((pillar) => (
+                <div class="rounded-xl border border-edge bg-bg/60 p-3.5 transition-all duration-200 hover:border-accent/40">
+                  <div class="flex items-center justify-between">
+                    <span class="font-mono text-[10px] uppercase tracking-wider text-accent font-semibold">
+                      {pillar.label}
+                    </span>
+                    <span class:list={['tag text-[10.5px] py-0.5 px-2 font-mono', pillar.badgeClass]}>
+                      {pillar.badge}
+                    </span>
+                  </div>
+                  <h4 class="mt-1.5 text-[14px] font-medium text-text">{pillar.title}</h4>
+                  <p class="mt-1 text-[12.5px] leading-relaxed text-text-2">
+                    {pillar.description}
+                  </p>
+                </div>
+              ))
+            }
+          </div>
+
+          <!-- Key Metrics Row -->
+          <div class="mt-5 grid grid-cols-3 gap-2 rounded-xl border border-edge bg-bg/40 p-3.5 text-center">
+            <div>
+              <p class="data text-lg font-semibold text-accent">3</p>
+              <p class="font-mono text-[10px] uppercase tracking-wider text-text-3">ISO Standards</p>
+            </div>
+            <div class="border-x border-divider">
+              <p class="data text-lg font-semibold text-text">5+ Yrs</p>
+              <p class="font-mono text-[10px] uppercase tracking-wider text-text-3">Tender &amp; AR</p>
+            </div>
+            <div>
+              <p class="data text-lg font-semibold text-text">10+</p>
+              <p class="font-mono text-[10px] uppercase tracking-wider text-text-3">Web Builds</p>
+            </div>
+          </div>
+
+          <!-- CTAs -->
+          <div class="mt-5 flex flex-col gap-2">
+            <a href="/contact" class="btn btn-primary w-full justify-center">
+              <span>Discuss a project or role</span>
+              <span>→</span>
+            </a>
+            <a href="/services" class="btn btn-secondary w-full justify-center text-xs">
+              Explore all capabilities &amp; services
+            </a>
+          </div>
+        </div>
+      </aside>
     </div>
   </div>
 
