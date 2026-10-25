@@ -1,0 +1,158 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ContactBand from '../../components/ContactBand.astro';
+import { getCollection, render } from 'astro:content';
+import { getPortfolioImageUrl } from '../../lib/images';
+
+export async function getStaticPaths() {
+  const serviceList = await getCollection('services');
+  return serviceList.map((service) => ({
+    params: { slug: service.id },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+const { Content } = await render(service);
+
+// Fetch relevant portfolio items matching this service's category
+const relatedProjects = (
+  await getCollection('portfolio', ({ data }) => !data.draft && data.category === service.data.relatedCategory)
+).slice(0, 3);
+---
+
+<Layout
+  title={`${service.data.shortTitle} | Services`}
+  description={service.data.summary}
+  maxWidth="narrow"
+  active="services"
+  schema="service"
+  breadcrumb={[
+    { name: 'Services', href: '/services' },
+    { name: service.data.shortTitle, href: `/services/${service.id}` },
+  ]}
+>
+  <!-- Hero Section -->
+  <div class="px-5 pt-14 sm:px-8 md:px-14">
+    <div class="flex items-center gap-2">
+      <span class="dot" aria-hidden="true"></span>
+      <p class="kicker">
+        Service {service.data.number} · {service.data.shortTitle}
+      </p>
+    </div>
+    <h1 class="h1 mt-4 max-w-[22ch]">{service.data.title}</h1>
+    <p class="mt-5 max-w-[620px] text-body-lg text-text-2">
+      {service.data.summary}
+    </p>
+
+    <div class="mt-7 flex flex-wrap items-center gap-3">
+      <a href="/contact" class="btn btn-primary">
+        <span>Start a project or consultation</span>
+        <span>→</span>
+      </a>
+      <a href="/services" class="btn btn-secondary">
+        <span>All services</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Process / Delivery Methodology -->
+  {
+    service.data.process && service.data.process.length > 0 && (
+      <div class="my-12 border-y border-divider bg-surface/30 px-5 py-10 sm:px-8 md:px-14">
+        <p class="font-mono text-[11px] uppercase tracking-widest text-accent font-medium mb-3">
+          Methodology &amp; Execution
+        </p>
+        <h2 class="h2 mb-8 max-w-[24ch]">How the work gets delivered</h2>
+
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {service.data.process.map((step) => (
+            <div class="rounded-xl border border-edge bg-surface/80 p-5 backdrop-blur-xs">
+              <span class="data text-accent text-sm font-semibold mb-2 block">{step.step}</span>
+              <h3 class="text-[15px] font-semibold text-text mb-2 tracking-tight">{step.title}</h3>
+              <p class="text-[13px] leading-relaxed text-text-2">{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  <!-- Main Narrative Markdown -->
+  <div class="prose-post px-5 sm:px-8 md:px-14">
+    <Content />
+
+    <!-- Deliverables Box -->
+    {
+      service.data.deliverables && service.data.deliverables.length > 0 && (
+        <div class="my-10 rounded-xl border border-divider/80 bg-surface/40 p-6 sm:p-7">
+          <h3 class="text-base sm:text-[17px] font-semibold text-text mb-4 tracking-tight">
+            Key Scope &amp; Tangible Deliverables
+          </h3>
+          <ul class="space-y-2.5 text-[13.5px] leading-relaxed text-text-2">
+            {service.data.deliverables.map((item) => (
+              <li class="flex items-baseline gap-2.5">
+                <span class="text-accent text-xs">✓</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+
+    <!-- Tags Row -->
+    <div class="mt-8 flex flex-wrap gap-2 border-t border-divider/40 pt-4">
+      {
+        service.data.tags.map((tag) => (
+          <span class={tag.accent ? 'tag tag-accent' : 'tag tag-neutral'}>{tag.label}</span>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Related Projects Section -->
+  {
+    relatedProjects.length > 0 && (
+      <div class="my-14 border-t border-divider px-5 pt-10 sm:px-8 md:px-14">
+        <div class="flex flex-wrap items-baseline justify-between gap-4 mb-6">
+          <div>
+            <p class="font-mono text-[11px] uppercase tracking-widest text-accent font-medium">Proof of Work</p>
+            <h2 class="h2 mt-2">Relevant Portfolio Case Studies</h2>
+          </div>
+          <a href="/portfolio" class="btn btn-ghost">View all portfolio →</a>
+        </div>
+
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {relatedProjects.map((project) => (
+            <a href={`/portfolio/${project.id}`} class="card group flex flex-col justify-between overflow-hidden p-4 hover:border-accent/40 transition-colors">
+              <div>
+                <img
+                  src={getPortfolioImageUrl(project.data.cover)}
+                  alt={project.data.title}
+                  width="400"
+                  height="225"
+                  class="aspect-[16/9] w-full rounded-md object-cover mb-3"
+                  loading="lazy"
+                />
+                <h3 class="card-title text-[15px] font-medium text-text group-hover:text-accent transition-colors">
+                  {project.data.title}
+                </h3>
+                <p class="card-meta text-xs text-text-3 mt-1 mb-2">{project.data.client}</p>
+                <p class="text-xs text-text-2 line-clamp-2">{project.data.excerpt}</p>
+              </div>
+              <span class="mt-3 text-accent text-xs font-medium inline-flex items-center gap-1">
+                Read case study →
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  <ContactBand
+    heading={`Ready to discuss ${service.data.shortTitle}?`}
+    body="Tell me what you are working on and I will get back to you with an honest assessment and delivery scope within 24 to 48 hours."
+  />
+</Layout>

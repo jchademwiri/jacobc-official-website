@@ -48,4 +48,27 @@ const experience = defineCollection({
   }),
 });
 
-export const collections = { blog, portfolio, experience };
+const services = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/services' }),
+  schema: z.object({
+    title: z.string(),
+    number: z.string(),
+    shortTitle: z.string(),
+    summary: z.string(),
+    deliverables: z.array(z.string()).default([]),
+    process: z
+      .array(
+        z.object({
+          step: z.string(),
+          title: z.string(),
+          desc: z.string(),
+        })
+      )
+      .default([]),
+    tags: z.array(z.object({ label: z.string(), accent: z.boolean().default(false) })),
+    order: z.number().default(0),
+    relatedCategory: z.enum(['website', 'app', 'project', 'tender']).optional(),
+  }),
+});
+
+export const collections = { blog, portfolio, experience, services };
