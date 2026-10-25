@@ -39,12 +39,26 @@ const experience = defineCollection({
     title: z.string(),
     company: z.string(),
     period: z.string(),
+    totalDuration: z.string().optional(),
     employment: z.string().default('Full-time'),
     location: z.string().default('Centurion, Gauteng'),
     meta: z.string(),
     summary: z.string(),
     order: z.number().default(0),
     tags: z.array(z.string()).default([]),
+    progression: z
+      .array(
+        z.object({
+          title: z.string(),
+          period: z.string(),
+          duration: z.string().optional(),
+          summary: z.string().optional(),
+          highlights: z.array(z.string()).default([]),
+          skills: z.array(z.string()).default([]),
+          current: z.boolean().default(false),
+        })
+      )
+      .default([]),
   }),
 });
 
