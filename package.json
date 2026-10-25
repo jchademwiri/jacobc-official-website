@@ -24,6 +24,7 @@
     "astro": "astro",
     "lint": "astro check",
     "lint:fix": "astro check --watch",
+    "test": "bun test",
     "optimize:images": "node scripts/optimize-images.mjs"
   },
   "type": "module",
@@ -31,6 +32,7 @@
     "@astrojs/check": "^0.9.10",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
+    "bun-types": "^1.4.4",
     "sharp": "^0.35.5",
     "typescript": "^5.7.0"
   }
