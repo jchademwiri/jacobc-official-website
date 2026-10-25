@@ -27,7 +27,7 @@ const CATEGORIES = {
 } as const;
 
 export async function getStaticPaths() {
-  const items = await getCollection('portfolio');
+  const items = await getCollection('portfolio', ({ data }) => !data.draft);
   const categories = [...new Set(items.map((item) => item.data.category))];
 
   return categories.map((category) => ({

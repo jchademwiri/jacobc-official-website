@@ -13,7 +13,7 @@ const TRACKS = {
   iso: {
     label: 'ISO / SHEQ',
     heading: 'Notes on ISO and SHEQ.',
-    blurb: 'Building the management systems that stand behind a compliant bid.',
+    blurb: 'Applying the management systems that stand behind a compliant bid.',
   },
   dev: {
     label: 'Web Dev',
@@ -23,7 +23,7 @@ const TRACKS = {
 } as const;
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
   const tracks = [...new Set(posts.map((post) => post.data.track))];
 
   return tracks.map((track) => ({

@@ -5,7 +5,7 @@ import { getReadTime } from '../../lib/reading-time';
 import { getBlogImageUrl } from '../../lib/images';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
   return posts.map((post) => ({
     params: { slug: post.id },
     props: { post },
@@ -16,16 +16,19 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 
 const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2-digit', year: 'numeric' });
+const postImage = getBlogImageUrl(post.data.cover);
 ---
 
 <Layout
   title={post.data.title}
   description={post.data.excerpt}
+  image={postImage}
   maxWidth="narrow"
   footerVariant="post"
   active="blog"
   ogType="article"
   publishedTime={post.data.date}
+  updatedTime={post.data.updatedDate}
   tags={post.data.tags.map((tag) => tag.label)}
   breadcrumb={[
     { name: 'Blog', href: '/blog' },
@@ -45,7 +48,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2
 
   <figure class="my-8 px-5 sm:px-8 md:px-14">
     <img
-      src={getBlogImageUrl(post.data.cover)}
+      src={postImage}
       alt={post.data.title}
       width="1200"
       height="675"

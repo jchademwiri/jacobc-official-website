@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import ContactBand from '../components/ContactBand.astro';
 import SectionBand from '../components/SectionBand.astro';
+import { PROFILE_PORTRAIT_URL } from '../lib/images';
 
 const experience = [
   {
@@ -26,41 +27,38 @@ const experience = [
 
 const skills = [
   { label: 'Tender Management', accent: true },
-  { label: 'ISO Implementation Lead', accent: true },
-  { label: 'AR Manager', accent: true },
+  { label: 'Project Management', accent: true },
+  { label: 'AR Manager (SAP & Sage)', accent: true },
+  { label: 'Tender Preparation Lifecycle', accent: true },
   { label: 'ISO 9001 (Quality)', accent: true },
   { label: 'ISO 14001 (Environmental)', accent: true },
   { label: 'ISO 45001 (Health & Safety)', accent: true },
   { label: 'Integrated Management Systems (IMS)', accent: true },
   { label: 'SHEQ Management', accent: true },
-  { label: 'SAP / SAP ERP', accent: true },
-  { label: 'Sage Accounting (50cloud / Evolution)', accent: true },
-  { label: 'Project Management (Agile / M365)', accent: true },
+  { label: 'SAP ERP / Sage Accounting', accent: true },
+  { label: 'Next.js & React', accent: true },
+  { label: 'Astro.js & TypeScript', accent: true },
   { label: 'HIRA & Risk Assessment', accent: false },
   { label: 'Compliance & Auditing', accent: false },
   { label: 'Invoicing & Credit Control', accent: false },
-  { label: 'Process Flow Documentation', accent: false },
-  { label: 'Stakeholder Management', accent: false },
-  { label: 'Microsoft 365', accent: false },
-  { label: 'React.js & Next.js', accent: false },
-  { label: 'Astro.js & TypeScript', accent: false },
   { label: 'Tailwind CSS', accent: false },
-  { label: 'SEO', accent: false },
+  { label: 'Technical SEO', accent: false },
   { label: 'Figma', accent: false },
 ];
 ---
 
 <Layout
-  title="About"
-  description="Jacob Chademwiri — Tender acquisition, ISO/SHEQ compliance (ISO 9001, 14001, 45001), AR management (SAP & Sage) and web delivery from Centurion, Gauteng."
+  title="About Jacob Chademwiri | Tender & Project Specialist"
+  description="Professional background of Jacob Chademwiri: tender management, enterprise AR governance (SAP & Sage), ISO implementation, and custom web development."
+  image={PROFILE_PORTRAIT_URL}
   active="about"
   schema="person"
-  keywords={['Jacob Chademwiri', 'tender management', 'ISO implementation', 'ISO 9001', 'ISO 14001', 'ISO 45001', 'SHEQ', 'AR manager', 'SAP', 'Sage accounting', 'project management', 'web developer', 'Centurion', 'Gauteng']}
+  keywords={['Jacob Chademwiri', 'tender management', 'project management', 'AR manager', 'SAP', 'Sage accounting', 'ISO 9001', 'ISO 14001', 'ISO 45001', 'SHEQ', 'web developer', 'Centurion', 'Gauteng']}
 >
   <div class="grid gap-8 px-5 py-16 sm:px-8 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:items-center md:gap-12 md:px-14">
     <figure class="m-0">
       <img
-        src="/images/profile/jacob-portrait.jpg"
+        src={PROFILE_PORTRAIT_URL}
         alt="Jacob Chademwiri — Tender & Project Manager, ISO Implementation Lead, AR Manager, Web Developer"
         width="640"
         height="800"
@@ -74,18 +72,13 @@ const skills = [
         Submitting tenders isn't the hard part. Understanding the compliance systems behind them is.
       </h1>
       <p class="mb-6 max-w-[52ch] text-body text-text-2">
-        Based in Centurion, Gauteng, I've spent years across tendering, ISO/SHEQ compliance, enterprise AR management (SAP &amp; Sage) and web delivery,
-        building the compliance frameworks that back a bid, the operational systems that deliver it, and the sites that carry the brand behind it. I am
-        currently Tender &amp; Project Manager, ISO Implementation Lead and AR Manager at Sithembe Transportation &amp; Projects, and
-        I founded Playhouse Media Group, delivering custom web and digital solutions.
+        Based in Centurion, Gauteng, I bring deep hands-on expertise across tender acquisition, enterprise AR governance (SAP &amp; Sage), and web delivery — applying ISO quality frameworks to every operational system and digital platform. I serve as Tender &amp; Project Manager and AR Manager at Sithembe Transportation &amp; Projects, while building custom web applications through Playhouse Media Group.
       </p>
       <div class="flex flex-wrap gap-2">
         <span class="tag tag-accent">Tender Management</span>
-        <span class="tag tag-accent">ISO Implementation Lead</span>
-        <span class="tag tag-accent">AR Manager</span>
-        <span class="tag tag-accent">SHEQ Compliance</span>
-        <span class="tag tag-neutral">SAP &amp; Sage</span>
-        <span class="tag tag-neutral">Project Management</span>
+        <span class="tag tag-accent">Project Management</span>
+        <span class="tag tag-accent">AR Governance (SAP &amp; Sage)</span>
+        <span class="tag tag-accent">ISO Standards</span>
         <span class="tag tag-neutral">Web Development</span>
       </div>
     </div>

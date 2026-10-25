@@ -7,7 +7,7 @@ import { getCollection } from 'astro:content';
 import { getReadTime } from '../lib/reading-time';
 import { getBlogImageUrl, PROFILE_PORTRAIT_URL } from '../lib/images';
 
-const posts = (await getCollection('blog'))
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
 
@@ -40,24 +40,24 @@ const positions = [
 
 const services = [
   {
-    title: 'Tender Management',
-    description: 'Full tendering lifecycle: from opportunity ID to compliant, winning submissions.',
+    title: 'Tender Preparation Lifecycle',
+    description: 'Full freelance tender lifecycle: opportunity ID, RFP analysis, compliance scheduling and competitive bid compilation.',
     href: '/services#tender-management',
   },
   {
-    title: 'ISO Implementation & SHEQ',
-    description: 'Unified Integrated Management System (ISO 9001, 14001, 45001) rollout and audit readiness.',
-    href: '/services#iso-sheq-compliance',
+    title: 'Website Development',
+    description: 'Custom, high-performance websites and web applications built in Next.js, Astro and Tailwind CSS.',
+    href: '/services#web-development',
   },
   {
-    title: 'AR & Project Governance',
-    description: 'Financial accuracy, SAP/Sage billing control and end-to-end delivery coordination.',
+    title: 'Project & AR Governance',
+    description: 'Enterprise accounts receivable control (SAP & Sage), financial accuracy and end-to-end delivery coordination.',
     href: '/services#project-management',
   },
   {
-    title: 'Website Development',
-    description: 'Fast, accessible sites that reflect your brand and support long-term growth.',
-    href: '/services#web-development',
+    title: 'ISO Standards & Compliance',
+    description: 'Applying ISO 9001, 14001 & 45001 quality frameworks to elevate daily operational governance and bid readiness.',
+    href: '/services#iso-sheq-compliance',
   },
 ];
 
@@ -65,27 +65,26 @@ const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2
 ---
 
 <Layout
-  fullTitle="Jacob Chademwiri — Tender & Project Manager | ISO Implementation Lead | AR Manager | Centurion"
-  description="Tender acquisition, ISO Integrated Management Systems (9001, 14001, 45001), AR management and web development from Centurion, Gauteng."
+  fullTitle="Jacob Chademwiri | Tender, Project & AR Manager | Centurion"
+  description="Tender, project and accounts receivable manager in Centurion. Available for employment roles and freelance tender preparation and web development."
   active="home"
   schema="person"
-  keywords={['tender management', 'ISO implementation', 'ISO 9001', 'ISO 14001', 'ISO 45001', 'SHEQ', 'AR manager', 'SAP', 'Sage accounting', 'project management', 'web development', 'Centurion', 'Gauteng', 'South Africa']}
+  keywords={['tender manager', 'project manager', 'AR manager', 'tender preparation lifecycle', 'web developer', 'ISO 9001', 'ISO standards', 'SAP', 'Sage accounting', 'Centurion', 'Gauteng', 'South Africa']}
 >
   <div class="grid gap-10 px-5 pb-14 pt-20 sm:px-8 md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] md:items-center md:px-14">
     <div>
-      <p class="kicker">Jacob C.</p>
-      <h1 class="display mt-4 max-w-[16ch]">Bridging project management with digital excellence.</h1>
+      <p class="kicker">Jacob Chademwiri · Centurion, Gauteng</p>
+      <h1 class="display mt-4 max-w-[18ch]">Tender acquisition, project delivery &amp; web development — governed by ISO quality.</h1>
       <p class="mt-6 max-w-[640px] text-body-lg text-text-2">
-        Specialised in tender acquisition, ISO Integrated Management Systems, AR management (SAP &amp; Sage) and sustainable web solutions: from winning contracts to delivering the operational and digital work that follows.
+        Specialised in municipal tender management, enterprise AR governance (SAP &amp; Sage) and high-performance web development. Available for high-impact employment roles and freelance projects.
       </p>
       <div class="my-7 flex flex-wrap gap-2">
         <span class="tag tag-accent">Tender Management</span>
-        <span class="tag tag-accent">ISO Implementation Lead</span>
-        <span class="tag tag-accent">AR Manager</span>
-        <span class="tag tag-accent">SHEQ Compliance</span>
-        <span class="tag tag-neutral">SAP &amp; Sage</span>
-        <span class="tag tag-neutral">Project Management</span>
+        <span class="tag tag-accent">Project Management</span>
+        <span class="tag tag-accent">AR Management (SAP &amp; Sage)</span>
+        <span class="tag tag-accent">Tender Lifecycle Preparation</span>
         <span class="tag tag-neutral">Web Development</span>
+        <span class="tag tag-neutral">ISO Standards Compliant</span>
       </div>
       <div class="flex flex-col gap-3 sm:flex-row">
         <a href="/contact" class="btn btn-primary">Start a project</a>
@@ -93,7 +92,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2
       </div>
       <p class="mt-7 flex items-baseline gap-2.5 text-meta text-text-3">
         <span class="dot" aria-hidden="true"></span>
-        Available for new projects. Free first assessment, and I reply within
+        Available for full-time roles &amp; freelance projects. Reply within
         <span class="data">24–48</span> hours.
       </p>
     </div>
@@ -163,8 +162,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2
         I work both sides of the contract: winning it, then delivering it.
       </h2>
       <p class="mb-6 max-w-[48ch] text-body text-text-2">
-        Based in Centurion, Gauteng, I've spent years across tendering, ISO/SHEQ compliance, financial governance (SAP &amp; Sage) and web delivery,
-        building the systems that back a bid and the digital platforms that carry the brand behind it.
+        Based in Centurion, Gauteng, I bring deep hands-on expertise across tender management, accounts receivable governance (SAP &amp; Sage), ISO compliance and web development — applying ISO quality frameworks to every operational and digital deliverable.
       </p>
       <a href="/about" class="btn btn-secondary">More about me</a>
     </div>
