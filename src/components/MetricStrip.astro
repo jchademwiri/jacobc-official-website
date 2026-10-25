@@ -1,0 +1,42 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+
+const metrics = [
+  {
+    value: '4+ Yrs',
+    label: 'Tendering & Operations',
+    desc: 'Continuous municipal and commercial delivery',
+  },
+  {
+    value: '3 Standards',
+    label: 'ISO 9001 · 14001 · 45001',
+    desc: 'Integrated Management System leadership',
+  },
+  {
+    value: '10+ Sites',
+    label: 'Custom Web Platforms',
+    desc: 'Production Next.js & Astro platforms shipped',
+  },
+  {
+    value: '95–100',
+    label: 'Lighthouse Benchmark',
+    desc: 'Top-tier performance, SEO & accessibility',
+  },
+];
+---
+
+<div class:list={['grid grid-cols-2 gap-4 lg:grid-cols-4', className]}>
+  {
+    metrics.map((m) => (
+      <div class="rounded-xl border border-divider/80 bg-surface/40 p-5 backdrop-blur-xs transition-all duration-200 hover:border-accent/40">
+        <p class="font-mono text-2xl sm:text-3xl font-semibold tracking-tight text-accent">{m.value}</p>
+        <p class="text-[13.5px] font-medium text-text mt-1">{m.label}</p>
+        <p class="text-xs text-text-3 mt-0.5 leading-snug">{m.desc}</p>
+      </div>
+    ))
+  }
+</div>

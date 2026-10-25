@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import ContactBand from '../components/ContactBand.astro';
 import SectionBand from '../components/SectionBand.astro';
 import HeroIllustration from '../components/HeroIllustration.astro';
+import MetricStrip from '../components/MetricStrip.astro';
 import { getCollection } from 'astro:content';
 import { getReadTime } from '../lib/reading-time';
 import { getBlogImageUrl, PROFILE_PORTRAIT_URL } from '../lib/images';
@@ -73,6 +74,11 @@ const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2
       </p>
     </div>
     <HeroIllustration />
+  </div>
+
+  <!-- Quantified Impact Metrics Strip -->
+  <div class="px-5 pb-6 sm:px-8 md:px-14">
+    <MetricStrip />
   </div>
 
   <div id="positions" class="px-5 pb-16 pt-6 sm:px-8 md:px-14">
