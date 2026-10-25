@@ -144,8 +144,9 @@ const skills = [
                           <h4 class="text-[15px] font-semibold text-text tracking-tight">
                             {step.title}
                           </h4>
-                          <p class="font-mono text-[11.5px] text-accent mt-0.5 mb-2">
-                            {step.period} {step.duration && <span class="text-text-3 font-sans">· {step.duration}</span>}
+                          <p class="mt-1 mb-2 font-mono text-xs text-accent">
+                            <span>{step.period}</span>
+                            {step.duration && <span class="text-text-3 font-sans">· {step.duration}</span>}
                           </p>
                           <p class="text-[13px] leading-relaxed text-text-2">
                             {step.summary}

@@ -86,16 +86,16 @@ const { Content } = await render(item);
               </span>
 
               <div class="rounded-xl border border-edge bg-surface/70 p-5 sm:p-6 backdrop-blur-xs transition-all hover:border-accent/40">
-                <div class="flex flex-wrap items-baseline justify-between gap-2 border-b border-divider/40 pb-2.5 mb-3">
+                <div class="border-b border-divider/40 pb-3 mb-3.5">
                   <h3 class="text-base sm:text-[17px] font-semibold text-text tracking-tight">
                     {step.title}
                   </h3>
-                  <div class="flex items-center gap-2 font-mono text-xs">
-                    <span class="text-accent font-medium">{step.period}</span>
+                  <p class="mt-1 flex items-center gap-1.5 font-mono text-xs text-accent">
+                    <span>{step.period}</span>
                     {step.duration && (
                       <span class="text-text-3 font-sans">· {step.duration}</span>
                     )}
-                  </div>
+                  </p>
                 </div>
 
                 {step.summary && (
