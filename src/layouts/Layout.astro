@@ -118,10 +118,10 @@ const schemaKind = schema ?? (ogType === 'article' ? 'article' : 'default');
       tags={tags}
     />
   </head>
-  <body class="bg-bg text-text">
+  <body class="bg-bg text-text flex min-h-screen flex-col">
     <a href="#main" class="skip-link">Skip to content</a>
-    <div class:list={['relative mx-auto', maxWidthClass]}>
-      <Nav active={active} />
+    <Nav active={active} />
+    <div class:list={['relative mx-auto w-full flex-1', maxWidthClass]}>
       <main id="main">
         <slot />
       </main>
