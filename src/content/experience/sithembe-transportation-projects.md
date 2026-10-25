@@ -1,7 +1,7 @@
 ---
 title: "Tender & Project Manager | ISO Implementation Lead | AR Manager"
 company: "Sithembe Transportation & Projects"
-period: "Nov 2023 – Present (at STP since Jan 2022)"
+period: "Jan 2022 – Present"
 totalDuration: "Jan 2022 – Present · 4+ yrs"
 employment: "Full-time"
 location: "Centurion, Gauteng · On-site"
