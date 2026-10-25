@@ -33,4 +33,19 @@ const portfolio = defineCollection({
   }),
 });
 
-export const collections = { blog, portfolio };
+const experience = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/experience' }),
+  schema: z.object({
+    title: z.string(),
+    company: z.string(),
+    period: z.string(),
+    employment: z.string().default('Full-time'),
+    location: z.string().default('Centurion, Gauteng'),
+    meta: z.string(),
+    summary: z.string(),
+    order: z.number().default(0),
+    tags: z.array(z.string()).default([]),
+  }),
+});
+
+export const collections = { blog, portfolio, experience };
