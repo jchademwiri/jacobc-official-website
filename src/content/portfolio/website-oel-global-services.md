@@ -33,7 +33,7 @@ The brand required a cohesive, institutional digital headquarters that simultane
 
 ## Engineering & Architectural Execution
 
-- **Astro v6 Architecture:** Engineered on Astro v6 and Tailwind CSS to guarantee sub-second initial loads, zero unnecessary JavaScript payload, and optimal responsiveness across diverse global network conditions.
+- **Modern Astro Architecture:** Engineered on Astro and Tailwind CSS to guarantee sub-second initial loads, zero unnecessary JavaScript payload, and optimal responsiveness across diverse global network conditions.
 - **Dedicated Solution Architecture:** Created distinct, dedicated landing architectures for `/sourcing` (remote team building, role categories, vetting process) and `/logistics` (core capabilities in oil, gas, mining, and safety standards).
 - **Executive Leadership & Authority:** Built out an executive leadership showcase establishing company governance, corporate vision, and multi-continental capability.
 - **Frictionless Lead Funnels:** Implemented streamlined consultation booking pathways (`/book-consultation`), direct RFQ communication triggers, and responsive contact forms connected to enterprise inquiry pipelines.

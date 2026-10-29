@@ -15,7 +15,7 @@ const links = [
 ---
 
 <header
-  class="sticky top-0 z-20 w-full border-b border-divider backdrop-blur-[14px]"
+  class="sticky top-0 z-20 w-full border-b border-divider backdrop-blur-[14px] print:hidden"
   style="background: color-mix(in srgb, var(--color-bg) 75%, transparent)"
 >
   <nav
@@ -24,11 +24,15 @@ const links = [
   >
     <!-- Brand / Logo -->
     <a href="/" class="group flex items-center gap-2.5 text-base font-medium transition-colors">
-      <span class="flex h-7.5 w-7.5 items-center justify-center rounded-lg border border-edge bg-surface text-accent text-xs font-semibold font-mono shadow-xs transition-transform duration-200 group-hover:scale-105 group-hover:border-accent/50">
-        JC
-      </span>
+      <img
+        src="/images/logos/logo-mark.svg"
+        alt=""
+        width="32"
+        height="32"
+        class="h-8 w-8 rounded-lg shadow-xs transition-transform duration-200 group-hover:scale-105"
+      />
       <span class="font-medium tracking-tight text-text transition-colors duration-200 group-hover:text-accent">
-        <span class="hidden sm:inline">Jacob C.</span>
+        <span class="hidden sm:inline">Jacob Chademwiri</span>
         <span class="sm:hidden">Jacob C.</span>
       </span>
     </a>
@@ -61,27 +65,27 @@ const links = [
       <a
         href="/contact"
         class:list={[
-          'btn btn-primary hidden shrink-0 items-center gap-1.5 whitespace-nowrap text-[13.5px] md:inline-flex',
+          'group btn btn-primary hidden shrink-0 items-center gap-1.5 whitespace-nowrap text-[13.5px] md:inline-flex',
           active === 'contact' && 'is-current',
         ]}
         aria-current={active === 'contact' ? 'page' : undefined}
       >
         <span>Start a project</span>
-        <span class="text-xs transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+        <span class="text-xs transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true">→</span>
       </a>
 
       <!-- Mobile Hamburger Toggle -->
       <button
         type="button"
         id="nav-menu-toggle"
-        aria-label="Menu"
+        aria-label="Toggle navigation menu"
         aria-expanded="false"
         aria-controls="nav-mobile-menu"
-        class="-mr-1.5 flex h-10 w-10 flex-col items-center justify-center gap-[5px] rounded-lg border border-transparent hover:border-divider/60 hover:bg-surface/40 md:hidden"
+        class="group -mr-1.5 flex h-11 w-11 flex-col items-center justify-center gap-[5px] rounded-lg border border-transparent hover:border-divider/60 hover:bg-surface/40 md:hidden"
       >
-        <span class="block h-[2px] w-[20px] bg-text transition-all duration-200"></span>
-        <span class="block h-[2px] w-[20px] bg-text transition-all duration-200"></span>
-        <span class="block h-[2px] w-[20px] bg-text transition-all duration-200"></span>
+        <span class="block h-[2px] w-[20px] bg-text transition-all duration-200 group-aria-expanded:translate-y-[7px] group-aria-expanded:rotate-45"></span>
+        <span class="block h-[2px] w-[20px] bg-text transition-all duration-200 group-aria-expanded:opacity-0"></span>
+        <span class="block h-[2px] w-[20px] bg-text transition-all duration-200 group-aria-expanded:-translate-y-[7px] group-aria-expanded:-rotate-45"></span>
       </button>
     </div>
   </nav>
@@ -101,7 +105,7 @@ const links = [
             <a
               href={link.href}
               class:list={[
-                'flex items-center justify-between rounded-lg px-3.5 py-2 text-base font-medium transition-colors',
+                'flex items-center justify-between rounded-lg px-3.5 py-2.5 text-base font-medium transition-colors',
                 isActive
                   ? 'bg-accent/12 text-accent font-semibold'
                   : 'text-text-2 hover:bg-white/5 hover:text-text',
@@ -117,7 +121,7 @@ const links = [
       <div class="mt-2 border-t border-divider pt-3.5">
         <a href="/contact" class="btn btn-primary flex w-full items-center justify-center gap-1.5 py-2.5">
           <span>Start a project</span>
-          <span>→</span>
+          <span aria-hidden="true">→</span>
         </a>
       </div>
     </div>
@@ -160,6 +164,13 @@ const links = [
       if (e.key === 'Escape' && !menu.hidden) {
         closeMenu();
         toggle.focus();
+      }
+    });
+
+    // Close if viewport expands to desktop nav breakpoint
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 900 && !menu.hidden) {
+        closeMenu();
       }
     });
   }

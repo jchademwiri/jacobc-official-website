@@ -15,7 +15,7 @@ describe('resume and executive metrics', () => {
 
   it('validates core operational metrics format', () => {
     const metrics = [
-      { value: '4+ Yrs', label: 'Tendering & Operations' },
+      { value: '5+ Yrs', label: 'Tendering & Operations' },
       { value: '3 Standards', label: 'ISO 9001 · 14001 · 45001' },
       { value: '10+ Sites', label: 'Custom Web Platforms' },
       { value: '95–100', label: 'Lighthouse Benchmark' },

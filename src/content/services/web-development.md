@@ -22,7 +22,7 @@ process:
     desc: "Mapping site hierarchy, user journeys, content structures, and conversion funnels before touching a single line of layout code."
   - step: "02"
     title: "Modern Component Engineering"
-    desc: "Developing fast, responsive interfaces using Astro v6, React, Next.js, and Tailwind CSS with zero client-side JavaScript bloat."
+    desc: "Developing fast, responsive interfaces using Astro, React, Next.js, and Tailwind CSS with zero client-side JavaScript bloat."
   - step: "03"
     title: "Technical SEO & Accessibility"
     desc: "Structuring semantic HTML5, JSON-LD schemas, OpenGraph tags, responsive imagery, and WCAG AA accessibility compliance."
@@ -49,7 +49,7 @@ Traditional page builders (like WordPress and Wix) often carry dozens of redunda
 - **Zero Maintenance Headaches:** Static edge delivery eliminates database vulnerabilities, server crashes, and frequent security updates.
 - **Lower Total Cost of Ownership:** Hosting static sites on edge networks like Vercel is faster, more secure, and significantly more cost-effective.
 
-## What We Build
+## What I Build
 
 - **Corporate & Industrial Websites:** Professional web portals for contractors, engineering firms, plant hire companies, and logistics groups.
 - **Client Portals & Self-Service Dashboards:** Secure platforms for invoicing, project updates, and client document management.

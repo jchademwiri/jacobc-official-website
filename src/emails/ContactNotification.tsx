@@ -137,7 +137,7 @@ export function ContactNotification({
             }}
           >
             Reply to this email to answer {name.split(' ')[0]} directly (it goes to{' '}
-            <span style={{ fontFamily: font.mono }}>{email}</span>, not to the website.
+            <span style={{ fontFamily: font.mono }}>{email}</span>, not to the website).
           </Text>
         </Container>
       </Body>

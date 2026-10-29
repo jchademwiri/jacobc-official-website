@@ -129,7 +129,10 @@ const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2
 
   <SectionBand id="services" glow="top-right">
     <div class="flex flex-wrap items-baseline justify-between gap-4">
-      <h2 class="kicker">Services</h2>
+      <div>
+        <p class="kicker">Services</p>
+        <h2 class="h2 mt-4">Core disciplines &amp; capabilities</h2>
+      </div>
       <a href="/services" class="btn btn-ghost">All services →</a>
     </div>
     <div class="mt-7 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -172,16 +175,19 @@ const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2
 
   <div id="blog-preview" class="px-5 pb-16 pt-6 sm:px-8 md:px-14">
     <div class="flex flex-wrap items-baseline justify-between gap-4">
-      <h2 class="kicker">From the blog</h2>
+      <div>
+        <p class="kicker">From the blog</p>
+        <h2 class="h2 mt-4">Recent field notes</h2>
+      </div>
       <a href="/blog" class="btn btn-ghost">All posts →</a>
     </div>
     <div class="mt-6 grid items-start gap-5 md:grid-cols-3">
       {
         posts.map((post) => (
-          <a href={`/blog/${post.id}`} class="card group block overflow-hidden p-0">
+          <a href={`/blog/${post.id}`} class="card card-interactive group block overflow-hidden p-0">
             <img
               src={getBlogImageUrl(post.data.cover)}
-              alt={post.data.title}
+              alt=""
               width="640"
               height="400"
               class="aspect-[16/10] w-full object-cover"

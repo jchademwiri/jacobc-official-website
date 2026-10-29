@@ -34,7 +34,7 @@ The business required a unified digital headquarters that clearly positions thei
 
 ## Technical & Architectural Execution
 
-- **Built with Modern Headless Architecture:** Developed using **Astro v6** and **Tailwind CSS**, delivering near-instant page transitions, zero client-side JavaScript bloat, and peak performance across all devices.
+- **Built with Modern Headless Architecture:** Developed using **Astro** and **Tailwind CSS**, delivering near-instant page transitions, zero client-side JavaScript bloat, and peak performance across all devices.
 - **Structured Service Hierarchy:** Designed dedicated landing experiences for each of the five core divisions, ensuring clear service breakdowns, operational capacity indicators, and targeted RFQ contact points.
 - **Search Engine Optimization & Schema:** Implemented JSON-LD structured data (`LocalBusiness`, `Organization`, `Service`), semantic heading structures, and targeted technical SEO meta tags tailored for Gauteng construction, civil engineering, and equipment hire queries.
 - **Mobile-First Responsiveness:** Optimized for procurement managers, civil engineers, and site supervisors accessing technical specifications and equipment catalogs from field locations.

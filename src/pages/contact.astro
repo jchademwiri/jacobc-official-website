@@ -1,18 +1,65 @@
 ---
+export const prerender = false;
+
 import Layout from '../layouts/Layout.astro';
-import { CONTACT_EMAIL, CONTACT_MAILTO } from '../lib/site';
+import ContactForm from '../components/ContactForm.astro';
+import { CONTACT_EMAIL, CONTACT_MAILTO, GITHUB_URL, LINKEDIN_URL } from '../lib/site';
+import { looksAutomated, validateContact, FIELDS, type Field } from '../lib/contact';
+import { sendContactEmail } from '../lib/send-contact-email';
 
 const contactMethods = [
   { label: 'Email', value: CONTACT_EMAIL, href: CONTACT_MAILTO },
-  { label: 'GitHub', value: 'github.com/jchademwiri', href: 'https://github.com/jchademwiri' },
-  { label: 'LinkedIn', value: 'linkedin.com/in/jchademwiri', href: 'https://linkedin.com/in/jchademwiri' },
+  { label: 'WhatsApp', value: '+27 74 049 1433', href: 'https://wa.me/27740491433' },
+  { label: 'LinkedIn', value: 'linkedin.com/in/jchademwiri', href: LINKEDIN_URL },
+  { label: 'GitHub', value: 'github.com/jchademwiri', href: GITHUB_URL },
 ];
 
 const expectations = [
   'Response within 24–48 hours',
-  'Free initial assessment',
+  'Free initial assessment of your scope',
   'Tailored solutions, not templates',
 ];
+
+let errors: Partial<Record<Field, string>> = {};
+let values: Partial<Record<Field, string>> = {};
+let sent = false;
+let failed = false;
+
+if (Astro.request.method === 'POST') {
+  const form = await Astro.request.formData();
+  const wantsJson = Astro.request.headers.get('accept')?.includes('application/json') ?? false;
+
+  // Accept-and-drop: a bot that gets an error learns how to get past it.
+  if (looksAutomated(form)) {
+    if (wantsJson) return Response.json({ ok: true }, { status: 200 });
+    sent = true;
+  } else {
+    const result = validateContact(form);
+
+    if (!result.ok) {
+      if (wantsJson) return Response.json({ ok: false, errors: result.errors }, { status: 422 });
+      errors = result.errors;
+      for (const field of FIELDS) {
+        const raw = form.get(field);
+        if (typeof raw === 'string') values[field] = raw;
+      }
+    } else {
+      try {
+        await sendContactEmail(result.data);
+        if (wantsJson) return Response.json({ ok: true }, { status: 200 });
+        sent = true;
+      } catch (error) {
+        console.error('[contact] send failed', error);
+        if (wantsJson) return Response.json({ ok: false }, { status: 500 });
+        failed = true;
+        for (const field of FIELDS) {
+          const raw = form.get(field);
+          if (typeof raw === 'string') values[field] = raw;
+        }
+      }
+    }
+  }
+}
 ---
 
 <Layout
@@ -22,50 +69,75 @@ const expectations = [
   schema="contact"
   keywords={['contact', 'consultation', 'tender management', 'web development', 'Centurion', 'Gauteng', 'South Africa']}
 >
-  <div class="px-5 pb-14 pt-16 sm:px-8 md:px-14 md:pb-14 md:pt-20">
-    <span class="kicker">Contact</span>
-    <h1 class="max-w-[18ch] text-[32px] sm:text-[42px] md:text-[48px]">
+  <div class="px-5 pb-10 pt-16 sm:px-8 md:px-14 md:pt-20">
+    <p class="kicker">Contact</p>
+    <h1 class="display mt-4 max-w-[18ch]">
       Let's talk about your next project.
     </h1>
-    <p class="mt-5 max-w-[620px] text-base leading-[1.65]" style="color: color-mix(in srgb, var(--color-text) 82%, transparent)">
-      Whether you're hiring for an operational role, need end-to-end tender preparation, or require custom website development, reach out directly and I'll reply within 24–48 hours.
+    <p class="mt-5 max-w-[620px] text-body-lg text-text-2">
+      Whether you're hiring for an operational role, need end-to-end tender preparation, or require custom website development, send a message below and I'll reply within 24–48 hours.
     </p>
   </div>
 
-  <div class="grid gap-6 border-t border-divider px-5 py-12 sm:px-8 md:grid-cols-2 md:px-14">
-    <div class="card">
-      <p class="card-kicker mb-3">Get in touch</p>
-      <div class="flex flex-col gap-4">
-        {
-          contactMethods.map((method) => (
-            <div>
-              <p class="card-meta mb-1">{method.label}</p>
-              <a href={method.href} class="text-accent">
-                {method.value}
-              </a>
-            </div>
-          ))
-        }
+  <div
+    class="grid gap-10 border-t border-divider px-5 py-12 sm:px-8 md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] md:gap-14 md:px-14"
+  >
+    <div id="form">
+      <h2 class="h3 mb-6">Send a message</h2>
+      {
+        sent ? (
+          <div class="form-success" tabindex="-1">
+            <p class="form-success-title">Message sent</p>
+            <p class="form-success-body">
+              Thanks! I read everything myself and reply within 24–48 hours.
+            </p>
+          </div>
+        ) : (
+          <ContactForm errors={errors} values={values} failed={failed} />
+        )
+      }
+    </div>
+
+    <div class="flex flex-col gap-6">
+      <div class="card">
+        <h2 class="card-kicker mb-3">Reach me directly</h2>
+        <div class="flex flex-col gap-4">
+          {
+            contactMethods.map((method) => (
+              <div>
+                <p class="card-meta mb-1">{method.label}</p>
+                <a
+                  href={method.href}
+                  target={method.href.startsWith('http') ? '_blank' : undefined}
+                  rel={method.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  class="text-accent hover:underline"
+                >
+                  {method.value}
+                </a>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-kicker mb-3">What to expect</h2>
+        <ul class="flex flex-col gap-3">
+          {
+            expectations.map((item) => (
+              <li class="card-body flex items-baseline gap-2.5">
+                <span class="dot" aria-hidden="true" />
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="flex flex-col gap-2.5 sm:flex-row">
+        <a href="/services" class="btn btn-secondary flex-1 justify-center">View my services</a>
+        <a href="/portfolio" class="btn btn-secondary flex-1 justify-center">See the work</a>
       </div>
     </div>
-
-    <div class="card">
-      <p class="card-kicker mb-3">What to expect</p>
-      <ul class="flex flex-col gap-3">
-        {
-          expectations.map((item) => (
-            <li class="card-body flex items-baseline gap-2">
-              <span class="text-accent">●</span>
-              {item}
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </div>
-
-  <div class="flex flex-col gap-3 px-5 pb-16 sm:flex-row sm:px-8 md:px-14 [&_a]:text-center sm:[&_a]:text-left">
-    <a href={CONTACT_MAILTO} class="btn btn-primary">Schedule Consultation</a>
-    <a href="/services" class="btn btn-secondary">View Our Services</a>
   </div>
 </Layout>

@@ -17,7 +17,7 @@ const serviceList = (await getCollection('services'))
 >
   <div class="grid gap-10 px-5 pb-14 pt-16 sm:px-8 md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] md:items-center md:px-14 md:pt-20">
     <div>
-      <span class="kicker">Services &amp; Capabilities</span>
+      <p class="kicker">Services &amp; Capabilities</p>
       <h1 class="display mt-4 max-w-[18ch]">
         Tender lifecycle, web development &amp; operational governance.
       </h1>
@@ -46,8 +46,8 @@ const serviceList = (await getCollection('services'))
         ]}
       >
         <div>
-          <p class="mb-2 text-[13px] font-medium text-accent">{service.data.number}</p>
-          <h2 class="text-[26px]">
+          <p class="data mb-2 text-meta font-medium text-accent">{service.data.number}</p>
+          <h2 class="h2">
             <a href={`/services/${service.id}`} class="hover:text-accent transition-colors">
               {service.data.title}
             </a>
@@ -62,10 +62,19 @@ const serviceList = (await getCollection('services'))
               <span class={tag.accent ? 'tag tag-accent' : 'tag tag-neutral'}>{tag.label}</span>
             ))}
           </div>
+          <div class="mt-5">
+            <a
+              href={`/services/${service.id}`}
+              class="inline-flex items-center gap-1.5 text-meta font-medium text-accent hover:underline"
+            >
+              <span>Explore methodology &amp; deliverables</span>
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
         </div>
       </div>
     ))
   }
 
-  <ContactBand secondaryHref="/" secondaryLabel="Back to Home" />
+  <ContactBand secondaryHref="/portfolio" secondaryLabel="See the work" />
 </Layout>

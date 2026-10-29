@@ -16,6 +16,7 @@ interface FilterOptions {
  */
 export function initFilter({ containerId, gridId, attribute }: FilterOptions): void {
   const container = document.getElementById(containerId);
+  const status = document.getElementById(`${containerId}-status`);
   const cards = document.querySelectorAll<HTMLElement>(`#${gridId} [data-${attribute}]`);
   if (!container) return;
 
@@ -32,12 +33,19 @@ export function initFilter({ containerId, gridId, attribute }: FilterOptions): v
       opt.removeAttribute('aria-current');
     });
     link.classList.add('is-active');
-    link.setAttribute('aria-current', 'true');
+    link.setAttribute('aria-current', 'page');
 
     const filter = link.dataset.filter;
+    let visibleCount = 0;
     cards.forEach((card) => {
-      card.hidden = !(filter === 'all' || card.dataset[attribute] === filter);
+      const visible = filter === 'all' || card.dataset[attribute] === filter;
+      card.hidden = !visible;
+      if (visible) visibleCount++;
     });
+
+    if (status) {
+      status.textContent = `Showing ${visibleCount} ${visibleCount === 1 ? 'item' : 'items'} in ${link.textContent?.trim() ?? 'selection'}`;
+    }
 
     history.replaceState(null, '', link.href);
   });

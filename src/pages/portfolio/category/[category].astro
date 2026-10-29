@@ -43,6 +43,14 @@ export async function getStaticPaths() {
 const { category } = Astro.params;
 const { items } = Astro.props;
 const meta = CATEGORIES[category as keyof typeof CATEGORIES];
+
+const filters = [
+  { key: 'all', label: 'All', href: '/portfolio' },
+  { key: 'website', label: 'Website Development', href: '/portfolio/category/website' },
+  { key: 'app', label: 'Web Apps', href: '/portfolio/category/app' },
+  { key: 'project', label: 'Project Management', href: '/portfolio/category/project' },
+  { key: 'tender', label: 'Tender Preparations', href: '/portfolio/category/tender' },
+];
 ---
 
 <Layout
@@ -58,16 +66,31 @@ const meta = CATEGORIES[category as keyof typeof CATEGORIES];
     <p class="kicker">{meta.label}</p>
     <h1 class="h1 mt-4 mb-4">{meta.heading}</h1>
     <p class="max-w-[56ch] text-body-lg text-text-2">{meta.blurb}</p>
-    <a href="/portfolio" class="btn btn-ghost mt-6 -ml-1 inline-flex">← All work</a>
+    <nav class="seg mt-7" aria-label="Filter portfolio by category">
+      {
+        filters.map((filter) => {
+          const isActive = filter.key === category;
+          return (
+            <a
+              href={filter.href}
+              aria-current={isActive ? 'page' : undefined}
+              class:list={['seg-opt', isActive && 'is-active']}
+            >
+              {filter.label}
+            </a>
+          );
+        })
+      }
+    </nav>
   </div>
 
   <div class="grid gap-5 px-5 pb-16 pt-5 sm:px-8 md:grid-cols-2 lg:grid-cols-3 md:px-14">
     {
       items.map((item) => (
-        <a href={`/portfolio/${item.id}`} class="card group flex flex-col overflow-hidden p-0">
+        <a href={`/portfolio/${item.id}`} class="card card-interactive group flex flex-col overflow-hidden p-0">
           <img
             src={getPortfolioImageUrl(item.data.cover)}
-            alt={item.data.title}
+            alt=""
             width="640"
             height="400"
             class="aspect-[16/10] w-full object-cover"

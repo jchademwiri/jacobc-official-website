@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'bun:test';
-import { looksAutomated, validateContact, HONEYPOT_FIELD, TIMESTAMP_FIELD } from '../src/lib/contact';
+import { looksAutomated, validateContact, projectLabel, HONEYPOT_FIELD, TIMESTAMP_FIELD } from '../src/lib/contact';
 
 describe('contact form validation and anti-spam', () => {
   it('flags honeypot submission as automated bot spam', () => {
@@ -47,6 +47,9 @@ describe('contact form validation and anti-spam', () => {
       expect(result.data.name).toBe('Jacob Chademwiri');
       expect(result.data.email).toBe('test@jacobc.co.za');
       expect(result.data.projectType).toBe('tender');
+      expect(projectLabel(result.data.projectType)).toBe('Tender submission');
+      expect(projectLabel('iso')).toBe('ISO / SHEQ implementation');
+      expect(projectLabel('employment')).toBe('Employment opportunity');
     }
   });
 
