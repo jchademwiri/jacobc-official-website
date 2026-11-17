@@ -4,26 +4,31 @@ export const prerender = false;
 import Layout from '../layouts/Layout.astro';
 import ContactForm from '../components/ContactForm.astro';
 import { CONTACT_EMAIL, CONTACT_MAILTO, GITHUB_URL, LINKEDIN_URL } from '../lib/site';
-import { looksAutomated, validateContact, FIELDS, type Field } from '../lib/contact';
+import { looksAutomated, validateContact, isValidProjectType, FIELDS, type Field } from '../lib/contact';
 import { sendContactEmail } from '../lib/send-contact-email';
 
 const contactMethods = [
   { label: 'Email', value: CONTACT_EMAIL, href: CONTACT_MAILTO },
-  { label: 'WhatsApp', value: '+27 74 049 1433', href: 'https://wa.me/27740491433' },
+  { label: 'WhatsApp', value: '+27 74 049 1433', href: 'https://wa.me/27740491433?text=Hi%20Jacob%2C%20I%20visited%20jacobc.co.za%20and%20would%20like%20to%20discuss%20a%20role%20or%20project.' },
   { label: 'LinkedIn', value: 'linkedin.com/in/jchademwiri', href: LINKEDIN_URL },
   { label: 'GitHub', value: 'github.com/jchademwiri', href: GITHUB_URL },
 ];
 
 const expectations = [
-  'Response within 24–48 hours',
-  'Free initial assessment of your scope',
-  'Tailored solutions, not templates',
+  'Direct reply within 24–48 hours',
+  'Strict confidentiality (NDA-ready for tender & commercial discussions)',
+  'Full-time leadership roles (Centurion / Gauteng) or scoped consulting engagements',
 ];
 
 let errors: Partial<Record<Field, string>> = {};
 let values: Partial<Record<Field, string>> = {};
 let sent = false;
 let failed = false;
+
+const preselectedType = Astro.url.searchParams.get('type');
+if (Astro.request.method === 'GET' && isValidProjectType(preselectedType)) {
+  values.projectType = preselectedType;
+}
 
 if (Astro.request.method === 'POST') {
   const form = await Astro.request.formData();
@@ -63,19 +68,19 @@ if (Astro.request.method === 'POST') {
 ---
 
 <Layout
-  title="Contact Jacob Chademwiri | Consultation & Tenders"
-  description="Get in touch for employment opportunities, freelance tender lifecycle preparation, or custom website development in Centurion, Gauteng."
+  title="Contact Jacob Chademwiri | Tender Manager & Operations Lead"
+  description="Hire Jacob Chademwiri as a Tender & Project Manager, or get in touch for freelance tender preparation, ISO 9001/14001/45001 compliance, and contractor web development in Centurion, Gauteng."
   active="contact"
   schema="contact"
-  keywords={['contact', 'consultation', 'tender management', 'web development', 'Centurion', 'Gauteng', 'South Africa']}
+  keywords={['contact Jacob Chademwiri', 'hire tender manager', 'tender preparation', 'ISO implementation', 'project billing SAP Sage', 'web development', 'Centurion', 'Gauteng', 'South Africa']}
 >
   <div class="px-5 pb-10 pt-16 sm:px-8 md:px-14 md:pt-20">
-    <p class="kicker">Contact</p>
+    <p class="kicker">Contact · Centurion, Gauteng</p>
     <h1 class="display mt-4 max-w-[18ch]">
-      Let's talk about your next project.
+      Discuss a role, a tender, or a project.
     </h1>
     <p class="mt-5 max-w-[620px] text-body-lg text-text-2">
-      Whether you're hiring for an operational role, need end-to-end tender preparation, or require custom website development, send a message below and I'll reply within 24–48 hours.
+      Whether you are hiring a Tender &amp; Project Manager who can win contracts, lead ISO compliance, and govern project billing in SAP and Sage—or need freelance tender preparation or a contractor website—send a message below and I will reply within 24–48 hours.
     </p>
   </div>
 

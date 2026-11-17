@@ -1,8 +1,8 @@
 ---
-title: "Full Tender Preparation Lifecycle"
+title: "End-to-End Tender Management & Bid Acquisition"
 number: "01"
 shortTitle: "Tender Management"
-summary: "End-to-end tender bidding and procurement management: opportunity analysis, compliance scheduling, CIDB alignments, CSD validations, and winning bid compilation for municipal, state, and corporate contracts."
+summary: "Primary discipline: steering municipal, state, and corporate bids from RFP analysis and mandatory compliance scheduling (CSD, CIDB, COIDA, SBD forms) through competitive rate modelling to contract award—backed by a track record of 5+ awarded 3-year City of Tshwane contracts."
 order: 1
 relatedCategory: "tender"
 tags:
