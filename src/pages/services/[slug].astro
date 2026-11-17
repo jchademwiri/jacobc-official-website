@@ -127,11 +127,11 @@ const relatedProjects = (
 
         <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {relatedProjects.map((project) => (
-            <a href={`/portfolio/${project.id}`} class="card group flex flex-col justify-between overflow-hidden p-4 hover:border-accent/40 transition-colors">
+            <a href={`/portfolio/${project.id}`} class="card card-interactive group flex flex-col justify-between overflow-hidden p-4 hover:border-accent/40 transition-colors">
               <div>
                 <img
                   src={getPortfolioImageUrl(project.data.cover)}
-                  alt={project.data.title}
+                  alt=""
                   width="400"
                   height="225"
                   class="aspect-[16/9] w-full rounded-md object-cover mb-3"

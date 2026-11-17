@@ -27,6 +27,7 @@ const site = productionUrl ? `https://${productionUrl}` : 'http://localhost:4321
 export default defineConfig({
   site,
   trailingSlash: 'never',
+  prefetch: true,
   adapter: vercel(),
   integrations: [
     sitemap({

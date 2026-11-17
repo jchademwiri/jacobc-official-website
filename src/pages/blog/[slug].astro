@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ContactBand from '../../components/ContactBand.astro';
 import { getCollection, render } from 'astro:content';
 import { getReadTime } from '../../lib/reading-time';
 import { getBlogImageUrl } from '../../lib/images';
@@ -68,4 +69,11 @@ const postImage = getBlogImageUrl(post.data.cover);
       }
     </div>
   </div>
+
+  <ContactBand
+    heading="Working on a tender, ISO rollout, or website?"
+    body="Reach out with your scope or questions and I will come back to you within 24–48 hours."
+    secondaryHref="/blog"
+    secondaryLabel="← All posts"
+  />
 </Layout>

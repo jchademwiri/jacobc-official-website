@@ -33,12 +33,12 @@ const filters = [
     <p class="max-w-[56ch] text-body-lg text-text-2">
       A record of winning tender submissions, delivered contracts and custom websites.
     </p>
-    <div class="seg mt-7" id="portfolio-filter">
+    <nav class="seg mt-7" id="portfolio-filter" aria-label="Filter portfolio by category">
       {
         filters.map((filter, index) => (
           <a
             href={filter.href}
-            aria-current={index === 0 ? 'true' : undefined}
+            aria-current={index === 0 ? 'page' : undefined}
             class:list={['seg-opt', index === 0 && 'is-active']}
             data-filter={filter.key}
           >
@@ -46,7 +46,8 @@ const filters = [
           </a>
         ))
       }
-    </div>
+    </nav>
+    <p id="portfolio-filter-status" class="sr-only" role="status" aria-live="polite"></p>
   </div>
 
   <div
@@ -57,12 +58,12 @@ const filters = [
       items.map((item) => (
         <a
           href={`/portfolio/${item.id}`}
-          class="card group flex flex-col overflow-hidden p-0"
+          class="card card-interactive group flex flex-col overflow-hidden p-0"
           data-category={item.data.category}
         >
           <img
             src={getPortfolioImageUrl(item.data.cover)}
-            alt={item.data.title}
+            alt=""
             width="640"
             height="400"
             class="aspect-[16/10] w-full object-cover"
