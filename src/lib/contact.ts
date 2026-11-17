@@ -1,7 +1,9 @@
 export const PROJECT_TYPES = [
   { value: 'tender', label: 'Tender submission' },
-  { value: 'project', label: 'Project coordination' },
+  { value: 'iso', label: 'ISO / SHEQ implementation' },
+  { value: 'project', label: 'Project & AR governance' },
   { value: 'website', label: 'Website or web app' },
+  { value: 'employment', label: 'Employment opportunity' },
   { value: 'other', label: 'Something else' },
 ] as const;
 

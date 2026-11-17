@@ -246,6 +246,16 @@
     padding: 20px;
   }
 
+  .card-interactive {
+    transition:
+      box-shadow 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .card-interactive:hover {
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 48%, transparent);
+  }
+
   .card-kicker {
     font-family: var(--font-mono);
     font-size: var(--text-label);
@@ -406,9 +416,15 @@
     box-shadow: inset 0 0 0 1px var(--color-edge);
     color: var(--color-text);
     font-family: inherit;
-    font-size: var(--text-body);
+    font-size: 1rem;
     line-height: 1.5;
     transition: box-shadow 0.15s ease;
+  }
+
+  @media (min-width: 600px) {
+    .field-input {
+      font-size: var(--text-body);
+    }
   }
 
   .field-input::placeholder {

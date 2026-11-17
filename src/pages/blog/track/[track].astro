@@ -40,6 +40,13 @@ const { track } = Astro.params;
 const { posts } = Astro.props;
 const meta = TRACKS[track as keyof typeof TRACKS];
 
+const filters = [
+  { key: 'all', label: 'All', href: '/blog' },
+  { key: 'tendering', label: 'Tendering', href: '/blog/track/tendering' },
+  { key: 'iso', label: 'ISO / SHEQ', href: '/blog/track/iso' },
+  { key: 'dev', label: 'Web Dev', href: '/blog/track/dev' },
+];
+
 const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2-digit', year: 'numeric' });
 ---
 
@@ -56,16 +63,31 @@ const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2
     <p class="kicker">{meta.label}</p>
     <h1 class="h1 mt-4 mb-4">{meta.heading}</h1>
     <p class="max-w-[56ch] text-body-lg text-text-2">{meta.blurb}</p>
-    <a href="/blog" class="btn btn-ghost mt-6 -ml-1 inline-flex">← All posts</a>
+    <nav class="seg mt-7" aria-label="Filter blog posts by topic">
+      {
+        filters.map((filter) => {
+          const isActive = filter.key === track;
+          return (
+            <a
+              href={filter.href}
+              aria-current={isActive ? 'page' : undefined}
+              class:list={['seg-opt', isActive && 'is-active']}
+            >
+              {filter.label}
+            </a>
+          );
+        })
+      }
+    </nav>
   </div>
 
   <div class="grid gap-5 px-5 pb-16 pt-5 sm:px-8 md:grid-cols-2 lg:grid-cols-3 md:px-14">
     {
       posts.map((post) => (
-        <a href={`/blog/${post.id}`} class="card group flex flex-col overflow-hidden p-0">
+        <a href={`/blog/${post.id}`} class="card card-interactive group flex flex-col overflow-hidden p-0">
           <img
             src={getBlogImageUrl(post.data.cover)}
-            alt={post.data.title}
+            alt=""
             width="640"
             height="400"
             class="aspect-[16/10] w-full object-cover"
