@@ -11,7 +11,7 @@ export const CONTACT_MAILTO = `mailto:${CONTACT_EMAIL}`;
  * root domain used for ordinary correspondence.
  */
 export const SENDING_DOMAIN = 'info.jacobc.co.za';
-export const DEFAULT_FROM_ADDRESS = `noreply@${SENDING_DOMAIN}`;
+export const DEFAULT_FROM_ADDRESS = `hello@${SENDING_DOMAIN}`;
 
 export const LOCALITY = 'Centurion';
 export const REGION = 'Gauteng';
