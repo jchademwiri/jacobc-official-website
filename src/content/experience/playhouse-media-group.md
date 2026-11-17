@@ -1,12 +1,12 @@
 ---
-title: "Founder & Website Developer"
+title: "Founder & Lead Developer (Complementary Bid-Tech & Web Venture)"
 company: "Playhouse Media Group"
 period: "Jan 2020 – Present"
-employment: "Founder"
+employment: "Founder · Complementary Venture"
 location: "Gauteng, South Africa"
-meta: "Founder & Lead Developer · Gauteng, South Africa"
-summary: "Building custom web applications, client portals, and modern digital systems with a focus on speed, accessibility, and ISO-inspired engineering rigor."
-order: 2
+meta: "Founder & Lead Developer · Complementary Bid-Tech & Web Systems"
+summary: "Complementing my tender and operations career by engineering bid-management software (TenderTrack360 SaaS), client billing portals, and high-performance websites for South African contractors and SMEs."
+order: 3
 tags:
   - "Next.js & React"
   - "Astro.js"

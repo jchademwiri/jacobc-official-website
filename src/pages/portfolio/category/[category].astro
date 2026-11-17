@@ -1,28 +1,29 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import ContactBand from '../../../components/ContactBand.astro';
 import { getCollection } from 'astro:content';
 import { getPortfolioImageUrl } from '../../../lib/images';
 
 const CATEGORIES = {
-  website: {
-    label: 'Website Development',
-    heading: 'Websites built.',
-    blurb: 'Brand sites and marketing sites built to be fast, accessible and easy to keep current.',
-  },
-  app: {
-    label: 'Web Apps',
-    heading: 'Web apps built.',
-    blurb: 'Products and internal tools, from tender tracking to client portals.',
+  tender: {
+    label: 'Awarded Tenders',
+    heading: 'Awarded municipal & corporate tenders.',
+    blurb: 'Compliant, competitive bid submissions prepared end-to-end and awarded multi-year contracts.',
   },
   project: {
-    label: 'Project Management',
-    heading: 'Projects delivered.',
-    blurb: 'Coordination of timelines, teams and budgets through to completion.',
+    label: 'Project & ISO Delivery',
+    heading: 'Contracts & ISO systems delivered.',
+    blurb: 'Post-award project coordination, ISO 9001/14001/45001 implementation, and SAP/Sage billing governance.',
   },
-  tender: {
-    label: 'Tender Preparations',
-    heading: 'Tenders delivered.',
-    blurb: 'Compliant, competitive submissions prepared end to end.',
+  app: {
+    label: 'Bid-Tech & Web Apps',
+    heading: 'Complementary software & portals.',
+    blurb: 'SaaS products and internal portals—from TenderTrack360 bid tracking to client billing systems.',
+  },
+  website: {
+    label: 'Contractor Websites',
+    heading: 'Complementary contractor & SME websites.',
+    blurb: 'High-performance corporate websites engineered to build procurement credibility and capture leads.',
   },
 } as const;
 
@@ -45,11 +46,11 @@ const { items } = Astro.props;
 const meta = CATEGORIES[category as keyof typeof CATEGORIES];
 
 const filters = [
-  { key: 'all', label: 'All', href: '/portfolio' },
-  { key: 'website', label: 'Website Development', href: '/portfolio/category/website' },
-  { key: 'app', label: 'Web Apps', href: '/portfolio/category/app' },
-  { key: 'project', label: 'Project Management', href: '/portfolio/category/project' },
-  { key: 'tender', label: 'Tender Preparations', href: '/portfolio/category/tender' },
+  { key: 'all', label: 'All Work', href: '/portfolio' },
+  { key: 'tender', label: 'Awarded Tenders', href: '/portfolio/category/tender' },
+  { key: 'project', label: 'Project & ISO Delivery', href: '/portfolio/category/project' },
+  { key: 'app', label: 'Bid-Tech & Web Apps', href: '/portfolio/category/app' },
+  { key: 'website', label: 'Contractor Websites', href: '/portfolio/category/website' },
 ];
 ---
 
@@ -90,7 +91,7 @@ const filters = [
         <a href={`/portfolio/${item.id}`} class="card card-interactive group flex flex-col overflow-hidden p-0">
           <img
             src={getPortfolioImageUrl(item.data.cover)}
-            alt=""
+            alt={`${item.data.title} — ${item.data.client}`}
             width="640"
             height="400"
             class="aspect-[16/10] w-full object-cover"
@@ -103,10 +104,12 @@ const filters = [
               {item.data.client} · <span class="data">{item.data.year}</span>
             </p>
             <p class="card-body">{item.data.excerpt}</p>
-            {item.data.outcome && <p class="data mt-3 text-meta text-accent">{item.data.outcome}</p>}
+            {item.data.outcome && <p class="data mt-3 text-meta font-medium text-accent">{item.data.outcome}</p>}
           </div>
         </a>
       ))
     }
   </div>
+
+  <ContactBand secondaryHref="/portfolio" secondaryLabel="← All work" />
 </Layout>

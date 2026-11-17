@@ -1,9 +1,9 @@
 ---
-title: "ISO Standards & SHEQ Compliance in Practice"
-number: "04"
+title: "ISO 9001, 14001 & 45001 Implementation & SHEQ Governance"
+number: "02"
 shortTitle: "ISO & SHEQ Compliance"
-summary: "Applying Integrated Management System (IMS) discipline across daily operations: leveraging ISO 9001 (Quality), ISO 14001 (Environmental), and ISO 45001 (Health & Safety) standards for gap analysis, SOP formulation, HIRA registers, and audit readiness."
-order: 4
+summary: "Leading Integrated Management System (IMS) implementation as appointed Management Representative: uniting ISO 9001 (Quality), ISO 14001 (Environmental), and ISO 45001 (Health & Safety) so your operations pass audits and score maximum functionality points on tenders."
+order: 2
 relatedCategory: "project"
 tags:
   - label: "ISO 9001 / 14001 / 45001"

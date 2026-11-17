@@ -15,10 +15,10 @@ describe('resume and executive metrics', () => {
 
   it('validates core operational metrics format', () => {
     const metrics = [
-      { value: '5+ Yrs', label: 'Tendering & Operations' },
+      { value: '5+ Awarded', label: '3-Year Municipal Tenders' },
       { value: '3 Standards', label: 'ISO 9001 · 14001 · 45001' },
-      { value: '10+ Sites', label: 'Custom Web Platforms' },
-      { value: '95–100', label: 'Lighthouse Benchmark' },
+      { value: 'SAP & Sage', label: 'Project Billing & AR Control' },
+      { value: '10+ Platforms', label: 'Web & Bid-Tech Systems' },
     ];
 
     expect(metrics.length).toBe(4);

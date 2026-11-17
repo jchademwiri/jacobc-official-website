@@ -6,7 +6,7 @@ import HeroIllustration from '../components/HeroIllustration.astro';
 import MetricStrip from '../components/MetricStrip.astro';
 import { getCollection } from 'astro:content';
 import { getReadTime } from '../lib/reading-time';
-import { getBlogImageUrl, PROFILE_PORTRAIT_URL } from '../lib/images';
+import { getBlogImageUrl, getPortfolioImageUrl, PROFILE_PORTRAIT_URL } from '../lib/images';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
@@ -15,26 +15,55 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 const positions = (await getCollection('experience'))
   .sort((a, b) => a.data.order - b.data.order);
 
+const featuredSlugs = [
+  'tender-tshwane-construction-equipment',
+  'project-iso-ims-implementation',
+  'tender-tshwane-water-tankers',
+  'tender-tshwane-chemical-toilets',
+  'app-tendertrack360',
+  'website-phehlwana-group',
+];
+
+const allPortfolio = await getCollection('portfolio', ({ data }) => !data.draft);
+const featuredWork = featuredSlugs
+  .map((slug) => allPortfolio.find((item) => item.id === slug))
+  .filter((item): item is NonNullable<typeof item> => Boolean(item));
+
+const categoryLabels: Record<string, string> = {
+  tender: 'Awarded Tender',
+  project: 'Project & ISO Delivery',
+  app: 'Complementary SaaS',
+  website: 'Complementary Web Build',
+};
+
 const services = [
   {
-    title: 'Tender Preparation Lifecycle',
-    description: 'Full freelance tender lifecycle: opportunity ID, RFP analysis, compliance scheduling and competitive bid compilation.',
+    number: '01',
+    title: 'Tender Management & Bid Acquisition',
+    description:
+      'Primary specialty: opportunity vetting, RFP clause analysis, CSD/CIDB compliance scheduling, competitive rate modelling, and zero-disqualification municipal & commercial submissions.',
     href: '/services/tender-management',
   },
   {
-    title: 'Website Development',
-    description: 'Custom, high-performance websites and web applications built in Next.js, Astro and Tailwind CSS.',
-    href: '/services/web-development',
+    number: '02',
+    title: 'ISO 9001, 14001 & 45001 Implementation',
+    description:
+      'Appointed Management Representative building the Integrated Management Systems (IMS), HIRA registers, and DMR 19 lifting compliance that qualify bids and pass audits.',
+    href: '/services/iso-sheq-compliance',
   },
   {
-    title: 'Project & AR Governance',
-    description: 'Enterprise accounts receivable control (SAP & Sage), financial accuracy and end-to-end delivery coordination.',
+    number: '03',
+    title: 'Project Execution & SAP/Sage Billing',
+    description:
+      'Running awarded contracts as needed and governing accounts receivable in SAP ERP and Sage Accounting—reconciling site milestones to invoices so won tenders turn into collected cash.',
     href: '/services/project-management',
   },
   {
-    title: 'ISO Standards & Compliance',
-    description: 'Applying ISO 9001, 14001 & 45001 quality frameworks to daily operational routines and bid readiness.',
-    href: '/services/iso-sheq-compliance',
+    number: '04',
+    title: 'Complementary: Web & Bid-Tech Systems',
+    description:
+      'Creator of TenderTrack360 and high-performance Astro & Next.js websites for civil, plant hire, and logistics contractors.',
+    href: '/services/web-development',
   },
 ];
 
@@ -42,54 +71,118 @@ const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2
 ---
 
 <Layout
-  fullTitle="Jacob Chademwiri | Tender, Project & AR Manager | Centurion"
-  description="Tender, project and accounts receivable manager in Centurion. Available for employment roles and freelance tender preparation and web development."
+  fullTitle="Jacob Chademwiri | Tender Manager · Project Delivery, ISO Lead & SAP/Sage Billing"
+  description="Tender Manager in Centurion, Gauteng who wins municipal and corporate contracts, leads ISO 9001/14001/45001 implementation, coordinates project delivery, and governs billing in SAP and Sage."
   active="home"
   schema="person"
-  keywords={['tender manager', 'project manager', 'AR manager', 'tender preparation lifecycle', 'web developer', 'ISO 9001', 'ISO standards', 'SAP', 'Sage accounting', 'Centurion', 'Gauteng', 'South Africa']}
+  keywords={[
+    'tender manager',
+    'tender and project manager',
+    'ISO 9001 14001 45001 implementation lead',
+    'project billing SAP Sage',
+    'accounts receivable manager',
+    'municipal tender specialist',
+    'City of Tshwane tenders',
+    'Centurion',
+    'Gauteng',
+    'South Africa',
+  ]}
 >
-  <div class="grid gap-10 px-5 pb-14 pt-20 sm:px-8 md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] md:items-center md:px-14">
+  <!-- Hero Section -->
+  <div class="grid gap-10 px-5 pb-14 pt-16 sm:px-8 md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] md:items-center md:px-14 md:pt-20">
     <div>
-      <p class="kicker">Jacob Chademwiri · Centurion, Gauteng</p>
-      <h1 class="display mt-4 max-w-[18ch]">Tender acquisition, project delivery &amp; web development, governed by ISO quality.</h1>
+      <p class="kicker">Jacob Chademwiri · Tender Manager · Centurion, Gauteng</p>
+      <h1 class="display mt-4 max-w-[19ch]">
+        The Tender Manager who wins the contract, runs the project, and bills it to collection.
+      </h1>
       <p class="mt-6 max-w-[640px] text-body-lg text-text-2">
-        Specialised in municipal tender management, enterprise AR governance (SAP &amp; Sage) and high-performance web development. Available for high-impact employment roles and freelance projects.
+        Most tender managers stop at the bid box. I lead end-to-end municipal and corporate tender acquisitions, direct the <strong>ISO 9001, 14001 &amp; 45001</strong> compliance systems behind them, coordinate project execution as needed, and govern contract billing in <strong>SAP &amp; Sage</strong>. Complemented by custom web and bid-tech engineering.
       </p>
       <div class="my-7 flex flex-wrap gap-2">
-        <span class="tag tag-accent">Tender Management</span>
-        <span class="tag tag-accent">Project Management</span>
-        <span class="tag tag-accent">AR Management (SAP &amp; Sage)</span>
-        <span class="tag tag-accent">Tender Lifecycle Preparation</span>
-        <span class="tag tag-neutral">Web Development</span>
-        <span class="tag tag-neutral">ISO Standards Compliant</span>
+        <span class="tag tag-accent">Tender Management (Primary)</span>
+        <span class="tag tag-accent">ISO 9001 · 14001 · 45001 Lead</span>
+        <span class="tag tag-accent">Project Delivery &amp; Coordination</span>
+        <span class="tag tag-accent">Project Billing &amp; AR (SAP &amp; Sage)</span>
+        <span class="tag tag-neutral">Bid-Tech &amp; Web Development</span>
       </div>
-      <div class="flex flex-col gap-3 sm:flex-row">
-        <a href="/contact" class="btn btn-primary">Start a project</a>
-        <a href="/services" class="btn btn-secondary">See what I do</a>
+      <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        <a href="/contact?type=employment" class="btn btn-primary">Discuss a role or tender →</a>
+        <a href="/resume" class="btn btn-secondary">View Executive Resume</a>
+        <a href="#awarded-contracts" class="btn btn-ghost self-start sm:self-center">See awarded contracts ↓</a>
       </div>
       <p class="mt-7 flex items-baseline gap-2.5 text-meta text-text-3">
         <span class="dot" aria-hidden="true"></span>
-        Available for full-time roles &amp; freelance projects. Reply within
-        <span class="data">24–48</span> hours.
+        Open to Senior Tender Manager &amp; Project Coordination roles
       </p>
     </div>
     <HeroIllustration />
   </div>
 
   <!-- Quantified Impact Metrics Strip -->
-  <div class="px-5 pb-6 sm:px-8 md:px-14">
+  <div class="px-5 pb-8 sm:px-8 md:px-14">
     <MetricStrip />
   </div>
 
-  <div id="positions" class="px-5 pb-16 pt-6 sm:px-8 md:px-14">
-    <div class="flex flex-wrap items-baseline justify-between gap-4 mb-7">
+  <!-- Awarded Contracts & Proof of Work Showcase -->
+  <div id="awarded-contracts" class="px-5 pb-16 pt-6 sm:px-8 md:px-14">
+    <div class="mb-7 flex flex-wrap items-baseline justify-between gap-4">
       <div>
-        <p class="kicker">Experience</p>
-        <h2 class="h2 mt-4 max-w-[28ch]">Where I'm making an impact</h2>
+        <p class="kicker">Proven Track Record</p>
+        <h2 class="h2 mt-4 max-w-[30ch]">Awarded municipal tenders, ISO systems &amp; complementary builds</h2>
+        <p class="mt-2 max-w-[62ch] text-body text-text-2">
+          Real multi-year contracts won, governed under ISO standards, coordinated on the ground, and billed through to collection—alongside the digital tools I build to support contractors.
+        </p>
       </div>
-      <a href="/about#experience" class="btn btn-ghost">Full timeline →</a>
+      <a href="/portfolio" class="btn btn-ghost">All 17 case studies →</a>
     </div>
-    <div class="grid gap-5 md:grid-cols-2">
+
+    <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      {
+        featuredWork.map((item) => (
+          <a
+            href={`/portfolio/${item.id}`}
+            class="card card-interactive group flex flex-col overflow-hidden p-0"
+          >
+            <img
+              src={getPortfolioImageUrl(item.data.cover)}
+              alt={`${item.data.title} — ${item.data.client}`}
+              width="640"
+              height="400"
+              class="aspect-[16/10] w-full object-cover"
+              loading="lazy"
+            />
+            <div class="flex flex-1 flex-col px-4 py-4">
+              <p class="card-kicker">{categoryLabels[item.data.category] ?? item.data.category}</p>
+              <h3 class="card-title my-2 group-hover:text-accent">{item.data.title}</h3>
+              <p class="card-meta mb-2.5">
+                {item.data.client} · <span class="data">{item.data.year}</span>
+              </p>
+              <p class="card-body line-clamp-3">{item.data.excerpt}</p>
+              {item.data.outcome && (
+                <p class="data mt-3 text-meta font-medium text-accent">{item.data.outcome}</p>
+              )}
+              <div class="mt-auto flex flex-wrap gap-1.5 pt-3.5">
+                {item.data.tags.slice(0, 3).map((tag) => (
+                  <span class={tag.accent ? 'tag tag-accent' : 'tag tag-neutral'}>{tag.label}</span>
+                ))}
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Experience & Career Trajectory -->
+  <div id="positions" class="border-t border-divider px-5 pb-16 pt-14 sm:px-8 md:px-14">
+    <div class="mb-7 flex flex-wrap items-baseline justify-between gap-4">
+      <div>
+        <p class="kicker">Experience &amp; Roles</p>
+        <h2 class="h2 mt-4 max-w-[28ch]">From bid compliance to full contract-to-cash leadership</h2>
+      </div>
+      <a href="/about#experience" class="btn btn-ghost">Full career progression →</a>
+    </div>
+    <div class="grid gap-5 md:grid-cols-3">
       {
         positions.map((position) => (
           <div class="card flex flex-col justify-between">
@@ -112,12 +205,12 @@ const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2
                 </div>
               )}
             </div>
-            <div class="mt-5 pt-3 border-t border-divider/40">
+            <div class="mt-5 border-t border-divider/40 pt-3">
               <a
                 href={`/experience/${position.id}`}
-                class="text-accent text-[13px] font-medium inline-flex items-center gap-1 hover:underline"
+                class="inline-flex items-center gap-1 text-[13px] font-medium text-accent hover:underline"
               >
-                <span>View role details</span>
+                <span>View role &amp; promotions</span>
                 <span>→</span>
               </a>
             </div>
@@ -127,18 +220,20 @@ const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2
     </div>
   </div>
 
+  <!-- Core Capabilities & Complementary Services -->
   <SectionBand id="services" glow="top-right">
     <div class="flex flex-wrap items-baseline justify-between gap-4">
       <div>
-        <p class="kicker">Services</p>
-        <h2 class="h2 mt-4">Core disciplines &amp; capabilities</h2>
+        <p class="kicker">How I Add Value</p>
+        <h2 class="h2 mt-4">Primary role &amp; complementary disciplines</h2>
       </div>
-      <a href="/services" class="btn btn-ghost">All services →</a>
+      <a href="/services" class="btn btn-ghost">Explore all capabilities →</a>
     </div>
     <div class="mt-7 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {
         services.map((service) => (
           <a href={service.href} class="group block border-t border-divider pt-5">
+            <p class="data mb-1.5 text-label font-medium text-accent">{service.number}</p>
             <h3 class="h3 mb-2.5 group-hover:text-accent">{service.title}</h3>
             <p class="text-body text-text-2">{service.description}</p>
           </a>
@@ -147,6 +242,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2
     </div>
   </SectionBand>
 
+  <!-- About Preview -->
   <div
     id="about"
     class="grid gap-8 px-5 py-16 sm:px-8 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:items-center md:gap-12 md:px-14"
@@ -154,7 +250,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2
     <figure class="m-0">
       <img
         src={PROFILE_PORTRAIT_URL}
-        alt="Jacob Chademwiri, Tender and Project Manager, ISO Implementation Lead, AR Manager, Web Developer"
+        alt="Jacob Chademwiri — Tender Manager, Project Coordinator, ISO Implementation Lead & AR Manager"
         width="640"
         height="800"
         class="aspect-[4/5] w-full rounded-xl object-cover"
@@ -162,24 +258,31 @@ const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2
       />
     </figure>
     <div>
-      <p class="kicker">About</p>
+      <p class="kicker">Who I Am</p>
       <h2 class="h2 mt-4 mb-5 max-w-[26ch]">
-        I work both sides of the contract: winning it, then delivering it.
+        I work both sides of the contract: winning it, running it, and billing it.
       </h2>
-      <p class="mb-6 max-w-[48ch] text-body text-text-2">
-        Based in Centurion, Gauteng, I manage tender submissions, enterprise accounts receivable in SAP and Sage, and modern web development, applying ISO quality frameworks across operational and digital delivery.
+      <p class="mb-4 max-w-[54ch] text-body text-text-2">
+        I am a <strong>Tender Manager</strong> first. At Sithembe Transportation &amp; Projects in Centurion, I lead municipal and commercial bid acquisitions—and because winning a tender is only half the battle, I also serve as appointed Management Representative leading our <strong>ISO 9001, 14001 &amp; 45001</strong> Integrated Management System, step in to coordinate awarded projects as needed, and manage project billing and accounts receivable in <strong>SAP ERP and Sage</strong>.
       </p>
-      <a href="/about" class="btn btn-secondary">More about me</a>
+      <p class="mb-6 max-w-[54ch] text-body text-text-2">
+        Alongside my operational career, I build custom software and contractor websites through Playhouse Media Group—including <strong>TenderTrack360</strong>, a SaaS platform born directly from my day-to-day tendering work.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a href="/about" class="btn btn-secondary">Read my full story</a>
+        <a href="/resume" class="btn btn-ghost">Download / Print Executive CV →</a>
+      </div>
     </div>
   </div>
 
-  <div id="blog-preview" class="px-5 pb-16 pt-6 sm:px-8 md:px-14">
+  <!-- Blog Preview -->
+  <div id="blog-preview" class="border-t border-divider px-5 pb-16 pt-14 sm:px-8 md:px-14">
     <div class="flex flex-wrap items-baseline justify-between gap-4">
       <div>
-        <p class="kicker">From the blog</p>
-        <h2 class="h2 mt-4">Recent field notes</h2>
+        <p class="kicker">From the Bid Room</p>
+        <h2 class="h2 mt-4">Field notes on tenders, ISO systems &amp; web delivery</h2>
       </div>
-      <a href="/blog" class="btn btn-ghost">All posts →</a>
+      <a href="/blog" class="btn btn-ghost">All field notes →</a>
     </div>
     <div class="mt-6 grid items-start gap-5 md:grid-cols-3">
       {
@@ -187,7 +290,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2
           <a href={`/blog/${post.id}`} class="card card-interactive group block overflow-hidden p-0">
             <img
               src={getBlogImageUrl(post.data.cover)}
-              alt=""
+              alt={post.data.title}
               width="640"
               height="400"
               class="aspect-[16/10] w-full object-cover"
@@ -209,6 +312,6 @@ const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2
 
   <ContactBand
     headingLevel={2}
-    trustLine="24–48hr reply · Free first assessment · Tailored solutions"
+    trustLine="24–48hr response · Available for Tender Manager roles & select consulting · NDA-ready"
   />
 </Layout>

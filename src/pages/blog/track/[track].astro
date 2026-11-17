@@ -87,7 +87,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2
         <a href={`/blog/${post.id}`} class="card card-interactive group flex flex-col overflow-hidden p-0">
           <img
             src={getBlogImageUrl(post.data.cover)}
-            alt=""
+            alt={post.data.title}
             width="640"
             height="400"
             class="aspect-[16/10] w-full object-cover"
