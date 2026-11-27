@@ -20,9 +20,9 @@
   --color-edge: #d4cec2;
   --color-primary: #1c1c1c;
   --color-primary-ink: #f6f4ef;
-  --color-accent: #8a6b3f;
-  --color-accent-bright: #9a7b4f;
-  --color-accent-soft: color-mix(in srgb, #9a7b4f 11%, transparent);
+  --color-accent: #73562e;
+  --color-accent-bright: #836438;
+  --color-accent-soft: color-mix(in srgb, #836438 11%, transparent);
   --color-text: #262523;
   --color-text-2: #4f4d49;
   --color-text-3: #6b6862;
@@ -46,8 +46,8 @@
   --color-accent-soft: color-mix(in srgb, #c4a472 13%, transparent);
   --color-text: #e8e4dc;
   --color-text-2: #b8b3a9;
-  --color-text-3: #8c877e;
-  --color-muted: #8c877e;
+  --color-text-3: #9c968c;
+  --color-muted: #9c968c;
   --color-danger: #e07a7a;
   --color-success: #6fb58a;
 }
@@ -257,7 +257,7 @@
   .btn-primary:hover {
     background: var(--color-accent);
     border-color: var(--color-accent);
-    color: #faf8f4;
+    color: var(--color-primary-ink);
   }
 
   .btn-primary:disabled {
@@ -386,7 +386,7 @@
   }
 
   .field-input:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--color-accent);
     box-shadow: 0 0 0 3px var(--color-accent-soft);
   }
@@ -465,10 +465,14 @@
     --color-surface: #ffffff !important;
     --color-surface-2: #ffffff !important;
     --color-border: #d4d4d4 !important;
+    --color-edge: #d4d4d4 !important;
     --color-primary: #111111 !important;
+    --color-primary-ink: #ffffff !important;
     --color-accent: #5c4729 !important;
+    --color-accent-soft: #f3f3f3 !important;
     --color-text: #1c1c1c !important;
     --color-text-2: #333333 !important;
+    --color-text-3: #555555 !important;
     --color-muted: #555555 !important;
   }
 

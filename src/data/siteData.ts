@@ -49,7 +49,6 @@ export const siteConfig = {
   phone: "+27 74 049 1433",
   phoneHref: "tel:+27740491433",
   email: "hello@jacobc.co.za",
-  secondaryEmail: "jchademwiri@gmail.com",
   linkedin: "https://www.linkedin.com/in/jchademwiri",
   website: "https://www.jacobc.co.za",
   cvPath: "/Jacob_Chademwiri_Procurement_Contracts_CV_v4.docx",

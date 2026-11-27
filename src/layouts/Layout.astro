@@ -26,6 +26,8 @@ const {
 } = Astro.props;
 
 const pageTitle = fullTitle ?? (title ? `${title} | ${siteConfig.name}` : siteConfig.seo.metaTitle);
+const ogTitle = title ? pageTitle : siteConfig.seo.ogTitle;
+const ogDescription = title ? description : siteConfig.seo.ogDescription;
 const cleanPathname = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/+$/, '');
 const canonicalUrl = new URL(cleanPathname, Astro.site);
 const ogImageUrl = image
@@ -40,6 +42,7 @@ const ogImageUrl = image
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f4ef" />
     <script is:inline>
       (() => {
         const key = 'theme-preference';
@@ -56,12 +59,15 @@ const ogImageUrl = image
             : pref;
         document.documentElement.dataset.theme = resolved;
         document.documentElement.dataset.themePreference = pref;
+        const themeMeta = document.querySelector('meta[name="theme-color"]');
+        if (themeMeta) {
+          themeMeta.setAttribute('content', resolved === 'dark' ? '#121210' : '#f6f4ef');
+        }
       })();
     </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#f6f4ef" />
     <meta name="author" content={siteConfig.name} />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
@@ -72,22 +78,22 @@ const ogImageUrl = image
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={siteConfig.name} />
     <meta property="og:locale" content="en_ZA" />
-    <meta property="og:title" content={siteConfig.seo.ogTitle} />
-    <meta property="og:description" content={siteConfig.seo.ogDescription} />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content={siteConfig.seo.ogTitle} />
+    <meta property="og:image:alt" content={ogTitle} />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={siteConfig.seo.ogTitle} />
-    <meta name="twitter:description" content={siteConfig.seo.ogDescription} />
+    <meta name="twitter:title" content={ogTitle} />
+    <meta name="twitter:description" content={ogDescription} />
     <meta name="twitter:image" content={ogImageUrl} />
 
-    {!noindex && <Schema site={Astro.site!} canonical={canonicalUrl} includeFaq={includeFaqSchema} />}
+    {!noindex && <Schema site={Astro.site!} canonical={canonicalUrl} pageTitle={pageTitle} includeFaq={includeFaqSchema} />}
   </head>
   <body class="bg-bg text-text flex min-h-screen flex-col">
-    <a href="#main" class="skip-link">Skip to content</a>
+    <a href="#main" class="skip-link no-print">Skip to content</a>
     <Nav />
     <main id="main" class="flex-1">
       <slot />

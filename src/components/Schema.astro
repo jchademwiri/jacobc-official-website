@@ -4,10 +4,11 @@ import { siteConfig, faqItems } from '../data/siteData';
 interface Props {
   site: URL;
   canonical: URL;
+  pageTitle?: string;
   includeFaq?: boolean;
 }
 
-const { site, canonical, includeFaq = false } = Astro.props;
+const { site, canonical, pageTitle = siteConfig.seo.metaTitle, includeFaq = false } = Astro.props;
 
 const rootUrl = new URL('/', site).href.replace(/\/$/, '');
 const personId = `${rootUrl}/#person`;
@@ -22,7 +23,7 @@ const graph: Record<string, unknown>[] = [
       'Procurement, Tender & Contract Manager in Centurion, South Africa with 5+ years of bid-to-delivery experience across 10+ municipal contracts for the City of Tshwane, City of Ekurhuleni, Pikitup Johannesburg, and Msunduzi Municipality.',
     url: rootUrl,
     email: `mailto:${siteConfig.email}`,
-    telephone: '+27-74-049-1433',
+    telephone: siteConfig.phone,
     address: {
       '@type': 'PostalAddress',
       addressLocality: siteConfig.locality,
@@ -51,7 +52,7 @@ const graph: Record<string, unknown>[] = [
     '@type': 'ProfilePage',
     '@id': `${canonical.href}#profilepage`,
     url: canonical.href,
-    name: siteConfig.seo.metaTitle,
+    name: pageTitle,
     mainEntity: { '@id': personId },
     inLanguage: 'en-ZA',
   },
