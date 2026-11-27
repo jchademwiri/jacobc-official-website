@@ -1,5 +1,6 @@
 ---
 import { siteConfig, navLinks, footerSection } from '../data/siteData';
+import { APP_VERSION_LABEL } from '../lib/version';
 ---
 
 <footer class="no-print border-t border-border bg-surface/60">
@@ -43,7 +44,11 @@ import { siteConfig, navLinks, footerSection } from '../data/siteData';
 
     <div class="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-border pt-5 text-xs text-muted">
       <p>{footerSection.copyright}</p>
-      <p class="data">{siteConfig.location}</p>
+      <p class="data flex items-center gap-2">
+        <span>{siteConfig.location}</span>
+        <span aria-hidden="true">&middot;</span>
+        <span title={`Site version ${APP_VERSION_LABEL}`}>{APP_VERSION_LABEL}</span>
+      </p>
     </div>
   </div>
 </footer>
