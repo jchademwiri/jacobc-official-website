@@ -57,10 +57,10 @@ export const siteConfig = {
   seo: {
     metaTitle: "Jacob Chademwiri | Procurement, Tender & Contract Manager - Centurion, SA",
     metaDescription:
-      "Procurement, Tender & Contract Manager in Centurion with 5+ years of bid-to-delivery experience across 16+ municipal contracts (City of Tshwane, City of Ekurhuleni, Pikitup Johannesburg, Msunduzi), SAP/Sage/Zoho invoicing, and ISO 9001/14001/45001 governance.",
+      "Procurement, Tender & Contract Manager in Centurion with 5+ years of bid-to-delivery experience across 10+ municipal contracts (City of Tshwane, City of Ekurhuleni, Pikitup Johannesburg, Msunduzi), SAP/Sage/Zoho invoicing, and ISO 9001/14001/45001 governance.",
     ogTitle: "Jacob Chademwiri - Procurement, Tender & Contract Manager",
     ogDescription:
-      "16+ Multi-Year Municipal Contracts • Tier-1 Technical Sourcing • SAP, Sage & Zoho • ISO / SHEQ",
+      "10+ Multi-Year Municipal Contracts • Tier-1 Technical Sourcing • SAP, Sage & Zoho • ISO / SHEQ",
   },
 } as const;
 
@@ -76,13 +76,13 @@ export const heroSection = {
   eyebrow: "CENTURION, SOUTH AFRICA  •  PROCUREMENT & CONTRACT MANAGEMENT",
   headline: "Winning municipal tenders and running the contracts that follow.",
   subheadline:
-    "Procurement, Tender & Contract Manager based in Centurion. Over the past five years, I have priced, won, sourced, delivered, and invoiced 16+ multi-year municipal contracts across four South African entities.",
+    "Procurement, Tender & Contract Manager based in Centurion. Over the past five years, I have priced, won, sourced, delivered, and invoiced 10+ multi-year municipal contracts across four South African entities.",
   primaryCta: { label: "Download CV (DOCX)", href: siteConfig.cvPath },
   secondaryCta: { label: "View Contract Portfolio", href: "#track-record" },
 } as const;
 
 export const metricsStrip = [
-  { value: "16+", label: "Multi-Year Municipal Contracts" },
+  { value: "10+", label: "Multi-Year Municipal Contracts" },
   { value: "4", label: "Major Municipal Entities" },
   { value: "~85%", label: "Public-Sector Bid Success Rate" },
   { value: "5+ Yrs", label: "Bid-to-Delivery Experience" },
@@ -415,7 +415,7 @@ export const coreCapabilities: CapabilityItem[] = [
     title: "Contract & Commercial Delivery",
     description:
       "Day-to-day administration of live multi-year service, supply, and Joint Venture contracts. Enforcing SLAs, fleet/VEM age rules, quarterly municipal clearances, and keeping operations on schedule.",
-    tags: ["SLA Governance", "JV Administration", "Fleet & VEM Audits", "16+ Contracts"],
+    tags: ["SLA Governance", "JV Administration", "Fleet & VEM Audits", "10+ Contracts"],
   },
   {
     title: "ERP Invoicing & ISO / SHEQ Governance",
@@ -446,7 +446,7 @@ export const experienceTimeline: ExperienceItem[] = [
         title: "Tender, Procurement & Contract Manager",
         period: "November 2023 – Present",
         highlights: [
-          "Managed commercial delivery from tender pricing through SLA execution, supplier sourcing, and invoicing across 16+ municipal contracts for the City of Tshwane, City of Ekurhuleni, Pikitup Johannesburg, and Msunduzi Municipality (~85% bid success rate).",
+          "Managed commercial delivery from tender pricing through SLA execution, supplier sourcing, and invoicing across 10+ municipal contracts for the City of Tshwane, City of Ekurhuleni, Pikitup Johannesburg, and Msunduzi Municipality (~85% bid success rate).",
           "Ran the 36-month electrical cable supply contract (EED 05-2023/24) and electrical accessories contract (AS 08-2023), sourcing directly from ACTOM and M-TEC and administering CPI price escalations.",
           "Directed fleet, plant hire, water/sanitation, civil, horticultural, grass cutting, and tree pruning portfolios (SS 01/02, PU102/2022, HS 02-2025/26, HHS 01/10, ROC 05/07/08/20, A-RE 04-2021, A-EWM 01/07, SCM 20).",
           "Handled commercial invoicing, SAP item-coded delivery reconciliation, PO tracking, and accounts receivable in SAP, Sage, and Zoho.",
@@ -472,7 +472,7 @@ export const experienceTimeline: ExperienceItem[] = [
   },
   {
     company: "Babiya Geomatics and Trading",
-    location: "South Africa",
+    location: "Kempton Park, Gauteng",
     roles: [
       {
         title: "Tender & Office Administrator",
@@ -480,6 +480,8 @@ export const experienceTimeline: ExperienceItem[] = [
         highlights: [
           "Prepared compliant returnable tender packs and reviewed RFP requirements for civil and surveying bids.",
           "Maintained Central Supplier Database (CSD) profiles, SARS tax clearance pins, COIDA good-standing certificates, and general office administration.",
+          "Tracked municipal and state-owned entity tender portals, scheduled compulsory briefing sessions, and coordinated supplier quotations and pricing schedules ahead of closing deadlines.",
+          "Managed statutory company compliance files (CIPC, B-BBEE, CIDB, and bank confirmation letters), tender registers, filing systems, and day-to-day client and supplier correspondence.",
         ],
       },
     ],
@@ -546,12 +548,12 @@ export const faqItems: FaqItem[] = [
   {
     question: "Who is Jacob Chademwiri?",
     answer:
-      "I'm a Procurement, Tender & Contract Manager based in Centurion, Gauteng. I have over five years of hands-on experience taking public-sector contracts from initial bid pricing through supplier sourcing, delivery, and final invoicing across 16+ multi-year municipal awards.",
+      "I'm a Procurement, Tender & Contract Manager based in Centurion, Gauteng. I have over five years of hands-on experience taking public-sector contracts from initial bid pricing through supplier sourcing, delivery, and final invoicing across 10+ multi-year municipal awards.",
   },
   {
     question: "Which municipalities and public-sector contracts have you managed?",
     answer:
-      "I have priced, won, inherited, and managed 16+ multi-year contracts for the City of Tshwane, City of Ekurhuleni, Pikitup Johannesburg (CoJ), and Msunduzi Municipality. They cover LV electrical cables and accessories (EED 05-2023/24, AS 08-2023), heavy plant and fleet hire (SS 01-2023/24, SS 02-2023/24, PU102/2022), water and sanitation (HS 02-2025/26, HHS 10-2023/24, HHS 01-2021/22, ROC 20-2023/24), civil and building refurbishment (A-RE 04-2021, ROC 05-2022/23, ROC 08-2022/23), and municipal horticulture and arboriculture (ROC 07-2022/23, A-EWM 07-2022, A-EWM 01-2022, SCM 20 OF 22/23).",
+      "I have priced, won, inherited, and managed 10+ multi-year contracts for the City of Tshwane, City of Ekurhuleni, Pikitup Johannesburg (CoJ), and Msunduzi Municipality. They cover LV electrical cables and accessories (EED 05-2023/24, AS 08-2023), heavy plant and fleet hire (SS 01-2023/24, SS 02-2023/24, PU102/2022), water and sanitation (HS 02-2025/26, HHS 10-2023/24, HHS 01-2021/22, ROC 20-2023/24), civil and building refurbishment (A-RE 04-2021, ROC 05-2022/23, ROC 08-2022/23), and municipal horticulture and arboriculture (ROC 07-2022/23, A-EWM 07-2022, A-EWM 01-2022, SCM 20 OF 22/23).",
   },
   {
     question: "What ERP invoicing and compliance standards do you work with?",
