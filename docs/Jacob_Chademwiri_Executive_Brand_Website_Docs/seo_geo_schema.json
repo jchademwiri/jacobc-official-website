@@ -1,0 +1,89 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://www.jacobc.co.za/#person",
+      "name": "Jacob Chademwiri",
+      "jobTitle": "Procurement, Tender & Contract Manager",
+      "description": "Procurement, Tender & Contract Manager in Centurion, South Africa with 5+ years of bid-to-delivery experience across 17+ municipal contracts spanning City of Tshwane, City of Ekurhuleni, Pikitup Johannesburg, and Msunduzi Municipality.",
+      "url": "https://www.jacobc.co.za",
+      "email": "mailto:hello@jacob.co.za",
+      "telephone": "+27-74-049-1433",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Centurion",
+        "addressRegion": "Gauteng",
+        "addressCountry": "ZA"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/jchademwiri",
+        "https://www.jacobc.co.za"
+      ],
+      "knowsAbout": [
+        "Procurement Management",
+        "Tender Management",
+        "Contract Administration",
+        "Public Sector Tendering (MFMA / SCM)",
+        "SAP ERP",
+        "Sage Accounting",
+        "Zoho",
+        "ISO 9001",
+        "ISO 14001",
+        "ISO 45001",
+        "SHEQ Governance",
+        "CIDB Compliance",
+        "Municipal Supply Chain",
+        "Plant and Fleet Hire"
+      ]
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://www.jacobc.co.za/#profilepage",
+      "url": "https://www.jacobc.co.za",
+      "name": "Jacob Chademwiri | Procurement, Tender & Contract Manager — Centurion, SA",
+      "mainEntity": {
+        "@id": "https://www.jacobc.co.za/#person"
+      },
+      "inLanguage": "en-ZA"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.jacobc.co.za/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Who is Jacob Chademwiri?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Jacob Chademwiri is a Procurement, Tender & Contract Manager based in Centurion, Gauteng, South Africa, with over 5 years of end-to-end bid-to-delivery commercial experience across 17+ multi-year municipal contracts."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which municipalities and public-sector contracts has Jacob Chademwiri managed?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "He has bid, won, inherited, and managed 17+ multi-year municipal contracts across the City of Tshwane, City of Ekurhuleni, Pikitup Johannesburg (City of Johannesburg), and Msunduzi Municipality—covering electrical cables and accessories (EED 05-2023/24, AS 08-2023), heavy plant and fleet hire (SS 01-2023/24, SS 02-2023/24, PU102/2022, SS 02-2021/22 JV), water and sanitation (HS 02-2025/26, HHS 10-2023/24, HHS 01-2021/22, ROC 20-2023/24), civil/building works (A-RE 04-2021, ROC 05-2022/23, ROC 08-2022/23), and municipal horticulture (ROC 07-2022/23, A-EWM 07-2022, A-EWM 01-2022, SCM 20 OF 22/23)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What ERP invoicing and compliance standards does Jacob Chademwiri work with?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "He has hands-on experience using SAP, Sage, and Zoho for commercial invoicing, purchase order reconciliation, and accounts receivable, alongside MFMA/SCM compliance, CIDB requirements, and Management Representative leadership for ISO 9001, ISO 14001, and ISO 45001."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What roles and locations is Jacob Chademwiri open to?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Based in Centurion, Gauteng, South Africa, he is open to mid-to-senior Procurement, Supply Chain, Tender, and Contract Management opportunities across South Africa and Southern Africa."
+          }
+        }
+      ]
+    }
+  ]
+}
