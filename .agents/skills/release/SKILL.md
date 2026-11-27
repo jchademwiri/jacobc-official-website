@@ -15,12 +15,25 @@ Prepares a `dev` → `master` release PR for testing on staging (`https://dev.ja
 
 ### 1. Sync & Audit
 ```bash
-git fetch origin
+git fetch origin --tags
 git checkout dev && git pull origin dev
 git log --oneline origin/master..origin/dev
 ```
 
-### 2. Pre-Flight (must pass before PR)
+### 2. Determine Version & Auto-Bump `package.json`
+Analyze commits since the last tag (`git log --oneline --no-merges "$(git describe --tags --abbrev=0 2>/dev/null)..dev"`):
+- `feat:` → minor bump (`vX.(Y+1).0`)
+- `fix:` / `chore:` / `perf:` / `refactor:` → patch bump (`vX.Y.(Z+1)`)
+- Breaking change → major bump (`v(X+1).0.0`)
+
+Update `"version"` in `package.json` to `<version>` (without leading `v`), then commit and push to `dev` so staging (`https://dev.jacobc.co.za`) and the release PR display the upcoming version:
+```bash
+git add package.json
+git commit -m "chore(release): bump version to v<version>"
+git push origin dev
+```
+
+### 3. Pre-Flight (must pass before PR)
 ```bash
 # Unit tests
 bun test
@@ -37,27 +50,22 @@ bun run build
 
 If any check fails, fix before proceeding.
 
-### 3. Generate Changelog
-Analyze commits since last release:
-```bash
-git log --oneline --no-merges "$(git describe --tags --abbrev=0 2>/dev/null)..dev" 2>/dev/null || git log --oneline -20 dev
-```
+### 4. Generate Changelog
+Categorize commits since the last tag (`git log --oneline --no-merges "$(git describe --tags --abbrev=0 2>/dev/null)..dev"`) by prefix: `feat:` → 🚀, `fix:` → 🐛, `perf:` → ⚡, `chore:` → 🔧 (excluding the version bump commit).
 
-Categorize by prefix: `feat:` → 🚀, `fix:` → 🐛, `perf:` → ⚡, `chore:` → 🔧
-
-### 4. Create Release PR
+### 5. Create Release PR
 ```bash
 gh pr create --base master --head dev \
   --title "release: v<version>" \
   --body "<generated-changelog>"
 ```
 
-### 5. Monitor CI & Staging
+### 6. Monitor CI & Staging
 ```bash
 gh pr checks --watch
 curl -sI https://dev.jacobc.co.za | head -1
 ```
 Fix failures until all green. Do **not** merge to `master` automatically.
 
-### 6. Ready for Testing
+### 7. Ready for Testing
 Tell user: "Release PR is ready for testing on staging (https://dev.jacobc.co.za) and the Vercel preview. Once approved, run `/tag v<version>` to merge into `master` and tag the production release."
