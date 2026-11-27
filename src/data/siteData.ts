@@ -74,9 +74,9 @@ export const navLinks = [
 
 export const heroSection = {
   eyebrow: "CENTURION, SOUTH AFRICA  •  PROCUREMENT & CONTRACT MANAGEMENT",
-  headline: "From Winning Tenders to Delivering Complex Contracts.",
+  headline: "Winning municipal tenders and running the contracts that follow.",
   subheadline:
-    "Procurement, Tender & Contract Manager with 5+ years of end-to-end commercial experience - bidding, winning, sourcing, delivering, and invoicing 17+ multi-year municipal contracts across four major South African entities.",
+    "Procurement, Tender & Contract Manager based in Centurion. Over the past five years, I have priced, won, sourced, delivered, and invoiced 17+ multi-year municipal contracts across four South African entities.",
   primaryCta: { label: "Download CV (DOCX)", href: siteConfig.cvPath },
   secondaryCta: { label: "View Contract Portfolio", href: "#track-record" },
 } as const;
@@ -260,7 +260,7 @@ export const contractPortfolio: ContractItem[] = [
     highlights: [
       "12-vehicle fleet scheduling & VEM age compliance",
       "Monthly potable volume tracker reconciliation",
-      "Seamless transition into successor contract HHS 10-2023/24",
+      "Smooth handover into successor contract HHS 10-2023/24",
     ],
   },
   {
@@ -419,25 +419,25 @@ export const coreCapabilities: CapabilityItem[] = [
   {
     title: "Procurement & Technical Sourcing",
     description:
-      "Direct sourcing from tier-1 OEMs and distributors (ACTOM, M-TEC), commercial pricing negotiation, supplier lead-time management, SAP item-coded municipal store deliveries, and full procure-to-pay (P2P) control.",
+      "Direct sourcing from tier-1 OEMs and distributors (ACTOM, M-TEC), commercial pricing negotiation, supplier lead-time tracking, SAP item-coded municipal store deliveries, and procure-to-pay control.",
     tags: ["ACTOM & M-TEC", "OEM Negotiation", "SAP Store Deliveries", "Procure-to-Pay"],
   },
   {
     title: "Public-Sector Tender Management",
     description:
-      "End-to-end bid preparation, MFMA and SCM compliance, CIDB returnable schedules, pricing estimation, and CPI/CPIX escalation structuring - backed by an ~85% public-sector bid success rate.",
+      "Full bid preparation, MFMA and SCM compliance, CIDB returnable schedules, pricing estimation, and CPI/CPIX escalation structuring. Backed by an ~85% public-sector bid success rate.",
     tags: ["MFMA / SCM", "CIDB 6GB–9GB", "CPI / CPIX Escalations", "~85% Win Rate"],
   },
   {
     title: "Contract & Commercial Delivery",
     description:
-      "Hands-on administration of live multi-year service, supply, and Joint Venture contracts - enforcing SLAs, fleet/VEM age compliance, quarterly municipal clearances, and uninterrupted operational execution.",
+      "Day-to-day administration of live multi-year service, supply, and Joint Venture contracts. Enforcing SLAs, fleet/VEM age rules, quarterly municipal clearances, and keeping operations on schedule.",
     tags: ["SLA Governance", "JV Administration", "Fleet & VEM Audits", "17+ Contracts"],
   },
   {
     title: "ERP Invoicing & ISO / SHEQ Governance",
     description:
-      "Experienced user of SAP, Sage, and Zoho for commercial invoicing, PO reconciliation, and accounts receivable, paired with Management Representative leadership across ISO 9001, ISO 14001, and ISO 45001.",
+      "Hands-on commercial invoicing, PO reconciliation, and accounts receivable in SAP, Sage, and Zoho, alongside Management Representative responsibility for ISO 9001, ISO 14001, and ISO 45001.",
     tags: ["SAP", "Sage", "Zoho", "ISO 9001 / 14001 / 45001"],
   },
 ];
@@ -463,26 +463,26 @@ export const experienceTimeline: ExperienceItem[] = [
         title: "Tender, Procurement & Contract Manager",
         period: "November 2023 – Present",
         highlights: [
-          "Led end-to-end commercial delivery - from tender pricing through SLA execution, supplier sourcing, and invoicing - across 17+ awarded municipal contracts spanning City of Tshwane, City of Ekurhuleni, Pikitup Johannesburg, and Msunduzi Municipality (~85% bid success rate).",
-          "Managed 36-month electrical cable supply (EED 05-2023/24) and electrical accessories (AS 08-2023), sourcing directly from ACTOM and M-TEC and administering CPI price escalations.",
+          "Managed commercial delivery from tender pricing through SLA execution, supplier sourcing, and invoicing across 17+ municipal contracts for the City of Tshwane, City of Ekurhuleni, Pikitup Johannesburg, and Msunduzi Municipality (~85% bid success rate).",
+          "Ran the 36-month electrical cable supply contract (EED 05-2023/24) and electrical accessories contract (AS 08-2023), sourcing directly from ACTOM and M-TEC and administering CPI price escalations.",
           "Directed fleet, plant hire, water/sanitation, civil, and horticultural portfolios (SS 01/02, PU102/2022, HS 02-2025/26, HHS 01/10, ROC 05/07/08/20, A-RE 04-2021, SCM 20).",
-          "Executed commercial invoicing, SAP item-coded delivery reconciliation, PO tracking, and accounts receivable using SAP, Sage, and Zoho.",
-          "Served as Management Representative leading company-wide Integrated Management System (IMS) implementation across ISO 9001, ISO 14001, and ISO 45001.",
+          "Handled commercial invoicing, SAP item-coded delivery reconciliation, PO tracking, and accounts receivable in SAP, Sage, and Zoho.",
+          "Served as Management Representative for company-wide Integrated Management System (IMS) implementation across ISO 9001, ISO 14001, and ISO 45001.",
         ],
       },
       {
         title: "Senior Tendering Administrator",
         period: "September 2022 – November 2023",
         highlights: [
-          "Managed full-cycle bid preparation, commercial pricing schedules, and compliant submissions across construction, fleet/plant hire, electrical supply, and municipal maintenance - securing multi-year awards later transitioned into direct contract management.",
-          "Streamlined internal tender document control, compliance checklists, and digital workflows via Microsoft 365.",
+          "Managed full-cycle bid preparation, commercial pricing schedules, and compliant submissions across construction, fleet/plant hire, electrical supply, and municipal maintenance. Secured multi-year awards that later moved into my direct contract management portfolio.",
+          "Standardised internal tender document control, compliance checklists, and Microsoft 365 workflows.",
         ],
       },
       {
         title: "Tendering Administrator",
         period: "January 2022 – August 2022",
         highlights: [
-          "Coordinated simultaneous municipal bid submissions under tight deadlines, enforcing MFMA/SCM compliance, CIDB requirements, and audit-ready tender registers.",
+          "Coordinated concurrent municipal bid submissions under tight deadlines, maintaining MFMA/SCM compliance, CIDB requirements, and audit-ready tender registers.",
         ],
       },
     ],
@@ -495,7 +495,7 @@ export const experienceTimeline: ExperienceItem[] = [
         title: "Systems & Web Developer",
         period: "August 2019 – January 2022",
         highlights: [
-          "Built and deployed data-driven applications and client platforms, establishing strong analytical, database, and systems-documentation discipline.",
+          "Built and maintained data-driven applications and client platforms, building practical analytical, database, and systems-documentation habits I still use in ERP and contract reporting.",
         ],
       },
     ],
@@ -508,7 +508,7 @@ export const experienceTimeline: ExperienceItem[] = [
         title: "Administrative Assistant",
         period: "November 2017 – March 2020",
         highlights: [
-          "Supported office operations, client correspondence, record keeping, and administrative coordination across daily business workflows.",
+          "Supported office operations, client correspondence, record keeping, and day-to-day administrative coordination.",
         ],
       },
     ],
@@ -549,42 +549,42 @@ export const faqItems: FaqItem[] = [
   {
     question: "Who is Jacob Chademwiri?",
     answer:
-      "Jacob Chademwiri is a Procurement, Tender & Contract Manager based in Centurion, Gauteng, South Africa, with over 5 years of end-to-end bid-to-delivery commercial experience across 17+ multi-year municipal contracts.",
+      "I'm a Procurement, Tender & Contract Manager based in Centurion, Gauteng. I have over five years of hands-on experience taking public-sector contracts from initial bid pricing through supplier sourcing, delivery, and final invoicing across 17+ multi-year municipal awards.",
   },
   {
-    question: "Which municipalities and public-sector contracts has Jacob Chademwiri managed?",
+    question: "Which municipalities and public-sector contracts have you managed?",
     answer:
-      "He has bid, won, inherited, and managed 17+ multi-year municipal contracts across the City of Tshwane, City of Ekurhuleni, Pikitup Johannesburg (CoJ), and Msunduzi Municipality - spanning LV electrical cable and accessory supply (EED 05-2023/24, AS 08-2023), heavy plant and fleet hire (SS 01-2023/24, SS 02-2023/24, PU102/2022, SS 02-2021/22 JV), water and sanitation (HS 02-2025/26, HHS 10-2023/24, HHS 01-2021/22, ROC 20-2023/24), civil/building refurbishment (A-RE 04-2021, ROC 05-2022/23, ROC 08-2022/23), and municipal horticulture/arboriculture (ROC 07-2022/23, A-EWM 07-2022, A-EWM 01-2022, SCM 20 OF 22/23).",
+      "I have priced, won, inherited, and managed 17+ multi-year contracts for the City of Tshwane, City of Ekurhuleni, Pikitup Johannesburg (CoJ), and Msunduzi Municipality. They cover LV electrical cables and accessories (EED 05-2023/24, AS 08-2023), heavy plant and fleet hire (SS 01-2023/24, SS 02-2023/24, PU102/2022, SS 02-2021/22 JV), water and sanitation (HS 02-2025/26, HHS 10-2023/24, HHS 01-2021/22, ROC 20-2023/24), civil and building refurbishment (A-RE 04-2021, ROC 05-2022/23, ROC 08-2022/23), and municipal horticulture and arboriculture (ROC 07-2022/23, A-EWM 07-2022, A-EWM 01-2022, SCM 20 OF 22/23).",
   },
   {
-    question: "What ERP invoicing and compliance standards does Jacob Chademwiri work with?",
+    question: "What ERP invoicing and compliance standards do you work with?",
     answer:
-      "He works with SAP, Sage, and Zoho for commercial invoicing, purchase order reconciliation, and accounts receivable, alongside MFMA/SCM compliance, CIDB requirements, and Management Representative leadership for ISO 9001, ISO 14001, and ISO 45001.",
+      "I use SAP, Sage, and Zoho for commercial invoicing, purchase order reconciliation, and accounts receivable. On the compliance side, I work daily with MFMA/SCM rules and CIDB requirements, and serve as Management Representative for ISO 9001, ISO 14001, and ISO 45001.",
   },
   {
-    question: "What roles and locations is Jacob Chademwiri open to?",
+    question: "What roles and locations are you open to?",
     answer:
-      "Based in Centurion, Gauteng, South Africa, he is open to mid-to-senior Procurement, Supply Chain, Tender, and Contract Management roles across South Africa and Southern Africa.",
+      "I'm based in Centurion, Gauteng, and open to mid-to-senior Procurement, Supply Chain, Tender, and Contract Management roles across South Africa and Southern Africa.",
   },
 ];
 
 export const contactSection = {
   eyebrow: "GET IN TOUCH",
-  heading: "Looking for a commercial leader who owns the full bid-to-delivery cycle?",
+  heading: "Get in touch about a role or contract scope.",
   intro:
-    "Open to mid-to-senior Procurement, Supply Chain, and Contract Management opportunities across Southern Africa. Reach out directly, download my CV, or connect on LinkedIn.",
+    "Open to mid-to-senior Procurement, Supply Chain, and Contract Management roles across Southern Africa. Send a message below, download my CV, or connect on LinkedIn.",
   form: {
     namePlaceholder: "Your full name",
     organizationPlaceholder: "Company or recruiting firm",
     emailPlaceholder: "you@company.co.za",
-    messagePlaceholder: "Briefly share the role, location, or commercial scope you'd like to discuss...",
+    messagePlaceholder: "Share the role, location, or commercial scope you'd like to discuss...",
     submitLabel: "Send Message",
-    successMessage: "Message sent. Thank you for reaching out - I will respond within 24–48 hours.",
+    successMessage: "Message sent. Thanks for reaching out - I'll get back to you within 24–48 hours.",
     errorMessage: "Something went wrong sending your message. Please email hello@jacobc.co.za directly.",
   },
 } as const;
 
 export const footerSection = {
-  bio: "Procurement, Tender & Contract Manager based in Centurion, South Africa. Bridging commercial execution, ERP billing discipline, and ISO/SHEQ governance.",
+  bio: "Procurement, Tender & Contract Manager in Centurion, South Africa. Focused on public-sector contracts, technical sourcing, SAP/Sage billing, and ISO/SHEQ compliance.",
   copyright: "© 2026 Jacob Chademwiri. All rights reserved.",
 } as const;
