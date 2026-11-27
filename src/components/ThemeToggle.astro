@@ -1,0 +1,123 @@
+---
+// 3-state theme switcher: System (default), Light (Soft Parchment), Dark (Warm Obsidian)
+---
+
+<div
+  class="inline-flex items-center rounded-lg border border-border bg-surface p-0.5"
+  role="group"
+  aria-label="Color theme"
+  data-theme-switcher
+>
+  <button
+    type="button"
+    data-theme-btn="system"
+    aria-label="Use system color theme"
+    aria-pressed="false"
+    title="System theme"
+    class="theme-opt flex h-7 w-7 cursor-pointer items-center justify-center rounded-md text-muted transition-colors hover:text-primary"
+  >
+    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+      <line x1="8" y1="21" x2="16" y2="21"></line>
+      <line x1="12" y1="17" x2="12" y2="21"></line>
+    </svg>
+  </button>
+
+  <button
+    type="button"
+    data-theme-btn="light"
+    aria-label="Use light color theme"
+    aria-pressed="false"
+    title="Light theme (Soft Parchment)"
+    class="theme-opt flex h-7 w-7 cursor-pointer items-center justify-center rounded-md text-muted transition-colors hover:text-primary"
+  >
+    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"></circle>
+      <path d="M12 2v2"></path>
+      <path d="M12 20v2"></path>
+      <path d="m4.93 4.93 1.41 1.41"></path>
+      <path d="m17.66 17.66 1.41 1.41"></path>
+      <path d="M2 12h2"></path>
+      <path d="M20 12h2"></path>
+      <path d="m6.34 17.66-1.41 1.41"></path>
+      <path d="m19.07 4.93-1.41 1.41"></path>
+    </svg>
+  </button>
+
+  <button
+    type="button"
+    data-theme-btn="dark"
+    aria-label="Use dark color theme"
+    aria-pressed="false"
+    title="Dark theme (Warm Obsidian)"
+    class="theme-opt flex h-7 w-7 cursor-pointer items-center justify-center rounded-md text-muted transition-colors hover:text-primary"
+  >
+    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+  </button>
+</div>
+
+<style>
+  .theme-opt[aria-pressed="true"] {
+    background: var(--color-surface-2);
+    color: var(--color-accent);
+    box-shadow: 0 0 0 1px var(--color-border);
+  }
+</style>
+
+<script>
+  const STORAGE_KEY = 'theme-preference';
+  const mql = window.matchMedia('(prefers-color-scheme: dark)');
+
+  function resolveTheme(pref: string): 'light' | 'dark' {
+    if (pref === 'light' || pref === 'dark') return pref;
+    return mql.matches ? 'dark' : 'light';
+  }
+
+  function applyTheme(pref: string) {
+    const validPref = pref === 'light' || pref === 'dark' || pref === 'system' ? pref : 'system';
+    const resolved = resolveTheme(validPref);
+    document.documentElement.dataset.theme = resolved;
+    document.documentElement.dataset.themePreference = validPref;
+
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    if (metaTheme) {
+      metaTheme.setAttribute('content', resolved === 'dark' ? '#121210' : '#f6f4ef');
+    }
+
+    document.querySelectorAll<HTMLButtonElement>('[data-theme-btn]').forEach((btn) => {
+      const isActive = btn.dataset.themeBtn === validPref;
+      btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+  }
+
+  const saved = (() => {
+    try {
+      return localStorage.getItem(STORAGE_KEY) || 'system';
+    } catch {
+      return 'system';
+    }
+  })();
+
+  applyTheme(saved);
+
+  document.querySelectorAll<HTMLButtonElement>('[data-theme-btn]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const next = btn.dataset.themeBtn || 'system';
+      try {
+        localStorage.setItem(STORAGE_KEY, next);
+      } catch {
+        // Ignore storage errors in restricted browsing modes
+      }
+      applyTheme(next);
+    });
+  });
+
+  mql.addEventListener('change', () => {
+    const currentPref = document.documentElement.dataset.themePreference || 'system';
+    if (currentPref === 'system') {
+      applyTheme('system');
+    }
+  });
+</script>

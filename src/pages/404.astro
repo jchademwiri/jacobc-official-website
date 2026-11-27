@@ -1,21 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import NotFoundIllustration from '../components/NotFoundIllustration.astro';
+import { siteConfig } from '../data/siteData';
 ---
 
-<Layout title="Page not found" description="This page doesn't exist." noindex={true}>
-  <div class="flex min-h-[65vh] flex-col items-center justify-center px-5 py-20 text-center sm:px-8 md:px-14">
-    <NotFoundIllustration />
-    <p class="data mb-2 text-label font-medium uppercase tracking-[0.08em] text-accent">Error 404</p>
-    <h1 class="h1 mb-4 max-w-[18ch]">This page took a wrong turn.</h1>
-    <p class="mb-7 max-w-[48ch] text-body text-text-2">
-      The link that brought you here is broken, or the page has moved. Try one of these instead.
+<Layout
+  title="Page Not Found"
+  description={`The requested page could not be found on ${siteConfig.name}'s executive portfolio.`}
+  noindex={true}
+>
+  <section class="mx-auto flex max-w-content flex-col items-start px-5 py-24 sm:px-8 sm:py-32">
+    <p class="eyebrow">404 &middot; Not Found</p>
+    <h1 class="display mt-4 text-primary">This page has moved or no longer exists.</h1>
+    <p class="mt-4 max-w-xl text-body-lg text-text-2">
+      jacobc.co.za has been streamlined into a focused executive portfolio for Procurement, Tender &amp; Contract Management.
     </p>
-    <div class="flex flex-wrap justify-center gap-3">
-      <a href="/" class="btn btn-primary">Back to Home</a>
-      <a href="/portfolio" class="btn btn-secondary">View Portfolio</a>
-      <a href="/blog" class="btn btn-secondary">Read the Blog</a>
-      <a href="/contact" class="btn btn-secondary">Start a project</a>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a href="/" class="btn btn-primary">Return to Portfolio</a>
+      <a href={siteConfig.cvPath} download class="btn btn-secondary">Download CV (PDF)</a>
     </div>
-  </div>
+  </section>
 </Layout>

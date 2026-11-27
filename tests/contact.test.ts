@@ -1,13 +1,18 @@
 import { describe, expect, it } from 'bun:test';
-import { looksAutomated, validateContact, projectLabel, HONEYPOT_FIELD, TIMESTAMP_FIELD } from '../src/lib/contact';
+import {
+  looksAutomated,
+  validateContact,
+  HONEYPOT_FIELD,
+  TIMESTAMP_FIELD,
+} from '../src/lib/contact';
 
 describe('contact form validation and anti-spam', () => {
   it('flags honeypot submission as automated bot spam', () => {
     const form = new FormData();
     form.append('name', 'Bot Tester');
     form.append('email', 'bot@example.com');
-    form.append('message', 'Spam message');
-    form.append(HONEYPOT_FIELD, 'I am a bot');
+    form.append('message', 'Spam message here');
+    form.append(HONEYPOT_FIELD, 'https://spam.example');
 
     expect(looksAutomated(form)).toBe(true);
   });
@@ -16,9 +21,9 @@ describe('contact form validation and anti-spam', () => {
     const form = new FormData();
     form.append('name', 'Fast Submitter');
     form.append('email', 'fast@example.com');
-    form.append('message', 'Too fast');
+    form.append('message', 'Too fast submission');
     form.append(HONEYPOT_FIELD, '');
-    form.append(TIMESTAMP_FIELD, String(Date.now() - 500)); // only 500ms ago
+    form.append(TIMESTAMP_FIELD, String(Date.now() - 500));
 
     expect(looksAutomated(form)).toBe(true);
   });
@@ -27,37 +32,33 @@ describe('contact form validation and anti-spam', () => {
     const form = new FormData();
     form.append('name', 'Human User');
     form.append('email', 'human@example.com');
-    form.append('message', 'Genuine inquiry');
+    form.append('message', 'Genuine executive procurement role inquiry.');
     form.append(HONEYPOT_FIELD, '');
-    form.append(TIMESTAMP_FIELD, String(Date.now() - 5000)); // 5 seconds ago
+    form.append(TIMESTAMP_FIELD, String(Date.now() - 5000));
 
     expect(looksAutomated(form)).toBe(false);
   });
 
-  it('validates a correct submission', () => {
+  it('validates a correct executive inquiry with organization', () => {
     const form = new FormData();
-    form.append('name', 'Jacob Chademwiri');
-    form.append('email', 'test@jacobc.co.za');
-    form.append('projectType', 'tender');
-    form.append('message', 'I need help preparing a municipal tender submission.');
+    form.append('name', 'Thabo Mokoena');
+    form.append('organization', 'Anglo Mining SA');
+    form.append('email', 'thabo@company.co.za');
+    form.append('message', 'We would like to discuss a Senior Procurement Manager role in Gauteng.');
 
     const result = validateContact(form);
     expect(result.ok).toBe(true);
     if (result.ok) {
-      expect(result.data.name).toBe('Jacob Chademwiri');
-      expect(result.data.email).toBe('test@jacobc.co.za');
-      expect(result.data.projectType).toBe('tender');
-      expect(projectLabel(result.data.projectType)).toBe('Tender submission');
-      expect(projectLabel('iso')).toBe('ISO / SHEQ implementation');
-      expect(projectLabel('employment')).toBe('Employment opportunity');
+      expect(result.data.name).toBe('Thabo Mokoena');
+      expect(result.data.organization).toBe('Anglo Mining SA');
+      expect(result.data.email).toBe('thabo@company.co.za');
     }
   });
 
-  it('catches invalid emails and missing required fields', () => {
+  it('catches invalid emails and short messages', () => {
     const form = new FormData();
-    form.append('name', 'J'); // too short
+    form.append('name', 'J');
     form.append('email', 'invalid-email');
-    form.append('projectType', 'invalid-type');
     form.append('message', 'short');
 
     const result = validateContact(form);
@@ -65,7 +66,7 @@ describe('contact form validation and anti-spam', () => {
     if (!result.ok) {
       expect(result.errors.name).toBeDefined();
       expect(result.errors.email).toBeDefined();
-      expect(result.errors.projectType).toBeDefined();
+      expect(result.errors.message).toBeDefined();
     }
   });
 });

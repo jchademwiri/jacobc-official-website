@@ -1,24 +1,46 @@
 # Jacob Chademwiri
 
-> Tender Manager (Primary) | Project Delivery & ISO 9001/14001/45001 Implementation Lead | SAP & Sage Contract Billing (AR) Manager | Complementary Web & Bid-Tech Developer based in Centurion, Gauteng, South Africa.
+> Procurement, Tender & Contract Manager based in Centurion, Gauteng, South Africa. 5+ years of end-to-end bid-to-delivery commercial experience across 17+ multi-year municipal contracts in South Africa.
 
-## Core Identity & Positioning
-- **Primary Role (Employment & Executive Leadership)**: Tender Manager who doesn't stop at the bid box—winning municipal and corporate contracts (5+ awarded 3-year City of Tshwane tenders across 40+ plant, water, sanitation, and horticulture categories), leading the ISO 9001, 14001 & 45001 compliance systems that qualify bids, coordinating awarded project delivery as needed, and governing contract billing and accounts receivable in SAP ERP and Sage Accounting.
-- **Compliance & Operational Backbone**: Appointed Management Representative directing Integrated Management Systems (ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 under Annex SL) and Driven Machinery Regulations (DMR 19) compliance for Lifting Machinery Entity (LME) and fleet operations.
-- **Complementary Technical Edge & Consulting**: Founder of Playhouse Media Group, creator of TenderTrack360 (bid-management SaaS), and developer of high-performance contractor websites in Astro, Next.js, TypeScript, and Tailwind CSS—plus select freelance tender preparation and ISO compliance consulting.
+## Core Profile
+- **Name:** Jacob Chademwiri
+- **Role:** Procurement, Tender & Contract Manager
+- **Location:** Centurion, Gauteng, South Africa
+- **Experience:** 5+ years bid-to-delivery (~85% public-sector bid success rate)
+- **ERP & Invoicing Systems:** SAP, Sage, Zoho, Microsoft 365
+- **Governance & Standards:** ISO 9001, ISO 14001, ISO 45001 (IMS / SHEQ), MFMA / SCM, CIDB, SANS 1294:2020
+- **Key Technical Sourcing:** Direct OEM and distributor sourcing (including ACTOM and M-TEC), SAP item-coded store deliveries, CPI/CPIX price escalation management
 
-## Main Pages
-- [Home](https://jacobc.co.za): End-to-end contract lifecycle overview, awarded City of Tshwane tenders, career trajectory, and field notes.
-- [Services & Capabilities](https://jacobc.co.za/services): Breakdown of 01 Tender Management, 02 ISO 9001/14001/45001 Implementation, 03 Project Execution & SAP/Sage Billing, and 04 Complementary Contractor Websites & Bid-Tech.
-- [Portfolio & Track Record](https://jacobc.co.za/portfolio): 17 case studies of awarded municipal tenders, delivered contracts, ISO IMS implementation, and complementary software/web builds.
-- [Executive Resume](https://jacobc.co.za/resume): Print-ready executive CV detailing progressive roles at Sithembe Transportation & Projects, Babiya Geomatics, and Playhouse Media Group.
-- [Blog](https://jacobc.co.za/blog): Field notes on reading bid documents, improving tender win rates, practical ISO 9001/14001/45001 rollouts, and web engineering for SMEs.
-- [About](https://jacobc.co.za/about): Leadership profile and career milestones.
-- [Contact](https://jacobc.co.za/contact): Direct enquiries for Senior Tender & Project Management roles, tender preparation, ISO implementation, or website builds.
+## Verified Municipal Contract Portfolio (17+ Multi-Year Contracts)
 
-## Contact & Profiles
-- **Email**: hello@jacobc.co.za
-- **Location**: Centurion, Gauteng, South Africa
-- **GitHub**: https://github.com/jchademwiri
-- **LinkedIn**: https://linkedin.com/in/jchademwiri
-- **WhatsApp**: https://wa.me/27740491433
+### Electrical Supply & Accessories
+- **EED 05-2023/24 (City of Tshwane):** 36-month supply, delivery, and off-loading of low-voltage electrical cables, wire, and conductors across 50+ SAP-coded line items (effective Jan 2024).
+- **AS 08-2023 (City of Ekurhuleni):** Supply, delivery, and off-loading of electrical items and accessories on an as-and-when-required basis with CPI escalation (Feb 2024 – Jun 2026).
+
+### Heavy Plant, Fleet & Waste Vehicles
+- **SS 01-2023/24 (City of Tshwane):** 3-year corporate hire of general construction and refuse removal vehicles (10,000L water tankers, 6m³–14m³ tippers, 7/8-ton dropsides, 12m³–19m³ rear-end loader compactors; effective May 2024).
+- **SS 02-2023/24 (City of Tshwane):** 3-year corporate hire of general construction machines and equipment across primary and backup allocations (wheel loaders, excavators, articulated dump trucks, mobile cranes, motor graders, compactors, mowers; effective Apr 2025).
+- **PU102/2022 (Pikitup Johannesburg / CoJ):** 3-year panel appointment for wet-rate plant and equipment (front-end loaders, TLBs, tipper trucks, skid-steer loaders) for illegal dumping and garden sites (awarded Oct 2022).
+- **SS 02-2021/22 (City of Tshwane):** 3-year Joint Venture contract (Sithembe JV Bernidine) for general mechanical repairs and maintenance of light fleet vehicles (effective Jun 2022).
+
+### Water, Sanitation & Civil Supply
+- **HS 02-2025/26 (City of Tshwane):** 3-year hiring, servicing, waste removal, delivery, and relocation of chemical toilets for Human Settlements (awarded Jan 2026).
+- **HHS 10-2023/24 (City of Tshwane):** 3-year hire of 10,000–15,000L mobile drinking water tankers (8 trucks) for informal settlements with metered-source and monthly tracker reporting (effective Feb 2025).
+- **HHS 01-2021/22 (City of Tshwane):** 3-year hire of 10,000L mobile drinking water tankers (12 VEMs) for informal settlements (effective May 2022).
+- **ROC 20-2023/24 (City of Tshwane):** 3-year supply, delivery, and off-loading of SANS 1294:2020 precast concrete manhole rings to municipal stores (effective Feb 2025).
+
+### Civil, Building & Municipal Horticulture
+- **A-RE 04-2021 (City of Ekurhuleni):** Construction and refurbishment of municipal buildings and facilities under CIDB 6GB–9GB / 5GBPE–8GBPE panel framework with CPI escalation (May 2022 – Jun 2024).
+- **ROC 05-2022/23 (City of Tshwane):** 3-year resurfacing and refurbishment of all-weather hard surfaces and facilities at sport complexes (effective Sep 2023).
+- **ROC 08-2022/23 (City of Tshwane):** 3-year construction of cast in-situ concrete berm strips at cemeteries across seven regions (effective Aug 2023).
+- **ROC 07-2022/23 (City of Tshwane):** 3-year horticultural maintenance of sport facilities across seven regions (effective Feb 2025).
+- **A-EWM 07-2022 (City of Ekurhuleni):** Arboriculture maintenance — tree pruning, branch removal, and felling in Vosloorus with CPI escalation (Apr 2023 – Jun 2025).
+- **A-EWM 01-2022 (City of Ekurhuleni):** Maintenance and cutting of grass and vegetation areas in Boksburg South Central with CPI escalation (Nov 2022 – Jun 2023).
+- **SCM 20 OF 22/23 (Msunduzi Municipality):** 3-year panel appointment for grass cutting and maintenance of municipal facilities with CPIX escalation (awarded May 2023).
+
+## Links & Contact
+- **Website:** https://www.jacobc.co.za
+- **Web CV:** https://www.jacobc.co.za/resume
+- **LinkedIn:** https://www.linkedin.com/in/jchademwiri
+- **Email:** hello@jacobc.co.za
+- **Phone:** +27 74 049 1433

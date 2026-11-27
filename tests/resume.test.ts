@@ -1,30 +1,61 @@
 import { describe, expect, it } from 'bun:test';
-import { SITE_NAME, PERSON_JOB_TITLE, CONTACT_EMAIL, LOCALITY, REGION, COUNTRY } from '../src/lib/site';
+import {
+  siteConfig,
+  metricsStrip,
+  contractPortfolio,
+  contractCategories,
+  municipalEntities,
+  coreCapabilities,
+  experienceTimeline,
+  showCipsInProgress,
+  credentialsList,
+  faqItems,
+} from '../src/data/siteData';
 
-describe('resume and executive metrics', () => {
-  it('has comprehensive executive title and coordinates', () => {
-    expect(SITE_NAME).toBe('Jacob Chademwiri');
-    expect(PERSON_JOB_TITLE).toContain('Tender & Project Manager');
-    expect(PERSON_JOB_TITLE).toContain('ISO Implementation Lead');
-    expect(PERSON_JOB_TITLE).toContain('AR Manager');
-    expect(CONTACT_EMAIL).toBe('hello@jacobc.co.za');
-    expect(LOCALITY).toBe('Centurion');
-    expect(REGION).toBe('Gauteng');
-    expect(COUNTRY).toBe('ZA');
+describe('executive siteData v2.0 integrity', () => {
+  it('uses canonical email and versioned CV path', () => {
+    expect(siteConfig.email).toBe('hello@jacobc.co.za');
+    expect(siteConfig.cvPath).toBe('/Jacob_Chademwiri_Procurement_Contracts_CV_v4.pdf');
+    expect(showCipsInProgress).toBe(false);
   });
 
-  it('validates core operational metrics format', () => {
-    const metrics = [
-      { value: '5+ Awarded', label: '3-Year Municipal Tenders' },
-      { value: '3 Standards', label: 'ISO 9001 · 14001 · 45001' },
-      { value: 'SAP & Sage', label: 'Project Billing & AR Control' },
-      { value: '10+ Platforms', label: 'Web & Bid-Tech Systems' },
-    ];
+  it('contains all 17 verified municipal contracts across 4 entities and 4 categories', () => {
+    expect(contractPortfolio.length).toBe(17);
+    expect(contractCategories.length).toBe(5); // All + 4 categories
+    expect(municipalEntities.length).toBe(5); // All Entities + 4 entities
 
-    expect(metrics.length).toBe(4);
-    metrics.forEach((m) => {
-      expect(m.value.length).toBeGreaterThan(0);
-      expect(m.label.length).toBeGreaterThan(0);
+    const uniqueIds = new Set(contractPortfolio.map((c) => c.id));
+    expect(uniqueIds.size).toBe(17);
+
+    contractPortfolio.forEach((c) => {
+      expect(c.ref.length).toBeGreaterThan(0);
+      expect(c.highlights.length).toBe(3);
     });
+  });
+
+  it('has 4 executive metrics, 4 capabilities, 3 career organizations, and 4 FAQs', () => {
+    expect(metricsStrip.length).toBe(4);
+    expect(coreCapabilities.length).toBe(4);
+    expect(experienceTimeline.length).toBe(3);
+    expect(experienceTimeline[0].roles.length).toBe(3);
+    expect(credentialsList.length).toBe(4);
+    expect(faqItems.length).toBe(4);
+  });
+
+  it('enforces the Hard Brand Wall with zero forbidden strings', () => {
+    const serialized = JSON.stringify({
+      siteConfig,
+      metricsStrip,
+      contractPortfolio,
+      coreCapabilities,
+      experienceTimeline,
+      credentialsList,
+      faqItems,
+    });
+
+    expect(serialized).not.toContain('Playhouse Media');
+    expect(serialized).not.toContain('playhousemedia');
+    expect(serialized).not.toContain('Hermanus');
+    expect(serialized).not.toContain('hello@jacob.co.za');
   });
 });

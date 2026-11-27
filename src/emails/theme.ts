@@ -1,23 +1,18 @@
 /**
- * Email clients can't read CSS custom properties, so the brand palette has to be
- * repeated as literal hex here. These mirror the `@theme` block in
- * src/styles/global.css: change them together.
+ * Email clients can't read CSS custom properties, so the Executive Charcoal &
+ * Warm Bronze palette is mirrored here as literal hex values (zero blue).
  */
 export const brand = {
-  bg: '#161826',
-  surface: '#232532',
-  text: '#e9e9ed',
-  text2: '#bbbbc1',
-  text3: '#909199',
-  accent: '#9184d9',
-  edge: '#3f424d',
+  bg: '#f6f4ef',
+  surface: '#efece5',
+  card: '#faf8f4',
+  text: '#1c1c1c',
+  text2: '#4f4d49',
+  text3: '#6b6862',
+  accent: '#8a6b3f',
+  edge: '#ddd8ce',
 } as const;
 
-/**
- * Webfonts are unreliable in email, so these are system stacks. The mono stack
- * keeps the site's "figures that carry information are set in mono" idea intact
- * wherever the client has a monospace face, which is everywhere.
- */
 export const font = {
   sans: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
   mono: "'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
