@@ -458,6 +458,8 @@ export const experienceTimeline: ExperienceItem[] = [
         period: "September 2022 – November 2023",
         highlights: [
           "Managed full-cycle bid preparation, commercial pricing schedules, and compliant submissions across construction, fleet/plant hire, electrical supply, and municipal maintenance. Secured multi-year awards that later moved into my direct contract management portfolio.",
+          "Prepared BOQ costings, supplier quote comparisons, and CPI/CPIX escalation models, and coordinated subcontractor, OEM, and Joint Venture partner documentation for municipal tenders.",
+          "Reviewed tender evaluation criteria, functionality scoring requirements, and compulsory briefing addenda to prevent administrative disqualifications and keep submissions compliant under MFMA and SCM rules.",
           "Standardised internal tender document control, compliance checklists, and Microsoft 365 workflows.",
         ],
       },
@@ -466,6 +468,8 @@ export const experienceTimeline: ExperienceItem[] = [
         period: "January 2022 – August 2022",
         highlights: [
           "Coordinated concurrent municipal bid submissions under tight deadlines, maintaining MFMA/SCM compliance, CIDB requirements, and audit-ready tender registers.",
+          "Compiled returnable schedules (MBD forms, municipal rates clearances, CSD reports, SARS tax pins, B-BBEE, and COIDA certificates) and verified mandatory annexures prior to tender closing.",
+          "Monitored municipal tender bulletins, attended briefing sessions, requested supplier pricing, and tracked submission milestones, validity extensions, and post-submission clarification queries.",
         ],
       },
     ],
