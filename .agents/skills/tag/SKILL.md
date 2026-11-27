@@ -51,7 +51,9 @@ git push origin vX.Y.Z
 ```bash
 echo "jacobc.co.za: $(curl -sI https://jacobc.co.za | head -1)"
 echo "www.jacobc.co.za: $(curl -sI https://www.jacobc.co.za | head -1)"
+curl -s https://www.jacobc.co.za | grep -o '<meta name="app-version" content="[^"]*"'
 ```
+(Note: Vercel's production deploy may take ~20–40 seconds after merging into `master` before the new `app-version` meta tag appears.)
 
 ### 7. Summary
 ```

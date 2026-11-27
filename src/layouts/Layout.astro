@@ -5,6 +5,7 @@ import ScrollToTop from '../components/ScrollToTop.astro';
 import Schema from '../components/Schema.astro';
 import Analytics from '@vercel/analytics/astro';
 import { siteConfig } from '../data/siteData';
+import { APP_VERSION_LABEL } from '../lib/version';
 import '../styles/global.css';
 
 interface Props {
@@ -71,6 +72,7 @@ const ogImageUrl = image
     <meta name="author" content={siteConfig.name} />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <meta name="app-version" content={APP_VERSION_LABEL} />
     <link rel="canonical" href={canonicalUrl} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <title>{pageTitle}</title>
