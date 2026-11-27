@@ -1,39 +1,39 @@
 ---
-name: done
+name: ship
 description: |
-  Ship workflow. Use when user says "/done", "done", or "ship it".
+  Ship workflow. Use when user says "/ship", "ship", "ship it", or "/done".
 metadata:
   author: custom
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
-# Done (Ship Workflow)
+# Ship (Ship Workflow)
 
-Automated ship workflow with 6-point pre-flight checks, auto-generated PR descriptions, and CI/CD failure resolution.
+Automated ship workflow with pre-flight checks, auto-generated PR descriptions, and CI/CD failure resolution.
 
 ## Steps
 
-### 1. Pre-Flight (6-point check)
+### 1. Pre-Flight Checks
 Run each check sequentially. Fix failures before proceeding.
 
 ```bash
-# 1. Type check
-bun run typecheck 2>/dev/null || npx tsc --noEmit
+# 1. Unit tests
+bun test
 
-# 2. Lint
+# 2. Type & Astro check (lint)
 bun run lint
 
 # 3. Format check
 npx prettier --check . 2>/dev/null || echo 'Prettier not configured'
 
 # 4. Build
-npx astro build
+bun run build
 ```
 
 If any check fails, fix the issue before continuing.
 
 ### 2. Verify Test Coverage (if applicable)
-If new features or bug fixes were added, verify tests exist. This project has no test framework configured — note this in the PR if the change is logic-heavy.
+If new features or bug fixes were added, verify corresponding tests exist in `tests/` and pass via `bun test`.
 
 ### 3. Detect Branch & Target
 - Feature branch (`feat/*`, `fix/*`, `chore/*`) → PR to `dev`
@@ -62,7 +62,7 @@ gh pr create --base <target> --head <branch> \
 
 ### 7. Monitor CI & Auto-Fix
 ```bash
-gh pr checks
+gh pr checks --watch
 ```
 
 If CI fails:

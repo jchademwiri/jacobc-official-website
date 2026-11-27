@@ -11,7 +11,7 @@
 
 ## Workflow Commands
 - `/start <task>` — Create branch, audit, plan
-- `/done` — Pre-flight, commit, PR, CI
+- `/ship` — Pre-flight, commit, PR, CI
 - `/release` — Promote dev → master
 - `/tag vX.Y.Z` — Tag production release
 - `/rollback` — Revert to previous release
