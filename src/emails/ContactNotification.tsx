@@ -14,8 +14,8 @@ import { brand, font } from './theme';
 
 export interface ContactNotificationProps {
   name: string;
+  organization?: string;
   email: string;
-  projectLabel: string;
   message: string;
   receivedAt: Date;
 }
@@ -45,28 +45,31 @@ const value = {
 
 export function ContactNotification({
   name,
+  organization,
   email,
-  projectLabel,
   message,
   receivedAt,
 }: ContactNotificationProps) {
+  const previewText = organization
+    ? `Executive Inquiry (${organization}): ${name} <${email}>`
+    : `Executive Inquiry: ${name} <${email}>`;
+
   return (
     <Html lang="en">
       <Head />
-      {/* Shows in the inbox list before the message is opened. */}
-      <Preview>{`${projectLabel}: ${name} <${email}>`}</Preview>
+      <Preview>{previewText}</Preview>
       <Body style={{ margin: 0, padding: '24px 12px', backgroundColor: brand.bg }}>
         <Container
           style={{
             maxWidth: '560px',
             margin: '0 auto',
             padding: '32px',
-            backgroundColor: brand.surface,
+            backgroundColor: brand.card,
             borderRadius: '8px',
             border: `1px solid ${brand.edge}`,
           }}
         >
-          <Text style={label}>New enquiry</Text>
+          <Text style={label}>New Executive Inquiry</Text>
           <Heading
             as="h1"
             style={{
@@ -90,10 +93,12 @@ export function ContactNotification({
 
           <Hr style={{ margin: '24px 0', border: 'none', borderTop: `1px solid ${brand.edge}` }} />
 
-          <Section style={{ marginBottom: '20px' }}>
-            <Text style={label}>About</Text>
-            <Text style={value}>{projectLabel}</Text>
-          </Section>
+          {organization ? (
+            <Section style={{ marginBottom: '20px' }}>
+              <Text style={label}>Organization</Text>
+              <Text style={value}>{organization}</Text>
+            </Section>
+          ) : null}
 
           <Section style={{ marginBottom: '24px' }}>
             <Text style={label}>Received</Text>
@@ -106,9 +111,9 @@ export function ContactNotification({
           <Section
             style={{
               padding: '16px 18px',
-              backgroundColor: brand.bg,
+              backgroundColor: brand.surface,
               borderRadius: '6px',
-              borderLeft: `2px solid ${brand.accent}`,
+              borderLeft: `3px solid ${brand.accent}`,
             }}
           >
             <Text
@@ -136,8 +141,8 @@ export function ContactNotification({
               color: brand.text3,
             }}
           >
-            Reply to this email to answer {name.split(' ')[0]} directly (it goes to{' '}
-            <span style={{ fontFamily: font.mono }}>{email}</span>, not to the website.
+            Reply directly to answer {name.split(' ')[0]} (your reply goes to{' '}
+            <span style={{ fontFamily: font.mono }}>{email}</span>).
           </Text>
         </Container>
       </Body>

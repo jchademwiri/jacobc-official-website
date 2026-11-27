@@ -1,42 +1,49 @@
 ---
-import { CONTACT_EMAIL, CONTACT_MAILTO, GITHUB_URL, LINKEDIN_URL, SITE_NAME } from '../lib/site';
-
-interface Props {
-  variant?: 'default' | 'post' | 'portfolio';
-}
-
-const { variant = 'default' } = Astro.props;
-const year = new Date().getFullYear();
-
-const backLink = {
-  post: { href: '/blog', label: '← All posts' },
-  portfolio: { href: '/portfolio', label: '← All work' },
-}[variant as 'post' | 'portfolio'];
+import { siteConfig, navLinks, footerSection } from '../data/siteData';
 ---
 
-<footer
-  class="flex flex-wrap items-center justify-between gap-3 border-t border-divider px-5 py-8 text-meta text-text-3 sm:px-8 md:px-14"
->
-  {
-    backLink ? (
-      <>
-        <a href={backLink.href} class="text-accent">
-          {backLink.label}
+<footer class="no-print border-t border-border bg-surface/60">
+  <div class="mx-auto max-w-content px-5 py-10 sm:px-8">
+    <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+      <div class="max-w-md">
+        <p class="text-xs font-semibold tracking-[0.14em] text-primary">{siteConfig.wordmark}</p>
+        <p class="mt-2 text-xs leading-relaxed text-text-2">{footerSection.bio}</p>
+      </div>
+
+      <nav aria-label="Footer navigation" class="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-medium text-text-2">
+        {
+          navLinks.map((link) => (
+            <a href={link.href} class="transition-colors hover:text-primary">
+              {link.label}
+            </a>
+          ))
+        }
+        <a
+          href="/resume"
+          class="transition-colors hover:text-primary"
+        >
+          Web CV
         </a>
-        <a href={CONTACT_MAILTO} class="btn btn-ghost">
-          {CONTACT_EMAIL}
+        <a
+          href={siteConfig.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="transition-colors hover:text-accent"
+        >
+          LinkedIn
         </a>
-      </>
-    ) : (
-      <>
-        <span>© <span class="data">{year}</span> {SITE_NAME}</span>
-        <div class="flex flex-wrap gap-5">
-          <a href={GITHUB_URL} class="hover:text-text">GitHub</a>
-          <a href={LINKEDIN_URL} class="hover:text-text">LinkedIn</a>
-          <a href="/rss.xml" class="hover:text-text">RSS</a>
-          <a href={CONTACT_MAILTO} class="hover:text-text">{CONTACT_EMAIL}</a>
-        </div>
-      </>
-    )
-  }
+        <a
+          href={`mailto:${siteConfig.email}`}
+          class="data transition-colors hover:text-accent"
+        >
+          {siteConfig.email}
+        </a>
+      </nav>
+    </div>
+
+    <div class="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-border pt-5 text-xs text-muted">
+      <p>{footerSection.copyright}</p>
+      <p class="data">{siteConfig.location}</p>
+    </div>
+  </div>
 </footer>

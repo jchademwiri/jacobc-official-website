@@ -27,10 +27,12 @@ const site = productionUrl ? `https://${productionUrl}` : 'http://localhost:4321
 export default defineConfig({
   site,
   trailingSlash: 'never',
+  prefetch: true,
   adapter: vercel(),
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/404') && !page.includes('placeholder'),
+      filter: (page) =>
+        !page.includes('/404') && !page.includes('/resume-v1') && !page.includes('placeholder'),
     }),
   ],
   env: {

@@ -1,0 +1,265 @@
+---
+import { siteConfig, contactSection } from '../data/siteData';
+import { HONEYPOT_FIELD, TIMESTAMP_FIELD } from '../lib/contact';
+---
+
+<section id="contact" aria-labelledby="contact-heading" class="border-t border-border py-16 sm:py-20">
+  <div class="mx-auto max-w-content px-5 sm:px-8">
+    <div class="grid gap-10 lg:grid-cols-12 lg:gap-12">
+      <!-- Left Column: Direct Details -->
+      <div class="lg:col-span-5">
+        <p class="eyebrow">{contactSection.eyebrow}</p>
+        <h2 id="contact-heading" class="h2 mt-3">{contactSection.heading}</h2>
+        <p class="mt-4 text-body-lg text-text-2">{contactSection.intro}</p>
+
+        <div class="mt-7 space-y-4 rounded-xl border border-border bg-surface p-5 sm:p-6">
+          <!-- One-Click Copy Email -->
+          <div>
+            <p class="data text-[11px] uppercase tracking-widest text-muted">Direct Email</p>
+            <div class="mt-1 flex flex-wrap items-center gap-2">
+              <button
+                type="button"
+                id="copy-email-btn"
+                data-copy-email={siteConfig.email}
+                class="group inline-flex cursor-pointer items-center gap-2 text-base font-semibold text-primary transition-colors hover:text-accent"
+                title="Click to copy email address"
+              >
+                <span>{siteConfig.email}</span>
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted transition-colors group-hover:text-accent" aria-hidden="true">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+              </button>
+              <span class="data text-[11px] text-muted">(click to copy)</span>
+            </div>
+          </div>
+
+          <div class="border-t border-border/80 pt-3.5">
+            <p class="data text-[11px] uppercase tracking-widest text-muted">Phone</p>
+            <a href={siteConfig.phoneHref} class="data mt-1 inline-block text-sm font-medium text-primary hover:text-accent">
+              {siteConfig.phone}
+            </a>
+          </div>
+
+          <div class="border-t border-border/80 pt-3.5">
+            <p class="data text-[11px] uppercase tracking-widest text-muted">Location</p>
+            <p class="mt-1 text-sm text-text-2">{siteConfig.location}</p>
+          </div>
+
+          <div class="border-t border-border/80 pt-3.5">
+            <p class="data text-[11px] uppercase tracking-widest text-muted">LinkedIn</p>
+            <a
+              href={siteConfig.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-1 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
+            >
+              <span>linkedin.com/in/jchademwiri</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+
+          <div class="flex flex-wrap gap-2.5 border-t border-border/80 pt-4">
+            <a href={siteConfig.cvPath} download class="btn btn-primary text-xs">
+              Download CV (DOCX)
+            </a>
+            <a href="/resume" class="btn btn-secondary text-xs">
+              Print / Web CV
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Quick Inquiry Form -->
+      <div class="lg:col-span-7">
+        <div class="exec-card p-6 sm:p-8">
+          <h3 class="h3 text-primary">Send a Direct Inquiry</h3>
+          <p class="mt-1 text-sm text-text-2">
+            Direct, confidential communication - delivered straight to {siteConfig.email}.
+          </p>
+
+          <form id="contact-form" method="POST" action="/api/contact" novalidate class="mt-6 flex flex-col gap-5">
+            <div id="form-status" role="status" aria-live="polite" class="contents"></div>
+
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div class="field">
+                <label class="field-label" for="name">Full Name</label>
+                <input
+                  class="field-input"
+                  id="name"
+                  name="name"
+                  type="text"
+                  autocomplete="name"
+                  required
+                  placeholder={contactSection.form.namePlaceholder}
+                />
+              </div>
+
+              <div class="field">
+                <label class="field-label" for="organization">Organization <span class="font-normal text-muted">(Optional)</span></label>
+                <input
+                  class="field-input"
+                  id="organization"
+                  name="organization"
+                  type="text"
+                  autocomplete="organization"
+                  placeholder={contactSection.form.organizationPlaceholder}
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="field-label" for="email">Work Email</label>
+              <input
+                class="field-input"
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+                placeholder={contactSection.form.emailPlaceholder}
+              />
+            </div>
+
+            <div class="field">
+              <label class="field-label" for="message">Message</label>
+              <textarea
+                class="field-input min-h-[140px] resize-y"
+                id="message"
+                name="message"
+                rows="5"
+                required
+                placeholder={contactSection.form.messagePlaceholder}
+              ></textarea>
+            </div>
+
+            <!-- Anti-spam honeypot & minimum fill timestamp -->
+            <div class="hp" aria-hidden="true">
+              <label for={HONEYPOT_FIELD}>Website</label>
+              <input id={HONEYPOT_FIELD} name={HONEYPOT_FIELD} type="text" tabindex="-1" autocomplete="off" />
+            </div>
+            <input type="hidden" name={TIMESTAMP_FIELD} value="" />
+
+            <div class="flex flex-wrap items-center justify-between gap-3 pt-1">
+              <button type="submit" class="btn btn-primary" data-submit>
+                {contactSection.form.submitLabel}
+              </button>
+              <span class="data text-xs text-muted">Typical reply: 24–48 hours</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charcoal & Bronze Toast for Copy Email -->
+  <div
+    id="copy-toast"
+    role="status"
+    aria-live="polite"
+    hidden
+    class="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 rounded-lg border border-accent bg-primary px-4 py-3 text-xs font-medium text-primary-ink shadow-lg"
+  >
+    <span class="h-2 w-2 rounded-full bg-accent" aria-hidden="true"></span>
+    <span>Email copied to clipboard</span>
+  </div>
+</section>
+
+<script is:inline define:vars={{ successMsg: contactSection.form.successMessage, errorMsg: contactSection.form.errorMessage }}>
+  // One-click copy email + toast
+  const copyBtn = document.getElementById('copy-email-btn');
+  const toast = document.getElementById('copy-toast');
+  let toastTimer;
+
+  if (copyBtn && toast) {
+    copyBtn.addEventListener('click', async () => {
+      const email = copyBtn.getAttribute('data-copy-email') || 'hello@jacobc.co.za';
+      try {
+        await navigator.clipboard.writeText(email);
+      } catch {
+        const tmp = document.createElement('textarea');
+        tmp.value = email;
+        tmp.style.position = 'fixed';
+        tmp.style.opacity = '0';
+        document.body.appendChild(tmp);
+        tmp.select();
+        document.execCommand('copy');
+        tmp.remove();
+      }
+      toast.hidden = false;
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.hidden = true;
+      }, 2800);
+    });
+  }
+
+  // Contact form AJAX submit -> /api/contact
+  const form = document.getElementById('contact-form');
+  if (form) {
+    const status = document.getElementById('form-status');
+    const button = form.querySelector('[data-submit]');
+    const started = form.querySelector('input[name="started"]');
+    if (started) started.value = String(Date.now());
+
+    const clearErrors = () => {
+      form.querySelectorAll('.field-error').forEach((n) => n.remove());
+      form.querySelectorAll('[aria-invalid]').forEach((n) => n.removeAttribute('aria-invalid'));
+      if (status) status.innerHTML = '';
+    };
+
+    const showError = (field, message) => {
+      const input = form.elements.namedItem(field);
+      if (!input) return;
+      const p = document.createElement('p');
+      p.className = 'field-error';
+      p.textContent = message;
+      input.after(p);
+      input.setAttribute('aria-invalid', 'true');
+    };
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      clearErrors();
+      if (button) {
+        button.disabled = true;
+        button.textContent = 'Sending…';
+      }
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: new FormData(form),
+        });
+        const result = await response.json();
+
+        if (result.ok) {
+          const done = document.createElement('div');
+          done.className = 'form-success';
+          done.innerHTML = `<p class="text-base font-semibold text-primary">Message Sent</p><p class="mt-1.5 text-sm text-text-2">${successMsg}</p>`;
+          form.replaceWith(done);
+          done.setAttribute('tabindex', '-1');
+          done.focus();
+          return;
+        }
+
+        if (result.errors) {
+          Object.entries(result.errors).forEach(([field, msg]) => showError(field, msg));
+          form.querySelector('[aria-invalid="true"]')?.focus();
+        } else if (status) {
+          status.innerHTML = `<p class="form-alert">${errorMsg}</p>`;
+        }
+      } catch {
+        if (status) {
+          status.innerHTML = `<p class="form-alert">${errorMsg}</p>`;
+        }
+      } finally {
+        if (button) {
+          button.disabled = false;
+          button.textContent = 'Send Message';
+        }
+      }
+    });
+  }
+</script>

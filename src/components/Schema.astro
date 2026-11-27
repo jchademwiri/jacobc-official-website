@@ -1,183 +1,73 @@
 ---
-import { CONTACT_EMAIL, SOCIAL_PROFILES, SITE_NAME, PERSON_JOB_TITLE, LOCALITY, REGION, COUNTRY } from '../lib/site';
-
-export interface Crumb {
-  name: string;
-  href: string;
-}
+import { siteConfig, faqItems } from '../data/siteData';
 
 interface Props {
   site: URL;
   canonical: URL;
-  kind: 'person' | 'article' | 'service' | 'contact' | 'project' | 'default';
-  breadcrumb?: Crumb[];
-  headline?: string;
-  description?: string;
-  image?: URL;
-  publishedTime?: Date;
-  updatedTime?: Date;
-  tags?: string[];
+  includeFaq?: boolean;
 }
 
-const { site, canonical, kind, breadcrumb, headline, description, image, publishedTime, updatedTime, tags } =
-  Astro.props;
+const { site, canonical, includeFaq = false } = Astro.props;
 
-const isHomePage = canonical.pathname === '/' || canonical.pathname === '';
-const personId = `${new URL('/', site).href}#person`;
+const rootUrl = new URL('/', site).href.replace(/\/$/, '');
+const personId = `${rootUrl}/#person`;
 
-const person = {
-  '@type': 'Person',
-  '@id': personId,
-  name: SITE_NAME,
-  url: new URL('/', site).href,
-  email: `mailto:${CONTACT_EMAIL}`,
-  jobTitle: PERSON_JOB_TITLE,
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: LOCALITY,
-    addressRegion: REGION,
-    addressCountry: COUNTRY,
+const graph: Record<string, unknown>[] = [
+  {
+    '@type': 'Person',
+    '@id': personId,
+    name: siteConfig.name,
+    jobTitle: siteConfig.title,
+    description:
+      'Procurement, Tender & Contract Manager in Centurion, South Africa with 5+ years of bid-to-delivery experience across 16+ municipal contracts for the City of Tshwane, City of Ekurhuleni, Pikitup Johannesburg, and Msunduzi Municipality.',
+    url: rootUrl,
+    email: `mailto:${siteConfig.email}`,
+    telephone: '+27-74-049-1433',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: siteConfig.locality,
+      addressRegion: siteConfig.region,
+      addressCountry: siteConfig.country,
+    },
+    sameAs: [siteConfig.linkedin, siteConfig.website],
+    knowsAbout: [
+      'Procurement Management',
+      'Tender Management',
+      'Contract Administration',
+      'Public Sector Tendering (MFMA / SCM)',
+      'SAP ERP',
+      'Sage Accounting',
+      'Zoho',
+      'ISO 9001',
+      'ISO 14001',
+      'ISO 45001',
+      'SHEQ Governance',
+      'CIDB Compliance',
+      'Municipal Supply Chain',
+      'Plant and Fleet Hire',
+    ],
   },
-  sameAs: SOCIAL_PROFILES,
-};
-
-const graph: Record<string, unknown>[] = [person];
-
-// WebSite schema ONLY on homepage
-if (isHomePage) {
-  graph.push({
-    '@type': 'WebSite',
-    '@id': `${new URL('/', site).href}#website`,
-    name: SITE_NAME,
-    url: new URL('/', site).href,
-    publisher: { '@id': personId },
-  });
-}
-
-// LocalBusiness schema for local SEO on relevant pages
-if (isHomePage || kind === 'service' || kind === 'contact') {
-  graph.push({
-    '@type': 'LocalBusiness',
-    '@id': `${new URL('/', site).href}#localbusiness`,
-    name: SITE_NAME,
-    url: new URL('/', site).href,
-    description: 'Tender management, project coordination, accounts receivable governance and web development services in Centurion, Gauteng.',
-    image: image?.href,
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: LOCALITY,
-      addressRegion: REGION,
-      addressCountry: COUNTRY,
-    },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: -25.8601,
-      longitude: 28.1914,
-    },
-    sameAs: SOCIAL_PROFILES,
-  });
-}
-
-if (kind === 'contact') {
-  graph.push({
-    '@type': 'ContactPage',
-    '@id': `${canonical.href}#contactpage`,
-    name: `Contact ${SITE_NAME}`,
+  {
+    '@type': 'ProfilePage',
+    '@id': `${canonical.href}#profilepage`,
     url: canonical.href,
-    description,
+    name: siteConfig.seo.metaTitle,
     mainEntity: { '@id': personId },
-  });
-}
+    inLanguage: 'en-ZA',
+  },
+];
 
-if (kind === 'article' && headline) {
-  const modTime = updatedTime ?? publishedTime;
+if (includeFaq) {
   graph.push({
-    '@type': 'BlogPosting',
-    '@id': `${canonical.href}#article`,
-    headline,
-    description,
-    url: canonical.href,
-    ...(image && { image: image.href }),
-    ...(publishedTime && { datePublished: publishedTime.toISOString() }),
-    ...(modTime && { dateModified: modTime.toISOString() }),
-    ...(tags?.length && { keywords: tags.join(', ') }),
-    author: { '@id': personId },
-    publisher: { '@id': personId },
-    mainEntityOfPage: canonical.href,
-  });
-}
-
-if (kind === 'project' && headline) {
-  graph.push({
-    '@type': 'CreativeWork',
-    '@id': `${canonical.href}#project`,
-    name: headline,
-    headline,
-    description,
-    url: canonical.href,
-    ...(image && { image: image.href }),
-    author: { '@id': personId },
-    creator: { '@id': personId },
-    mainEntityOfPage: canonical.href,
-  });
-}
-
-if (kind === 'service') {
-  graph.push({
-    '@type': 'ProfessionalService',
-    '@id': `${canonical.href}#service`,
-    name: SITE_NAME,
-    url: canonical.href,
-    description,
-    provider: { '@id': personId },
-    areaServed: { '@type': 'AdministrativeArea', name: `${REGION}, South Africa` },
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: LOCALITY,
-      addressRegion: REGION,
-      addressCountry: COUNTRY,
-    },
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: 'Professional & Freelance Services',
-      itemListElement: [
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Full Tender Preparation Lifecycle',
-            description: 'Opportunity identification, RFP review, compliance scheduling, CIDB/CSD validation, and competitive bid compilation.',
-          },
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Website Development',
-            description: 'Modern, high-performance web development in React, Next.js, Astro, and Tailwind CSS with ISO-standard quality controls.',
-          },
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Project & AR Governance',
-            description: 'Operational delivery coordination, timeline and budget governance, and enterprise billing/credit control in SAP and Sage.',
-          },
-        },
-      ],
-    },
-  });
-}
-
-if (breadcrumb?.length) {
-  graph.push({
-    '@type': 'BreadcrumbList',
-    itemListElement: [{ name: 'Home', href: '/' }, ...breadcrumb].map((crumb, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      name: crumb.name,
-      item: new URL(crumb.href, site).href,
+    '@type': 'FAQPage',
+    '@id': `${rootUrl}/#faq`,
+    mainEntity: faqItems.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
     })),
   });
 }

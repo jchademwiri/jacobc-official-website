@@ -1,8 +1,12 @@
-export const SITE_NAME = 'Jacob Chademwiri';
-export const PERSON_JOB_TITLE = 'Tender & Project Manager | ISO Implementation Lead | SHEQ | AR Manager | Web Developer';
+import { siteConfig } from '../data/siteData';
 
-export const CONTACT_EMAIL = 'hello@jacobc.co.za';
+export const SITE_NAME = siteConfig.name;
+export const PERSON_JOB_TITLE = siteConfig.title;
+
+export const CONTACT_EMAIL = siteConfig.email;
 export const CONTACT_MAILTO = `mailto:${CONTACT_EMAIL}`;
+export const CONTACT_PHONE = siteConfig.phone;
+export const CONTACT_TEL = siteConfig.phoneHref;
 
 /**
  * The subdomain verified in Resend. Only the `from` address has to live here;
@@ -11,14 +15,14 @@ export const CONTACT_MAILTO = `mailto:${CONTACT_EMAIL}`;
  * root domain used for ordinary correspondence.
  */
 export const SENDING_DOMAIN = 'info.jacobc.co.za';
-export const DEFAULT_FROM_ADDRESS = `noreply@${SENDING_DOMAIN}`;
+export const DEFAULT_FROM_ADDRESS = `hello@${SENDING_DOMAIN}`;
 
-export const LOCALITY = 'Centurion';
-export const REGION = 'Gauteng';
-export const COUNTRY = 'ZA';
+export const LOCALITY = siteConfig.locality;
+export const REGION = siteConfig.region;
+export const COUNTRY = siteConfig.country;
 
-export const GITHUB_URL = 'https://github.com/jchademwiri';
-export const LINKEDIN_URL = 'https://linkedin.com/in/jchademwiri';
+export const LINKEDIN_URL = siteConfig.linkedin;
+export const WEBSITE_URL = siteConfig.website;
 
-/** Feeds schema.org `sameAs`; keep every profile the site links to in here. */
-export const SOCIAL_PROFILES = [GITHUB_URL, LINKEDIN_URL];
+/** Feeds schema.org `sameAs`; keep every public executive profile in here. */
+export const SOCIAL_PROFILES = [LINKEDIN_URL, WEBSITE_URL] as const;
