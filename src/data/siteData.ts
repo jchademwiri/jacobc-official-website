@@ -499,6 +499,8 @@ export const experienceTimeline: ExperienceItem[] = [
         period: "August 2019 – January 2022",
         highlights: [
           "Built and maintained data-driven applications and client platforms, building practical analytical, database, and systems-documentation habits I still use in ERP and contract reporting.",
+          "Structured relational databases, reporting views, and automated workflows to keep client records, operational logs, and business data accurate and easy to audit.",
+          "Translated business and client requirements into working technical specifications, handled troubleshooting and routine updates, and documented processes for ongoing handover and maintenance.",
         ],
       },
     ],
@@ -511,7 +513,9 @@ export const experienceTimeline: ExperienceItem[] = [
         title: "Administrative Assistant",
         period: "November 2017 – March 2020",
         highlights: [
-          "Supported office operations, client correspondence, record keeping, and day-to-day administrative coordination.",
+          "Supported workshop and office administration for a multi-branch retail clothing business, handling record keeping, dispatch paperwork, supplier and branch correspondence, and daily coordination.",
+          "Visited retail branches across Cape Town to conduct physical stock checks, stock-taking counts, and inventory reconciliations between the central workshop and individual stores.",
+          "Tracked garment stock movements, order records, and replenishment requests across branches, flagging stock discrepancies early to keep workshop production and store inventory aligned.",
         ],
       },
     ],
