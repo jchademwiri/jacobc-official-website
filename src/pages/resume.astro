@@ -53,37 +53,12 @@ const governanceStandards = ['ISO 9001', 'ISO 14001', 'ISO 45001', 'MFMA / SCM',
   <div class="mx-auto max-w-content px-5 py-10 sm:px-8 print:max-w-none print:p-0">
     <!-- Top Action Bar (Screen Only) -->
     <div class="no-print mb-7 flex flex-wrap items-center justify-between gap-3 border-b border-border pb-5">
-      <div class="flex items-center gap-3">
-        <a href="/" class="btn btn-secondary min-h-[38px] px-4 py-2 text-xs">
-          <span>← Portfolio</span>
-        </a>
-        <a href="/track-record" class="data text-xs font-medium text-accent hover:underline">
-          Full 16-Contract Track Record →
-        </a>
-      </div>
-
-      <div class="flex flex-wrap items-center gap-2.5">
-        <a href={siteConfig.cvPath} download class="btn btn-secondary min-h-[38px] px-4 py-2 text-xs">
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="7 10 12 15 17 10"></polyline>
-            <line x1="12" y1="15" x2="12" y2="3"></line>
-          </svg>
-          <span>Download CV (v4 DOCX)</span>
-        </a>
-        <button
-          type="button"
-          id="print-cv-btn"
-          class="btn btn-primary min-h-[38px] px-4 py-2 text-xs"
-        >
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polyline points="6 9 6 2 18 2 18 9"></polyline>
-            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
-            <rect x="6" y="14" width="12" height="8"></rect>
-          </svg>
-          <span>Print / Save as PDF</span>
-        </button>
-      </div>
+      <a href="/" class="btn btn-secondary min-h-[38px] px-4 py-2 text-xs">
+        <span>← Portfolio</span>
+      </a>
+      <a href="/track-record" class="data text-xs font-medium text-accent hover:underline">
+        Full 16-Contract Track Record →
+      </a>
     </div>
 
     <!-- Executive CV Document Sheet -->
@@ -367,12 +342,6 @@ const governanceStandards = ['ISO 9001', 'ISO 14001', 'ISO 45001', 'MFMA / SCM',
     </article>
   </div>
 </Layout>
-
-<script>
-  document.getElementById('print-cv-btn')?.addEventListener('click', () => {
-    window.print();
-  });
-</script>
 
 <style>
   .cv-heading {
