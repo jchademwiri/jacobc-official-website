@@ -1,5 +1,6 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
+import CvDownloadButton from './CvDownloadButton.astro';
 import { siteConfig, navLinks } from '../data/siteData';
 
 const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
@@ -55,18 +56,13 @@ function getSectionId(href: string): string | undefined {
     <div class="flex items-center gap-2.5">
       <ThemeToggle />
 
-      <a
-        href={siteConfig.cvPath}
-        download
-        class="btn btn-primary hidden min-h-[38px] px-4 py-2 text-xs sm:inline-flex"
-      >
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-          <polyline points="7 10 12 15 17 10"></polyline>
-          <line x1="12" y1="15" x2="12" y2="3"></line>
-        </svg>
-        <span>Download CV</span>
-      </a>
+      <CvDownloadButton
+        label="Download CV"
+        disabledLabel="CV Updating"
+        showIcon={true}
+        iconSize={14}
+        class="hidden min-h-[38px] px-4 py-2 text-xs sm:inline-flex"
+      />
 
       <!-- Mobile Menu Button -->
       <button
@@ -114,13 +110,7 @@ function getSectionId(href: string): string | undefined {
         })
       }
       <div class="mt-2 flex flex-col gap-2 border-t border-border pt-3">
-        <a
-          href={siteConfig.cvPath}
-          download
-          class="btn btn-primary w-full justify-center text-xs"
-        >
-          Download CV (DOCX)
-        </a>
+        <CvDownloadButton label="Download CV (DOCX)" class="w-full justify-center text-xs" />
         <a
           href="/resume"
           class="btn btn-secondary w-full justify-center text-xs"

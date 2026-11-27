@@ -3,6 +3,7 @@ import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { extname, join } from 'node:path';
 import {
   siteConfig,
+  cvDownloadEnabled,
   metricsStrip,
   contractPortfolio,
   featuredContracts,
@@ -19,6 +20,7 @@ describe('executive siteData v2.0 integrity', () => {
   it('uses canonical email and versioned CV path', () => {
     expect(siteConfig.email).toBe('hello@jacobc.co.za');
     expect(siteConfig.cvPath).toBe('/Jacob_Chademwiri_Procurement_Contracts_CV_v4.docx');
+    expect(cvDownloadEnabled).toBe(false);
     expect(showCipsInProgress).toBe(false);
   });
 

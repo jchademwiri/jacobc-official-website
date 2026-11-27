@@ -63,6 +63,9 @@ export const siteConfig = {
   },
 } as const;
 
+// Set cvDownloadEnabled to true once the updated CV DOCX is finalized
+export const cvDownloadEnabled = false;
+
 export const navLinks = [
   { label: "Track Record", href: "/track-record" },
   { label: "Capabilities", href: "/#capabilities" },
