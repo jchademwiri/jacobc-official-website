@@ -1,9 +1,9 @@
 ---
-title: "Custom Website Development"
-number: "02"
-shortTitle: "Web Development"
-summary: "Fast, accessible, and high-converting custom websites and web applications built in React, Next.js, Astro.js, and Tailwind CSS. Clean semantic code, first-class SEO, and ISO-standard quality discipline."
-order: 2
+title: "Complementary: Contractor Websites & Bid-Tech Systems"
+number: "04"
+shortTitle: "Web & Bid-Tech Development"
+summary: "Complementary digital engineering for contractors and SMEs: fast, accessible websites and web applications built in Astro.js, Next.js, and Tailwind CSS—including TenderTrack360 SaaS and client billing portals."
+order: 4
 relatedCategory: "website"
 tags:
   - label: "Next.js & React"

@@ -1,20 +1,20 @@
 # Jacob Chademwiri
 
-> Tender, Project & Accounts Receivable Manager, Web Developer based in Centurion, Gauteng, South Africa.
-> Specialised in tender acquisition, enterprise AR governance (SAP & Sage), operational project management, and high-performance web development (React, Next.js, Astro). Governed by ISO 9001, 14001, and 45001 quality and compliance standards.
+> Tender Manager (Primary) | Project Delivery & ISO 9001/14001/45001 Implementation Lead | SAP & Sage Contract Billing (AR) Manager | Complementary Web & Bid-Tech Developer based in Centurion, Gauteng, South Africa.
 
-## Core Capabilities & Positioning
-- **Full-Time Employment Focus**: Tender Management, Project Management, and Accounts Receivable (AR) Management with deep ERP billing and financial reconciliation expertise (SAP ERP and Sage Accounting).
-- **Freelance & Consulting Focus**: Full Tender Preparation Lifecycle (RFP/bid document analysis, compliance scheduling, CIDB/CSD validation, rate schedules, and winning bid compilation) and Custom Website Development (React, Next.js, Astro, TypeScript, Tailwind CSS).
-- **ISO Standards in Practice**: Cross-cutting application of ISO 9001 (Quality), ISO 14001 (Environmental), and ISO 45001 (Health & Safety) Integrated Management Systems (IMS) across operational delivery, SHEQ governance, and digital execution.
+## Core Identity & Positioning
+- **Primary Role (Employment & Executive Leadership)**: Tender Manager who doesn't stop at the bid box—winning municipal and corporate contracts (5+ awarded 3-year City of Tshwane tenders across 40+ plant, water, sanitation, and horticulture categories), leading the ISO 9001, 14001 & 45001 compliance systems that qualify bids, coordinating awarded project delivery as needed, and governing contract billing and accounts receivable in SAP ERP and Sage Accounting.
+- **Compliance & Operational Backbone**: Appointed Management Representative directing Integrated Management Systems (ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 under Annex SL) and Driven Machinery Regulations (DMR 19) compliance for Lifting Machinery Entity (LME) and fleet operations.
+- **Complementary Technical Edge & Consulting**: Founder of Playhouse Media Group, creator of TenderTrack360 (bid-management SaaS), and developer of high-performance contractor websites in Astro, Next.js, TypeScript, and Tailwind CSS—plus select freelance tender preparation and ISO compliance consulting.
 
 ## Main Pages
-- [Home](https://jacobc.co.za): Overview of capabilities, professional experience, services, and field notes.
-- [Services](https://jacobc.co.za/services): Full breakdown of Tender Preparation Lifecycle, Website Development, Project & AR Governance, and ISO compliance.
-- [Portfolio](https://jacobc.co.za/portfolio): Track record of delivered municipal contracts, winning tender preparations, and custom web applications.
-- [Blog](https://jacobc.co.za/blog): Field notes on reading bid documents, tender success rates, ISO implementation in practice, and web engineering.
-- [About](https://jacobc.co.za/about): Professional background at Sithembe Transportation & Projects and Playhouse Media Group.
-- [Contact](https://jacobc.co.za/contact): Consultation enquiries for employment opportunities, freelance tender preparation, and website development.
+- [Home](https://jacobc.co.za): End-to-end contract lifecycle overview, awarded City of Tshwane tenders, career trajectory, and field notes.
+- [Services & Capabilities](https://jacobc.co.za/services): Breakdown of 01 Tender Management, 02 ISO 9001/14001/45001 Implementation, 03 Project Execution & SAP/Sage Billing, and 04 Complementary Contractor Websites & Bid-Tech.
+- [Portfolio & Track Record](https://jacobc.co.za/portfolio): 17 case studies of awarded municipal tenders, delivered contracts, ISO IMS implementation, and complementary software/web builds.
+- [Executive Resume](https://jacobc.co.za/resume): Print-ready executive CV detailing progressive roles at Sithembe Transportation & Projects, Babiya Geomatics, and Playhouse Media Group.
+- [Blog](https://jacobc.co.za/blog): Field notes on reading bid documents, improving tender win rates, practical ISO 9001/14001/45001 rollouts, and web engineering for SMEs.
+- [About](https://jacobc.co.za/about): Leadership profile and career milestones.
+- [Contact](https://jacobc.co.za/contact): Direct enquiries for Senior Tender & Project Management roles, tender preparation, ISO implementation, or website builds.
 
 ## Contact & Profiles
 - **Email**: hello@jacobc.co.za

@@ -6,7 +6,7 @@ employment: "Full-time"
 location: "South Africa"
 meta: "Full-time · South Africa"
 summary: "Built the foundation of my tendering career: mastering public sector procurement compliance, returnable schedules, mandatory statutory packs, and administrative discipline for civil and surveying bids."
-order: 3
+order: 2
 tags:
   - "Tendering Foundation"
   - "Tender Submissions"

@@ -15,6 +15,14 @@ export async function getStaticPaths() {
 const { service } = Astro.props;
 const { Content } = await render(service);
 
+const contactTypeMap: Record<string, string> = {
+  'tender-management': 'tender',
+  'iso-sheq-compliance': 'iso',
+  'project-management': 'project',
+  'web-development': 'website',
+};
+const contactType = contactTypeMap[service.id] ?? 'tender';
+
 // Fetch relevant portfolio items matching this service's category
 const relatedProjects = (
   await getCollection('portfolio', ({ data }) => !data.draft && data.category === service.data.relatedCategory)
@@ -45,12 +53,12 @@ const relatedProjects = (
     </p>
 
     <div class="mt-7 flex flex-wrap items-center gap-3">
-      <a href="/contact" class="btn btn-primary">
-        <span>Start a project or consultation</span>
+      <a href={`/contact?type=${contactType}`} class="btn btn-primary">
+        <span>Discuss {service.data.shortTitle}</span>
         <span>→</span>
       </a>
       <a href="/services" class="btn btn-secondary">
-        <span>All services</span>
+        <span>All capabilities</span>
       </a>
     </div>
   </div>
@@ -131,7 +139,7 @@ const relatedProjects = (
               <div>
                 <img
                   src={getPortfolioImageUrl(project.data.cover)}
-                  alt=""
+                  alt={`${project.data.title} — ${project.data.client}`}
                   width="400"
                   height="225"
                   class="aspect-[16/9] w-full rounded-md object-cover mb-3"
@@ -155,6 +163,7 @@ const relatedProjects = (
 
   <ContactBand
     heading={`Ready to discuss ${service.data.shortTitle}?`}
-    body="Tell me what you are working on and I will get back to you with an honest assessment and delivery scope within 24 to 48 hours."
+    body="Tell me what you are working on—whether hiring for an operational leadership role or scoping a project—and I will reply within 24 to 48 hours."
+    primaryHref={`/contact?type=${contactType}`}
   />
 </Layout>

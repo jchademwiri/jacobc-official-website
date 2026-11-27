@@ -3,6 +3,8 @@ export const PERSON_JOB_TITLE = 'Tender & Project Manager | ISO Implementation L
 
 export const CONTACT_EMAIL = 'hello@jacobc.co.za';
 export const CONTACT_MAILTO = `mailto:${CONTACT_EMAIL}`;
+export const CONTACT_PHONE = '+27 74 049 1433';
+export const CONTACT_TEL = 'tel:+27740491433';
 
 /**
  * The subdomain verified in Resend. Only the `from` address has to live here;
@@ -11,7 +13,7 @@ export const CONTACT_MAILTO = `mailto:${CONTACT_EMAIL}`;
  * root domain used for ordinary correspondence.
  */
 export const SENDING_DOMAIN = 'info.jacobc.co.za';
-export const DEFAULT_FROM_ADDRESS = `noreply@${SENDING_DOMAIN}`;
+export const DEFAULT_FROM_ADDRESS = `hello@${SENDING_DOMAIN}`;
 
 export const LOCALITY = 'Centurion';
 export const REGION = 'Gauteng';

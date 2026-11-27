@@ -126,7 +126,7 @@ if (kind === 'service') {
   graph.push({
     '@type': 'ProfessionalService',
     '@id': `${canonical.href}#service`,
-    name: SITE_NAME,
+    name: headline ? `${headline} · ${SITE_NAME}` : SITE_NAME,
     url: canonical.href,
     description,
     provider: { '@id': personId },

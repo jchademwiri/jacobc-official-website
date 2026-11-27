@@ -1,8 +1,8 @@
 ---
-title: "Project & Accounts Receivable Governance"
+title: "Project Execution & Contract Billing (SAP & Sage AR)"
 number: "03"
-shortTitle: "Project & AR Governance"
-summary: "Operational project delivery coordination combined with financial governance: managing enterprise accounts receivable, billing integrity, credit control, cash-flow reconciliation in SAP and Sage, and clean audit trails."
+shortTitle: "Project & Billing Governance"
+summary: "Running awarded contracts as needed and governing accounts receivable in SAP ERP and Sage Accounting: aligning on-site delivery milestones, plant utilization logs, and proof-of-delivery packs directly with invoices so won tenders turn into collected cash."
 order: 3
 relatedCategory: "project"
 tags:

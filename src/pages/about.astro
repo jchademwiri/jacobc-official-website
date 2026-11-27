@@ -11,36 +11,36 @@ const experienceList = (await getCollection('experience'))
 
 const careerPillars = [
   {
-    label: 'IMS Governance',
+    label: '01 · Primary Role',
+    badge: 'Tender Manager',
+    badgeClass: 'tag-accent',
+    title: 'Municipal & Corporate Tender Acquisition',
+    description:
+      'Leading the end-to-end tender lifecycle: opportunity vetting, RFP analysis, CSD/CIDB compliance scheduling, competitive rate modelling, and winning multi-year contracts.',
+  },
+  {
+    label: '02 · Compliance Backbone',
     badge: 'Appointed Rep',
     badgeClass: 'tag-accent',
-    title: 'ISO 9001 · 14001 · 45001',
+    title: 'ISO 9001 · 14001 · 45001 Implementation',
     description:
-      'Appointed Management Representative directing company-wide quality, environmental, and occupational health & safety management systems across fleet and machinery operations.',
+      'Appointed Management Representative directing company-wide quality, environmental, and occupational health & safety systems (Annex SL & DMR 19) that qualify technical bids.',
   },
   {
-    label: 'Financial Governance',
-    badge: 'Enterprise ERP',
+    label: '03 · Execution & Cash',
+    badge: 'Post-Award',
     badgeClass: 'tag-outline',
-    title: 'SAP ERP & Sage Accounting',
+    title: 'Project Delivery & SAP/Sage Billing',
     description:
-      'Directing accounts receivable, billing integrity, debt recovery, and financial reconciliations with structured audit trails.',
+      'Stepping in to run awarded contracts as needed and governing accounts receivable in SAP ERP and Sage Accounting—reconciling site milestones to invoices for zero revenue leakage.',
   },
   {
-    label: 'Bid Acquisition',
-    badge: 'Public SCM',
+    label: '04 · Complementary Edge',
+    badge: 'Bid-Tech & Web',
     badgeClass: 'tag-outline',
-    title: 'Municipal & Corporate Tenders',
+    title: 'TenderTrack360 & Contractor Web Platforms',
     description:
-      'End-to-end tender lifecycle: RFP review, compliance scheduling, CIDB alignments, and competitive bid compilation.',
-  },
-  {
-    label: 'Digital Platforms',
-    badge: 'Web Architecture',
-    badgeClass: 'tag-outline',
-    title: 'Astro, Next.js & Tailwind',
-    description:
-      'Deploying accessible, semantic, and high-performance digital platforms with modern headless technology.',
+      'Building custom software (TenderTrack360 SaaS) and high-performance Astro/Next.js websites that modernize bid tracking and strengthen contractor credibility.',
   },
 ];
 
@@ -67,12 +67,12 @@ const skills = [
 ---
 
 <Layout
-  title="About Jacob Chademwiri | Tender & Project Specialist"
-  description="Professional background of Jacob Chademwiri: tender management, enterprise AR governance (SAP & Sage), ISO implementation, and custom web development."
+  title="About Jacob Chademwiri | Tender Manager · Project, ISO & Billing Lead"
+  description="Professional background of Jacob Chademwiri: Tender Manager in Centurion, Gauteng who also leads ISO 9001/14001/45001 implementation, coordinates awarded projects, and governs project billing in SAP and Sage."
   image={PROFILE_PORTRAIT_URL}
   active="about"
   schema="person"
-  keywords={['Jacob Chademwiri', 'tender management', 'project management', 'AR manager', 'SAP', 'Sage accounting', 'ISO 9001', 'ISO 14001', 'ISO 45001', 'SHEQ', 'web developer', 'Centurion', 'Gauteng']}
+  keywords={['Jacob Chademwiri', 'tender manager', 'project manager', 'ISO implementation lead', 'AR manager', 'SAP', 'Sage accounting', 'ISO 9001', 'ISO 14001', 'ISO 45001', 'SHEQ', 'web developer', 'Centurion', 'Gauteng']}
 >
   <div class="grid gap-8 px-5 py-16 sm:px-8 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:items-center md:gap-12 md:px-14">
     <figure class="m-0">
@@ -86,22 +86,25 @@ const skills = [
       />
     </figure>
     <div>
-      <p class="kicker">About</p>
-      <h1 class="h1 mt-4 mb-5 max-w-[18ch]">
-        Submitting tenders isn't the hard part. Understanding the compliance systems behind them is.
+      <p class="kicker">About · Tender &amp; Operations Leadership</p>
+      <h1 class="h1 mt-4 mb-5 max-w-[19ch]">
+        A Tender Manager who knows how to qualify, run, and bill the contracts he wins.
       </h1>
-      <p class="mb-6 max-w-[52ch] text-body text-text-2">
-        Based in Centurion, Gauteng, I bring hands-on experience across tender acquisition, enterprise AR governance (SAP &amp; Sage), and web delivery, applying ISO quality frameworks to operational systems and digital platforms. I serve as Tender &amp; Project Manager and AR Manager at Sithembe Transportation &amp; Projects, and build custom web applications through Playhouse Media Group.
+      <p class="mb-4 max-w-[54ch] text-body text-text-2">
+        Based in Centurion, Gauteng, my primary role is <strong>Tender Manager</strong>—leading municipal and commercial bid acquisitions from initial RFP review to contract award. What sets my work apart is what happens around the bid: I also lead the <strong>ISO 9001, 14001 &amp; 45001</strong> compliance systems that make submissions competitive, coordinate project execution as needed after award, and govern accounts receivable in <strong>SAP ERP and Sage Accounting</strong> so every delivered milestone is accurately billed and collected.
+      </p>
+      <p class="mb-6 max-w-[54ch] text-body text-text-2">
+        To complement my operational leadership at Sithembe Transportation &amp; Projects, I also engineer bid-management software (<strong>TenderTrack360</strong>) and high-performance corporate websites through Playhouse Media Group.
       </p>
       <div class="flex flex-wrap gap-2">
-        <span class="tag tag-accent">Tender Management</span>
-        <span class="tag tag-accent">Project Management</span>
-        <span class="tag tag-accent">AR Governance (SAP &amp; Sage)</span>
-        <span class="tag tag-accent">ISO Standards</span>
-        <span class="tag tag-neutral">Web Development</span>
+        <span class="tag tag-accent">Tender Management (Primary)</span>
+        <span class="tag tag-accent">ISO 9001 · 14001 · 45001 Lead</span>
+        <span class="tag tag-accent">Project Execution</span>
+        <span class="tag tag-accent">Project Billing (SAP &amp; Sage)</span>
+        <span class="tag tag-neutral">Complementary: Web &amp; SaaS</span>
       </div>
       <div class="mt-7 flex flex-wrap gap-3">
-        <a href="/contact" class="btn btn-primary">Start a project</a>
+        <a href="/contact?type=employment" class="btn btn-primary">Discuss a Role or Tender →</a>
         <a href="/resume" class="btn btn-secondary">Executive Resume / One-Pager →</a>
       </div>
     </div>
@@ -205,27 +208,27 @@ const skills = [
           <!-- Key Metrics Row -->
           <div class="mt-5 grid grid-cols-3 gap-2 rounded-xl border border-edge bg-bg/40 p-3.5 text-center">
             <div>
-              <p class="data text-lg font-semibold text-accent">3</p>
-              <p class="font-mono text-[10px] uppercase tracking-wider text-text-3">ISO Standards</p>
+              <p class="data text-lg font-semibold text-accent">5+ Won</p>
+              <p class="font-mono text-[10px] uppercase tracking-wider text-text-3">3-Yr Tenders</p>
             </div>
             <div class="border-x border-divider">
-              <p class="data text-lg font-semibold text-text">5+ Yrs</p>
-              <p class="font-mono text-[10px] uppercase tracking-wider text-text-3">Tender &amp; AR</p>
+              <p class="data text-lg font-semibold text-text">3 ISO</p>
+              <p class="font-mono text-[10px] uppercase tracking-wider text-text-3">IMS Standards</p>
             </div>
             <div>
-              <p class="data text-lg font-semibold text-text">10+</p>
-              <p class="font-mono text-[10px] uppercase tracking-wider text-text-3">Web Builds</p>
+              <p class="data text-lg font-semibold text-text">SAP/Sage</p>
+              <p class="font-mono text-[10px] uppercase tracking-wider text-text-3">AR &amp; Billing</p>
             </div>
           </div>
 
           <!-- CTAs -->
           <div class="mt-5 flex flex-col gap-2">
-            <a href="/contact" class="btn btn-primary w-full justify-center">
-              <span>Discuss a project or role</span>
+            <a href="/contact?type=employment" class="btn btn-primary w-full justify-center">
+              <span>Discuss a role or tender</span>
               <span>→</span>
             </a>
-            <a href="/services" class="btn btn-secondary w-full justify-center text-xs">
-              Explore all capabilities &amp; services
+            <a href="/resume" class="btn btn-secondary w-full justify-center text-xs">
+              View printable Executive Resume
             </a>
           </div>
         </div>

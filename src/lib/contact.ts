@@ -1,13 +1,17 @@
 export const PROJECT_TYPES = [
+  { value: 'employment', label: 'Employment opportunity' },
   { value: 'tender', label: 'Tender submission' },
   { value: 'iso', label: 'ISO / SHEQ implementation' },
   { value: 'project', label: 'Project & AR governance' },
   { value: 'website', label: 'Website or web app' },
-  { value: 'employment', label: 'Employment opportunity' },
   { value: 'other', label: 'Something else' },
 ] as const;
 
 export type ProjectType = (typeof PROJECT_TYPES)[number]['value'];
+
+export function isValidProjectType(value: string | null | undefined): value is ProjectType {
+  return typeof value === 'string' && PROJECT_TYPES.some((t) => t.value === value);
+}
 
 export const FIELDS = ['name', 'email', 'projectType', 'message'] as const;
 export type Field = (typeof FIELDS)[number];

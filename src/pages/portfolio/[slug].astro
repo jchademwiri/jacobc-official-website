@@ -16,11 +16,19 @@ const { item } = Astro.props;
 const { Content } = await render(item);
 
 const categoryLabels: Record<string, string> = {
-  website: 'Website',
-  app: 'Web App',
-  project: 'Project',
-  tender: 'Tender',
+  tender: 'Awarded Tender',
+  project: 'Project & ISO Delivery',
+  app: 'Complementary Web App',
+  website: 'Complementary Website',
 };
+
+const contactTypeMap: Record<string, string> = {
+  tender: 'tender',
+  project: 'project',
+  app: 'website',
+  website: 'website',
+};
+const contactType = contactTypeMap[item.data.category] ?? 'tender';
 
 const itemImage = getPortfolioImageUrl(item.data.cover);
 ---
@@ -99,8 +107,9 @@ const itemImage = getPortfolioImageUrl(item.data.cover);
   </div>
 
   <ContactBand
-    heading="Need help with a similar project or tender?"
-    body="Tell me what you are working on and I will get back to you within 24–48 hours."
+    heading="Need a Tender & Project Manager for similar contracts?"
+    body="Whether you are hiring for an operational role or need support preparing a bid, rolling out ISO systems, or building a platform, I will reply within 24–48 hours."
+    primaryHref={`/contact?type=${contactType}`}
     secondaryHref="/portfolio"
     secondaryLabel="← All work"
   />
