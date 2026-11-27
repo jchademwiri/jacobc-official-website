@@ -448,7 +448,7 @@ export const experienceTimeline: ExperienceItem[] = [
         highlights: [
           "Managed commercial delivery from tender pricing through SLA execution, supplier sourcing, and invoicing across 16+ municipal contracts for the City of Tshwane, City of Ekurhuleni, Pikitup Johannesburg, and Msunduzi Municipality (~85% bid success rate).",
           "Ran the 36-month electrical cable supply contract (EED 05-2023/24) and electrical accessories contract (AS 08-2023), sourcing directly from ACTOM and M-TEC and administering CPI price escalations.",
-          "Directed fleet, plant hire, water/sanitation, civil, and horticultural portfolios (SS 01/02, PU102/2022, HS 02-2025/26, HHS 01/10, ROC 05/07/08/20, A-RE 04-2021, SCM 20).",
+          "Directed fleet, plant hire, water/sanitation, civil, horticultural, grass cutting, and tree pruning portfolios (SS 01/02, PU102/2022, HS 02-2025/26, HHS 01/10, ROC 05/07/08/20, A-RE 04-2021, A-EWM 01/07, SCM 20).",
           "Handled commercial invoicing, SAP item-coded delivery reconciliation, PO tracking, and accounts receivable in SAP, Sage, and Zoho.",
           "Served as Management Representative for company-wide Integrated Management System (IMS) implementation across ISO 9001, ISO 14001, and ISO 45001.",
         ],
