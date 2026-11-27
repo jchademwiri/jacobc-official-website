@@ -37,10 +37,10 @@ describe('executive siteData v2.0 integrity', () => {
     });
   });
 
-  it('has 4 executive metrics, 4 capabilities, 3 career organizations, and 4 FAQs', () => {
+  it('has 4 executive metrics, 4 capabilities, 4 career organizations, and 4 FAQs', () => {
     expect(metricsStrip.length).toBe(4);
     expect(coreCapabilities.length).toBe(4);
-    expect(experienceTimeline.length).toBe(3);
+    expect(experienceTimeline.length).toBe(4);
     expect(experienceTimeline[0].roles.length).toBe(3);
     expect(credentialsList.length).toBe(4);
     expect(faqItems.length).toBe(4);

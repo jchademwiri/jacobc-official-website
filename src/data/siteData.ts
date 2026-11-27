@@ -471,6 +471,20 @@ export const experienceTimeline: ExperienceItem[] = [
     ],
   },
   {
+    company: "Babiya Geomatics and Trading",
+    location: "South Africa",
+    roles: [
+      {
+        title: "Tender & Office Administrator",
+        period: "January 2021 – December 2021",
+        highlights: [
+          "Prepared compliant returnable tender packs and reviewed RFP requirements for civil and surveying bids.",
+          "Maintained Central Supplier Database (CSD) profiles, SARS tax clearance pins, COIDA good-standing certificates, and general office administration.",
+        ],
+      },
+    ],
+  },
+  {
     company: "Baum Systems (Pty) Ltd",
     location: "Cape Town, Western Cape",
     roles: [
