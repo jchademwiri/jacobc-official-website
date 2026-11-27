@@ -1,4 +1,6 @@
 import { describe, expect, it } from 'bun:test';
+import { readdirSync, readFileSync, statSync } from 'node:fs';
+import { extname, join } from 'node:path';
 import {
   siteConfig,
   metricsStrip,
@@ -61,5 +63,39 @@ describe('executive siteData v2.0 integrity', () => {
     expect(serialized).not.toContain('playhousemedia');
     expect(serialized).not.toContain('Hermanus');
     expect(serialized).not.toContain('hello@jacob.co.za');
+  });
+
+  it('enforces the Hard Brand Wall across all text files in src/ and public/', () => {
+    const textExts = new Set(['.astro', '.ts', '.tsx', '.svg', '.txt', '.webmanifest', '.json']);
+    const forbidden = [
+      'Playhouse Media',
+      'playhousemedia',
+      'Hermanus',
+      'hello@jacob.co.za',
+      'TenderTrack360',
+    ];
+
+    const collectFiles = (dir: string): string[] => {
+      const files: string[] = [];
+      for (const entry of readdirSync(dir)) {
+        const full = join(dir, entry);
+        if (statSync(full).isDirectory()) {
+          files.push(...collectFiles(full));
+        } else if (textExts.has(extname(full).toLowerCase())) {
+          files.push(full);
+        }
+      }
+      return files;
+    };
+
+    const files = [...collectFiles('src'), ...collectFiles('public')];
+    expect(files.length).toBeGreaterThan(0);
+
+    for (const file of files) {
+      const content = readFileSync(file, 'utf8');
+      for (const term of forbidden) {
+        expect(content, `${file} contains forbidden term "${term}"`).not.toContain(term);
+      }
+    }
   });
 });
