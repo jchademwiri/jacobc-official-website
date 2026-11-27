@@ -29,6 +29,7 @@ const allowedHostnames = Array.from(
       'jacobc.co.za',
       'www.jacobc.co.za',
       'jacobc-official-website.vercel.app',
+      'jacobc-official-website-jacob-chademwiri-portfolio.vercel.app',
       productionUrl,
       process.env.VERCEL_BRANCH_URL,
       process.env.VERCEL_URL,
@@ -44,10 +45,10 @@ export default defineConfig({
   adapter: vercel(),
   security: {
     checkOrigin: true,
-    allowedDomains: allowedHostnames.map((hostname) => ({
-      protocol: 'https',
-      hostname,
-    })),
+    // Omit `protocol` on hostname entries: Astro 5.17's validateForwardedHeaders()
+    // tests `https://example.com` against any entry with `protocol`, causing
+    // `x-forwarded-proto` to be rejected and falling back to `http://` on Vercel.
+    allowedDomains: allowedHostnames.map((hostname) => ({ hostname })),
   },
   integrations: [
     sitemap({
