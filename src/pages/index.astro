@@ -5,6 +5,7 @@ import CapabilitiesSection from '../components/CapabilitiesSection.astro';
 import ExperienceSection from '../components/ExperienceSection.astro';
 import FaqSection from '../components/FaqSection.astro';
 import ContactSection from '../components/ContactSection.astro';
+import CvDownloadButton from '../components/CvDownloadButton.astro';
 import { siteConfig, heroSection, metricsStrip } from '../data/siteData';
 ---
 
@@ -24,14 +25,7 @@ import { siteConfig, heroSection, metricsStrip } from '../data/siteData';
         </p>
 
         <div class="no-print mt-8 flex flex-wrap items-center gap-3.5">
-          <a href={heroSection.primaryCta.href} download class="btn btn-primary">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-              <polyline points="7 10 12 15 17 10"></polyline>
-              <line x1="12" y1="15" x2="12" y2="3"></line>
-            </svg>
-            <span>{heroSection.primaryCta.label}</span>
-          </a>
+          <CvDownloadButton label={heroSection.primaryCta.label} showIcon={true} iconSize={16} />
           <a href={heroSection.secondaryCta.href} class="btn btn-secondary">
             <span>{heroSection.secondaryCta.label}</span>
             <span aria-hidden="true">↓</span>

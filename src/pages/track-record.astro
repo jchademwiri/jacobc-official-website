@@ -1,7 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ContractPortfolio from '../components/ContractPortfolio.astro';
-import { siteConfig, contractPortfolio } from '../data/siteData';
+import CvDownloadButton from '../components/CvDownloadButton.astro';
+import { contractPortfolio } from '../data/siteData';
 
 const entitySummary = [
   {
@@ -70,9 +71,7 @@ const entitySummary = [
         </p>
       </div>
       <div class="flex flex-wrap gap-3">
-        <a href={siteConfig.cvPath} download class="btn btn-primary text-xs">
-          Download CV (DOCX)
-        </a>
+        <CvDownloadButton class="text-xs" />
         <a href="/#contact" class="btn btn-secondary text-xs">
           Get in Touch
         </a>

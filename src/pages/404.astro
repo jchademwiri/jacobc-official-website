@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import CvDownloadButton from '../components/CvDownloadButton.astro';
 import { siteConfig } from '../data/siteData';
 ---
 
@@ -16,7 +17,7 @@ import { siteConfig } from '../data/siteData';
     </p>
     <div class="mt-8 flex flex-wrap gap-3">
       <a href="/" class="btn btn-primary">Return to Portfolio</a>
-      <a href={siteConfig.cvPath} download class="btn btn-secondary">Download CV (DOCX)</a>
+      <CvDownloadButton variant="secondary" />
     </div>
   </section>
 </Layout>

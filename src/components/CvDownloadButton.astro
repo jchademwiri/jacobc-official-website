@@ -1,0 +1,55 @@
+---
+import { siteConfig, cvDownloadEnabled } from '../data/siteData';
+
+interface Props {
+  label?: string;
+  disabledLabel?: string;
+  variant?: 'primary' | 'secondary';
+  showIcon?: boolean;
+  iconSize?: number;
+  class?: string;
+}
+
+const {
+  label = 'Download CV (DOCX)',
+  disabledLabel = 'CV Updating Soon',
+  variant = 'primary',
+  showIcon = false,
+  iconSize = 16,
+  class: className = '',
+} = Astro.props;
+
+const variantClass = variant === 'secondary' ? 'btn-secondary' : 'btn-primary';
+---
+
+{
+  cvDownloadEnabled ? (
+    <a href={siteConfig.cvPath} download class:list={['btn', variantClass, className]}>
+      {showIcon && (
+        <svg viewBox="0 0 24 24" width={iconSize} height={iconSize} fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+      )}
+      <span>{label}</span>
+    </a>
+  ) : (
+    <button
+      type="button"
+      disabled
+      aria-disabled="true"
+      title="Updated CV is currently being finalized — view the Web CV in the meantime"
+      class:list={['btn', variantClass, className]}
+    >
+      {showIcon && (
+        <svg viewBox="0 0 24 24" width={iconSize} height={iconSize} fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+      )}
+      <span>{disabledLabel}</span>
+    </button>
+  )
+}

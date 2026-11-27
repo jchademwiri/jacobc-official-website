@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import CvDownloadButton from '../components/CvDownloadButton.astro';
 import {
   siteConfig,
   metricsStrip,
@@ -57,9 +58,7 @@ const governanceStandards = ['ISO 9001', 'ISO 14001', 'ISO 45001', 'MFMA / SCM',
         <a href="/" class="btn btn-secondary min-h-[38px] px-4 py-2 text-xs">
           <span>← Portfolio</span>
         </a>
-        <a href={siteConfig.cvPath} download class="btn btn-primary min-h-[38px] px-4 py-2 text-xs">
-          <span>Download CV (DOCX)</span>
-        </a>
+        <CvDownloadButton class="min-h-[38px] px-4 py-2 text-xs" />
         <button
           type="button"
           onclick="window.print()"
