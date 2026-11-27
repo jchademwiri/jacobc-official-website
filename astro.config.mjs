@@ -31,7 +31,8 @@ export default defineConfig({
   adapter: vercel(),
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/404') && !page.includes('placeholder'),
+      filter: (page) =>
+        !page.includes('/404') && !page.includes('/resume-v1') && !page.includes('placeholder'),
     }),
   ],
   env: {

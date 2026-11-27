@@ -1,438 +1,378 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import {
-  SITE_NAME,
-  CONTACT_EMAIL,
-  CONTACT_MAILTO,
-  CONTACT_PHONE,
-  CONTACT_TEL,
-  LOCALITY,
-  REGION,
-  COUNTRY,
-  GITHUB_URL,
-  LINKEDIN_URL,
-} from '../lib/site';
+  siteConfig,
+  metricsStrip,
+  coreCapabilities,
+  contractPortfolio,
+  experienceTimeline,
+  credentialsList,
+} from '../data/siteData';
 
-const certifications = [
-  'Fundamentals of Agile Project Management',
-  'Project Management Foundations: Communication',
-  'Explore a Career in Project Management',
-  'Learning Local SEO',
-  'Git Essential Training',
+const companyMonograms: Record<string, string> = {
+  'Sithembe Transportation and Projects': 'STP',
+  'Babiya Geomatics and Trading': 'BG',
+  'Baum Systems (Pty) Ltd': 'BS',
+  'CORPCLO CC': 'CC',
+};
+
+const contractGroups = [
+  {
+    label: 'Electrical Supply & Accessories',
+    items: contractPortfolio.filter((c) => c.category === 'Electrical Supply'),
+  },
+  {
+    label: 'Heavy Plant, Fleet & Waste Vehicles',
+    items: contractPortfolio.filter((c) => c.category === 'Plant & Fleet Hire'),
+  },
+  {
+    label: 'Water, Sanitation & Civil Supply',
+    items: contractPortfolio.filter((c) => c.category === 'Water & Sanitation'),
+  },
+  {
+    label: 'Civil, Building & Horticulture',
+    items: contractPortfolio.filter((c) => c.category === 'Civil, Building & Horticulture'),
+  },
 ];
+
+const entityBreakdown = [
+  { name: 'City of Tshwane', count: contractPortfolio.filter((c) => c.entity === 'City of Tshwane').length },
+  { name: 'City of Ekurhuleni', count: contractPortfolio.filter((c) => c.entity === 'City of Ekurhuleni').length },
+  { name: 'Pikitup Johannesburg', count: contractPortfolio.filter((c) => c.entity === 'Pikitup Johannesburg').length },
+  { name: 'Msunduzi Municipality', count: contractPortfolio.filter((c) => c.entity === 'Msunduzi Municipality').length },
+];
+
+const erpSystems = ['SAP', 'Sage', 'Zoho', 'Microsoft 365'];
+const governanceStandards = ['ISO 9001', 'ISO 14001', 'ISO 45001', 'MFMA / SCM', 'CIDB', 'SANS 1294:2020'];
 ---
 
 <Layout
-  fullTitle={`Executive Resume & Profile | ${SITE_NAME}`}
-  description="Executive curriculum vitae of Jacob Chademwiri: Senior Tender Manager, ISO 9001/45001/14001 Implementation Lead, Project Delivery & SAP/Sage AR Manager, and Web Developer."
-  active="about"
-  schema="person"
+  title="Executive CV"
+  description={`Executive curriculum vitae of ${siteConfig.name}, ${siteConfig.title} based in ${siteConfig.location}.`}
 >
-  <div class="px-5 py-10 sm:px-8 md:px-14 print:p-0">
-    <!-- Top Action Bar (Screen only, hidden when printing) -->
-    <div class="no-print mb-8 flex flex-wrap items-center justify-between gap-3 border-b border-divider/60 pb-5">
-      <a href="/about" class="btn btn-secondary inline-flex items-center gap-1.5 text-xs">
-        <span>← Back to About</span>
+  <div class="mx-auto max-w-content px-5 py-10 sm:px-8 print:max-w-none print:p-0">
+    <!-- Top Action Bar (Screen Only) -->
+    <div class="no-print mb-7 flex flex-wrap items-center justify-between gap-3 border-b border-border pb-5">
+      <a href="/" class="btn btn-secondary min-h-[38px] px-4 py-2 text-xs">
+        <span>← Portfolio</span>
       </a>
-
-      <div class="flex items-center gap-2.5">
-        <a
-          href="/contact?type=employment"
-          class="btn btn-secondary inline-flex items-center gap-1.5 text-xs"
-        >
-          <span>Hire / Discuss a Role →</span>
-        </a>
-        <button
-          type="button"
-          id="print-btn"
-          class="btn btn-primary inline-flex items-center gap-2 text-xs cursor-pointer shadow-xs"
-        >
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polyline points="6 9 6 2 18 2 18 9"></polyline>
-            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
-            <rect x="6" y="14" width="12" height="8"></rect>
-          </svg>
-          <span>Print / Save as PDF</span>
-        </button>
-      </div>
+      <a href="/track-record" class="data text-xs font-medium text-accent hover:underline">
+        Full 16-Contract Track Record →
+      </a>
     </div>
 
-    <!-- Resume Document Sheet -->
-    <article class="resume-sheet rounded-2xl border border-divider/80 bg-surface/50 p-7 sm:p-10 backdrop-blur-xs shadow-sm print:border-none print:bg-transparent print:p-0 print:shadow-none">
-      <!-- Header -->
-      <header class="resume-block border-b border-divider/70 pb-6 mb-6 print:border-black/20 print:pb-4 print:mb-4">
-        <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
+    <!-- Executive CV Document Sheet -->
+    <article class="cv-sheet overflow-hidden rounded-2xl border border-border bg-surface shadow-xs print:rounded-none print:border-none print:bg-transparent print:shadow-none">
+      <!-- Top Warm Bronze Accent Rule -->
+      <div class="h-1.5 w-full bg-accent print:h-1"></div>
+
+      <!-- Executive Header Band -->
+      <header class="cv-block border-b border-border bg-surface-2/60 px-6 py-7 sm:px-10 sm:py-8 print:bg-transparent print:px-0 print:py-4">
+        <div class="flex flex-col justify-between gap-6 lg:flex-row lg:items-start">
           <div>
-            <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-text print:text-2xl print:text-black">
-              {SITE_NAME}
+            <p class="data text-[11px] font-medium uppercase tracking-[0.14em] text-accent">
+              Executive Curriculum Vitae
+            </p>
+            <h1 class="mt-2 text-3xl font-bold tracking-tight text-primary sm:text-4xl print:text-2xl">
+              {siteConfig.name}
             </h1>
-            <p class="font-mono text-sm sm:text-[15px] text-accent font-medium mt-1.5 print:text-xs print:mt-1 print:text-neutral-700">
-              Tender Manager · ISO 9001/45001/14001 Implementation Lead · Project Delivery &amp; SAP/Sage AR
+            <p class="mt-1.5 text-base font-medium text-accent sm:text-lg print:text-sm">
+              {siteConfig.title}
+            </p>
+            <p class="mt-2 max-w-xl text-xs leading-relaxed text-muted sm:text-sm print:text-xs">
+              Municipal Supply Chain &amp; Heavy Plant/Fleet Hire &middot; Technical OEM Sourcing &middot; SAP, Sage &amp; Zoho &middot; ISO 9001/14001/45001
             </p>
           </div>
-          <p class="text-sm text-text-3 font-mono print:text-xs print:text-neutral-600">
-            {LOCALITY}, {REGION}, {COUNTRY}
-          </p>
+
+          <!-- Right Contact Details Grid -->
+          <div class="grid gap-1.5 text-xs text-text-2 sm:grid-cols-2 lg:grid-cols-1 lg:text-right print:grid-cols-2 print:text-left">
+            <a href={siteConfig.phoneHref} class="data font-medium text-primary hover:text-accent">
+              {siteConfig.phone}
+            </a>
+            <a href={`mailto:${siteConfig.email}`} class="data font-medium text-primary hover:text-accent">
+              {siteConfig.email}
+            </a>
+            <a href={siteConfig.website} class="data hover:text-accent">
+              www.jacobc.co.za
+            </a>
+            <a href={siteConfig.linkedin} target="_blank" rel="noopener noreferrer" class="data hover:text-accent">
+              linkedin.com/in/jchademwiri
+            </a>
+            <p class="data text-muted">{siteConfig.location}</p>
+            <p class="data text-muted">{siteConfig.license}</p>
+          </div>
         </div>
 
-        <!-- Contact Links -->
-        <div class="mt-4 flex flex-wrap items-center gap-y-1.5 gap-x-3.5 text-sm text-text-2 print:text-xs print:text-neutral-700">
-          <a href={CONTACT_TEL} class="hover:text-accent print:text-black">
-            {CONTACT_PHONE}
-          </a>
-          <span class="text-text-3 print:text-neutral-400">·</span>
-          <a href={CONTACT_MAILTO} class="hover:text-accent print:text-black">
-            {CONTACT_EMAIL}
-          </a>
-          <span class="text-text-3 print:text-neutral-400">·</span>
-          <a href="https://www.jacobc.co.za" class="hover:text-accent print:text-black">
-            www.jacobc.co.za
-          </a>
-          <span class="text-text-3 print:text-neutral-400">·</span>
-          <a href={LINKEDIN_URL} class="hover:text-accent print:text-black">
-            linkedin.com/in/jchademwiri
-          </a>
-          <span class="text-text-3 print:text-neutral-400">·</span>
-          <a href={GITHUB_URL} class="hover:text-accent print:text-black">
-            github.com/jchademwiri
-          </a>
+        <!-- Compact 4-Metric Proof Strip -->
+        <div class="mt-6 grid grid-cols-2 gap-3 border-t border-border pt-5 sm:grid-cols-4 print:mt-4 print:gap-2 print:pt-3">
+          {
+            metricsStrip.map((m) => (
+              <div class="rounded-lg border border-border bg-surface px-3.5 py-2.5 print:bg-transparent print:px-2.5 print:py-1.5">
+                <p class="data text-lg font-semibold text-primary sm:text-xl print:text-sm">{m.value}</p>
+                <p class="mt-0.5 text-[11px] leading-snug text-muted">{m.label}</p>
+              </div>
+            ))
+          }
         </div>
       </header>
 
-      <!-- Executive Summary -->
-      <section class="resume-block mb-6 print:mb-4">
-        <h2 class="font-mono text-[13px] uppercase tracking-widest text-accent font-semibold mb-2.5 print:text-xs print:mb-2 print:text-black">
-          Executive Summary
-        </h2>
-        <p class="text-body leading-relaxed text-text-2 print:text-[10.5pt] print:text-neutral-800">
-          Results-driven <strong>Tender Manager</strong> with 5+ years of continuous municipal and corporate procurement experience—owning the contract lifecycle from bid acquisition (5+ awarded 3-year City of Tshwane contracts across plant hire, water tankers, sanitation, and horticulture) and leading internal <strong>ISO 9001, 45001, and 14001</strong> compliance systems as Management Representative, through to project delivery coordination and accounts receivable governance in <strong>SAP ERP and Sage Accounting</strong>. Complemented by hands-on web development, including creating the <strong>TenderTrack360</strong> bid-management web app.
-        </p>
-      </section>
-
-      <!-- Core Competencies Grid -->
-      <section class="resume-block mb-7 border-y border-divider/60 py-6 print:border-black/20 print:py-3.5 print:mb-4">
-        <h2 class="font-mono text-[13px] uppercase tracking-widest text-accent font-semibold mb-3.5 print:text-xs print:mb-2.5 print:text-black">
-          Core Competencies &amp; Technical Disciplines
-        </h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-[14px] text-text-2 print:text-xs print:text-neutral-800 print:gap-2.5">
-          <div class="rounded-lg border border-edge/60 bg-bg/40 p-4 print:border-neutral-300 print:bg-transparent print:p-2.5">
-            <p class="text-[15px] font-semibold text-text mb-1.5 print:text-xs print:mb-1 print:text-black">01 · Tender &amp; Procurement Leadership</p>
-            <p class="leading-relaxed text-text-2 print:text-neutral-700">
-              RFP analysis, mandatory returnable schedules, municipal SCM compliance, CSD &amp; CIDB alignments, MBD/SBD forms, commercial rate modelling, and physical/electronic bid submission.
+      <!-- Main 2-Column Editorial Body -->
+      <div class="grid gap-8 px-6 py-8 sm:px-10 lg:grid-cols-12 lg:gap-10 print:block print:px-0 print:py-4">
+        <!-- Left Main Column (8 cols) -->
+        <div class="space-y-8 lg:col-span-8 print:space-y-5">
+          <!-- Executive Profile -->
+          <section class="cv-block">
+            <h2 class="cv-heading">Executive Profile</h2>
+            <p class="mt-3 text-sm leading-relaxed text-text-2 print:text-[10pt]">
+              Procurement, Tender &amp; Contract Manager with 5+ years of commercial experience across public-sector supply, heavy plant and fleet hire, water and sanitation, civil/building refurbishment, and municipal maintenance. Over the past five years, I have bid, won (~85% success rate), inherited, and managed <strong class="text-primary">16+ multi-year contracts</strong> for the City of Tshwane, City of Ekurhuleni, Pikitup Johannesburg, and Msunduzi Municipality. My day-to-day work covers direct OEM sourcing (ACTOM, M-TEC), CPI/CPIX price escalations, MFMA/SCM compliance, commercial invoicing in SAP, Sage, and Zoho, and ISO 9001, 14001, and 45001 management system leadership.
             </p>
-          </div>
-          <div class="rounded-lg border border-edge/60 bg-bg/40 p-4 print:border-neutral-300 print:bg-transparent print:p-2.5">
-            <p class="text-[15px] font-semibold text-text mb-1.5 print:text-xs print:mb-1 print:text-black">02 · ISO (9001 · 45001 · 14001) &amp; SHEQ</p>
-            <p class="leading-relaxed text-text-2 print:text-neutral-700">
-              Management Representative leading internal IMS rollout under Annex SL, SOP formulation, baseline HIRA risk registers, external consultant liaison, and statutory DMR 19 compliance.
+          </section>
+
+          <!-- Professional Experience (Grouped Company + Vertical Progression Rail) -->
+          <section class="border-t border-border pt-7 print:pt-4">
+            <h2 class="cv-heading">Professional Experience</h2>
+
+            <div class="mt-5 space-y-6 print:mt-3 print:space-y-4">
+              {
+                experienceTimeline.map((company, companyIdx) => (
+                  <div class="cv-block rounded-xl border border-border bg-surface-2/60 p-5 print:rounded-none print:border-0 print:border-b print:bg-transparent print:p-0 print:pb-3">
+                    <!-- Company Header with Monogram -->
+                    <div class="flex items-start gap-3.5">
+                      <div
+                        class:list={[
+                          'flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border font-mono text-xs font-bold tracking-tight print:h-8 print:w-8',
+                          companyIdx === 0
+                            ? 'border-accent/40 bg-accent-soft text-accent'
+                            : 'border-border bg-surface text-muted',
+                        ]}
+                        aria-hidden="true"
+                      >
+                        {companyMonograms[company.company] ?? 'CO'}
+                      </div>
+                      <div class="min-w-0 flex-1">
+                        <div class="flex flex-wrap items-baseline justify-between gap-2">
+                          <h3 class="text-base font-bold tracking-tight text-primary print:text-sm">
+                            {company.company}
+                          </h3>
+                          <span class="data text-xs text-muted">{company.location}</span>
+                        </div>
+                        {companyIdx === 0 && (
+                          <p class="data mt-0.5 text-[11px] font-medium text-accent">
+                            Jan 2022 – Present &middot; 3 Progressive Roles
+                          </p>
+                        )}
+                      </div>
+                    </div>
+
+                    <!-- Roles with Vertical Progression Rail -->
+                    <div
+                      class:list={[
+                        'mt-4 space-y-5 print:mt-2.5 print:space-y-3',
+                        company.roles.length > 1 && 'relative ml-5 border-l-2 border-border pl-6 print:ml-4 print:pl-4',
+                      ]}
+                    >
+                      {
+                        company.roles.map((role, roleIdx) => (
+                          <div class="relative">
+                            {company.roles.length > 1 && (
+                              <span
+                                class:list={[
+                                  'absolute -left-[31px] top-1.5 h-3 w-3 rounded-full border-2 print:-left-[23px]',
+                                  roleIdx === 0
+                                    ? 'border-accent bg-accent'
+                                    : 'border-border bg-surface',
+                                ]}
+                                aria-hidden="true"
+                              />
+                            )}
+
+                            <div class="flex flex-wrap items-baseline justify-between gap-2">
+                              <h4 class="text-sm font-semibold text-primary print:text-xs">
+                                {role.title}
+                              </h4>
+                              <span class="data text-xs font-medium text-accent print:text-[10.5px]">
+                                {role.period}
+                              </span>
+                            </div>
+
+                            <ul class="mt-2.5 space-y-1.5 text-[13.5px] leading-relaxed text-text-2 print:mt-1.5 print:space-y-1 print:text-[9.5pt]">
+                              {
+                                role.highlights.map((hl) => (
+                                  <li class="flex items-start gap-2.5">
+                                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/80 print:mt-1.5" aria-hidden="true" />
+                                    <span>{hl}</span>
+                                  </li>
+                                ))
+                              }
+                            </ul>
+                          </div>
+                        ))
+                      }
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </section>
+
+          <!-- Verified Municipal Contract Portfolio (Structured 2x2 Grid) -->
+          <section class="cv-block border-t border-border pt-7 print:pt-4">
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <h2 class="cv-heading">Verified Municipal Contract Portfolio ({contractPortfolio.length} Awards)</h2>
+              <a href="/track-record" class="no-print data text-xs font-medium text-accent hover:underline">
+                Interactive Filter View →
+              </a>
+            </div>
+
+            <div class="mt-4 grid gap-3.5 sm:grid-cols-2 print:mt-2.5 print:gap-2.5">
+              {
+                contractGroups.map((group) => (
+                  <div class="rounded-xl border border-border border-l-[3px] border-l-accent bg-surface-2/60 p-4 print:bg-transparent print:p-2.5">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-primary">
+                      {group.label}
+                    </h3>
+                    <ul class="mt-2.5 space-y-1.5 text-xs leading-snug text-text-2 print:mt-1.5 print:space-y-1">
+                      {
+                        group.items.map((c) => (
+                          <li>
+                            <span class="data font-semibold text-accent">{c.ref}</span>
+                            <span class="text-muted"> ({c.entity}):</span>{' '}
+                            <span>{c.title}</span>
+                          </li>
+                        ))
+                      }
+                    </ul>
+                  </div>
+                ))
+              }
+            </div>
+          </section>
+        </div>
+
+        <!-- Right Executive Sidebar (4 cols) -->
+        <aside class="space-y-6 lg:col-span-4 lg:border-l lg:border-border lg:pl-8 print:mt-5 print:border-t print:border-border print:pt-4">
+          <!-- Core Competencies -->
+          <section class="cv-block">
+            <h2 class="cv-heading">Core Competencies</h2>
+            <div class="mt-4 space-y-3.5 print:mt-2.5 print:grid print:grid-cols-2 print:gap-2.5 print:space-y-0">
+              {
+                coreCapabilities.map((cap, i) => (
+                  <div class="rounded-lg border border-border bg-surface-2/60 p-3.5 print:bg-transparent print:p-2.5">
+                    <p class="data text-[10px] font-semibold uppercase tracking-widest text-accent">
+                      0{i + 1}
+                    </p>
+                    <h3 class="mt-0.5 text-xs font-semibold text-primary">{cap.title}</h3>
+                    <div class="mt-2 flex flex-wrap gap-1">
+                      {
+                        cap.tags.map((tag) => (
+                          <span class="pill pill-neutral px-2 py-0.5 text-[10.5px]">{tag}</span>
+                        ))
+                      }
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </section>
+
+          <!-- Municipal Entities Served -->
+          <section class="cv-block border-t border-border pt-6 print:pt-3">
+            <h2 class="cv-heading">Municipal Entities Served</h2>
+            <ul class="mt-3 space-y-2 text-xs print:mt-2 print:grid print:grid-cols-2 print:gap-2 print:space-y-0">
+              {
+                entityBreakdown.map((ent) => (
+                  <li class="flex items-center justify-between rounded-lg border border-border bg-surface-2/60 px-3 py-2 print:bg-transparent print:py-1.5">
+                    <span class="font-medium text-primary">{ent.name}</span>
+                    <span class="data font-semibold text-accent">
+                      {ent.count} {ent.count === 1 ? 'contract' : 'contracts'}
+                    </span>
+                  </li>
+                ))
+              }
+            </ul>
+          </section>
+
+          <!-- ERP & Governance Stack -->
+          <section class="cv-block border-t border-border pt-6 print:pt-3">
+            <h2 class="cv-heading">Systems &amp; Standards</h2>
+            <div class="mt-3 space-y-3 print:mt-2">
+              <div>
+                <p class="data mb-1.5 text-[10.5px] uppercase tracking-wider text-muted">
+                  ERP &amp; Invoicing
+                </p>
+                <div class="flex flex-wrap gap-1.5">
+                  {erpSystems.map((s) => <span class="pill pill-bronze">{s}</span>)}
+                </div>
+              </div>
+              <div>
+                <p class="data mb-1.5 text-[10.5px] uppercase tracking-wider text-muted">
+                  Compliance &amp; Governance
+                </p>
+                <div class="flex flex-wrap gap-1.5">
+                  {governanceStandards.map((s) => <span class="pill pill-neutral">{s}</span>)}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Education & Credentials -->
+          <section class="cv-block border-t border-border pt-6 print:pt-3">
+            <h2 class="cv-heading">Education &amp; Credentials</h2>
+            <ul class="mt-3 space-y-3 text-xs print:mt-2 print:space-y-1.5">
+              {
+                credentialsList.map((cred) => (
+                  <li class="border-l-2 border-accent/50 pl-3">
+                    <p class="font-semibold text-primary">{cred.title}</p>
+                    <p class="data mt-0.5 text-[11px] text-muted">{cred.issuer}</p>
+                  </li>
+                ))
+              }
+            </ul>
+          </section>
+
+          <!-- References -->
+          <section class="cv-block border-t border-border pt-5 print:pt-3">
+            <h2 class="cv-heading">References</h2>
+            <p class="mt-2 text-xs text-text-2">
+              Available upon request for shortlisted opportunities.
             </p>
-          </div>
-          <div class="rounded-lg border border-edge/60 bg-bg/40 p-4 print:border-neutral-300 print:bg-transparent print:p-2.5">
-            <p class="text-[15px] font-semibold text-text mb-1.5 print:text-xs print:mb-1 print:text-black">03 · Project Delivery &amp; SAP/Sage AR</p>
-            <p class="leading-relaxed text-text-2 print:text-neutral-700">
-              Post-award contract coordination, milestone &amp; fleet log reconciliation, Accounts Receivable governance in SAP ERP and Sage Accounting, dispute resolution, and zero revenue leakage.
-            </p>
-          </div>
-          <div class="rounded-lg border border-edge/60 bg-bg/40 p-4 print:border-neutral-300 print:bg-transparent print:p-2.5">
-            <p class="text-[15px] font-semibold text-text mb-1.5 print:text-xs print:mb-1 print:text-black">04 · Complementary: Web Dev &amp; Bid-Tech</p>
-            <p class="leading-relaxed text-text-2 print:text-neutral-700">
-              Web developer building custom bid-management software (TenderTrack360) and fast, accessible websites using Astro, Next.js, React, TypeScript, and Tailwind CSS.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Professional Experience (LinkedIn-style Grouped Timeline) -->
-      <section class="mb-7 print:mb-4">
-        <h2 class="font-mono text-[13px] uppercase tracking-widest text-accent font-semibold mb-5 print:text-xs print:text-black print:mb-3">
-          Experience
-        </h2>
-
-        <!-- 1. Sithembe Transportation & Projects (Grouped Company + Vertical Rail) -->
-        <div class="resume-block mb-7 pb-6 border-b border-divider/40 print:border-neutral-300 print:mb-4 print:pb-4">
-          <!-- Company Header with Monogram -->
-          <div class="flex items-start gap-3.5 mb-5 print:mb-3">
-            <div
-              class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-accent/35 bg-accent/12 font-mono text-sm font-bold tracking-tight text-accent print:h-9 print:w-9 print:border-neutral-400 print:bg-transparent print:text-black"
-              aria-hidden="true"
-            >
-              STP
-            </div>
-            <div class="min-w-0 flex-1">
-              <div class="flex flex-wrap items-baseline justify-between gap-2">
-                <h3 class="text-lg font-bold tracking-tight text-text print:text-[15px] print:text-black">
-                  Sithembe Transportation &amp; Projects
-                </h3>
-                <span class="font-mono text-[13px] text-accent font-medium print:text-xs print:text-neutral-800">
-                  Jan 2022 – Present
-                </span>
-              </div>
-              <p class="text-[13.5px] text-text-2 print:text-xs print:text-neutral-700">
-                Full-time · 4 yrs 11 mos
-              </p>
-              <p class="text-[13px] text-text-3 print:text-xs print:text-neutral-600">
-                Centurion, Gauteng, South Africa · On-site
-              </p>
-            </div>
-          </div>
-
-          <!-- LinkedIn-style Vertical Timeline Rail -->
-          <div class="relative ml-5 pl-7 border-l-2 border-divider/70 space-y-6 print:ml-4 print:pl-5 print:border-neutral-400 print:space-y-3.5">
-            <!-- Role 1: Current -->
-            <div class="relative">
-              <span
-                class="absolute -left-[35px] top-1.5 flex h-3.5 w-3.5 items-center justify-center rounded-full border-2 border-accent bg-bg print:-left-[27px] print:border-black print:bg-white"
-                aria-hidden="true"
-              >
-                <span class="h-1.5 w-1.5 rounded-full bg-accent print:bg-black"></span>
-              </span>
-
-              <div class="flex flex-wrap items-center justify-between gap-2">
-                <h4 class="text-[15.5px] font-semibold text-text print:text-[13px] print:text-black">
-                  Tender &amp; Project Manager | ISO Implementation Lead | SHEQ | AR Management
-                </h4>
-                <span class="tag tag-accent font-mono text-[11.5px] py-0.5 px-2.5 print:text-[10px]">
-                  Present
-                </span>
-              </div>
-              <p class="mt-0.5 font-mono text-[13px] text-text-3 print:text-xs print:text-neutral-600">
-                Nov 2023 – Present · 3 yrs 1 mo
-              </p>
-
-              <ul class="mt-2.5 space-y-1.5 text-[14px] leading-relaxed text-text-2 list-disc list-inside print:text-xs print:space-y-1 print:text-neutral-800">
-                <li>Steered 5+ awarded 3-year City of Tshwane contracts, including 40+ construction machine categories (SS 02), 8 potable water tankers (HHS 10), chemical sanitation (HS 02), refuse/construction vehicles (SS 01), and 7-region JV horticulture (ROC 07).</li>
-                <li>Serving as Management Representative and single point of contact with our external consulting firm—gathering documentation, aligning internal processes, and driving ISO 9001 (Quality), ISO 45001 (Safety), and ISO 14001 (Environment) readiness plus DMR 19 compliance.</li>
-                <li>Coordinate post-award project execution as needed and direct corporate Accounts Receivable in SAP ERP and Sage Accounting, ensuring milestone billing integrity and zero revenue leakage.</li>
-              </ul>
-
-              <!-- Attached Proof Cards (Screen & Print Links) -->
-              <div class="mt-3 grid gap-2 sm:grid-cols-2 print:hidden">
-                <a
-                  href="/portfolio/tender-tshwane-construction-equipment"
-                  class="flex items-center justify-between gap-2 rounded-lg border border-edge/70 bg-bg/60 px-3 py-2 text-[12.5px] text-text-2 transition-colors hover:border-accent/50 hover:text-text"
-                >
-                  <span class="truncate"><strong class="text-text">City of Tshwane (SS 02):</strong> 40+ Plant Categories</span>
-                  <span class="font-mono text-accent shrink-0">→</span>
-                </a>
-                <a
-                  href="/portfolio/project-iso-ims-implementation"
-                  class="flex items-center justify-between gap-2 rounded-lg border border-edge/70 bg-bg/60 px-3 py-2 text-[12.5px] text-text-2 transition-colors hover:border-accent/50 hover:text-text"
-                >
-                  <span class="truncate"><strong class="text-text">ISO IMS Rollout:</strong> 9001 · 14001 · 45001</span>
-                  <span class="font-mono text-accent shrink-0">→</span>
-                </a>
-              </div>
-
-              <p class="mt-2.5 text-[13px] text-text-3 print:text-[11px] print:text-neutral-700">
-                <span class="text-accent print:text-black">◆</span>
-                <strong class="text-text-2 print:text-black"> Skills:</strong> Tender Management, ISO 9001/45001/14001, Project Coordination, SAP ERP, Sage Accounting, DMR 19
-              </p>
-            </div>
-
-            <!-- Role 2 -->
-            <div class="relative">
-              <span
-                class="absolute -left-[35px] top-1.5 h-3.5 w-3.5 rounded-full border-2 border-edge bg-surface print:-left-[27px] print:border-neutral-500 print:bg-white"
-                aria-hidden="true"
-              ></span>
-
-              <h4 class="text-[15.5px] font-semibold text-text print:text-[13px] print:text-black">
-                Senior Tendering Administrator &amp; IT Support Technician
-              </h4>
-              <p class="mt-0.5 font-mono text-[13px] text-text-3 print:text-xs print:text-neutral-600">
-                Sep 2022 – Nov 2023 · 1 yr 3 mos
-              </p>
-              <ul class="mt-2 space-y-1.5 text-[14px] leading-relaxed text-text-2 list-disc list-inside print:text-xs print:space-y-1 print:text-neutral-800">
-                <li>Oversaw end-to-end tender preparation, proposal writing, and submission for public bids that expanded the company's construction, transport, and supply portfolio.</li>
-                <li>Engineered and maintained the Sithembe Transportation &amp; Projects official website alongside Microsoft 365 and internal IT infrastructure.</li>
-              </ul>
-              <p class="mt-2 text-[13px] text-text-3 print:text-[11px] print:text-neutral-700">
-                <span class="text-accent print:text-black">◆</span>
-                <strong class="text-text-2 print:text-black"> Skills:</strong> Bid Management, Proposal Writing, Procurement Compliance, Microsoft 365, IT Support
-              </p>
-            </div>
-
-            <!-- Role 3 -->
-            <div class="relative">
-              <span
-                class="absolute -left-[35px] top-1.5 h-3.5 w-3.5 rounded-full border-2 border-edge bg-surface print:-left-[27px] print:border-neutral-500 print:bg-white"
-                aria-hidden="true"
-              ></span>
-
-              <h4 class="text-[15.5px] font-semibold text-text print:text-[13px] print:text-black">
-                Tendering Administrator
-              </h4>
-              <p class="mt-0.5 font-mono text-[13px] text-text-3 print:text-xs print:text-neutral-600">
-                Jan 2022 – Aug 2022 · 8 mos
-              </p>
-              <ul class="mt-2 space-y-1.5 text-[14px] leading-relaxed text-text-2 list-disc list-inside print:text-xs print:space-y-1 print:text-neutral-800">
-                <li>Compiled returnable compliance packs, maintained CSD registrations, SARS tax pins, and CIDB alignments, and coordinated pre-tender site briefings across concurrent deadlines.</li>
-              </ul>
-              <p class="mt-2 text-[13px] text-text-3 print:text-[11px] print:text-neutral-700">
-                <span class="text-accent print:text-black">◆</span>
-                <strong class="text-text-2 print:text-black"> Skills:</strong> Returnable Schedules, CSD &amp; CIDB Compliance, Tender Administration, Stakeholder Coordination
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- 2. Babiya Geomatics and Trading -->
-        <div class="resume-block">
-          <div class="flex items-start gap-3.5">
-            <div
-              class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-edge bg-bg/60 font-mono text-sm font-bold tracking-tight text-text-2 print:h-9 print:w-9 print:border-neutral-400 print:bg-transparent print:text-black"
-              aria-hidden="true"
-            >
-              BG
-            </div>
-            <div class="min-w-0 flex-1">
-              <div class="flex flex-wrap items-baseline justify-between gap-2">
-                <h3 class="text-lg font-bold tracking-tight text-text print:text-[15px] print:text-black">
-                  Tender &amp; Office Administrator
-                </h3>
-                <span class="font-mono text-[13px] text-accent font-medium print:text-xs print:text-neutral-800">
-                  Jan 2021 – Jan 2022 · 1 yr
-                </span>
-              </div>
-              <p class="text-[13.5px] text-text-2 print:text-xs print:text-neutral-700">
-                Babiya Geomatics and Trading · Full-time · South Africa
-              </p>
-              <ul class="mt-2 space-y-1.5 text-[14px] leading-relaxed text-text-2 list-disc list-inside print:text-xs print:space-y-1 print:text-neutral-800">
-                <li>Built foundational tendering discipline: dissecting RFP criteria, returnable schedules, and statutory tender pack compilation for civil and surveying bids.</li>
-                <li>Maintained Central Supplier Database (CSD) profiles, tax clearance certificates, COIDA good-standing, and vendor compliance alignments.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Complementary Technical Edge: Web Development & TenderTrack360 -->
-      <section class="resume-block mb-7 border-t border-divider/60 pt-6 print:border-black/20 print:pt-3.5 print:mb-4">
-        <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2.5">
-          <h2 class="font-mono text-[13px] uppercase tracking-widest text-accent font-semibold print:text-xs print:text-black">
-            Complementary Technical Edge · Web Development &amp; Bid-Tech
-          </h2>
-          <span class="font-mono text-[13px] text-text-3 print:text-[11px] print:text-neutral-600">2020 – Present</span>
-        </div>
-        <ul class="mt-2 space-y-1.5 text-[14px] leading-relaxed text-text-2 list-disc list-inside print:text-xs print:space-y-1 print:text-neutral-800">
-          <li><strong>TenderTrack360 Web App (Creator &amp; Developer):</strong> Designed and actively developing a tender-management web application that replaces spreadsheets with automated deadline alerts, compliance document expiry tracking, and post-award Purchase Order &amp; contract status dashboards.</li>
-          <li><strong>Web Developer:</strong> Built 10+ fast, accessible websites and client portals using Next.js, Astro, React, TypeScript, and Tailwind CSS, consistently achieving 95–100 Google Lighthouse scores across performance, accessibility, and SEO.</li>
-        </ul>
-      </section>
-
-      <!-- Education & Certifications -->
-      <section class="resume-block mb-7 border-t border-divider/60 pt-6 print:border-black/20 print:pt-3.5 print:mb-4">
-        <h2 class="font-mono text-[13px] uppercase tracking-widest text-accent font-semibold mb-4 print:text-xs print:mb-2.5 print:text-black">
-          Education &amp; Certifications
-        </h2>
-
-        <div class="grid gap-4 sm:grid-cols-2 print:gap-2.5">
-          <div class="rounded-lg border border-edge/60 bg-bg/40 p-4 print:border-neutral-300 print:bg-transparent print:p-2.5">
-            <p class="text-[15px] font-semibold text-text print:text-xs print:text-black">Mutare Polytechnical College</p>
-            <p class="mt-0.5 text-[14px] text-text-2 print:text-xs print:text-neutral-800">Diploma, Information Technology</p>
-            <p class="mt-1 font-mono text-[12.5px] text-text-3 print:text-[11px] print:text-neutral-600">Jan 2012 – Dec 2016</p>
-          </div>
-          <div class="rounded-lg border border-edge/60 bg-bg/40 p-4 print:border-neutral-300 print:bg-transparent print:p-2.5">
-            <p class="text-[15px] font-semibold text-text print:text-xs print:text-black">Treehouse</p>
-            <p class="mt-0.5 text-[14px] text-text-2 print:text-xs print:text-neutral-800">Certificate, Front-End Developer</p>
-            <p class="mt-1 font-mono text-[12.5px] text-text-3 print:text-[11px] print:text-neutral-600">2018</p>
-          </div>
-        </div>
-
-        <div class="mt-4 print:mt-2.5">
-          <p class="text-[13px] font-medium text-text-3 mb-2 print:text-[11px] print:text-neutral-700">
-            Professional Certifications
-          </p>
-          <div class="flex flex-wrap gap-2 print:gap-1.5">
-            {certifications.map((cert) => (
-              <span class="tag tag-outline text-[13px] print:text-[11px]">{cert}</span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <!-- Key Standards, Training & Software Stack -->
-      <section class="resume-block border-t border-divider/60 pt-6 print:border-black/20 print:pt-3.5">
-        <h2 class="font-mono text-[13px] uppercase tracking-widest text-accent font-semibold mb-3.5 print:text-xs print:mb-2.5 print:text-black">
-          Governance Standards, Training &amp; Enterprise Stack
-        </h2>
-        <div class="flex flex-wrap gap-2 print:gap-1.5">
-          <span class="tag tag-accent text-[13px] print:text-xs">ISO 9001:2015</span>
-          <span class="tag tag-accent text-[13px] print:text-xs">ISO 45001:2018</span>
-          <span class="tag tag-accent text-[13px] print:text-xs">ISO 14001:2015</span>
-          <span class="tag tag-outline text-[13px] print:text-xs">Annex SL</span>
-          <span class="tag tag-outline text-[13px] print:text-xs">DMR 19</span>
-          <span class="tag tag-outline text-[13px] print:text-xs">OHS Act</span>
-          <span class="tag tag-outline text-[13px] print:text-xs">SAP ERP</span>
-          <span class="tag tag-outline text-[13px] print:text-xs">Sage Accounting</span>
-          <span class="tag tag-neutral text-[13px] print:text-xs">Astro</span>
-          <span class="tag tag-neutral text-[13px] print:text-xs">Next.js</span>
-          <span class="tag tag-neutral text-[13px] print:text-xs">TypeScript</span>
-          <span class="tag tag-neutral text-[13px] print:text-xs">Tailwind CSS</span>
-        </div>
-        <p class="mt-3.5 text-[14px] leading-relaxed text-text-2 print:mt-2.5 print:text-xs print:text-neutral-700">
-          <strong class="text-text print:text-black">Formal Training Roadmap:</strong> Led practical IMS rollout as Appointed Management Representative; pursuing formal implementation courses across ISO 9001 (Quality), ISO 45001 (Health &amp; Safety), and ISO 14001 (Environmental).
-        </p>
-      </section>
+          </section>
+        </aside>
+      </div>
     </article>
   </div>
 </Layout>
 
-<script>
-  const printBtn = document.getElementById('print-btn');
-  if (printBtn) {
-    printBtn.addEventListener('click', () => {
-      window.print();
-    });
-  }
-</script>
-
 <style>
+  .cv-heading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .cv-heading::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 1.5px;
+    background: var(--color-accent);
+    flex-shrink: 0;
+  }
+
   @media print {
-    /* Hide non-print chrome */
-    :global(header),
-    :global(footer),
-    :global(#scroll-to-top),
-    :global([aria-label="Chat on WhatsApp"]),
-    :global(.skip-link),
-    :global(aside),
-    .no-print {
-      display: none !important;
-    }
-
-    :global(body) {
-      background: #ffffff !important;
-      color: #111111 !important;
-      font-size: 10.5pt !important;
-      line-height: 1.38 !important;
-    }
-
-    .resume-sheet {
-      border: none !important;
-      background: transparent !important;
-      box-shadow: none !important;
-      padding: 0 !important;
-    }
-
-    :global(a) {
-      text-decoration: none !important;
-      color: #111111 !important;
-    }
-
-    .tag {
-      border: 1px solid #d1d5db !important;
-      background: transparent !important;
-      color: #374151 !important;
-    }
-
-    /* Keep individual blocks together without forcing the entire Experience section to page 2 */
-    .resume-block {
+    .cv-block {
       page-break-inside: avoid;
       break-inside: avoid;
     }
 
     @page {
-      margin: 1.1cm;
+      margin: 1cm;
       size: A4 portrait;
     }
   }

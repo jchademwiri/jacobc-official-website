@@ -1,317 +1,75 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ContactBand from '../components/ContactBand.astro';
-import SectionBand from '../components/SectionBand.astro';
-import HeroIllustration from '../components/HeroIllustration.astro';
-import MetricStrip from '../components/MetricStrip.astro';
-import { getCollection } from 'astro:content';
-import { getReadTime } from '../lib/reading-time';
-import { getBlogImageUrl, getPortfolioImageUrl, PROFILE_PORTRAIT_URL } from '../lib/images';
-
-const posts = (await getCollection('blog', ({ data }) => !data.draft))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 3);
-
-const positions = (await getCollection('experience'))
-  .sort((a, b) => a.data.order - b.data.order);
-
-const featuredSlugs = [
-  'tender-tshwane-construction-equipment',
-  'project-iso-ims-implementation',
-  'tender-tshwane-water-tankers',
-  'tender-tshwane-chemical-toilets',
-  'app-tendertrack360',
-  'website-phehlwana-group',
-];
-
-const allPortfolio = await getCollection('portfolio', ({ data }) => !data.draft);
-const featuredWork = featuredSlugs
-  .map((slug) => allPortfolio.find((item) => item.id === slug))
-  .filter((item): item is NonNullable<typeof item> => Boolean(item));
-
-const categoryLabels: Record<string, string> = {
-  tender: 'Awarded Tender',
-  project: 'Project & ISO Delivery',
-  app: 'Complementary SaaS',
-  website: 'Complementary Web Build',
-};
-
-const services = [
-  {
-    number: '01',
-    title: 'Tender Management & Bid Acquisition',
-    description:
-      'Primary specialty: opportunity vetting, RFP clause analysis, CSD/CIDB compliance scheduling, competitive rate modelling, and zero-disqualification municipal & commercial submissions.',
-    href: '/services/tender-management',
-  },
-  {
-    number: '02',
-    title: 'ISO 9001, 14001 & 45001 Implementation',
-    description:
-      'Appointed Management Representative building the Integrated Management Systems (IMS), HIRA registers, and DMR 19 lifting compliance that qualify bids and pass audits.',
-    href: '/services/iso-sheq-compliance',
-  },
-  {
-    number: '03',
-    title: 'Project Execution & SAP/Sage Billing',
-    description:
-      'Running awarded contracts as needed and governing accounts receivable in SAP ERP and Sage Accounting—reconciling site milestones to invoices so won tenders turn into collected cash.',
-    href: '/services/project-management',
-  },
-  {
-    number: '04',
-    title: 'Complementary: Web & Bid-Tech Systems',
-    description:
-      'Creator of TenderTrack360 and high-performance Astro & Next.js websites for civil, plant hire, and logistics contractors.',
-    href: '/services/web-development',
-  },
-];
-
-const dateFormatter = new Intl.DateTimeFormat('en-ZA', { month: 'short', day: '2-digit', year: 'numeric' });
+import FeaturedTrackRecord from '../components/FeaturedTrackRecord.astro';
+import CapabilitiesSection from '../components/CapabilitiesSection.astro';
+import ExperienceSection from '../components/ExperienceSection.astro';
+import FaqSection from '../components/FaqSection.astro';
+import ContactSection from '../components/ContactSection.astro';
+import { siteConfig, heroSection, metricsStrip } from '../data/siteData';
 ---
 
 <Layout
-  fullTitle="Jacob Chademwiri | Tender Manager · Project Delivery, ISO Lead & SAP/Sage Billing"
-  description="Tender Manager in Centurion, Gauteng who wins municipal and corporate contracts, leads ISO 9001/14001/45001 implementation, coordinates project delivery, and governs billing in SAP and Sage."
-  active="home"
-  schema="person"
-  keywords={[
-    'tender manager',
-    'tender and project manager',
-    'ISO 9001 14001 45001 implementation lead',
-    'project billing SAP Sage',
-    'accounts receivable manager',
-    'municipal tender specialist',
-    'City of Tshwane tenders',
-    'Centurion',
-    'Gauteng',
-    'South Africa',
-  ]}
+  fullTitle={siteConfig.seo.metaTitle}
+  description={siteConfig.seo.metaDescription}
+  includeFaqSchema={true}
 >
   <!-- Hero Section -->
-  <div class="grid gap-10 px-5 pb-14 pt-16 sm:px-8 md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] md:items-center md:px-14 md:pt-20">
-    <div>
-      <p class="kicker">Jacob Chademwiri · Tender Manager · Centurion, Gauteng</p>
-      <h1 class="display mt-4 max-w-[19ch]">
-        The Tender Manager who wins the contract, runs the project, and bills it to collection.
-      </h1>
-      <p class="mt-6 max-w-[640px] text-body-lg text-text-2">
-        Most tender managers stop at the bid box. I lead end-to-end municipal and corporate tender acquisitions, direct the <strong>ISO 9001, 14001 &amp; 45001</strong> compliance systems behind them, coordinate project execution as needed, and govern contract billing in <strong>SAP &amp; Sage</strong>. Complemented by custom web and bid-tech engineering.
-      </p>
-      <div class="my-7 flex flex-wrap gap-2">
-        <span class="tag tag-accent">Tender Management (Primary)</span>
-        <span class="tag tag-accent">ISO 9001 · 14001 · 45001 Lead</span>
-        <span class="tag tag-accent">Project Delivery &amp; Coordination</span>
-        <span class="tag tag-accent">Project Billing &amp; AR (SAP &amp; Sage)</span>
-        <span class="tag tag-neutral">Bid-Tech &amp; Web Development</span>
-      </div>
-      <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-        <a href="/contact?type=employment" class="btn btn-primary">Discuss a role or tender →</a>
-        <a href="/resume" class="btn btn-secondary">View Executive Resume</a>
-        <a href="#awarded-contracts" class="btn btn-ghost self-start sm:self-center">See awarded contracts ↓</a>
-      </div>
-      <p class="mt-7 flex items-baseline gap-2.5 text-meta text-text-3">
-        <span class="dot" aria-hidden="true"></span>
-        Open to Senior Tender Manager &amp; Project Coordination roles
-      </p>
-    </div>
-    <HeroIllustration />
-  </div>
-
-  <!-- Quantified Impact Metrics Strip -->
-  <div class="px-5 pb-8 sm:px-8 md:px-14">
-    <MetricStrip />
-  </div>
-
-  <!-- Awarded Contracts & Proof of Work Showcase -->
-  <div id="awarded-contracts" class="px-5 pb-16 pt-6 sm:px-8 md:px-14">
-    <div class="mb-7 flex flex-wrap items-baseline justify-between gap-4">
-      <div>
-        <p class="kicker">Proven Track Record</p>
-        <h2 class="h2 mt-4 max-w-[30ch]">Awarded municipal tenders, ISO systems &amp; complementary builds</h2>
-        <p class="mt-2 max-w-[62ch] text-body text-text-2">
-          Real multi-year contracts won, governed under ISO standards, coordinated on the ground, and billed through to collection—alongside the digital tools I build to support contractors.
+  <section class="py-16 sm:py-24">
+    <div class="mx-auto max-w-content px-5 sm:px-8">
+      <div class="max-w-3xl">
+        <p class="eyebrow">{heroSection.eyebrow}</p>
+        <h1 class="display mt-5 text-primary">{heroSection.headline}</h1>
+        <p class="mt-6 max-w-2xl text-body-lg leading-relaxed text-text-2">
+          {heroSection.subheadline}
         </p>
-      </div>
-      <a href="/portfolio" class="btn btn-ghost">All 17 case studies →</a>
-    </div>
 
-    <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-      {
-        featuredWork.map((item) => (
-          <a
-            href={`/portfolio/${item.id}`}
-            class="card card-interactive group flex flex-col overflow-hidden p-0"
-          >
-            <img
-              src={getPortfolioImageUrl(item.data.cover)}
-              alt={`${item.data.title} — ${item.data.client}`}
-              width="640"
-              height="400"
-              class="aspect-[16/10] w-full object-cover"
-              loading="lazy"
-            />
-            <div class="flex flex-1 flex-col px-4 py-4">
-              <p class="card-kicker">{categoryLabels[item.data.category] ?? item.data.category}</p>
-              <h3 class="card-title my-2 group-hover:text-accent">{item.data.title}</h3>
-              <p class="card-meta mb-2.5">
-                {item.data.client} · <span class="data">{item.data.year}</span>
-              </p>
-              <p class="card-body line-clamp-3">{item.data.excerpt}</p>
-              {item.data.outcome && (
-                <p class="data mt-3 text-meta font-medium text-accent">{item.data.outcome}</p>
-              )}
-              <div class="mt-auto flex flex-wrap gap-1.5 pt-3.5">
-                {item.data.tags.slice(0, 3).map((tag) => (
-                  <span class={tag.accent ? 'tag tag-accent' : 'tag tag-neutral'}>{tag.label}</span>
-                ))}
-              </div>
-            </div>
+        <div class="no-print mt-8 flex flex-wrap items-center gap-3.5">
+          <a href={heroSection.primaryCta.href} download class="btn btn-primary">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>{heroSection.primaryCta.label}</span>
           </a>
-        ))
-      }
-    </div>
-  </div>
-
-  <!-- Experience & Career Trajectory -->
-  <div id="positions" class="border-t border-divider px-5 pb-16 pt-14 sm:px-8 md:px-14">
-    <div class="mb-7 flex flex-wrap items-baseline justify-between gap-4">
-      <div>
-        <p class="kicker">Experience &amp; Roles</p>
-        <h2 class="h2 mt-4 max-w-[28ch]">From bid compliance to full contract-to-cash leadership</h2>
-      </div>
-      <a href="/about#experience" class="btn btn-ghost">Full career progression →</a>
-    </div>
-    <div class="grid gap-5 md:grid-cols-3">
-      {
-        positions.map((position) => (
-          <div class="card flex flex-col justify-between">
-            <div>
-              <p class="card-kicker">
-                {position.data.employment} · <span class="data">{position.data.period}</span>
-              </p>
-              <h3 class="card-title mt-2.5 mb-1">
-                <a href={`/experience/${position.id}`} class="hover:text-accent transition-colors">
-                  {position.data.title}
-                </a>
-              </h3>
-              <p class="card-meta mb-2.5">{position.data.company} · {position.data.location}</p>
-              <p class="card-body">{position.data.summary}</p>
-              {position.data.tags.length > 0 && (
-                <div class="mt-3.5 flex flex-wrap gap-1.5">
-                  {position.data.tags.slice(0, 4).map((tag) => (
-                    <span class="tag tag-outline">{tag}</span>
-                  ))}
-                </div>
-              )}
-            </div>
-            <div class="mt-5 border-t border-divider/40 pt-3">
-              <a
-                href={`/experience/${position.id}`}
-                class="inline-flex items-center gap-1 text-[13px] font-medium text-accent hover:underline"
-              >
-                <span>View role &amp; promotions</span>
-                <span>→</span>
-              </a>
-            </div>
-          </div>
-        ))
-      }
-    </div>
-  </div>
-
-  <!-- Core Capabilities & Complementary Services -->
-  <SectionBand id="services" glow="top-right">
-    <div class="flex flex-wrap items-baseline justify-between gap-4">
-      <div>
-        <p class="kicker">How I Add Value</p>
-        <h2 class="h2 mt-4">Primary role &amp; complementary disciplines</h2>
-      </div>
-      <a href="/services" class="btn btn-ghost">Explore all capabilities →</a>
-    </div>
-    <div class="mt-7 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      {
-        services.map((service) => (
-          <a href={service.href} class="group block border-t border-divider pt-5">
-            <p class="data mb-1.5 text-label font-medium text-accent">{service.number}</p>
-            <h3 class="h3 mb-2.5 group-hover:text-accent">{service.title}</h3>
-            <p class="text-body text-text-2">{service.description}</p>
+          <a href={heroSection.secondaryCta.href} class="btn btn-secondary">
+            <span>{heroSection.secondaryCta.label}</span>
+            <span aria-hidden="true">↓</span>
           </a>
-        ))
-      }
-    </div>
-  </SectionBand>
-
-  <!-- About Preview -->
-  <div
-    id="about"
-    class="grid gap-8 px-5 py-16 sm:px-8 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:items-center md:gap-12 md:px-14"
-  >
-    <figure class="m-0">
-      <img
-        src={PROFILE_PORTRAIT_URL}
-        alt="Jacob Chademwiri — Tender Manager, Project Coordinator, ISO Implementation Lead & AR Manager"
-        width="640"
-        height="800"
-        class="aspect-[4/5] w-full rounded-xl object-cover"
-        loading="lazy"
-      />
-    </figure>
-    <div>
-      <p class="kicker">Who I Am</p>
-      <h2 class="h2 mt-4 mb-5 max-w-[26ch]">
-        I work both sides of the contract: winning it, running it, and billing it.
-      </h2>
-      <p class="mb-4 max-w-[54ch] text-body text-text-2">
-        I am a <strong>Tender Manager</strong> first. At Sithembe Transportation &amp; Projects in Centurion, I lead municipal and commercial bid acquisitions—and because winning a tender is only half the battle, I also serve as appointed Management Representative leading our <strong>ISO 9001, 14001 &amp; 45001</strong> Integrated Management System, step in to coordinate awarded projects as needed, and manage project billing and accounts receivable in <strong>SAP ERP and Sage</strong>.
-      </p>
-      <p class="mb-6 max-w-[54ch] text-body text-text-2">
-        Alongside my operational career, I build custom software and contractor websites through Playhouse Media Group—including <strong>TenderTrack360</strong>, a SaaS platform born directly from my day-to-day tendering work.
-      </p>
-      <div class="flex flex-wrap gap-3">
-        <a href="/about" class="btn btn-secondary">Read my full story</a>
-        <a href="/resume" class="btn btn-ghost">Download / Print Executive CV →</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Blog Preview -->
-  <div id="blog-preview" class="border-t border-divider px-5 pb-16 pt-14 sm:px-8 md:px-14">
-    <div class="flex flex-wrap items-baseline justify-between gap-4">
-      <div>
-        <p class="kicker">From the Bid Room</p>
-        <h2 class="h2 mt-4">Field notes on tenders, ISO systems &amp; web delivery</h2>
-      </div>
-      <a href="/blog" class="btn btn-ghost">All field notes →</a>
-    </div>
-    <div class="mt-6 grid items-start gap-5 md:grid-cols-3">
-      {
-        posts.map((post) => (
-          <a href={`/blog/${post.id}`} class="card card-interactive group block overflow-hidden p-0">
-            <img
-              src={getBlogImageUrl(post.data.cover)}
-              alt={post.data.title}
-              width="640"
-              height="400"
-              class="aspect-[16/10] w-full object-cover"
-              loading="lazy"
-            />
-            <div class="px-4 py-4">
-              <p class="card-kicker">{post.data.category}</p>
-              <h3 class="card-title my-2 group-hover:text-accent">{post.data.title}</h3>
-              <p class="card-body mb-2.5">{post.data.excerpt}</p>
-              <p class="card-meta">
-                {dateFormatter.format(post.data.date)} · {getReadTime(post.body ?? '')}
-              </p>
-            </div>
+          <a href="/resume" class="data ml-1 text-xs font-medium text-accent hover:underline">
+            View Web CV →
           </a>
-        ))
-      }
-    </div>
-  </div>
+        </div>
+      </div>
 
-  <ContactBand
-    headingLevel={2}
-    trustLine="24–48hr response · Available for Tender Manager roles & select consulting · NDA-ready"
-  />
+      <!-- 4-Column Executive Metrics Strip -->
+      <div class="mt-14 grid grid-cols-2 gap-4 border-t border-border pt-10 lg:grid-cols-4">
+        {
+          metricsStrip.map((metric) => (
+            <div class="exec-card p-5">
+              <p class="data text-2xl font-semibold tracking-tight text-primary sm:text-3xl">
+                {metric.value}
+              </p>
+              <p class="mt-1.5 text-xs font-medium text-text-2 sm:text-sm">{metric.label}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Selected Flagship Contracts (4 Cards -> /track-record) -->
+  <FeaturedTrackRecord />
+
+  <!-- Core Capabilities & Systems -->
+  <CapabilitiesSection />
+
+  <!-- Career Timeline & Credentials -->
+  <ExperienceSection />
+
+  <!-- Recruiter & GEO FAQ -->
+  <FaqSection />
+
+  <!-- Contact & Direct Inquiry -->
+  <ContactSection />
 </Layout>
