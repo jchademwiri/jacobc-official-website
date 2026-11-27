@@ -23,12 +23,32 @@ if (!productionUrl && process.env.VERCEL === '1') {
 
 const site = productionUrl ? `https://${productionUrl}` : 'http://localhost:4321';
 
+const allowedHostnames = Array.from(
+  new Set(
+    [
+      'jacobc.co.za',
+      'www.jacobc.co.za',
+      'jacobc-official-website.vercel.app',
+      productionUrl,
+      process.env.VERCEL_BRANCH_URL,
+      process.env.VERCEL_URL,
+    ].filter((value) => Boolean(value))
+  )
+);
+
 // https://astro.build/config
 export default defineConfig({
   site,
   trailingSlash: 'never',
   prefetch: true,
   adapter: vercel(),
+  security: {
+    checkOrigin: true,
+    allowedDomains: allowedHostnames.map((hostname) => ({
+      protocol: 'https',
+      hostname,
+    })),
+  },
   integrations: [
     sitemap({
       filter: (page) =>
