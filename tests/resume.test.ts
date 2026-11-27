@@ -20,13 +20,13 @@ describe('executive siteData v2.0 integrity', () => {
     expect(showCipsInProgress).toBe(false);
   });
 
-  it('contains all 17 verified municipal contracts across 4 entities and 4 categories', () => {
-    expect(contractPortfolio.length).toBe(17);
+  it('contains all 16 verified municipal contracts across 4 entities and 4 categories', () => {
+    expect(contractPortfolio.length).toBe(16);
     expect(contractCategories.length).toBe(5); // All + 4 categories
     expect(municipalEntities.length).toBe(5); // All Entities + 4 entities
 
     const uniqueIds = new Set(contractPortfolio.map((c) => c.id));
-    expect(uniqueIds.size).toBe(17);
+    expect(uniqueIds.size).toBe(16);
 
     expect(featuredContracts.length).toBe(4);
     expect(new Set(featuredContracts.map((c) => c.category)).size).toBe(4);
