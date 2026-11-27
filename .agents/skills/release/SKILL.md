@@ -7,9 +7,9 @@ metadata:
   version: "1.0.0"
 ---
 
-# Release (Production Promotion)
+# Release (Staging Verification & Production PR)
 
-Promotes `dev` → `master` via release PR with full pre-flight checks.
+Prepares a `dev` → `master` release PR for testing on staging (`https://dev.jacobc.co.za`) and the Vercel preview with full pre-flight checks. Does **not** merge into `master` — `/tag vX.Y.Z` merges the approved release PR and tags production.
 
 ## Steps
 
@@ -22,17 +22,17 @@ git log --oneline origin/master..origin/dev
 
 ### 2. Pre-Flight (must pass before PR)
 ```bash
+# Unit tests
+bun test
+
 # Type check
-bun run typecheck 2>/dev/null || npx tsc --noEmit
+bunx astro sync && bunx tsc --noEmit
 
 # Lint
 bun run lint
 
-# Format check
-npx prettier --check . 2>/dev/null || echo 'Prettier not configured'
-
 # Build
-npx astro build
+bun run build
 ```
 
 If any check fails, fix before proceeding.
@@ -52,11 +52,12 @@ gh pr create --base master --head dev \
   --body "<generated-changelog>"
 ```
 
-### 5. Monitor CI
+### 5. Monitor CI & Staging
 ```bash
-gh pr checks
+gh pr checks --watch
+curl -sI https://dev.jacobc.co.za | head -1
 ```
-Fix failures until all green.
+Fix failures until all green. Do **not** merge to `master` automatically.
 
-### 6. After Merge
-Tell user: "Merge PR, then run `/tag v<version>` to tag the production release."
+### 6. Ready for Testing
+Tell user: "Release PR is ready for testing on staging (https://dev.jacobc.co.za) and the Vercel preview. Once approved, run `/tag v<version>` to merge into `master` and tag the production release."

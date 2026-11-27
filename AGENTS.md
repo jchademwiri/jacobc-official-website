@@ -9,11 +9,15 @@
 - **Testing:** bun test
 - **Linting:** astro check
 
+## Environments
+- **Staging (`dev`):** https://dev.jacobc.co.za
+- **Production (`master`):** https://www.jacobc.co.za (`https://jacobc.co.za` redirects to `www`)
+
 ## Workflow Commands
 - `/start <task>` — Create branch, audit, plan
 - `/ship` — Pre-flight, commit, PR, CI
-- `/release` — Promote dev → master
-- `/tag vX.Y.Z` — Tag production release
+- `/release` — Open `dev` → `master` release PR for staging/preview testing (`dev.jacobc.co.za`)
+- `/tag vX.Y.Z` — Merge approved release PR into `master`, tag `vX.Y.Z`, and verify production
 - `/rollback` — Revert to previous release
 - `/incident "desc"` — Diagnose production issues
 - `/changelog` — Generate release notes
