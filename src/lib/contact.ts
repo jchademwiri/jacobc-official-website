@@ -16,6 +16,7 @@ export type ValidationResult =
 export const HONEYPOT_FIELD = 'website_url';
 export const TIMESTAMP_FIELD = 'started';
 const MIN_FILL_MS = 2500;
+const MAX_FORM_AGE_MS = 24 * 60 * 60 * 1000;
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -28,9 +29,10 @@ export function looksAutomated(form: FormData): boolean {
   if (str(form.get(HONEYPOT_FIELD)) !== '') return true;
 
   const started = Number(str(form.get(TIMESTAMP_FIELD)));
-  if (!Number.isFinite(started) || started <= 0) return false;
+  if (!Number.isFinite(started) || started <= 0) return true;
 
-  return Date.now() - started < MIN_FILL_MS;
+  const elapsed = Date.now() - started;
+  return elapsed < MIN_FILL_MS || elapsed > MAX_FORM_AGE_MS;
 }
 
 export function validateContact(form: FormData): ValidationResult {

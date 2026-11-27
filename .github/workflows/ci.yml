@@ -1,6 +1,10 @@
 name: CI
 
 on:
+  push:
+    branches:
+      - master
+      - dev
   pull_request:
     branches:
       - master
@@ -20,10 +24,16 @@ jobs:
           bun-version: latest
 
       - name: Install Dependencies
-        run: bun install
+        run: bun install --frozen-lockfile
 
-      - name: Build Project
-        run: bun run build
+      - name: Run Tests
+        run: bun test
+
+      - name: Typecheck
+        run: bunx tsc --noEmit
 
       - name: Lint
         run: bun run lint
+
+      - name: Build Project
+        run: bun run build

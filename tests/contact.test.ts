@@ -39,6 +39,22 @@ describe('contact form validation and anti-spam', () => {
     expect(looksAutomated(form)).toBe(false);
   });
 
+  it('flags missing, future, and stale (>24h) timestamps as automated', () => {
+    const missing = new FormData();
+    missing.append(HONEYPOT_FIELD, '');
+    expect(looksAutomated(missing)).toBe(true);
+
+    const future = new FormData();
+    future.append(HONEYPOT_FIELD, '');
+    future.append(TIMESTAMP_FIELD, String(Date.now() + 60_000));
+    expect(looksAutomated(future)).toBe(true);
+
+    const stale = new FormData();
+    stale.append(HONEYPOT_FIELD, '');
+    stale.append(TIMESTAMP_FIELD, String(Date.now() - 25 * 60 * 60 * 1000));
+    expect(looksAutomated(stale)).toBe(true);
+  });
+
   it('validates a correct executive inquiry with organization', () => {
     const form = new FormData();
     form.append('name', 'Thabo Mokoena');

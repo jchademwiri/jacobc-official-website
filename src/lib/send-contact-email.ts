@@ -16,8 +16,10 @@ export async function sendContactEmail(submission: ContactSubmission): Promise<v
   if (!RESEND_API_KEY) throw new Error('RESEND_API_KEY is not set');
 
   const { name, organization, email, message } = submission;
-  const from = `${safeDisplayName(name)} via ${safeDisplayName(BRAND_NAME)} <${FROM_ADDRESS}>`;
-  const subjectPrefix = organization ? `Executive Inquiry (${organization})` : 'Executive Inquiry';
+  const cleanName = safeDisplayName(name) || 'Visitor';
+  const cleanOrg = organization ? safeDisplayName(organization) : '';
+  const from = `${cleanName} via ${safeDisplayName(BRAND_NAME)} <${FROM_ADDRESS}>`;
+  const subjectPrefix = cleanOrg ? `Executive Inquiry (${cleanOrg})` : 'Executive Inquiry';
 
   const template = ContactNotification({
     name,
@@ -36,7 +38,7 @@ export async function sendContactEmail(submission: ContactSubmission): Promise<v
     from,
     to: CONTACT_EMAIL,
     replyTo: email,
-    subject: `${subjectPrefix}: ${name}`,
+    subject: `${subjectPrefix}: ${cleanName}`,
     html,
     text,
   });
