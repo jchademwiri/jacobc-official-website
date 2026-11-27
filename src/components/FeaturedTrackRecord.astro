@@ -1,0 +1,89 @@
+---
+import { featuredContracts, contractPortfolio } from '../data/siteData';
+
+const totalContracts = contractPortfolio.length;
+---
+
+<section id="track-record" aria-labelledby="track-record-heading" class="border-t border-border py-16 sm:py-20">
+  <div class="mx-auto max-w-content px-5 sm:px-8">
+    <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+      <div class="max-w-2xl">
+        <p class="eyebrow">Verified Track Record</p>
+        <h2 id="track-record-heading" class="h2 mt-3">Selected Municipal Contracts</h2>
+        <p class="mt-3 text-body-lg text-text-2">
+          Four flagship multi-year contracts spanning electrical supply, heavy plant &amp; fleet hire, water &amp; sanitation, and CIDB 6GB–9GB building refurbishment.
+        </p>
+      </div>
+
+      <a
+        href="/track-record"
+        class="no-print btn btn-secondary shrink-0 self-start text-xs sm:self-end"
+      >
+        <span>View All {totalContracts} Contracts</span>
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+
+    <!-- 4 Featured Flagship Contract Cards -->
+    <div class="mt-8 grid gap-5 md:grid-cols-2">
+      {
+        featuredContracts.map((item) => (
+          <article class="contract-card flex flex-col justify-between p-5 sm:p-6">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span class="data text-sm font-semibold tracking-tight text-accent">
+                  {item.ref}
+                </span>
+                <div class="flex flex-wrap items-center gap-1.5">
+                  <span class="pill pill-bronze">{item.status}</span>
+                  <span class="pill pill-neutral">{item.role}</span>
+                </div>
+              </div>
+
+              <h3 class="h3 mt-2.5 text-primary">{item.title}</h3>
+
+              <p class="data mt-1.5 text-xs text-muted">
+                {item.entity} &middot; {item.period}
+              </p>
+
+              <p class="mt-3 text-sm leading-relaxed text-text-2">{item.summary}</p>
+
+              <ul class="mt-4 space-y-1.5 border-t border-border/80 pt-3.5 text-xs leading-relaxed text-text-2">
+                {
+                  item.highlights.map((hl) => (
+                    <li class="flex items-start gap-2">
+                      <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                      <span>{hl}</span>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+
+            <div class="mt-4 pt-2">
+              <span class="data text-[11px] uppercase tracking-wider text-muted">
+                {item.category}
+              </span>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- Full Track Record CTA Banner -->
+    <div class="no-print mt-8 flex flex-col items-start justify-between gap-4 rounded-xl border border-border bg-surface p-5 sm:flex-row sm:items-center sm:p-6">
+      <div>
+        <p class="text-sm font-semibold text-primary">
+          Explore the complete {totalContracts}-contract municipal portfolio
+        </p>
+        <p class="mt-1 text-xs text-text-2">
+          Filter all {totalContracts} verified contracts by commercial category and municipal entity across City of Tshwane, City of Ekurhuleni, Pikitup Johannesburg, and Msunduzi Municipality.
+        </p>
+      </div>
+      <a href="/track-record" class="btn btn-primary shrink-0 text-xs">
+        <span>Open Full Track Record ({totalContracts})</span>
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>

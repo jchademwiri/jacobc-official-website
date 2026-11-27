@@ -65,7 +65,7 @@ export const siteConfig = {
 } as const;
 
 export const navLinks = [
-  { label: "Track Record", href: "/#track-record" },
+  { label: "Track Record", href: "/track-record" },
   { label: "Capabilities", href: "/#capabilities" },
   { label: "Experience", href: "/#experience" },
   { label: "FAQ", href: "/#faq" },
@@ -402,6 +402,18 @@ export const contractPortfolio: ContractItem[] = [
     ],
   },
 ];
+
+/** Four flagship contracts featured on the home page (one per commercial category). */
+export const featuredContractIds = [
+  "eed-05-2023-24",
+  "ss-02-2023-24",
+  "hs-02-2025-26",
+  "a-re-04-2021",
+] as const;
+
+export const featuredContracts: ContractItem[] = featuredContractIds
+  .map((id) => contractPortfolio.find((c) => c.id === id))
+  .filter((c): c is ContractItem => Boolean(c));
 
 export const coreCapabilities: CapabilityItem[] = [
   {

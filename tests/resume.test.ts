@@ -3,6 +3,7 @@ import {
   siteConfig,
   metricsStrip,
   contractPortfolio,
+  featuredContracts,
   contractCategories,
   municipalEntities,
   coreCapabilities,
@@ -26,6 +27,9 @@ describe('executive siteData v2.0 integrity', () => {
 
     const uniqueIds = new Set(contractPortfolio.map((c) => c.id));
     expect(uniqueIds.size).toBe(17);
+
+    expect(featuredContracts.length).toBe(4);
+    expect(new Set(featuredContracts.map((c) => c.category)).size).toBe(4);
 
     contractPortfolio.forEach((c) => {
       expect(c.ref.length).toBeGreaterThan(0);
