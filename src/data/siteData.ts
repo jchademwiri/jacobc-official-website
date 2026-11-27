@@ -52,7 +52,7 @@ export const siteConfig = {
   secondaryEmail: "jchademwiri@gmail.com",
   linkedin: "https://www.linkedin.com/in/jchademwiri",
   website: "https://www.jacobc.co.za",
-  cvPath: "/Jacob_Chademwiri_Procurement_Contracts_CV_v4.pdf",
+  cvPath: "/Jacob_Chademwiri_Procurement_Contracts_CV_v4.docx",
   license: "Code C1 Driver's License with PrDP (P & G)",
   seo: {
     metaTitle: "Jacob Chademwiri | Procurement, Tender & Contract Manager - Centurion, SA",
@@ -77,7 +77,7 @@ export const heroSection = {
   headline: "From Winning Tenders to Delivering Complex Contracts.",
   subheadline:
     "Procurement, Tender & Contract Manager with 5+ years of end-to-end commercial experience - bidding, winning, sourcing, delivering, and invoicing 17+ multi-year municipal contracts across four major South African entities.",
-  primaryCta: { label: "Download CV (PDF)", href: siteConfig.cvPath },
+  primaryCta: { label: "Download CV (DOCX)", href: siteConfig.cvPath },
   secondaryCta: { label: "View Contract Portfolio", href: "#track-record" },
 } as const;
 

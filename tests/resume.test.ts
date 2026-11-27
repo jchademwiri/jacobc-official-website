@@ -16,7 +16,7 @@ import {
 describe('executive siteData v2.0 integrity', () => {
   it('uses canonical email and versioned CV path', () => {
     expect(siteConfig.email).toBe('hello@jacobc.co.za');
-    expect(siteConfig.cvPath).toBe('/Jacob_Chademwiri_Procurement_Contracts_CV_v4.pdf');
+    expect(siteConfig.cvPath).toBe('/Jacob_Chademwiri_Procurement_Contracts_CV_v4.docx');
     expect(showCipsInProgress).toBe(false);
   });
 
