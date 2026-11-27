@@ -55,10 +55,10 @@ export const siteConfig = {
   cvPath: "/Jacob_Chademwiri_Procurement_Contracts_CV_v4.pdf",
   license: "Code C1 Driver's License with PrDP (P & G)",
   seo: {
-    metaTitle: "Jacob Chademwiri | Procurement, Tender & Contract Manager — Centurion, SA",
+    metaTitle: "Jacob Chademwiri | Procurement, Tender & Contract Manager - Centurion, SA",
     metaDescription:
       "Procurement, Tender & Contract Manager in Centurion with 5+ years of bid-to-delivery experience across 17+ municipal contracts (City of Tshwane, City of Ekurhuleni, Pikitup Johannesburg, Msunduzi), SAP/Sage/Zoho invoicing, and ISO 9001/14001/45001 governance.",
-    ogTitle: "Jacob Chademwiri — Procurement, Tender & Contract Manager",
+    ogTitle: "Jacob Chademwiri - Procurement, Tender & Contract Manager",
     ogDescription:
       "17+ Multi-Year Municipal Contracts • Tier-1 Technical Sourcing • SAP, Sage & Zoho • ISO / SHEQ",
   },
@@ -76,7 +76,7 @@ export const heroSection = {
   eyebrow: "CENTURION, SOUTH AFRICA  •  PROCUREMENT & CONTRACT MANAGEMENT",
   headline: "From Winning Tenders to Delivering Complex Contracts.",
   subheadline:
-    "Procurement, Tender & Contract Manager with 5+ years of end-to-end commercial experience—bidding, winning, sourcing, delivering, and invoicing 17+ multi-year municipal contracts across four major South African entities.",
+    "Procurement, Tender & Contract Manager with 5+ years of end-to-end commercial experience - bidding, winning, sourcing, delivering, and invoicing 17+ multi-year municipal contracts across four major South African entities.",
   primaryCta: { label: "Download CV (PDF)", href: siteConfig.cvPath },
   secondaryCta: { label: "View Contract Portfolio", href: "#track-record" },
 } as const;
@@ -353,7 +353,7 @@ export const contractPortfolio: ContractItem[] = [
   {
     id: "a-ewm-07-2022",
     ref: "A-EWM 07-2022",
-    title: "Arboriculture Maintenance — Tree Pruning & Removal (Vosloorus)",
+    title: "Arboriculture Maintenance - Tree Pruning & Removal (Vosloorus)",
     entity: "City of Ekurhuleni",
     category: "Civil, Building & Horticulture",
     period: "Apr 2023 – Jun 2025",
@@ -425,13 +425,13 @@ export const coreCapabilities: CapabilityItem[] = [
   {
     title: "Public-Sector Tender Management",
     description:
-      "End-to-end bid preparation, MFMA and SCM compliance, CIDB returnable schedules, pricing estimation, and CPI/CPIX escalation structuring—backed by an ~85% public-sector bid success rate.",
+      "End-to-end bid preparation, MFMA and SCM compliance, CIDB returnable schedules, pricing estimation, and CPI/CPIX escalation structuring - backed by an ~85% public-sector bid success rate.",
     tags: ["MFMA / SCM", "CIDB 6GB–9GB", "CPI / CPIX Escalations", "~85% Win Rate"],
   },
   {
     title: "Contract & Commercial Delivery",
     description:
-      "Hands-on administration of live multi-year service, supply, and Joint Venture contracts—enforcing SLAs, fleet/VEM age compliance, quarterly municipal clearances, and uninterrupted operational execution.",
+      "Hands-on administration of live multi-year service, supply, and Joint Venture contracts - enforcing SLAs, fleet/VEM age compliance, quarterly municipal clearances, and uninterrupted operational execution.",
     tags: ["SLA Governance", "JV Administration", "Fleet & VEM Audits", "17+ Contracts"],
   },
   {
@@ -463,7 +463,7 @@ export const experienceTimeline: ExperienceItem[] = [
         title: "Tender, Procurement & Contract Manager",
         period: "November 2023 – Present",
         highlights: [
-          "Led end-to-end commercial delivery—from tender pricing through SLA execution, supplier sourcing, and invoicing—across 17+ awarded municipal contracts spanning City of Tshwane, City of Ekurhuleni, Pikitup Johannesburg, and Msunduzi Municipality (~85% bid success rate).",
+          "Led end-to-end commercial delivery - from tender pricing through SLA execution, supplier sourcing, and invoicing - across 17+ awarded municipal contracts spanning City of Tshwane, City of Ekurhuleni, Pikitup Johannesburg, and Msunduzi Municipality (~85% bid success rate).",
           "Managed 36-month electrical cable supply (EED 05-2023/24) and electrical accessories (AS 08-2023), sourcing directly from ACTOM and M-TEC and administering CPI price escalations.",
           "Directed fleet, plant hire, water/sanitation, civil, and horticultural portfolios (SS 01/02, PU102/2022, HS 02-2025/26, HHS 01/10, ROC 05/07/08/20, A-RE 04-2021, SCM 20).",
           "Executed commercial invoicing, SAP item-coded delivery reconciliation, PO tracking, and accounts receivable using SAP, Sage, and Zoho.",
@@ -474,7 +474,7 @@ export const experienceTimeline: ExperienceItem[] = [
         title: "Senior Tendering Administrator",
         period: "September 2022 – November 2023",
         highlights: [
-          "Managed full-cycle bid preparation, commercial pricing schedules, and compliant submissions across construction, fleet/plant hire, electrical supply, and municipal maintenance—securing multi-year awards later transitioned into direct contract management.",
+          "Managed full-cycle bid preparation, commercial pricing schedules, and compliant submissions across construction, fleet/plant hire, electrical supply, and municipal maintenance - securing multi-year awards later transitioned into direct contract management.",
           "Streamlined internal tender document control, compliance checklists, and digital workflows via Microsoft 365.",
         ],
       },
@@ -554,7 +554,7 @@ export const faqItems: FaqItem[] = [
   {
     question: "Which municipalities and public-sector contracts has Jacob Chademwiri managed?",
     answer:
-      "He has bid, won, inherited, and managed 17+ multi-year municipal contracts across the City of Tshwane, City of Ekurhuleni, Pikitup Johannesburg (CoJ), and Msunduzi Municipality—spanning LV electrical cable and accessory supply (EED 05-2023/24, AS 08-2023), heavy plant and fleet hire (SS 01-2023/24, SS 02-2023/24, PU102/2022, SS 02-2021/22 JV), water and sanitation (HS 02-2025/26, HHS 10-2023/24, HHS 01-2021/22, ROC 20-2023/24), civil/building refurbishment (A-RE 04-2021, ROC 05-2022/23, ROC 08-2022/23), and municipal horticulture/arboriculture (ROC 07-2022/23, A-EWM 07-2022, A-EWM 01-2022, SCM 20 OF 22/23).",
+      "He has bid, won, inherited, and managed 17+ multi-year municipal contracts across the City of Tshwane, City of Ekurhuleni, Pikitup Johannesburg (CoJ), and Msunduzi Municipality - spanning LV electrical cable and accessory supply (EED 05-2023/24, AS 08-2023), heavy plant and fleet hire (SS 01-2023/24, SS 02-2023/24, PU102/2022, SS 02-2021/22 JV), water and sanitation (HS 02-2025/26, HHS 10-2023/24, HHS 01-2021/22, ROC 20-2023/24), civil/building refurbishment (A-RE 04-2021, ROC 05-2022/23, ROC 08-2022/23), and municipal horticulture/arboriculture (ROC 07-2022/23, A-EWM 07-2022, A-EWM 01-2022, SCM 20 OF 22/23).",
   },
   {
     question: "What ERP invoicing and compliance standards does Jacob Chademwiri work with?",
@@ -579,7 +579,7 @@ export const contactSection = {
     emailPlaceholder: "you@company.co.za",
     messagePlaceholder: "Briefly share the role, location, or commercial scope you'd like to discuss...",
     submitLabel: "Send Message",
-    successMessage: "Message sent. Thank you for reaching out—I will respond within 24–48 hours.",
+    successMessage: "Message sent. Thank you for reaching out - I will respond within 24–48 hours.",
     errorMessage: "Something went wrong sending your message. Please email hello@jacobc.co.za directly.",
   },
 } as const;
